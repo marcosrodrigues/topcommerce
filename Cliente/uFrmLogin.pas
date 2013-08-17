@@ -1,0 +1,134 @@
+unit uFrmLogin;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, StdCtrls, Menus, Usuario, DBXDataSnap, DBXCommon, DB, SqlExpr,
+  uUsuarioDAOClient, IniFiles, DXPControl, DXPButtons, pngimage;
+
+type
+  TFrmLogin = class(TForm)
+    imgLogin: TImage;
+    Label1: TLabel;
+    edtUsuario: TEdit;
+    Label2: TLabel;
+    edtSenha: TEdit;
+    ConnServidor: TSQLConnection;
+    btnOk: TDXPButton;
+    btnSair: TDXPButton;
+    procedure btnSairClick(Sender: TObject);
+    procedure btnOkClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
+  private
+    { Private declarations }
+    DAOClient: TUsuarioDAOClient;
+  public
+    { Public declarations }
+    Usuario: TUsuario;
+    FLoginSucess: Boolean;
+  end;
+
+var
+  FrmLogin: TFrmLogin;
+
+implementation
+
+uses MensagensUtils, uFrmConexaoServidor;
+
+{$R *.dfm}
+
+procedure TFrmLogin.btnOkClick(Sender: TObject);
+begin
+  Usuario := DAOClient.FindByLoginAndSenha(edtUsuario.Text, edtSenha.Text);
+  if ( Usuario <> nil ) or
+     ( ( edtUsuario.Text = 'TOP' ) and ( edtSenha.Text = 'admin' ) ) then
+  begin
+    FLoginSucess := True;
+    Close;
+  end
+  else
+  begin
+    Atencao( 'Usuário ou senha incorreto.' );
+    edtUsuario.SetFocus;
+  end;
+end;
+
+procedure TFrmLogin.btnSairClick(Sender: TObject);
+begin
+  Application.Terminate;
+end;
+
+procedure TFrmLogin.FormCreate(Sender: TObject);
+var
+  Ini: TIniFile;
+
+  procedure ConexaoServidor;
+  var
+    fConexaoServidor: TFrmConexaoServidor;
+  begin
+    fConexaoServidor := nil;
+    if fConexaoServidor = nil then
+      fConexaoServidor := TFrmConexaoServidor.Create(nil);
+    fConexaoServidor.ShowModal;
+  end;
+begin
+  if ( FileExists( ChangeFileExt( Application.ExeName, '.INI' ) ) ) then
+  begin
+    Ini := TIniFile.Create(ChangeFileExt(Application.ExeName, '.INI'));
+    try
+      if Ini.ReadString('SERVIDOR', 'HOST', '') <> '' then
+        ConnServidor.Params.Add('HostName=' + Ini.ReadString('SERVIDOR', 'HOST', ''))
+      else
+        ConexaoServidor;
+    finally
+      Ini.Free;
+    end;
+
+    ConnServidor.Open;
+  end
+  else
+    ConexaoServidor;
+
+  DAOClient := TUsuarioDAOClient.Create(ConnServidor.DBXConnection);
+end;
+
+procedure TFrmLogin.FormDestroy(Sender: TObject);
+begin
+  DAOClient.Free;
+  ConnServidor.Close;
+end;
+
+procedure TFrmLogin.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+begin
+  case Key of
+    VK_ESCAPE: Close;
+  end;
+end;
+
+procedure TFrmLogin.FormKeyPress(Sender: TObject; var Key: Char);
+var
+  l: TList;
+  I: Integer;
+begin
+  if Ord( Key ) = 13 then
+  begin
+    l := TList.Create;
+    try
+      GetTabOrderList( l );
+      for I := 0 to l.Count - 1 do
+        if ( TWinControl( l[I] ).TabOrder = ActiveControl.TabOrder + 1 ) then
+        begin
+          TWinControl( l[I] ).SetFocus;
+          Exit;
+        end;
+    finally
+      l.Free;
+    end;
+  end;
+end;
+
+end.

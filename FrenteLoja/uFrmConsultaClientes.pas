@@ -1,0 +1,111 @@
+unit uFrmConsultaClientes;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DB, DBClient, Grids, DBGrids, StdCtrls, ExtCtrls, uClienteDAOClient,
+  Cliente, DataUtils;
+
+type
+  TFrmConsultaClientes = class(TForm)
+    pnlParametros: TPanel;
+    Label1: TLabel;
+    edtConsultar: TEdit;
+    grdConsulta: TDBGrid;
+    pnlResultado: TPanel;
+    Label2: TLabel;
+    cdsConsulta: TClientDataSet;
+    dsConsulta: TDataSource;
+    lblTotalRegistros: TLabel;
+    cdsConsultaCODIGO: TStringField;
+    cdsConsultaNOME: TStringField;
+    cdsConsultaTELEFONE: TStringField;
+    procedure edtConsultarChange(Sender: TObject);
+    procedure edtConsultarKeyPress(Sender: TObject; var Key: Char);
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure FormShow(Sender: TObject);
+    procedure grdConsultaDblClick(Sender: TObject);
+    procedure grdConsultaKeyPress(Sender: TObject; var Key: Char);
+  private
+    { Private declarations }
+    DAOClient: TClienteDAOClient;
+
+    procedure Selecionar;
+  public
+    { Public declarations }
+    Cliente: TCliente;
+  end;
+
+var
+  FrmConsultaClientes: TFrmConsultaClientes;
+
+implementation
+
+uses uFrmPrincipal;
+
+{$R *.dfm}
+
+{ TForm1 }
+
+procedure TFrmConsultaClientes.edtConsultarChange(Sender: TObject);
+begin
+  cdsConsulta.Filtered := False;
+  cdsConsulta.Filter   := 'UPPER(NOME) LIKE ' + QuotedStr('%'+UpperCase(edtConsultar.Text)+'%');
+  cdsConsulta.Filtered := True;
+
+  lblTotalRegistros.Caption := IntToStr(cdsConsulta.RecordCount);
+end;
+
+procedure TFrmConsultaClientes.edtConsultarKeyPress(Sender: TObject; var Key: Char);
+begin
+  if (Ord(Key) = 13) then
+    Selecionar;
+end;
+
+procedure TFrmConsultaClientes.FormCreate(Sender: TObject);
+begin
+  DAOClient := TClienteDAOClient.Create(FrmPrincipal.ConnServidor.DBXConnection);
+end;
+
+procedure TFrmConsultaClientes.FormDestroy(Sender: TObject);
+begin
+  DAOClient.Free;
+end;
+
+procedure TFrmConsultaClientes.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+begin
+  case Key of
+    VK_ESCAPE: Self.Close;
+  end;
+end;
+
+procedure TFrmConsultaClientes.FormShow(Sender: TObject);
+begin
+  CopyReaderToClientDataSet(DAOClient.List, cdsConsulta);
+  lblTotalRegistros.Caption := IntToStr(cdsConsulta.RecordCount);
+end;
+
+procedure TFrmConsultaClientes.grdConsultaDblClick(Sender: TObject);
+begin
+  Selecionar;
+end;
+
+procedure TFrmConsultaClientes.grdConsultaKeyPress(Sender: TObject; var Key: Char);
+begin
+  if (Ord(Key) = 13) then
+    Selecionar;
+end;
+
+procedure TFrmConsultaClientes.Selecionar;
+begin
+  Cliente          := TCliente.Create;
+  Cliente.Codigo   := cdsConsultaCODIGO.AsString;
+  Cliente.Nome     := cdsConsultaNOME.AsString;
+  Cliente.Telefone := cdsConsultaTELEFONE.AsString;
+  Self.Close;
+end;
+
+end.

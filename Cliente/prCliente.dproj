@@ -1,0 +1,249 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{F8BFE68E-66E4-49FB-B237-D4C476EB30C8}</ProjectGuid>
+			<MainSource>prCliente.dpr</MainSource>
+			<ProjectVersion>12.3</ProjectVersion>
+			<Base>True</Base>
+			<Config Condition="'$(Config)'==''">Debug</Config>
+			<Platform>Win32</Platform>
+			<AppType>Application</AppType>
+			<FrameworkType>VCL</FrameworkType>
+			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_ImageBase>00400000</DCC_ImageBase>
+			<DCC_DcuOutput>.\$(Config)\$(Platform)</DCC_DcuOutput>
+			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;$(DCC_UnitAlias)</DCC_UnitAlias>
+			<DCC_ExeOutput>.\$(Config)\$(Platform)</DCC_ExeOutput>
+			<DCC_E>false</DCC_E>
+			<DCC_N>false</DCC_N>
+			<DCC_S>false</DCC_S>
+			<DCC_F>false</DCC_F>
+			<DCC_K>false</DCC_K>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+			<DCC_Optimize>false</DCC_Optimize>
+			<DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_DebugInformation>false</DCC_DebugInformation>
+		</PropertyGroup>
+		<ItemGroup>
+			<DelphiCompile Include="prCliente.dpr">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<DCCReference Include="uFrmPrincipal.pas">
+				<Form>FrmPrincipal</Form>
+			</DCCReference>
+			<DCCReference Include="..\Entidades\TipoProduto.pas"/>
+			<DCCReference Include="uFrmBase.pas">
+				<Form>FrmBase</Form>
+			</DCCReference>
+			<DCCReference Include="uFrmCrudBase.pas">
+				<Form>FrmCrudBase</Form>
+			</DCCReference>
+			<DCCReference Include="uFrmTipoProduto.pas">
+				<Form>FrmTipoProduto</Form>
+			</DCCReference>
+			<DCCReference Include="..\Utils\MensagensUtils.pas"/>
+			<DCCReference Include="DAOClient\uUsuarioDAOClient.pas"/>
+			<DCCReference Include="uFrmDadosBase.pas">
+				<Form>FrmDadosBase</Form>
+			</DCCReference>
+			<DCCReference Include="uFrmDadosTipoProduto.pas">
+				<Form>FrmDadosTipoProduto</Form>
+			</DCCReference>
+			<DCCReference Include="..\Utils\TypesUtils.pas"/>
+			<DCCReference Include="DAOClient\uProdutoDAOClient.pas"/>
+			<DCCReference Include="..\Entidades\Produto.pas"/>
+			<DCCReference Include="uFrmProduto.pas">
+				<Form>FrmProduto</Form>
+			</DCCReference>
+			<DCCReference Include="uFrmDadosMasterDetailBase.pas">
+				<Form>FrmDadosMasterDetailBase</Form>
+			</DCCReference>
+			<DCCReference Include="uFrmDadosProduto.pas">
+				<Form>FrmDadosProduto</Form>
+			</DCCReference>
+			<DCCReference Include="uFrmConsultaBase.pas">
+				<Form>FrmConsultaBase</Form>
+			</DCCReference>
+			<DCCReference Include="uFrmConsultaTipoProduto.pas">
+				<Form>FrmConsultaTipoProduto</Form>
+			</DCCReference>
+			<DCCReference Include="..\Utils\StringUtils.pas"/>
+			<DCCReference Include="uFrmFornecedor.pas">
+				<Form>FrmFornecedor</Form>
+			</DCCReference>
+			<DCCReference Include="uFrmDadosFornecedor.pas">
+				<Form>FrmDadosFornecedor</Form>
+			</DCCReference>
+			<DCCReference Include="..\Entidades\Fornecedor.pas"/>
+			<DCCReference Include="DAOClient\uFornecedorDAOClient.pas"/>
+			<DCCReference Include="uFrmEstoque.pas">
+				<Form>FrmEstoque</Form>
+			</DCCReference>
+			<DCCReference Include="uFrmDadosEstoque.pas">
+				<Form>FrmDadosEstoque</Form>
+			</DCCReference>
+			<DCCReference Include="DAOClient\uEstoqueDAOClient.pas"/>
+			<DCCReference Include="..\Entidades\Estoque.pas"/>
+			<DCCReference Include="uFrmConsultaProduto.pas">
+				<Form>FrmConsultaProduto</Form>
+			</DCCReference>
+			<DCCReference Include="..\Entidades\FornecedorProduto.pas"/>
+			<DCCReference Include="uFrmDadosFornecedorProduto.pas">
+				<Form>FrmDadosFornecedorProduto</Form>
+			</DCCReference>
+			<DCCReference Include="uFrmConsultaFornecedor.pas">
+				<Form>FrmConsultaFornecedor</Form>
+			</DCCReference>
+			<DCCReference Include="uFrmFiltrosBase.pas">
+				<Form>FrmFiltrosBase</Form>
+			</DCCReference>
+			<DCCReference Include="uFrmFiltrosFornecedor.pas">
+				<Form>FrmFiltrosFornecedor</Form>
+			</DCCReference>
+			<DCCReference Include="uFrmRelBase.pas">
+				<Form>FrmRelBase</Form>
+			</DCCReference>
+			<DCCReference Include="uFrmRelFornecedor.pas">
+				<Form>FrmRelFornecedor</Form>
+			</DCCReference>
+			<DCCReference Include="uFrmFiltrosProduto.pas">
+				<Form>FrmFiltrosProduto</Form>
+			</DCCReference>
+			<DCCReference Include="uFrmRelProduto.pas">
+				<Form>FrmRelProduto</Form>
+			</DCCReference>
+			<DCCReference Include="DAOClient\uPedidoVendaDAOClient.pas"/>
+			<DCCReference Include="uFrmFiltrosPedidoVenda.pas">
+				<Form>FrmFiltrosPedidoVenda</Form>
+			</DCCReference>
+			<DCCReference Include="uFrmRelPedidoVenda.pas">
+				<Form>FrmRelPedidoVenda</Form>
+			</DCCReference>
+			<DCCReference Include="..\Entidades\ItemPedidoVenda.pas"/>
+			<DCCReference Include="..\Entidades\PedidoVenda.pas"/>
+			<DCCReference Include="uFrmFiltrosEstoque.pas">
+				<Form>FrmFiltrosEstoque</Form>
+			</DCCReference>
+			<DCCReference Include="uFrmRelEstoque.pas">
+				<Form>FrmRelEstoque</Form>
+			</DCCReference>
+			<DCCReference Include="..\Utils\DataUtils.pas"/>
+			<DCCReference Include="uFramePesquisaTipoProduto.pas">
+				<Form>FramePesquisaTipoProduto</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="uFramePesquisaFornecedor.pas">
+				<Form>FramePesquisaFornecedor</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="uFramePesquisaProduto.pas">
+				<Form>FramePesquisaProduto</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="..\Entidades\Validade.pas"/>
+			<DCCReference Include="ufrmDadosValidade.pas">
+				<Form>FrmDadosValidade</Form>
+			</DCCReference>
+			<DCCReference Include="uFrmLogin.pas">
+				<Form>FrmLogin</Form>
+			</DCCReference>
+			<DCCReference Include="DAOClient\uTipoProdutoDAOClient.pas"/>
+			<DCCReference Include="..\Entidades\Usuario.pas"/>
+			<DCCReference Include="uFrmUsuario.pas">
+				<Form>FrmUsuario</Form>
+			</DCCReference>
+			<DCCReference Include="uFrmDadosUsuario.pas">
+				<Form>FrmDadosUsuario</Form>
+			</DCCReference>
+			<DCCReference Include="DAOClient\uClienteDAOClient.pas"/>
+			<DCCReference Include="..\Entidades\Cliente.pas"/>
+			<DCCReference Include="uFrmCliente.pas">
+				<Form>FrmCliente</Form>
+			</DCCReference>
+			<DCCReference Include="uFrmDadosCliente.pas">
+				<Form>FrmDadosCliente</Form>
+			</DCCReference>
+			<DCCReference Include="uFrmConexaoServidor.pas">
+				<Form>FrmConexaoServidor</Form>
+			</DCCReference>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Debug">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')" Project="$(BDS)\Bin\CodeGear.Delphi.Targets"/>
+		<Import Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')" Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj"/>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Delphi.Personality>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
+						<VersionInfo Name="MajorVer">1</VersionInfo>
+						<VersionInfo Name="MinorVer">1</VersionInfo>
+						<VersionInfo Name="Release">1</VersionInfo>
+						<VersionInfo Name="Build">0</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">1046</VersionInfo>
+						<VersionInfo Name="CodePage">1252</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName"/>
+						<VersionInfoKeys Name="FileDescription"/>
+						<VersionInfoKeys Name="FileVersion">1.1.1.0</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName"/>
+						<VersionInfoKeys Name="LegalCopyright"/>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename"/>
+						<VersionInfoKeys Name="ProductName"/>
+						<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+					</VersionInfoKeys>
+					<Source>
+						<Source Name="MainSource">prCliente.dpr</Source>
+					</Source>
+				</Delphi.Personality>
+				<Platforms>
+					<Platform value="Win32">True</Platform>
+				</Platforms>
+				<DataSnapProxyLookup>
+					<uUsuarioDAOClient>{D25FB4CD-1B61-4EFB-8DA7-6222EFC79EE9}</uUsuarioDAOClient>
+				</DataSnapProxyLookup>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+	</Project>
