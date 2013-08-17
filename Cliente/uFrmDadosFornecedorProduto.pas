@@ -5,12 +5,13 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, uFrmDadosBase, StdCtrls, Buttons, ExtCtrls, Mask,
-  DBClient, FornecedorProduto, uFramePesquisaFornecedor;
+  DBClient, FornecedorProduto, uFramePesquisaFornecedor, DXPCurrencyEdit;
 
 type
   TFrmDadosFornecedorProduto = class(TFrmDadosBase)
     Label5: TLabel;
     FramePesquisaFornecedor: TFramePesquisaFornecedor;
+    cedPrecoCompra: TDXPCurrencyEdit;
     procedure FramePesquisaFornecedoredtCodigoFornecedorExit(Sender: TObject);
   private
     { Private declarations }
@@ -74,7 +75,7 @@ begin
       cds.Append;
       cds.FieldByName('CODIGO_FORNECEDOR').AsString := FramePesquisaFornecedor.edtCodigoFornecedor.Text;
       cds.FieldByName('NOME_FORNECEDOR').AsString   := FramePesquisaFornecedor.edtNomeFornecedor.Text;
-      cds.FieldByName('PRECO_COMPRA').AsCurrency    := 0;{ TODO : cedPrecoCompra.Value; }
+      cds.FieldByName('PRECO_COMPRA').AsCurrency    := cedPrecoCompra.Value;
       cds.Post;
     except
       Erro('Ocorreu algum erro durante a inclusão.');
@@ -86,7 +87,7 @@ begin
       cds.Edit;
       cds.FieldByName('CODIGO_FORNECEDOR').AsString := FramePesquisaFornecedor.edtCodigoFornecedor.Text;
       cds.FieldByName('NOME_FORNECEDOR').AsString   := FramePesquisaFornecedor.edtNomeFornecedor.Text;
-      cds.FieldByName('PRECO_COMPRA').AsCurrency    := 0;{ TODO : cedPrecoCompra.Value; }
+      cds.FieldByName('PRECO_COMPRA').AsCurrency    := cedPrecoCompra.Value;
       cds.Post;
     except
       Erro('Ocorreu algum erro durante a inclusão.');
@@ -102,7 +103,7 @@ begin
     try
       FramePesquisaFornecedor.edtCodigoFornecedor.Text := FornecedorProduto.Fornecedor.Codigo;
       FramePesquisaFornecedor.edtNomeFornecedor.Text   := FornecedorProduto.Fornecedor.Nome;
-      { TODO : cedPrecoCompra.Value     := FornecedorProduto.PrecoCompra; }
+      cedPrecoCompra.Value     := FornecedorProduto.PrecoCompra;
     finally
       FornecedorProduto.Free;
     end;

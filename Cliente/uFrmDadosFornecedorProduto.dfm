@@ -2,7 +2,7 @@ inherited FrmDadosFornecedorProduto: TFrmDadosFornecedorProduto
   ClientHeight = 97
   ClientWidth = 582
   ExplicitWidth = 588
-  ExplicitHeight = 122
+  ExplicitHeight = 125
   PixelsPerInch = 96
   TextHeight = 14
   inherited pnlBotoes: TPanel
@@ -58,6 +58,16 @@ inherited FrmDadosFornecedorProduto: TFrmDadosFornecedorProduto
         ExplicitLeft = 168
         ExplicitHeight = 22
       end
+    end
+    object cedPrecoCompra: TDXPCurrencyEdit
+      Left = 108
+      Top = 39
+      Width = 121
+      Height = 19
+      Alignment = taRightJustify
+      Options = []
+      TabOrder = 1
+      Text = '0,00'
     end
   end
 end
