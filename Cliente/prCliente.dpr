@@ -68,7 +68,6 @@ uses
 
 var
   fLogin: TFrmLogin;
-  Ini: TIniFile;
   fConexaoServidor: TFrmConexaoServidor;
 begin
   Application.Initialize;

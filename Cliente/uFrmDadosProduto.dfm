@@ -2,7 +2,7 @@ inherited FrmDadosProduto: TFrmDadosProduto
   ClientHeight = 472
   ClientWidth = 575
   ExplicitWidth = 581
-  ExplicitHeight = 497
+  ExplicitHeight = 500
   PixelsPerInch = 96
   TextHeight = 14
   inherited splDados: TSplitter
@@ -181,6 +181,16 @@ inherited FrmDadosProduto: TFrmDadosProduto
         ExplicitHeight = 22
       end
     end
+    object cedPrecoVenda: TDXPCurrencyEdit
+      Left = 104
+      Top = 100
+      Width = 121
+      Height = 19
+      Alignment = taRightJustify
+      Options = []
+      TabOrder = 6
+      Text = '0,00'
+    end
   end
   inherited pnlDetails: TPanel
     Top = 218
@@ -197,10 +207,6 @@ inherited FrmDadosProduto: TFrmDadosProduto
       ExplicitHeight = 252
       object tbsFornecedores: TTabSheet
         Caption = '&Fornecedores'
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object grdFornecedores: TDBGrid
           Left = 0
           Top = 0
@@ -220,10 +226,6 @@ inherited FrmDadosProduto: TFrmDadosProduto
       object tbsValidades: TTabSheet
         Caption = '&Validades'
         ImageIndex = 1
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object grdValidades: TDBGrid
           Left = 0
           Top = 0

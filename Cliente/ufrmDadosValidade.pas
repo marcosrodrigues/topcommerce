@@ -5,11 +5,12 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, uFrmDadosBase, StdCtrls, Buttons, ExtCtrls, Mask, Validade,
-  DBClient;
+  DBClient, ComCtrls;
 
 type
   TFrmDadosValidade = class(TFrmDadosBase)
     Label5: TLabel;
+    deData: TDateTimePicker;
   private
     { Private declarations }
   protected
@@ -36,7 +37,7 @@ uses MensagensUtils, TypesUtils;
 procedure TFrmDadosValidade.OnCreate;
 begin
   inherited;
-  SetCamposObrigatorios([{ TODO : deData }]);
+  SetCamposObrigatorios([deData]);
 end;
 
 procedure TFrmDadosValidade.OnDestroy;
@@ -55,7 +56,7 @@ begin
   begin
     try
       cds.Append;
-      cds.FieldByName('DATA').AsDateTime := 0;{ TODO : deData.Date; }
+      cds.FieldByName('DATA').AsDateTime := deData.Date;
       cds.Post;
     except
       Erro('Ocorreu algum erro durante a inclusão.');
@@ -65,7 +66,7 @@ begin
   begin
     try
       cds.Edit;
-      cds.FieldByName('DATA').AsDateTime := 0;{ TODO : deData.Date; }
+      cds.FieldByName('DATA').AsDateTime := deData.Date;
       cds.Post;
     except
       Erro('Ocorreu algum erro durante a inclusão.');
@@ -79,7 +80,7 @@ begin
   if (Assigned(Validade)) then
   begin
     try
-      { TODO : deData.Date := Validade.Data; }
+      deData.Date := Validade.Data;
     finally
       Validade.Free;
     end;

@@ -7,7 +7,8 @@ uses
   Dialogs, uFrmDadosMasterDetailBase, ComCtrls, StdCtrls, Buttons, ExtCtrls, Grids,
   DBGrids, Produto, TipoProduto, DBClient, uProdutoDAOClient, Mask,
   Spin, uEstoqueDAOClient, Estoque, DB, FornecedorProduto,
-  Generics.Collections, Fornecedor, uFramePesquisaTipoProduto, Validade;
+  Generics.Collections, Fornecedor, uFramePesquisaTipoProduto, Validade,
+  DXPCurrencyEdit;
 
 type
   TFrmDadosProduto = class(TFrmDadosMasterDetailBase)
@@ -36,6 +37,7 @@ type
     dsValidades: TDataSource;
     cdsValidades: TClientDataSet;
     cdsValidadesDATA: TDateTimeField;
+    cedPrecoVenda: TDXPCurrencyEdit;
     procedure sbtNovoClick(Sender: TObject);
     procedure sbtEditarClick(Sender: TObject);
     procedure sbtExcluirClick(Sender: TObject);
@@ -113,7 +115,7 @@ begin
                              FramePesquisaTipoProduto.edtDescricaoTipoProduto.Text),
                              edtDescricao.Text,
                              edtCodigoBarras.Text,
-                             0{ TODO : cedPrecoVenda.Value },
+                             cedPrecoVenda.Value,
                              nil,
                              nil);
 
@@ -156,7 +158,7 @@ begin
     cds.FieldByName('CODIGO_TIPO_PRODUTO').AsString    := FramePesquisaTipoProduto.edtCodigoTipoProduto.Text;
     cds.FieldByName('DESCRICAO_TIPO_PRODUTO').AsString := FramePesquisaTipoProduto.edtDescricaoTipoProduto.Text;
     cds.FieldByName('CODIGO_BARRAS').AsString          := edtCodigoBarras.Text;
-    cds.FieldByName('PRECO_VENDA').AsFloat             := 0;{ TODO : cedPrecoVenda.Value; }
+    cds.FieldByName('PRECO_VENDA').AsFloat             := cedPrecoVenda.Value;
     cds.Post;
   end
   else
@@ -175,7 +177,7 @@ begin
     cds.FieldByName('CODIGO_TIPO_PRODUTO').AsString    := FramePesquisaTipoProduto.edtCodigoTipoProduto.Text;
     cds.FieldByName('DESCRICAO_TIPO_PRODUTO').AsString := FramePesquisaTipoProduto.edtDescricaoTipoProduto.Text;
     cds.FieldByName('CODIGO_BARRAS').AsString          := edtCodigoBarras.Text;
-    cds.FieldByName('PRECO_VENDA').AsFloat             := 0;{ TODO : cedPrecoVenda.Value; }
+    cds.FieldByName('PRECO_VENDA').AsFloat             := cedPrecoVenda.Value;
     cds.Post;
   end;
 end;
@@ -196,7 +198,7 @@ begin
       FramePesquisaTipoProduto.edtCodigoTipoProduto.Text    := Produto.TipoProduto.Codigo;
       FramePesquisaTipoProduto.edtDescricaoTipoProduto.Text := Produto.TipoProduto.Descricao;
       edtCodigoBarras.Text         := Produto.CodigoBarras;
-      { TODO : cedPrecoVenda.Value          := Produto.PrecoVenda; }
+      cedPrecoVenda.Value          := Produto.PrecoVenda;
       sedQuantidadeEstoque.Value   := Produto.QuantidadeEstoque;
 
       QuantidadeAnterior           := Produto.QuantidadeEstoque;

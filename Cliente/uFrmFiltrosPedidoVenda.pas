@@ -4,12 +4,14 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, uFrmFiltrosBase, Buttons, ExtCtrls, StdCtrls, Mask;
+  Dialogs, uFrmFiltrosBase, Buttons, ExtCtrls, StdCtrls, Mask, ComCtrls;
 
 type
   TFrmFiltrosPedidoVenda = class(TFrmFiltrosBase)
     Label1: TLabel;
     Label2: TLabel;
+    deDataInicial: TDateTimePicker;
+    deDataFinal: TDateTimePicker;
   private
     { Private declarations }
   protected
@@ -35,25 +37,24 @@ var
   r: TFrmRelPedidoVenda;
 begin
   inherited;
-  { TODO : if ( deDataInicial.Date = 0 ) then }
+  if ( deDataInicial.Date = 0 ) then
   begin
     Atencao( 'Informe a data inicial do periodo.' );
-    { TODO : deDataInicial.SetFocus; }
+    deDataInicial.SetFocus;
     Exit;
   end;
 
-  { TODO : if ( deDataFinal.Date = 0 ) then }
+  if ( deDataFinal.Date = 0 ) then
   begin
     Atencao( 'Informe a data final do periodo.' );
-    { TODO : deDataFinal.SetFocus; }
+    deDataFinal.SetFocus;
     Exit;
   end;
 
   r := TFrmRelPedidoVenda.Create(Self);
   try
-    { TODO :
     r.DataInicial := deDataInicial.Date;
-    r.DataFinal   := deDataFinal.Date; }
+    r.DataFinal   := deDataFinal.Date;
     r.QuickRep.Preview;
   finally
     r.Free;
