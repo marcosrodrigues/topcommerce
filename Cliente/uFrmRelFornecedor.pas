@@ -4,8 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, uFrmRelBase, QRCtrls, QuickRpt, ExtCtrls, uFornecedorDAOClient, DB, DBClient,
-  DBXDBReaders, QRPDFFilt, RLReport, RLFilters, RLPDFFilter, pngimage;
+  Dialogs, uFrmRelBase, ExtCtrls, uFornecedorDAOClient, DB, DBClient,
+  DBXDBReaders, RLReport, RLFilters, RLPDFFilter, pngimage;
 
 type
   TFrmRelFornecedor = class(TFrmRelBase)

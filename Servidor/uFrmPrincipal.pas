@@ -124,7 +124,7 @@ begin
     on e: Exception do
       //Atencao('Ocorreu um erro ao tentar conectar o banco de dados: ' + chr(13) + e.Message);
       Informacao('Provavelmente o serviço do banco de dados ainda não foi iniciado.'+#13+
-                 'Tente conectar manualmente em alguns instantes.');
+                 'Tente conectar manualmente em alguns instantes.'+e.Message);
   end;
 end;
 

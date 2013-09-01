@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, uFrmRelBase, QRPDFFilt, DB, DBClient, QRCtrls, QuickRpt, ExtCtrls,
+  Dialogs, uFrmRelBase, DB, DBClient, ExtCtrls,
   uEstoqueDAOClient, DBXDBReaders, RLReport, pngimage, RLFilters, RLPDFFilter;
 
 type

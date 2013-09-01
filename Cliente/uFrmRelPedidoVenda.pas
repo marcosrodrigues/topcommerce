@@ -4,8 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, uFrmRelBase, DB, DBClient, QRCtrls, QuickRpt, ExtCtrls, uPedidoVendaDAOClient,
-  DBXDBReaders, QRPDFFilt, RLReport, pngimage, RLFilters, RLPDFFilter;
+  Dialogs, uFrmRelBase, DB, DBClient, ExtCtrls, uPedidoVendaDAOClient,
+  DBXDBReaders, RLReport, pngimage, RLFilters, RLPDFFilter;
 
 type
   TFrmRelPedidoVenda = class(TFrmRelBase)
@@ -20,11 +20,6 @@ type
     cdsRelatorioCODIGO_CLIENTE: TStringField;
     cdsRelatorioNOME_CLIENTE_AVULSO: TStringField;
     cdsRelatorioNOME: TStringField;
-    procedure qrbGroupBeforePrint(Sender: TQRCustomBand; var PrintBand: Boolean);
-    procedure QRBand2BeforePrint(Sender: TQRCustomBand; var PrintBand: Boolean);
-    procedure QRBand3BeforePrint(Sender: TQRCustomBand; var PrintBand: Boolean);
-    procedure QRBand4BeforePrint(Sender: TQRCustomBand; var PrintBand: Boolean);
-    procedure QuickRepBeforePrint(Sender: TCustomQuickRep; var PrintReport: Boolean);
     procedure cdsRelatorioTIPO_PAGAMENTOGetText(Sender: TField; var Text: string;
       DisplayText: Boolean);
     procedure cdsRelatorioNOMEGetText(Sender: TField; var Text: string; DisplayText: Boolean);
@@ -80,45 +75,6 @@ begin
   finally
     DAOClient.Free;
   end;
-end;
-
-procedure TFrmRelPedidoVenda.QRBand2BeforePrint(Sender: TQRCustomBand;
-  var PrintBand: Boolean);
-begin
-  inherited;
-  Total      := Total + (cdsRelatorioQUANTIDADE.AsInteger * cdsRelatorioPRECO_VENDA.AsCurrency);
-  TotalGeral := TotalGeral + (cdsRelatorioQUANTIDADE.AsInteger * cdsRelatorioPRECO_VENDA.AsCurrency);
-end;
-
-procedure TFrmRelPedidoVenda.QRBand3BeforePrint(Sender: TQRCustomBand;
-  var PrintBand: Boolean);
-begin
-  inherited;
-  //qrlTotal.Caption := FormatCurr('R$ ,0.00', Total - cdsRelatorioDESCONTO.AsCurrency);
-  TotalDesconto    := TotalDesconto + cdsRelatorioDESCONTO.AsCurrency;
-end;
-
-procedure TFrmRelPedidoVenda.QRBand4BeforePrint(Sender: TQRCustomBand;
-  var PrintBand: Boolean);
-begin
-  inherited;
-  //qrlTotalDesconto.Caption := FormatCurr('R$ ,0.00', TotalDesconto);
-  //qrlTotalGeral.Caption    := FormatCurr('R$ ,0.00', TotalGeral - TotalDesconto);
-end;
-
-procedure TFrmRelPedidoVenda.qrbGroupBeforePrint(Sender: TQRCustomBand;
-  var PrintBand: Boolean);
-begin
-  inherited;
-  Total := 0;
-end;
-
-procedure TFrmRelPedidoVenda.QuickRepBeforePrint(Sender: TCustomQuickRep;
-  var PrintReport: Boolean);
-begin
-  inherited;
-  TotalDesconto := 0;
-  TotalGeral    := 0;
 end;
 
 end.

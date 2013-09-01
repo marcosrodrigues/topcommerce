@@ -155,12 +155,6 @@ object FrmRelBase: TFrmRelBase
     Left = 96
     Top = 176
   end
-  object QRPDFFilter: TQRPDFFilter
-    CompressionOn = False
-    TextEncoding = AnsiEncoding
-    Left = 176
-    Top = 176
-  end
   object dsRelatorio: TDataSource
     DataSet = cdsRelatorio
     Left = 472
