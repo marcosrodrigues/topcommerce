@@ -1,6 +1,7 @@
 inherited FrmFiltrosPedidoVenda: TFrmFiltrosPedidoVenda
   Caption = 'Relat'#243'rio de Pedidos de Venda'
   ClientHeight = 69
+  OnShow = FormShow
   ExplicitHeight = 97
   PixelsPerInch = 96
   TextHeight = 14

@@ -6,7 +6,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Menus, ExtCtrls, Buttons, DBXDataSnap, DBXCommon, DB, SqlExpr, ExtDlgs,
-  IniFiles, StdCtrls, Grids, DBGrids, DBClient, DXPControl, DXPButtons;
+  IniFiles, StdCtrls, Grids, DBGrids, DBClient, DXPControl, DXPButtons, RLConsts;
 
 type
   TFrmPrincipal = class(TForm)
@@ -278,5 +278,8 @@ begin
       end;
     end;
 end;
+
+initialization
+  RLConsts.SetVersion(3,71,'B');
 
 end.

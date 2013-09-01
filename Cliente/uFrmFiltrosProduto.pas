@@ -42,7 +42,7 @@ begin
     r.CodigoTipoProduto := FramePesquisaTipoProduto.edtCodigoTipoProduto.Text;
     r.CodigoFornecedor  := FramePesquisaFornecedor.edtCodigoFornecedor.Text;
     r.Estoque           := rgEstoque.ItemIndex;
-    r.QuickRep.Preview;
+    r.RLReport.Preview;
   finally
     r.Free;
   end;

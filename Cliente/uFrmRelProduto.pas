@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, uFrmRelBase, QRCtrls, QuickRpt, ExtCtrls, DB, DBClient, uProdutoDAOClient,
-  DBXDBReaders, QRPDFFilt;
+  DBXDBReaders, QRPDFFilt, RLReport, pngimage, RLFilters, RLPDFFilter;
 
 type
   TFrmRelProduto = class(TFrmRelBase)
@@ -16,21 +16,6 @@ type
     cdsRelatorioPRECO_VENDA: TCurrencyField;
     cdsRelatorioDESCRICAO_TIPO_PRODUTO: TStringField;
     cdsRelatorioPRECO_COMPRA: TCurrencyField;
-    QRGroup1: TQRGroup;
-    QRBand2: TQRBand;
-    QRDBText1: TQRDBText;
-    QRDBText2: TQRDBText;
-    QRLabel1: TQRLabel;
-    QRLabel2: TQRLabel;
-    QRDBText3: TQRDBText;
-    QRLabel3: TQRLabel;
-    QRDBText4: TQRDBText;
-    QRDBText5: TQRDBText;
-    QRLabel4: TQRLabel;
-    QRShape2: TQRShape;
-    QRLabel5: TQRLabel;
-    QRLabel6: TQRLabel;
-    QRDBText6: TQRDBText;
     cdsRelatorioNOME_FORNECEDOR: TStringField;
   private
     { Private declarations }

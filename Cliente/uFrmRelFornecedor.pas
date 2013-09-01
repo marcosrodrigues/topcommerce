@@ -5,18 +5,10 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, uFrmRelBase, QRCtrls, QuickRpt, ExtCtrls, uFornecedorDAOClient, DB, DBClient,
-  DBXDBReaders, QRPDFFilt;
+  DBXDBReaders, QRPDFFilt, RLReport, RLFilters, RLPDFFilter, pngimage;
 
 type
   TFrmRelFornecedor = class(TFrmRelBase)
-    QRBand2: TQRBand;
-    QRDBText1: TQRDBText;
-    QRLabel1: TQRLabel;
-    QRLabel2: TQRLabel;
-    QRLabel3: TQRLabel;
-    QRShape2: TQRShape;
-    QRDBText2: TQRDBText;
-    QRDBText3: TQRDBText;
     cdsRelatorioCODIGO: TStringField;
     cdsRelatorioNOME: TStringField;
     cdsRelatorioTELEFONE: TStringField;

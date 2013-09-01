@@ -37,7 +37,7 @@ begin
   r := TFrmRelEstoque.Create(Self);
   try
     r.Estoque := rgEstoque.ItemIndex;
-    r.QuickRep.Preview;
+    r.RLReport.Preview;
   finally
     r.Free;
   end;

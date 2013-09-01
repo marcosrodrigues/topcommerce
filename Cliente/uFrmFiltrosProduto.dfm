@@ -34,6 +34,14 @@ inherited FrmFiltrosProduto: TFrmFiltrosProduto
         ExplicitWidth = 90
         ExplicitHeight = 14
       end
+      inherited edtCodigoTipoProduto: TEdit
+        Height = 22
+        ExplicitHeight = 22
+      end
+      inherited edtDescricaoTipoProduto: TEdit
+        Height = 22
+        ExplicitHeight = 22
+      end
     end
     object rgEstoque: TRadioGroup
       Left = 6
@@ -66,7 +74,9 @@ inherited FrmFiltrosProduto: TFrmFiltrosProduto
       end
       inherited edtCodigoFornecedor: TEdit
         Left = 96
+        Height = 22
         ExplicitLeft = 96
+        ExplicitHeight = 22
       end
       inherited bbtConsultarFornecedor: TBitBtn
         Left = 132
@@ -74,7 +84,9 @@ inherited FrmFiltrosProduto: TFrmFiltrosProduto
       end
       inherited edtNomeFornecedor: TEdit
         Left = 162
+        Height = 22
         ExplicitLeft = 162
+        ExplicitHeight = 22
       end
     end
   end

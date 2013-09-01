@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, uFrmFiltrosBase, Buttons, ExtCtrls, StdCtrls, Mask, ComCtrls;
+  Dialogs, uFrmFiltrosBase, Buttons, ExtCtrls, StdCtrls, Mask, ComCtrls, DateUtils;
 
 type
   TFrmFiltrosPedidoVenda = class(TFrmFiltrosBase)
@@ -12,6 +12,7 @@ type
     Label2: TLabel;
     deDataInicial: TDateTimePicker;
     deDataFinal: TDateTimePicker;
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   protected
@@ -53,12 +54,19 @@ begin
 
   r := TFrmRelPedidoVenda.Create(Self);
   try
-    r.DataInicial := deDataInicial.Date;
-    r.DataFinal   := deDataFinal.Date;
-    r.QuickRep.Preview;
+    r.DataInicial := DateOf(deDataInicial.Date);
+    r.DataFinal   := DateOf(deDataFinal.Date);
+    r.RLReport.Preview;
   finally
     r.Free;
   end;
+end;
+
+procedure TFrmFiltrosPedidoVenda.FormShow(Sender: TObject);
+begin
+  inherited;
+  deDataInicial.Date := Now;
+  deDataFinal.Date   := Now;
 end;
 
 procedure TFrmFiltrosPedidoVenda.OnImprimir;

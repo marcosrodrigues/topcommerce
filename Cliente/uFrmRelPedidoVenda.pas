@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, uFrmRelBase, DB, DBClient, QRCtrls, QuickRpt, ExtCtrls, uPedidoVendaDAOClient,
-  DBXDBReaders, QRPDFFilt;
+  DBXDBReaders, QRPDFFilt, RLReport, pngimage, RLFilters, RLPDFFilter;
 
 type
   TFrmRelPedidoVenda = class(TFrmRelBase)
@@ -14,44 +14,11 @@ type
     cdsRelatorioQUANTIDADE: TIntegerField;
     cdsRelatorioDESCRICAO: TStringField;
     cdsRelatorioPRECO_VENDA: TCurrencyField;
-    qrbGroup: TQRGroup;
-    QRBand2: TQRBand;
-    QRDBText1: TQRDBText;
-    QRDBText2: TQRDBText;
     cdsRelatorioDATA: TSQLTimeStampField;
-    QRLabel1: TQRLabel;
-    QRLabel2: TQRLabel;
-    QRDBText3: TQRDBText;
-    QRShape2: TQRShape;
-    QRLabel3: TQRLabel;
-    QRLabel4: TQRLabel;
-    QRLabel5: TQRLabel;
-    QRLabel6: TQRLabel;
-    QRLabel7: TQRLabel;
-    QRDBText4: TQRDBText;
-    QRDBText5: TQRDBText;
-    QRDBText6: TQRDBText;
-    QRExpr1: TQRExpr;
-    QRBand3: TQRBand;
-    qrlTotal: TQRLabel;
-    QRShape3: TQRShape;
-    QRLabel8: TQRLabel;
-    QRBand4: TQRBand;
-    QRShape4: TQRShape;
-    QRLabel9: TQRLabel;
-    qrlTotalGeral: TQRLabel;
     cdsRelatorioDESCONTO: TCurrencyField;
     cdsRelatorioTIPO_PAGAMENTO: TIntegerField;
-    QRLabel10: TQRLabel;
-    QRDBText7: TQRDBText;
-    QRLabel11: TQRLabel;
-    QRDBText8: TQRDBText;
-    QRLabel12: TQRLabel;
-    qrlTotalDesconto: TQRLabel;
     cdsRelatorioCODIGO_CLIENTE: TStringField;
     cdsRelatorioNOME_CLIENTE_AVULSO: TStringField;
-    QRLabel13: TQRLabel;
-    QRDBText9: TQRDBText;
     cdsRelatorioNOME: TStringField;
     procedure qrbGroupBeforePrint(Sender: TQRCustomBand; var PrintBand: Boolean);
     procedure QRBand2BeforePrint(Sender: TQRCustomBand; var PrintBand: Boolean);
@@ -127,7 +94,7 @@ procedure TFrmRelPedidoVenda.QRBand3BeforePrint(Sender: TQRCustomBand;
   var PrintBand: Boolean);
 begin
   inherited;
-  qrlTotal.Caption := FormatCurr('R$ ,0.00', Total - cdsRelatorioDESCONTO.AsCurrency);
+  //qrlTotal.Caption := FormatCurr('R$ ,0.00', Total - cdsRelatorioDESCONTO.AsCurrency);
   TotalDesconto    := TotalDesconto + cdsRelatorioDESCONTO.AsCurrency;
 end;
 
@@ -135,8 +102,8 @@ procedure TFrmRelPedidoVenda.QRBand4BeforePrint(Sender: TQRCustomBand;
   var PrintBand: Boolean);
 begin
   inherited;
-  qrlTotalDesconto.Caption := FormatCurr('R$ ,0.00', TotalDesconto);
-  qrlTotalGeral.Caption    := FormatCurr('R$ ,0.00', TotalGeral - TotalDesconto);
+  //qrlTotalDesconto.Caption := FormatCurr('R$ ,0.00', TotalDesconto);
+  //qrlTotalGeral.Caption    := FormatCurr('R$ ,0.00', TotalGeral - TotalDesconto);
 end;
 
 procedure TFrmRelPedidoVenda.qrbGroupBeforePrint(Sender: TQRCustomBand;

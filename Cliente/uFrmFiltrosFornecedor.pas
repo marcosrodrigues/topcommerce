@@ -37,7 +37,7 @@ begin
   r := TFrmRelFornecedor.Create(Self);
   try
     r.CodigoProduto := FramePesquisaProduto.edtCodigoProduto.Text;
-    r.QuickRep.Preview;
+    r.RLReport.Preview;
   finally
     r.Free;
   end;

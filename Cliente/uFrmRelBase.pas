@@ -4,19 +4,26 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, DBXCommon, DB, DBClient, QuickRpt, QRCtrls, QRPDFFilt;
+  Dialogs, ExtCtrls, DBXCommon, DB, DBClient, QuickRpt, QRCtrls, QRPDFFilt,
+  RLReport, RLFilters, RLPDFFilter, pngimage;
 
 type
   TFrmRelBase = class(TForm)
-    QuickRep: TQuickRep;
-    QRBand1: TQRBand;
-    qrlTitulo: TQRLabel;
-    QRSysData1: TQRSysData;
     cdsRelatorio: TClientDataSet;
-    QRShape1: TQRShape;
     QRPDFFilter: TQRPDFFilter;
+    RLReport: TRLReport;
+    RLBand1: TRLBand;
+    RLLabel1: TRLLabel;
+    RLSystemInfo1: TRLSystemInfo;
+    RLSystemInfo2: TRLSystemInfo;
+    RLLabel2: TRLLabel;
+    dsRelatorio: TDataSource;
+    RLPDFFilter: TRLPDFFilter;
+    RLLabel6: TRLLabel;
+    RLImage1: TRLImage;
     procedure QuickRepBeforePrint(Sender: TCustomQuickRep; var PrintReport: Boolean);
     procedure FormCreate(Sender: TObject);
+    procedure RLReportBeforePrint(Sender: TObject; var PrintIt: Boolean);
   private
     { Private declarations }
   protected
@@ -48,4 +55,12 @@ begin
     OnBeforePrint;
 end;
 
+procedure TFrmRelBase.RLReportBeforePrint(Sender: TObject;
+  var PrintIt: Boolean);
+begin
+  if not cdsRelatorio.Active then
+    OnBeforePrint;
+end;
+
 end.
+
