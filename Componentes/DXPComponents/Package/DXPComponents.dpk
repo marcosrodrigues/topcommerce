@@ -1,0 +1,56 @@
+package DXPComponents;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'DXPComponents - Library for Delphi XE'}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  vcl,
+  dsnap,
+  vcldb,
+  dbrtl,
+  vclimg;
+
+contains
+  DXPReg in 'DXPReg.pas',
+  DXPEdit in '..\Standard\src\DXPEdit.pas',
+  uIValidatable in '..\Common\uIValidatable.pas',
+  DXPPanelDegrade in '..\Additional\src\DXPPanelDegrade.pas',
+  DXPMessageOutPut in '..\Additional\src\DXPMessageOutPut.pas',
+  udmRepository in '..\Common\udmRepository.pas' {dmRepository: TDataModule},
+  DXPUtils in '..\Common\DXPUtils.pas',
+  DXPSelect in '..\Additional\src\DXPSelect.pas',
+  DXPSelectBrowser in '..\Additional\src\DXPSelectBrowser.pas' {FrmDXPSelectBrowser},
+  DXPControl in '..\Common\DXPControl.pas',
+  DXPConsts in '..\Common\DXPConsts.pas',
+  DXPCommonTypes in '..\Common\DXPCommonTypes.pas',
+  DXPGradients in '..\Common\DXPGradients.pas',
+  DXPButtons in '..\Standard\src\DXPButtons.pas',
+  DXPColors in '..\Common\DXPColors.pas',
+  DXPMaskEdit in '..\Standard\src\DXPMaskEdit.pas',
+  DXPDateEdit in '..\Standard\src\DXPDateEdit.pas',
+  DXPCurrencyEdit in '..\Standard\src\DXPCurrencyEdit.pas';
+
+end.
