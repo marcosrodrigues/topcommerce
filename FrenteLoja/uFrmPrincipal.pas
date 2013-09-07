@@ -7,7 +7,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, StdCtrls, Grids, DBGrids, jpeg, DB, DBClient, SqlExpr, DBXDataSnap,
   DBXCommon, DBXDBReaders, uPedidoVendaDAOClient, PedidoVenda, ItemPedidoVenda, Produto,
-  Generics.Collections, Cliente, pngimage;
+  Generics.Collections, Cliente, pngimage, RLConsts;
 
 type
   TFrmPrincipal = class(TForm)
@@ -48,13 +48,12 @@ type
     edtAvisos: TEdit;
     Panel13: TPanel;
     edtDescricaoProduto: TEdit;
-    gbTeclas: TGroupBox;
-    Memo1: TMemo;
     lblData: TLabel;
     lblHora: TLabel;
     tmHora: TTimer;
     imgCalendario: TImage;
     imgRelogio: TImage;
+    Memo1: TMemo;
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -67,9 +66,11 @@ type
     procedure NovaVenda;
     procedure FecharVenda;
     procedure ConsultarProduto;
-    procedure GravarVenda(Desconto: Currency; TipoPagamento: Integer; Cliente: TCliente; NomeCliente: string);
+    function GravarVenda(Desconto: Currency; TipoPagamento: Integer; Cliente: TCliente; NomeCliente: string): string;
     procedure ExcluirItem;
     procedure IniciaControles;
+    procedure VendasFechadas;
+    procedure VendasAbertas;
   public
     { Public declarations }
   end;
@@ -79,7 +80,8 @@ var
 
 implementation
 
-uses uFrmConsultaProdutos, uFrmAjuste, uFrmFecharVenda, uFrmExcluirItem, MensagensUtils;
+uses uFrmConsultaProdutos, uFrmAjuste, uFrmFecharVenda, uFrmExcluirItem, MensagensUtils,
+  uFrmVendasFechadas, uFrmVendasAbertas, uFrmRelReciboVenda;
 
 {$R *.dfm}
 
@@ -106,6 +108,8 @@ begin
     VK_F3: FecharVenda;
     VK_F5: ExcluirItem;
     VK_F6: ConsultarProduto;
+    VK_F8: VendasAbertas;
+    VK_F9: VendasFechadas;
   end;
 end;
 
@@ -114,13 +118,16 @@ begin
   IniciaControles;
 end;
 
-procedure TFrmPrincipal.GravarVenda(Desconto: Currency; TipoPagamento: Integer; Cliente: TCliente; NomeCliente: string);
+function TFrmPrincipal.GravarVenda(Desconto: Currency; TipoPagamento: Integer; Cliente: TCliente; NomeCliente: string): string;
 var
   Pedido: TPedidoVenda;
   Item: TItemPedidoVenda;
 begin
   Pedido               := TPedidoVenda.Create;
-  Pedido.Codigo        := DAOPedidoVenda.NextCodigo;
+
+  Result := DAOPedidoVenda.NextCodigo;
+  
+  Pedido.Codigo        := Result;
   Pedido.Data          := Now;
   Pedido.Desconto      := Desconto;
   Pedido.TipoPagamento := TipoPagamento;
@@ -157,6 +164,30 @@ begin
   lblHora.Caption := FormatDateTime('hh:mm:ss', Now);
 end;
 
+procedure TFrmPrincipal.VendasAbertas;
+var
+  fVendasAbertas: TFrmVendasAbertas;
+begin
+  fVendasAbertas := TFrmVendasAbertas.Create(Self);
+  try
+    fVendasAbertas.ShowModal;
+  finally
+    fVendasAbertas.Free;
+  end;
+end;
+
+procedure TFrmPrincipal.VendasFechadas;
+var
+  fVendasFechadas: TFrmVendasFechadas;
+begin
+  fVendasFechadas := TFrmVendasFechadas.Create(Self);
+  try
+    fVendasFechadas.ShowModal;
+  finally
+    fVendasFechadas.Free;
+  end;
+end;
+
 procedure TFrmPrincipal.ConsultarProduto;
 var
   fConsultaProdutos: TFrmConsultaProdutos;
@@ -191,7 +222,7 @@ begin
             cdsProdutosQUANTIDADE.AsInteger   := cdsProdutosQUANTIDADE.AsInteger + StrToInt(fAjuste.edtQuantidade.Text);
             cdsProdutosPRECO_TOTAL.AsCurrency := cdsProdutosPRECO_TOTAL.AsCurrency + StrToCurr(fAjuste.edtPrecoTotal.Text);
 
-            edtSubtotal.Text := FormatCurr(',0.00', StrToCurr(edtSubtotal.Text) + StrToInt(fAjuste.edtQuantidade.Text) * cdsProdutosPRECO_UNITARIO.AsCurrency);
+            edtSubtotal.Text   := FormatCurr(',0.00', StrToCurr(edtSubtotal.Text) + StrToInt(fAjuste.edtQuantidade.Text) * cdsProdutosPRECO_UNITARIO.AsCurrency);
           end;
         end
         else
@@ -247,6 +278,8 @@ end;
 procedure TFrmPrincipal.FecharVenda;
 var
   f: TFrmFecharVenda;
+  recibo: TFrmRelReciboVenda;
+  CodigoVenda: string;
 begin
   if cdsProdutos.RecordCount <= 0 then
   begin
@@ -262,10 +295,18 @@ begin
 
     if (f.Fechar) then
     begin
-      GravarVenda(0{ TODO : f.cedDesconto.Value }, f.cbFormaPagamento.ItemIndex, f.Cliente, f.NomeCliente);
+      CodigoVenda := GravarVenda(f.cedDesconto.Value, f.cbFormaPagamento.ItemIndex, f.Cliente, f.NomeCliente);
 
-      NovaVenda;
-      edtAvisos.Text := 'VENDA';
+      recibo := TFrmRelReciboVenda.Create(Self);
+      try
+        recibo.CodigoVenda := CodigoVenda;
+        recibo.RLReport.Preview;
+      finally
+        recibo.Free;
+      end;
+      
+      //NovaVenda;
+      //edtAvisos.Text := 'VENDA';
     end;
   finally
     f.Free;
@@ -287,5 +328,8 @@ begin
 
   cdsProdutos.CreateDataSet;
 end;
+
+initialization
+  RLConsts.SetVersion(3,71,'B');
 
 end.

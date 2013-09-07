@@ -20,6 +20,11 @@ type
     cdsRelatorioCODIGO_CLIENTE: TStringField;
     cdsRelatorioNOME_CLIENTE_AVULSO: TStringField;
     cdsRelatorioNOME: TStringField;
+    RLGroup1: TRLGroup;
+    RLBand2: TRLBand;
+    RLDBText1: TRLDBText;
+    RLBand3: TRLBand;
+    RLDBText2: TRLDBText;
     procedure cdsRelatorioTIPO_PAGAMENTOGetText(Sender: TField; var Text: string;
       DisplayText: Boolean);
     procedure cdsRelatorioNOMEGetText(Sender: TField; var Text: string; DisplayText: Boolean);

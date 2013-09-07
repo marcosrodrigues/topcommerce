@@ -319,9 +319,9 @@ object FrmPrincipal: TFrmPrincipal
       TabOrder = 0
       object Image2: TImage
         Left = 6
-        Top = 7
+        Top = 32
         Width = 343
-        Height = 242
+        Height = 217
         Align = alCustom
         Anchors = [akLeft, akTop, akRight, akBottom]
         Picture.Data = {
@@ -15896,8 +15896,6 @@ object FrmPrincipal: TFrmPrincipal
           604F02C6FF00EFBFD7F6A565238F0E9624C471E1D41780A9E6D6B7D6DC8FAFFB
           C7B7D6407A52B283D7FFD9}
         Stretch = True
-        ExplicitWidth = 413
-        ExplicitHeight = 143
       end
     end
     object Panel4: TPanel
@@ -15910,6 +15908,8 @@ object FrmPrincipal: TFrmPrincipal
       Color = clMoneyGreen
       ParentBackground = False
       TabOrder = 1
+      ExplicitLeft = -6
+      ExplicitTop = -2
       object Label1: TLabel
         Left = 16
         Top = 12
@@ -16063,33 +16063,29 @@ object FrmPrincipal: TFrmPrincipal
           Text = '0,00'
         end
       end
-      object gbTeclas: TGroupBox
-        Left = 3
+      object Memo1: TMemo
+        Left = 6
         Top = 261
-        Width = 346
-        Height = 109
-        Caption = ' Teclas '
+        Width = 219
+        Height = 140
+        BorderStyle = bsNone
+        Enabled = False
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
-        Font.Height = -16
+        Font.Height = -15
         Font.Name = 'Tahoma'
         Font.Style = []
+        Lines.Strings = (
+          'F2 - Nova Venda'
+          'F3 - Fechar Venda'
+          'F5 - Excluir Item da Venda'
+          'F6 - Consulta Produto'
+          'F7 - Recibo'
+          'F8 - Vendas Abertas'
+          'F9 - Vendas Fechadas')
+        ParentColor = True
         ParentFont = False
         TabOrder = 4
-        object Memo1: TMemo
-          Left = 10
-          Top = 24
-          Width = 216
-          Height = 83
-          BorderStyle = bsNone
-          Lines.Strings = (
-            'F2 - Nova Venda'
-            'F3 - Fechar Venda'
-            'F5 - Excluir Item da Venda'
-            'F6 - Consulta Produto')
-          ParentColor = True
-          TabOrder = 0
-        end
       end
     end
   end

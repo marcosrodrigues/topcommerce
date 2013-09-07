@@ -138,7 +138,7 @@ inherited FrmDadosProduto: TFrmDadosProduto
       ParentBackground = False
       ParentColor = False
       ParentFont = False
-      TabOrder = 5
+      TabOrder = 6
       object Label6: TLabel
         Left = 12
         Top = 24
@@ -188,7 +188,7 @@ inherited FrmDadosProduto: TFrmDadosProduto
       Height = 19
       Alignment = taRightJustify
       Options = []
-      TabOrder = 6
+      TabOrder = 5
       Text = '0,00'
     end
   end

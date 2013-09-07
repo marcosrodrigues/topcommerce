@@ -13,6 +13,9 @@ type
     FInsertItemNoPedidoCommand: TDBXCommand;
     FDeleteItemDoPedidoCommand: TDBXCommand;
     FRelatorioPedidosVendaCommand: TDBXCommand;
+    FVendasFechadasCommand: TDBXCommand;
+    FVendasAbertasCommand: TDBXCommand;
+    FReciboCommand: TDBXCommand;
   public
     constructor Create(ADBXConnection: TDBXConnection); overload;
     constructor Create(ADBXConnection: TDBXConnection; AInstanceOwner: Boolean); overload;
@@ -23,6 +26,9 @@ type
     function InsertItemNoPedido(CodigoPedidoVenda: string; Item: TItemPedidoVenda): Boolean;
     function DeleteItemDoPedido(CodigoProduto: string; CodigoPedidoVenda: string): Boolean;
     function RelatorioPedidosVenda(DataInicial, DataFinal: TDateTime): TDBXReader;
+    function VendasFechadas: TDBXReader;
+    function VendasAbertas: TDBXReader;
+    function Recibo(CodigoPedidoVenda: string): TDBXReader;
   end;
 
 implementation
@@ -122,6 +128,20 @@ begin
   Result := FDeleteItemDoPedidoCommand.Parameters[2].Value.GetBoolean;
 end;
 
+function TPedidoVendaDAOClient.Recibo(CodigoPedidoVenda: string): TDBXReader;
+begin
+  if FReciboCommand = nil then
+  begin
+    FReciboCommand := FDBXConnection.CreateCommand;
+    FReciboCommand.CommandType := TDBXCommandTypes.DSServerMethod;
+    FReciboCommand.Text := 'TPedidoVendaDAO.Recibo';
+    FReciboCommand.Prepare;
+  end;
+  FReciboCommand.Parameters[0].Value.AsString := CodigoPedidoVenda;
+  FReciboCommand.ExecuteUpdate;
+  Result := FReciboCommand.Parameters[1].Value.GetDBXReader(FInstanceOwner);
+end;
+
 function TPedidoVendaDAOClient.RelatorioPedidosVenda(DataInicial, DataFinal: TDateTime): TDBXReader;
 begin
   if FRelatorioPedidosVendaCommand = nil then
@@ -135,6 +155,32 @@ begin
   FRelatorioPedidosVendaCommand.Parameters[1].Value.AsDateTime := DataFinal;
   FRelatorioPedidosVendaCommand.ExecuteUpdate;
   Result := FRelatorioPedidosVendaCommand.Parameters[2].Value.GetDBXReader(FInstanceOwner);
+end;
+
+function TPedidoVendaDAOClient.VendasAbertas: TDBXReader;
+begin
+  if FVendasAbertasCommand = nil then
+  begin
+    FVendasAbertasCommand := FDBXConnection.CreateCommand;
+    FVendasAbertasCommand.CommandType := TDBXCommandTypes.DSServerMethod;
+    FVendasAbertasCommand.Text := 'TPedidoVendaDAO.VendasAbertas';
+    FVendasAbertasCommand.Prepare;
+  end;
+  FVendasAbertasCommand.ExecuteUpdate;
+  Result := FVendasAbertasCommand.Parameters[0].Value.GetDBXReader(FInstanceOwner);
+end;
+
+function TPedidoVendaDAOClient.VendasFechadas: TDBXReader;
+begin
+  if FVendasFechadasCommand = nil then
+  begin
+    FVendasFechadasCommand := FDBXConnection.CreateCommand;
+    FVendasFechadasCommand.CommandType := TDBXCommandTypes.DSServerMethod;
+    FVendasFechadasCommand.Text := 'TPedidoVendaDAO.VendasFechadas';
+    FVendasFechadasCommand.Prepare;
+  end;
+  FVendasFechadasCommand.ExecuteUpdate;
+  Result := FVendasFechadasCommand.Parameters[0].Value.GetDBXReader(FInstanceOwner);
 end;
 
 constructor TPedidoVendaDAOClient.Create(ADBXConnection: TDBXConnection);
@@ -157,6 +203,9 @@ begin
   FreeAndNil(FInsertItemNoPedidoCommand);
   FreeAndNil(FDeleteItemDoPedidoCommand);
   FreeAndNil(FRelatorioPedidosVendaCommand);
+  FreeAndNil(FVendasFechadasCommand);
+  FreeAndNil(FVendasAbertasCommand);
+  FreeAndNil(FReciboCommand);
   inherited;
 end;
 

@@ -21,6 +21,9 @@ type
     function InsertItemNoPedido(CodigoPedidoVenda: string; Item: TItemPedidoVenda): Boolean;
     function DeleteItemDoPedido(CodigoProduto, CodigoPedidoVenda: string): Boolean;
     function RelatorioPedidosVenda(DataInicial, DataFinal: TDateTime): TDBXReader;
+    function VendasFechadas: TDBXReader;
+    function VendasAbertas: TDBXReader;
+    function Recibo(CodigoPedidoVenda: string): TDBXReader;
 
     constructor Create;
     destructor Destroy; override;
@@ -56,6 +59,19 @@ begin
   end;
 end;
 
+function TPedidoVendaDAO.Recibo(CodigoPedidoVenda: string): TDBXReader;
+begin
+  PrepareCommand;
+  FComm.Text := 'SELECT I.QUANTIDADE, P.DESCRICAO, P.PRECO_VENDA, V.DATA, V.DESCONTO, V.TIPO_PAGAMENTO, '+
+                       'V.NOME_CLIENTE_AVULSO, C.NOME '+
+                'FROM ITENS_PEDIDO_VENDA I '+
+                'INNER JOIN PRODUTOS P ON P.CODIGO = I.CODIGO_PRODUTO '+
+                'INNER JOIN PEDIDOS_VENDA V ON V.CODIGO = I.CODIGO_PEDIDO '+
+                'LEFT JOIN CLIENTES C ON C.CODIGO = V.CODIGO_CLIENTE '+
+                'WHERE V.CODIGO = '''+CodigoPedidoVenda+'''';
+  Result := FComm.ExecuteQuery;
+end;
+
 function TPedidoVendaDAO.RelatorioPedidosVenda(DataInicial, DataFinal: TDateTime): TDBXReader;
 begin
   PrepareCommand;
@@ -69,6 +85,28 @@ begin
     FComm.Text := FComm.Text + 'AND CONVERT(CHAR(8), DATA, 112) >= '+FormatDateTime('yyyymmdd', DataInicial)+' ';
   if (DataFinal <> 0) then
     FComm.Text := FComm.Text + 'AND CONVERT(CHAR(8), DATA, 112) <= '+FormatDateTime('yyyymmdd', DataFinal)+' ';
+  Result := FComm.ExecuteQuery;
+end;
+
+function TPedidoVendaDAO.VendasAbertas: TDBXReader;
+begin
+  PrepareCommand;
+  FComm.Text := 'SELECT V.DATA, C.NOME, V.NOME_CLIENTE_AVULSO '+
+                'FROM PEDIDOS_VENDA V '+
+                'LEFT JOIN CLIENTES C ON C.CODIGO = V.CODIGO_CLIENTE '+
+                'WHERE V.FECHADA = 0 '+
+                'ORDER BY V.DATA DESC';
+  Result := FComm.ExecuteQuery;
+end;
+
+function TPedidoVendaDAO.VendasFechadas: TDBXReader;
+begin
+  PrepareCommand;
+  FComm.Text := 'SELECT V.DATA, C.NOME, V.NOME_CLIENTE_AVULSO '+
+                'FROM PEDIDOS_VENDA V '+
+                'LEFT JOIN CLIENTES C ON C.CODIGO = V.CODIGO_CLIENTE '+
+                'WHERE V.FECHADA = 1 '+
+                'ORDER BY V.DATA DESC';
   Result := FComm.ExecuteQuery;
 end;
 
@@ -99,17 +137,18 @@ begin
   try
     query.SQLConnection := SCPrincipal.ConnTopCommerce;
     try
-      query.SQL.Text := 'INSERT INTO PEDIDOS_VENDA (CODIGO, DATA, DESCONTO, TIPO_PAGAMENTO';
+      query.SQL.Text := 'INSERT INTO PEDIDOS_VENDA (CODIGO, DATA, DESCONTO, TIPO_PAGAMENTO, FECHADA';
 
       if PedidoVenda.Cliente <> nil then
-        query.SQL.Text := query.SQL.Text + ', CODIGO_CLIENTE, NOME_CLIENTE_AVULSO) VALUES (:CODIGO, :DATA, :DESCONTO, :TIPO_PAGAMENTO, :CODIGO_CLIENTE, :NOME_CLIENTE_AVULSO)'
+        query.SQL.Text := query.SQL.Text + ', CODIGO_CLIENTE, NOME_CLIENTE_AVULSO) VALUES (:CODIGO, :DATA, :DESCONTO, :TIPO_PAGAMENTO, :FECHADA, :CODIGO_CLIENTE, :NOME_CLIENTE_AVULSO)'
       else
-        query.SQL.Text := query.SQL.Text + ', NOME_CLIENTE_AVULSO) VALUES (:CODIGO, :DATA, :DESCONTO, :TIPO_PAGAMENTO, :NOME_CLIENTE_AVULSO)';
+        query.SQL.Text := query.SQL.Text + ', NOME_CLIENTE_AVULSO) VALUES (:CODIGO, :DATA, :DESCONTO, :TIPO_PAGAMENTO, :FECHADA, :NOME_CLIENTE_AVULSO)';
 
       query.ParamByName('CODIGO').AsString          := PedidoVenda.Codigo;
       query.ParamByName('DATA').AsDateTime          := PedidoVenda.Data;
       query.ParamByName('DESCONTO').AsCurrency      := PedidoVenda.Desconto;
       query.ParamByName('TIPO_PAGAMENTO').AsInteger := PedidoVenda.TipoPagamento;
+      query.ParamByName('FECHADA').AsBoolean        := True;
 
       if PedidoVenda.Cliente <> nil then
         query.ParamByName('CODIGO_CLIENTE').AsString := PedidoVenda.Cliente.Codigo;

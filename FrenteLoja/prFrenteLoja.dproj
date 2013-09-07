@@ -80,6 +80,18 @@
 				<Form>FrmConsultaClientes</Form>
 			</DCCReference>
 			<DCCReference Include="..\Cliente\DAOClient\uClienteDAOClient.pas"/>
+			<DCCReference Include="uFrmVendasFechadas.pas">
+				<Form>FrmVendasFechadas</Form>
+			</DCCReference>
+			<DCCReference Include="uFrmVendasAbertas.pas">
+				<Form>FrmVendasAbertas</Form>
+			</DCCReference>
+			<DCCReference Include="..\Cliente\uFrmRelBase.pas">
+				<Form>FrmRelBase</Form>
+			</DCCReference>
+			<DCCReference Include="uFrmRelReciboVenda.pas">
+				<Form>FrmRelReciboVenda</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Release">
 				<Key>Cfg_2</Key>
 				<CfgParent>Base</CfgParent>
@@ -93,7 +105,7 @@
 			</BuildConfiguration>
 		</ItemGroup>
 		<Import Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')" Project="$(BDS)\Bin\CodeGear.Delphi.Targets"/>
-		<Import Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')" Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj"/>
+		<Import Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\8.0\UserTools.proj')" Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\8.0\UserTools.proj"/>
 		<ProjectExtensions>
 			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
 			<Borland.ProjectType/>

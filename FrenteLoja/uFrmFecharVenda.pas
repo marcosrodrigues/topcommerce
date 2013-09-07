@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ExtCtrls, Mask, DXPControl,
-  DXPButtons, Cliente;
+  DXPButtons, Cliente, DXPCurrencyEdit;
 
 type
   TFrmFecharVenda = class(TForm)
@@ -22,6 +22,7 @@ type
     btnPesquisarCliente: TDXPButton;
     btnLimpar: TDXPButton;
     btnFechar: TDXPButton;
+    cedDesconto: TDXPCurrencyEdit;
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure cedDescontoExit(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
@@ -86,10 +87,10 @@ end;
 
 procedure TFrmFecharVenda.cedDescontoExit(Sender: TObject);
 begin
-  if (0{ TODO : cedDesconto.Value } = 0) then
+  if (cedDesconto.Value = 0) then
     edtTotal.Text := FormatCurr(',0.00', Total)
   else
-    edtTotal.Text := FormatCurr(',0.00', Total - 0{ TODO : cedDesconto.Value });
+    edtTotal.Text := FormatCurr(',0.00', Total - cedDesconto.Value);
 end;
 
 procedure TFrmFecharVenda.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
@@ -103,7 +104,7 @@ procedure TFrmFecharVenda.FormKeyPress(Sender: TObject; var Key: Char);
 begin
   if (Ord(Key) = 13) then
   begin
-    if (Self.ActiveControl = nil{ TODO : cedDesconto }) then
+    if (Self.ActiveControl = cedDesconto) then
       cbFormaPagamento.SetFocus
     else if (Self.ActiveControl = cbFormaPagamento) then
       btnPesquisarCliente.SetFocus;

@@ -20,7 +20,11 @@ uses
   Validade in '..\Entidades\Validade.pas',
   Cliente in '..\Entidades\Cliente.pas',
   uFrmConsultaClientes in 'uFrmConsultaClientes.pas' {FrmConsultaClientes},
-  uClienteDAOClient in '..\Cliente\DAOClient\uClienteDAOClient.pas';
+  uClienteDAOClient in '..\Cliente\DAOClient\uClienteDAOClient.pas',
+  uFrmVendasFechadas in 'uFrmVendasFechadas.pas' {FrmVendasFechadas},
+  uFrmVendasAbertas in 'uFrmVendasAbertas.pas' {FrmVendasAbertas},
+  uFrmRelBase in '..\Cliente\uFrmRelBase.pas' {FrmRelBase},
+  uFrmRelReciboVenda in 'uFrmRelReciboVenda.pas' {FrmRelReciboVenda};
 
 {$R *.res}
 
@@ -30,5 +34,9 @@ begin
   Application.Title := 'Frente de Loja - Top Commerce';
   Application.CreateForm(TFrmPrincipal, FrmPrincipal);
   Application.CreateForm(TFrmConsultaClientes, FrmConsultaClientes);
+  Application.CreateForm(TFrmVendasFechadas, FrmVendasFechadas);
+  Application.CreateForm(TFrmVendasAbertas, FrmVendasAbertas);
+  Application.CreateForm(TFrmRelBase, FrmRelBase);
+  Application.CreateForm(TFrmRelReciboVenda, FrmRelReciboVenda);
   Application.Run;
 end.

@@ -54,12 +54,12 @@ object FrmFecharVenda: TFrmFecharVenda
     Align = alTop
     Color = clHotLight
     ParentBackground = False
-    TabOrder = 2
+    TabOrder = 7
     object Label1: TLabel
       Left = 1
       Top = 1
-      Width = 122
-      Height = 23
+      Width = 627
+      Height = 39
       Align = alClient
       Alignment = taCenter
       Caption = 'Fechar Venda'
@@ -70,6 +70,8 @@ object FrmFecharVenda: TFrmFecharVenda
       Font.Style = []
       ParentFont = False
       Layout = tlCenter
+      ExplicitWidth = 122
+      ExplicitHeight = 23
     end
   end
   object Panel3: TPanel
@@ -80,7 +82,7 @@ object FrmFecharVenda: TFrmFecharVenda
     AutoSize = True
     BevelOuter = bvNone
     Enabled = False
-    TabOrder = 0
+    TabOrder = 1
     object edtTotal: TEdit
       Left = 0
       Top = 0
@@ -98,7 +100,7 @@ object FrmFecharVenda: TFrmFecharVenda
     Height = 32
     Style = csDropDownList
     ItemIndex = 0
-    TabOrder = 1
+    TabOrder = 2
     Text = 'Dinheiro'
     OnChange = cbFormaPagamentoChange
     Items.Strings = (
@@ -205,7 +207,7 @@ object FrmFecharVenda: TFrmFecharVenda
       D3A5B8BEBE026728B258449128E1A3AA1654F16AFF03A72859684E95566DB36A
       96942A591579C8114B0125A1F272EE41E21BAD2EAC4969274C4981C453E207EC
       6F8E96B328609DAFC60000000049454E44AE426082}
-    TabOrder = 6
+    TabOrder = 5
   end
   object btnFechar: TDXPButton
     Left = 10
@@ -268,6 +270,17 @@ object FrmFecharVenda: TFrmFecharVenda
       EF67151F12403CAC2EA64E5CCE3352EED6BD4F73BF3CFAE0F3880F19E06CE4C8
       AF9FB3C7E9D701F085C63700FF01CCCF4AD32DDF5C9F0000000049454E44AE42
       6082}
-    TabOrder = 5
+    TabOrder = 6
+  end
+  object cedDesconto: TDXPCurrencyEdit
+    Left = 8
+    Top = 76
+    Width = 168
+    Height = 32
+    Alignment = taRightJustify
+    Options = []
+    TabOrder = 0
+    Text = '0,00'
+    OnExit = cedDescontoExit
   end
 end

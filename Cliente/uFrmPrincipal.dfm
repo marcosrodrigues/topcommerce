@@ -756,6 +756,7 @@ object FrmPrincipal: TFrmPrincipal
     Height = 321
     Align = alRight
     TabOrder = 1
+    Visible = False
     object dgrProdutosVencer: TDBGrid
       Left = 1
       Top = 30
@@ -880,14 +881,17 @@ object FrmPrincipal: TFrmPrincipal
       Caption = 'Relat'#243'rios e Listagens'
       object N31ListagemdeFornecedores1: TMenuItem
         Caption = 'Listagem de Fornecedores'
+        Visible = False
         OnClick = N31ListagemdeFornecedores1Click
       end
       object N32ListagemdeProdutos1: TMenuItem
         Caption = 'Listagem de Produtos'
+        Visible = False
         OnClick = N32ListagemdeProdutos1Click
       end
       object N1: TMenuItem
         Caption = '-'
+        Visible = False
       end
       object N33Estoque1: TMenuItem
         Caption = 'Estoque'
@@ -896,6 +900,13 @@ object FrmPrincipal: TFrmPrincipal
       object N34PedidosdeVenda1: TMenuItem
         Caption = 'Pedidos de Venda'
         OnClick = N34PedidosdeVenda1Click
+      end
+    end
+    object Utilitrios1: TMenuItem
+      Caption = 'Utilit'#225'rios'
+      Visible = False
+      object Configuraes1: TMenuItem
+        Caption = 'Configura'#231#245'es'
       end
     end
   end

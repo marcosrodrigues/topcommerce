@@ -1,9 +1,47 @@
 inherited FrmRelPedidoVenda: TFrmRelPedidoVenda
   Caption = 'FrmRelPedidoVenda'
-  ExplicitWidth = 320
-  ExplicitHeight = 240
+  ExplicitWidth = 834
+  ExplicitHeight = 662
   PixelsPerInch = 96
   TextHeight = 13
+  inherited RLReport: TRLReport
+    object RLGroup1: TRLGroup
+      Left = 38
+      Top = 107
+      Width = 718
+      Height = 102
+      DataFields = 'CODIGO'
+      object RLBand2: TRLBand
+        Left = 0
+        Top = 0
+        Width = 718
+        Height = 25
+        BandType = btColumnHeader
+        object RLDBText1: TRLDBText
+          Left = 8
+          Top = 6
+          Width = 38
+          Height = 16
+          DataField = 'DATA'
+          DataSource = dsRelatorio
+        end
+      end
+      object RLBand3: TRLBand
+        Left = 0
+        Top = 25
+        Width = 718
+        Height = 20
+        object RLDBText2: TRLDBText
+          Left = 96
+          Top = 0
+          Width = 80
+          Height = 16
+          DataField = 'DESCRICAO'
+          DataSource = dsRelatorio
+        end
+      end
+    end
+  end
   inherited cdsRelatorio: TClientDataSet
     object cdsRelatorioCODIGO: TStringField
       FieldName = 'CODIGO'
