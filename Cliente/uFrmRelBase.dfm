@@ -33,6 +33,11 @@ object FrmRelBase: TFrmRelBase
       Width = 718
       Height = 69
       BandType = btHeader
+      Borders.Sides = sdCustom
+      Borders.DrawLeft = True
+      Borders.DrawTop = True
+      Borders.DrawRight = True
+      Borders.DrawBottom = True
       object RLLabel1: TRLLabel
         Left = 101
         Top = 3
