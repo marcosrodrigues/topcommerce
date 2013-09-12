@@ -1,9 +1,10 @@
 object FrmPrincipal: TFrmPrincipal
   Left = 0
   Top = 0
+  BorderStyle = bsNone
   Caption = 'Frente de Loja - Top Commerce'
-  ClientHeight = 750
-  ClientWidth = 1075
+  ClientHeight = 788
+  ClientWidth = 1091
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -24,18 +25,19 @@ object FrmPrincipal: TFrmPrincipal
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1075
+    Width = 1091
     Height = 51
     Align = alTop
     BevelOuter = bvNone
     Color = clMoneyGreen
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 1075
     DesignSize = (
-      1075
+      1091
       51)
     object lblData: TLabel
-      Left = 985
+      Left = 995
       Top = 1
       Width = 84
       Height = 19
@@ -49,7 +51,7 @@ object FrmPrincipal: TFrmPrincipal
       ParentFont = False
     end
     object lblHora: TLabel
-      Left = 1003
+      Left = 1013
       Top = 29
       Width = 66
       Height = 19
@@ -63,7 +65,7 @@ object FrmPrincipal: TFrmPrincipal
       ParentFont = False
     end
     object imgCalendario: TImage
-      Left = 957
+      Left = 965
       Top = -2
       Width = 24
       Height = 24
@@ -124,7 +126,7 @@ object FrmPrincipal: TFrmPrincipal
         000049454E44AE426082}
     end
     object imgRelogio: TImage
-      Left = 975
+      Left = 983
       Top = 26
       Width = 24
       Height = 24
@@ -267,16 +269,17 @@ object FrmPrincipal: TFrmPrincipal
     object Panel13: TPanel
       Left = 212
       Top = 4
-      Width = 656
+      Width = 672
       Height = 39
       Anchors = [akLeft, akTop, akRight]
       BevelOuter = bvNone
       Enabled = False
       TabOrder = 0
+      ExplicitWidth = 656
       object edtDescricaoProduto: TEdit
         Left = 0
         Top = 0
-        Width = 656
+        Width = 672
         Height = 39
         Align = alClient
         Alignment = taCenter
@@ -290,6 +293,7 @@ object FrmPrincipal: TFrmPrincipal
         ParentCtl3D = False
         ParentFont = False
         TabOrder = 0
+        ExplicitWidth = 656
       end
     end
   end
@@ -297,7 +301,7 @@ object FrmPrincipal: TFrmPrincipal
     Left = 0
     Top = 51
     Width = 355
-    Height = 699
+    Height = 737
     Align = alLeft
     BevelOuter = bvNone
     Font.Charset = DEFAULT_CHARSET
@@ -309,7 +313,7 @@ object FrmPrincipal: TFrmPrincipal
     TabOrder = 1
     object Panel3: TPanel
       Left = 0
-      Top = 444
+      Top = 482
       Width = 355
       Height = 255
       Align = alBottom
@@ -317,6 +321,7 @@ object FrmPrincipal: TFrmPrincipal
       Color = clMoneyGreen
       ParentBackground = False
       TabOrder = 0
+      ExplicitTop = 444
       object Image2: TImage
         Left = 6
         Top = 32
@@ -15902,14 +15907,13 @@ object FrmPrincipal: TFrmPrincipal
       Left = 0
       Top = 0
       Width = 355
-      Height = 444
+      Height = 482
       Align = alClient
       BevelOuter = bvNone
       Color = clMoneyGreen
       ParentBackground = False
       TabOrder = 1
-      ExplicitLeft = -6
-      ExplicitTop = -2
+      ExplicitHeight = 444
       object Label1: TLabel
         Left = 16
         Top = 12
@@ -16067,7 +16071,7 @@ object FrmPrincipal: TFrmPrincipal
         Left = 6
         Top = 261
         Width = 219
-        Height = 140
+        Height = 144
         BorderStyle = bsNone
         Enabled = False
         Font.Charset = DEFAULT_CHARSET
@@ -16082,7 +16086,8 @@ object FrmPrincipal: TFrmPrincipal
           'F6 - Consulta Produto'
           'F7 - Recibo'
           'F8 - Vendas Abertas'
-          'F9 - Vendas Fechadas')
+          'F9 - Vendas Fechadas'
+          'Alt+F4 - Sair do Frente de Loja')
         ParentColor = True
         ParentFont = False
         TabOrder = 4
@@ -16092,8 +16097,8 @@ object FrmPrincipal: TFrmPrincipal
   object pnlGrid: TPanel
     Left = 355
     Top = 51
-    Width = 720
-    Height = 699
+    Width = 725
+    Height = 737
     Align = alClient
     BevelOuter = bvNone
     Font.Charset = DEFAULT_CHARSET
@@ -16103,21 +16108,25 @@ object FrmPrincipal: TFrmPrincipal
     Font.Style = []
     ParentFont = False
     TabOrder = 2
+    ExplicitWidth = 720
+    ExplicitHeight = 699
     object Panel5: TPanel
       Left = 0
-      Top = 627
-      Width = 720
+      Top = 665
+      Width = 725
       Height = 72
       Align = alBottom
       BevelOuter = bvNone
       Color = clMoneyGreen
       ParentBackground = False
       TabOrder = 0
+      ExplicitTop = 627
+      ExplicitWidth = 720
       DesignSize = (
-        720
+        725
         72)
       object Label5: TLabel
-        Left = 526
+        Left = 538
         Top = -2
         Width = 74
         Height = 24
@@ -16129,10 +16138,9 @@ object FrmPrincipal: TFrmPrincipal
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
-        ExplicitLeft = 440
       end
       object Label6: TLabel
-        Left = 7
+        Left = 0
         Top = -2
         Width = 56
         Height = 24
@@ -16145,7 +16153,7 @@ object FrmPrincipal: TFrmPrincipal
         ParentFont = False
       end
       object Panel11: TPanel
-        Left = 526
+        Left = 538
         Top = 20
         Width = 186
         Height = 48
@@ -16175,9 +16183,9 @@ object FrmPrincipal: TFrmPrincipal
         end
       end
       object Panel12: TPanel
-        Left = 7
+        Left = 0
         Top = 20
-        Width = 475
+        Width = 514
         Height = 48
         Anchors = [akLeft, akTop, akRight]
         BevelOuter = bvNone
@@ -16186,7 +16194,7 @@ object FrmPrincipal: TFrmPrincipal
         object edtAvisos: TEdit
           Left = 0
           Top = 0
-          Width = 475
+          Width = 514
           Height = 48
           Align = alClient
           Alignment = taCenter
@@ -16201,6 +16209,7 @@ object FrmPrincipal: TFrmPrincipal
           ParentFont = False
           TabOrder = 0
           Text = 'VENDA'
+          ExplicitWidth = 475
           ExplicitHeight = 46
         end
       end
@@ -16208,24 +16217,26 @@ object FrmPrincipal: TFrmPrincipal
     object Panel6: TPanel
       Left = 0
       Top = 0
-      Width = 720
-      Height = 627
+      Width = 725
+      Height = 665
       Align = alClient
       BevelOuter = bvNone
       Enabled = False
       TabOrder = 1
+      ExplicitWidth = 720
+      ExplicitHeight = 627
       object grdProdutos: TDBGrid
         Left = 0
         Top = 0
-        Width = 720
-        Height = 627
+        Width = 725
+        Height = 665
         Align = alClient
         Ctl3D = False
         DataSource = dsProdutos
         DrawingStyle = gdsGradient
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
-        Font.Height = -16
+        Font.Height = -17
         Font.Name = 'Tahoma'
         Font.Style = []
         Options = [dgTitles, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -16237,8 +16248,52 @@ object FrmPrincipal: TFrmPrincipal
         TitleFont.Height = -13
         TitleFont.Name = 'Tahoma'
         TitleFont.Style = []
+        Columns = <
+          item
+            ButtonStyle = cbsNone
+            Expanded = False
+            FieldName = 'CODIGO'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -17
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'DESCRICAO'
+            Width = 500
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'QUANTIDADE'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'PRECO_UNITARIO'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'PRECO_TOTAL'
+            Visible = True
+          end>
       end
     end
+  end
+  object Panel14: TPanel
+    Left = 1080
+    Top = 51
+    Width = 11
+    Height = 737
+    Align = alRight
+    BevelOuter = bvNone
+    Color = clMoneyGreen
+    ParentBackground = False
+    TabOrder = 3
   end
   object dsProdutos: TDataSource
     DataSet = cdsProdutos
@@ -16280,6 +16335,7 @@ object FrmPrincipal: TFrmPrincipal
     end
     object cdsProdutosPRECO_TOTAL: TCurrencyField
       DisplayLabel = 'Pre'#231'o Total'
+      DisplayWidth = 15
       FieldName = 'PRECO_TOTAL'
     end
   end

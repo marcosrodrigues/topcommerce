@@ -82,6 +82,7 @@ procedure TFrmConsultaProdutos.FormKeyDown(Sender: TObject; var Key: Word;
 begin
   case Key of
     VK_ESCAPE: Self.Close;
+    VK_DOWN: grdConsulta.SetFocus;
   end;
 end;
 

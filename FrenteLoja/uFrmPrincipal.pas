@@ -54,6 +54,7 @@ type
     imgCalendario: TImage;
     imgRelogio: TImage;
     Memo1: TMemo;
+    Panel14: TPanel;
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -114,7 +115,12 @@ begin
 end;
 
 procedure TFrmPrincipal.FormShow(Sender: TObject);
+var
+  r: TRect;
 begin
+  SystemParametersInfo(SPI_GETWORKAREA, 0, @r,0);
+  SetBounds(r.Left, r.Top, r.Right-r.Left, r.Bottom-r.Top);
+
   IniciaControles;
 end;
 
