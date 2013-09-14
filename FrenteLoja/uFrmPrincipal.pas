@@ -64,6 +64,9 @@ type
   private
     { Private declarations }
     DAOPedidoVenda: TPedidoVendaDAOClient;
+    CodigoPedidoVendaAtual: string;
+    DataPedidoVendaAtual: TDateTime;
+
     procedure NovaVenda;
     procedure FecharVenda;
     procedure ConsultarProduto;
@@ -127,21 +130,22 @@ end;
 function TFrmPrincipal.GravarVenda(Desconto: Currency; TipoPagamento: Integer; Cliente: TCliente; NomeCliente: string): string;
 var
   Pedido: TPedidoVenda;
-  Item: TItemPedidoVenda;
+  //Item: TItemPedidoVenda;
 begin
   Pedido               := TPedidoVenda.Create;
 
-  Result := DAOPedidoVenda.NextCodigo;
-  
-  Pedido.Codigo        := Result;
-  Pedido.Data          := Now;
+  //Result := DAOPedidoVenda.NextCodigo;
+
+  Pedido.Codigo        := CodigoPedidoVendaAtual;
+  Pedido.Data          := DataPedidoVendaAtual;
   Pedido.Desconto      := Desconto;
   Pedido.TipoPagamento := TipoPagamento;
   Pedido.Cliente       := Cliente;
+  Pedido.Fechada       := True;
   if Cliente = nil then
     Pedido.NomeClienteAvulso := NomeCliente;
 
-  cdsProdutos.First;
+  {cdsProdutos.First;
   cdsProdutos.DisableControls;
   Pedido.Itens := TList<TItemPedidoVenda>.Create;
   while not(cdsProdutos.Eof) do
@@ -153,9 +157,9 @@ begin
 
     cdsProdutos.Next;
   end;
-  cdsProdutos.EnableControls;
+  cdsProdutos.EnableControls;}
 
-  DAOPedidoVenda.Insert(Pedido);
+  DAOPedidoVenda.Update(Pedido);
 end;
 
 procedure TFrmPrincipal.NovaVenda;
@@ -163,6 +167,8 @@ begin
   cdsProdutos.Close;
 
   IniciaControles;
+  CodigoPedidoVendaAtual := '';
+  DataPedidoVendaAtual := 0;
 end;
 
 procedure TFrmPrincipal.tmHoraTimer(Sender: TObject);
@@ -198,6 +204,8 @@ procedure TFrmPrincipal.ConsultarProduto;
 var
   fConsultaProdutos: TFrmConsultaProdutos;
   fAjuste: TFrmAjuste;
+  Item: TItemPedidoVenda;
+  Pedido: TPedidoVenda;
 begin
   edtAvisos.Text := 'CONSULTAR PRODUTO';
   fConsultaProdutos := TFrmConsultaProdutos.Create(Self);
@@ -229,6 +237,11 @@ begin
             cdsProdutosPRECO_TOTAL.AsCurrency := cdsProdutosPRECO_TOTAL.AsCurrency + StrToCurr(fAjuste.edtPrecoTotal.Text);
 
             edtSubtotal.Text   := FormatCurr(',0.00', StrToCurr(edtSubtotal.Text) + StrToInt(fAjuste.edtQuantidade.Text) * cdsProdutosPRECO_UNITARIO.AsCurrency);
+
+            Item := TItemPedidoVenda.Create;
+            Item.Produto    := TProduto.Create(cdsProdutosCODIGO.AsString);
+            Item.Quantidade := cdsProdutosQUANTIDADE.AsInteger;
+            DAOPedidoVenda.AtualizaItemDoPedido(CodigoPedidoVendaAtual, Item);
           end;
         end
         else
@@ -241,6 +254,24 @@ begin
           cdsProdutosPRECO_TOTAL.AsCurrency    := StrToCurr(fAjuste.edtPrecoTotal.Text);
 
           edtSubtotal.Text := FormatCurr(',0.00', StrToCurr(edtSubtotal.Text) + cdsProdutosQUANTIDADE.AsInteger * cdsProdutosPRECO_UNITARIO.AsCurrency);
+
+          if CodigoPedidoVendaAtual = '' then
+          begin
+            CodigoPedidoVendaAtual := DAOPedidoVenda.NextCodigo;
+            DataPedidoVendaAtual := Now;
+
+            Pedido := TPedidoVenda.Create;
+            Pedido.Codigo := CodigoPedidoVendaAtual;
+            Pedido.Data    := DataPedidoVendaAtual;
+            Pedido.Fechada := False;
+
+            DAOPedidoVenda.Insert(Pedido);
+          end;
+
+          Item := TItemPedidoVenda.Create;
+          Item.Produto    := TProduto.Create(cdsProdutosCODIGO.AsString);
+          Item.Quantidade := cdsProdutosQUANTIDADE.AsInteger;
+          DAOPedidoVenda.InsertItemNoPedido(CodigoPedidoVendaAtual, Item);
         end;
         cdsProdutos.Post;
 

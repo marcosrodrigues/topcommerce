@@ -75,6 +75,7 @@ begin
                              cdsConsultaDESCRICAO.AsString,
                              '',
                              0,
+                             0,
                              nil,
                              nil);
   Self.Close;

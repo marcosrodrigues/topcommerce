@@ -16,6 +16,7 @@ type
     cdsCrudCODIGO_BARRAS: TStringField;
     cdsCrudPRECO_VENDA: TCurrencyField;
     cdsCrudQUANTIDADE: TIntegerField;
+    cdsCrudESTOQUE_MINIMO: TIntegerField;
   private
     { Private declarations }
     DAOClient: TProdutoDAOClient;
@@ -97,6 +98,7 @@ begin
                                                   cdsCrudDESCRICAO_TIPO_PRODUTO.AsString);
     f.Produto.CodigoBarras      := cdsCrudCODIGO_BARRAS.AsString;
     f.Produto.PrecoVenda        := cdsCrudPRECO_VENDA.AsCurrency;
+    f.Produto.EstoqueMinimo     := cdsCrudESTOQUE_MINIMO.AsInteger;
     f.Produto.QuantidadeEstoque := cdsCrudQUANTIDADE.AsInteger;
 
     f.Operacao := opEdit;

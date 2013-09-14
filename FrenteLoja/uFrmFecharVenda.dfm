@@ -2,9 +2,10 @@ object FrmFecharVenda: TFrmFecharVenda
   Left = 0
   Top = 0
   BorderIcons = []
+  BorderStyle = bsSingle
   Caption = 'Fechar Venda'
-  ClientHeight = 360
-  ClientWidth = 629
+  ClientHeight = 370
+  ClientWidth = 639
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -49,16 +50,17 @@ object FrmFecharVenda: TFrmFecharVenda
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 629
+    Width = 639
     Height = 41
     Align = alTop
     Color = clHotLight
     ParentBackground = False
     TabOrder = 7
+    ExplicitWidth = 629
     object Label1: TLabel
       Left = 1
       Top = 1
-      Width = 627
+      Width = 637
       Height = 39
       Align = alClient
       Alignment = taCenter

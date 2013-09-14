@@ -78,6 +78,7 @@ begin
                                                             FramePesquisaProduto.edtDescricaoProduto.Text,
                                                             '',
                                                             0,
+                                                            0,
                                                             nil,
                                                             nil),
                                          sedQuantidade.Value))) then
@@ -95,6 +96,7 @@ begin
                                                             nil,
                                                             FramePesquisaProduto.edtDescricaoProduto.Text,
                                                             '',
+                                                            0,
                                                             0,
                                                             nil,
                                                             nil),

@@ -10,8 +10,10 @@ type
     FNextCodigoCommand: TDBXCommand;
     FInsertCommand: TDBXCommand;
     FDeleteCommand: TDBXCommand;
+    FUpdateCommand: TDBXCommand;
     FInsertItemNoPedidoCommand: TDBXCommand;
     FDeleteItemDoPedidoCommand: TDBXCommand;
+    FAtualizaItemDoPedidoCommand: TDBXCommand;
     FRelatorioPedidosVendaCommand: TDBXCommand;
     FVendasFechadasCommand: TDBXCommand;
     FVendasAbertasCommand: TDBXCommand;
@@ -23,8 +25,10 @@ type
     function NextCodigo: string;
     function Insert(PedidoVenda: TPedidoVenda): Boolean;
     function Delete(CodigoPedidoVenda: string): Boolean;
+    function Update(PedidoVenda: TPedidoVenda): Boolean;
     function InsertItemNoPedido(CodigoPedidoVenda: string; Item: TItemPedidoVenda): Boolean;
     function DeleteItemDoPedido(CodigoProduto: string; CodigoPedidoVenda: string): Boolean;
+    function AtualizaItemDoPedido(CodigoPedidoVenda: string; Item: TItemPedidoVenda): Boolean;
     function RelatorioPedidosVenda(DataInicial, DataFinal: TDateTime): TDBXReader;
     function VendasFechadas: TDBXReader;
     function VendasAbertas: TDBXReader;
@@ -157,6 +161,32 @@ begin
   Result := FRelatorioPedidosVendaCommand.Parameters[2].Value.GetDBXReader(FInstanceOwner);
 end;
 
+function TPedidoVendaDAOClient.Update(PedidoVenda: TPedidoVenda): Boolean;
+begin
+  if FUpdateCommand = nil then
+  begin
+    FUpdateCommand := FDBXConnection.CreateCommand;
+    FUpdateCommand.CommandType := TDBXCommandTypes.DSServerMethod;
+    FUpdateCommand.Text := 'TPedidoVendaDAO.Update';
+    FUpdateCommand.Prepare;
+  end;
+  if not Assigned(PedidoVenda) then
+    FUpdateCommand.Parameters[0].Value.SetNull
+  else
+  begin
+    FMarshal := TDBXClientCommand(FUpdateCommand.Parameters[0].ConnectionHandler).GetJSONMarshaler;
+    try
+      FUpdateCommand.Parameters[0].Value.SetJSONValue(FMarshal.Marshal(PedidoVenda), True);
+      if FInstanceOwner then
+        PedidoVenda.Free
+    finally
+      FreeAndNil(FMarshal)
+    end
+    end;
+  FUpdateCommand.ExecuteUpdate;
+  Result := FUpdateCommand.Parameters[1].Value.GetBoolean;
+end;
+
 function TPedidoVendaDAOClient.VendasAbertas: TDBXReader;
 begin
   if FVendasAbertasCommand = nil then
@@ -188,6 +218,32 @@ begin
   inherited Create(ADBXConnection);
 end;
 
+function TPedidoVendaDAOClient.AtualizaItemDoPedido(CodigoPedidoVenda: string; Item: TItemPedidoVenda): Boolean;
+begin
+  if FAtualizaItemDoPedidoCommand = nil then
+  begin
+    FAtualizaItemDoPedidoCommand := FDBXConnection.CreateCommand;
+    FAtualizaItemDoPedidoCommand.CommandType := TDBXCommandTypes.DSServerMethod;
+    FAtualizaItemDoPedidoCommand.Text := 'TPedidoVendaDAO.AtualizaItemDoPedido';
+    FAtualizaItemDoPedidoCommand.Prepare;
+  end;
+  FAtualizaItemDoPedidoCommand.Parameters[0].Value.SetWideString(CodigoPedidoVenda);
+  if not Assigned(Item) then
+    FAtualizaItemDoPedidoCommand.Parameters[1].Value.SetNull
+  else
+  begin
+    FMarshal := TDBXClientCommand(FAtualizaItemDoPedidoCommand.Parameters[1].ConnectionHandler).GetJSONMarshaler;
+    try
+      FAtualizaItemDoPedidoCommand.Parameters[1].Value.SetJSONValue(FMarshal.Marshal(Item), True);
+      if FInstanceOwner then
+        Item.Free
+    finally
+      FreeAndNil(FMarshal)
+    end;
+  end;
+  FAtualizaItemDoPedidoCommand.ExecuteUpdate;
+  Result := FAtualizaItemDoPedidoCommand.Parameters[2].Value.GetBoolean;
+end;
 
 constructor TPedidoVendaDAOClient.Create(ADBXConnection: TDBXConnection; AInstanceOwner: Boolean);
 begin
@@ -200,8 +256,10 @@ begin
   FreeAndNil(FNextCodigoCommand);
   FreeAndNil(FInsertCommand);
   FreeAndNil(FDeleteCommand);
+  FreeAndNil(FUpdateCommand);
   FreeAndNil(FInsertItemNoPedidoCommand);
   FreeAndNil(FDeleteItemDoPedidoCommand);
+  FreeAndNil(FAtualizaItemDoPedidoCommand);
   FreeAndNil(FRelatorioPedidosVendaCommand);
   FreeAndNil(FVendasFechadasCommand);
   FreeAndNil(FVendasAbertasCommand);

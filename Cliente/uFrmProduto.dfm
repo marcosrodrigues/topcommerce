@@ -2,8 +2,8 @@ inherited FrmProduto: TFrmProduto
   Caption = 'Cadastro de Produtos'
   ClientHeight = 459
   ClientWidth = 820
-  ExplicitWidth = 828
-  ExplicitHeight = 486
+  ExplicitWidth = 836
+  ExplicitHeight = 497
   PixelsPerInch = 96
   TextHeight = 14
   inherited pnlBotoes: TPanel
@@ -56,6 +56,10 @@ inherited FrmProduto: TFrmProduto
       DisplayLabel = 'Pre'#231'o de Venda'
       DisplayWidth = 10
       FieldName = 'PRECO_VENDA'
+    end
+    object cdsCrudESTOQUE_MINIMO: TIntegerField
+      FieldName = 'ESTOQUE_MINIMO'
+      Visible = False
     end
     object cdsCrudCODIGO_BARRAS: TStringField
       DisplayLabel = 'C'#243'digo de Barras'

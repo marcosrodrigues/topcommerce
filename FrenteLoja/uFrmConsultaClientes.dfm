@@ -1,9 +1,10 @@
 object FrmConsultaClientes: TFrmConsultaClientes
   Left = 0
   Top = 0
+  BorderStyle = bsSingle
   Caption = 'Consulta de Clientes'
-  ClientHeight = 388
-  ClientWidth = 1034
+  ClientHeight = 398
+  ClientWidth = 1044
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -22,7 +23,7 @@ object FrmConsultaClientes: TFrmConsultaClientes
   object pnlParametros: TPanel
     Left = 0
     Top = 0
-    Width = 1034
+    Width = 1044
     Height = 49
     Align = alTop
     Font.Charset = DEFAULT_CHARSET
@@ -32,10 +33,9 @@ object FrmConsultaClientes: TFrmConsultaClientes
     Font.Style = []
     ParentFont = False
     TabOrder = 0
-    ExplicitLeft = -10
-    ExplicitWidth = 1044
+    ExplicitWidth = 1034
     DesignSize = (
-      1034
+      1044
       49)
     object Label1: TLabel
       Left = 8
@@ -47,23 +47,23 @@ object FrmConsultaClientes: TFrmConsultaClientes
     object edtConsultar: TEdit
       Left = 99
       Top = 8
-      Width = 924
+      Width = 934
       Height = 32
       Anchors = [akLeft, akTop, akRight]
       TabOrder = 0
       OnChange = edtConsultarChange
       OnKeyPress = edtConsultarKeyPress
-      ExplicitWidth = 934
+      ExplicitWidth = 924
     end
   end
   object grdConsulta: TDBGrid
     Left = 0
     Top = 49
-    Width = 1034
-    Height = 298
+    Width = 1044
+    Height = 308
     Align = alClient
     DataSource = dsConsulta
-    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
     TabOrder = 1
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -75,13 +75,13 @@ object FrmConsultaClientes: TFrmConsultaClientes
   end
   object pnlResultado: TPanel
     Left = 0
-    Top = 347
-    Width = 1034
+    Top = 357
+    Width = 1044
     Height = 41
     Align = alBottom
     TabOrder = 2
-    ExplicitLeft = -10
-    ExplicitWidth = 1044
+    ExplicitTop = 347
+    ExplicitWidth = 1034
     object Label2: TLabel
       Left = 8
       Top = 9

@@ -23,6 +23,7 @@ type
     FDesconto: Currency;
     FTipoPagamento: Integer;
     FItens: TList<TItemPedidoVenda>;
+    FFechada: Boolean;
   public
     property Codigo: string read FCodigo write FCodigo;
     property Data: TDateTime read FData write FData;
@@ -31,6 +32,7 @@ type
     property Desconto: Currency read FDesconto write FDesconto;
     property TipoPagamento: Integer read FTipoPagamento write FTipoPagamento;
     property Itens: TList<TItemPedidoVenda> read FItens write FItens;
+    property Fechada: Boolean read FFechada write FFechada;
   end;
 
 implementation

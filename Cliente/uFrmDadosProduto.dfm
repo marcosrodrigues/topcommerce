@@ -6,18 +6,20 @@ inherited FrmDadosProduto: TFrmDadosProduto
   PixelsPerInch = 96
   TextHeight = 14
   inherited splDados: TSplitter
-    Top = 187
+    Top = 213
     Width = 575
     ExplicitTop = 163
     ExplicitWidth = 578
   end
   object Panel1: TPanel [1]
     Left = 0
-    Top = 218
+    Top = 244
     Width = 575
-    Height = 254
+    Height = 228
     Align = alClient
     TabOrder = 4
+    ExplicitTop = 218
+    ExplicitHeight = 254
   end
   inherited pnlBotoes: TPanel
     Width = 575
@@ -29,9 +31,9 @@ inherited FrmDadosProduto: TFrmDadosProduto
   end
   inherited pnlDados: TPanel
     Width = 575
-    Height = 159
+    Height = 185
     ExplicitWidth = 575
-    ExplicitHeight = 159
+    ExplicitHeight = 185
     object Label1: TLabel
       Left = 8
       Top = 11
@@ -127,7 +129,7 @@ inherited FrmDadosProduto: TFrmDadosProduto
       Left = 320
       Top = 96
       Width = 249
-      Height = 55
+      Height = 84
       Caption = ' Estoque '
       Color = clBtnFace
       Font.Charset = DEFAULT_CHARSET
@@ -146,14 +148,31 @@ inherited FrmDadosProduto: TFrmDadosProduto
         Height = 14
         Caption = 'Quantidade'
       end
+      object Label3: TLabel
+        Left = 12
+        Top = 55
+        Width = 103
+        Height = 14
+        Caption = 'Quantidade Minima'
+      end
       object sedQuantidadeEstoque: TSpinEdit
-        Left = 96
+        Left = 120
         Top = 21
         Width = 68
         Height = 23
         MaxValue = 0
         MinValue = 0
         TabOrder = 0
+        Value = 0
+      end
+      object sedEstoqueMinimo: TSpinEdit
+        Left = 120
+        Top = 52
+        Width = 68
+        Height = 23
+        MaxValue = 0
+        MinValue = 0
+        TabOrder = 1
         Value = 0
       end
     end
@@ -193,25 +212,26 @@ inherited FrmDadosProduto: TFrmDadosProduto
     end
   end
   inherited pnlDetails: TPanel
-    Top = 218
+    Top = 244
     Width = 575
-    Height = 254
+    Height = 228
     ExplicitTop = 218
     ExplicitWidth = 575
     ExplicitHeight = 254
     inherited pgcDetail: TPageControl
       Width = 573
-      Height = 252
+      Height = 226
       ActivePage = tbsValidades
       ExplicitWidth = 573
       ExplicitHeight = 252
       object tbsFornecedores: TTabSheet
         Caption = '&Fornecedores'
+        ExplicitHeight = 223
         object grdFornecedores: TDBGrid
           Left = 0
           Top = 0
           Width = 565
-          Height = 223
+          Height = 197
           Align = alClient
           DataSource = dsFornecedores
           Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -226,11 +246,12 @@ inherited FrmDadosProduto: TFrmDadosProduto
       object tbsValidades: TTabSheet
         Caption = '&Validades'
         ImageIndex = 1
+        ExplicitHeight = 223
         object grdValidades: TDBGrid
           Left = 0
           Top = 0
           Width = 565
-          Height = 223
+          Height = 197
           Align = alClient
           DataSource = dsValidades
           Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -245,7 +266,7 @@ inherited FrmDadosProduto: TFrmDadosProduto
     end
   end
   inherited pnlBotoesDetails: TPanel
-    Top = 190
+    Top = 216
     Width = 575
     ExplicitTop = 190
     ExplicitWidth = 575

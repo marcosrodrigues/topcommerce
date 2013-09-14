@@ -18,8 +18,10 @@ type
     function NextCodigo: string;
     function Insert(PedidoVenda: TPedidoVenda): Boolean;
     function Delete(CodigoPedidoVenda: string): Boolean;
+    function Update(PedidoVenda: TPedidoVenda): Boolean;
     function InsertItemNoPedido(CodigoPedidoVenda: string; Item: TItemPedidoVenda): Boolean;
     function DeleteItemDoPedido(CodigoProduto, CodigoPedidoVenda: string): Boolean;
+    function AtualizaItemDoPedido(CodigoPedidoVenda: string; Item: TItemPedidoVenda): Boolean;
     function RelatorioPedidosVenda(DataInicial, DataFinal: TDateTime): TDBXReader;
     function VendasFechadas: TDBXReader;
     function VendasAbertas: TDBXReader;
@@ -34,6 +36,43 @@ implementation
 uses uSCPrincipal, StringUtils;
 
 { TPedidoVendaDAO }
+
+function TPedidoVendaDAO.AtualizaItemDoPedido(CodigoPedidoVenda: string; Item: TItemPedidoVenda): Boolean;
+var
+  query: TSQLQuery;
+  QuantidadeAnterior: Integer;
+begin
+  query := TSQLQuery.Create(nil);
+  try
+    query.SQLConnection := SCPrincipal.ConnTopCommerce;
+    try
+      query.SQL.Text := 'SELECT QUANTIDADE FROM ITENS_PEDIDO_VENDA WHERE CODIGO_PEDIDO = :CODIGO_PEDIDO AND CODIGO_PRODUTO = :CODIGO_PRODUTO';
+      query.ParamByName('CODIGO_PEDIDO').AsString  := CodigoPedidoVenda;
+      query.ParamByName('CODIGO_PRODUTO').AsString := Item.Produto.Codigo;
+      query.Open;
+      QuantidadeAnterior := query.FieldByName('QUANTIDADE').AsInteger;
+
+      query.Close;
+      query.SQL.Text := 'UPDATE ITENS_PEDIDO_VENDA SET QUANTIDADE = :QUANTIDADE '+
+                        'WHERE CODIGO_PEDIDO = :CODIGO_PEDIDO AND CODIGO_PRODUTO = :CODIGO_PRODUTO';
+      query.ParamByName('CODIGO_PEDIDO').AsString  := CodigoPedidoVenda;
+      query.ParamByName('CODIGO_PRODUTO').AsString := Item.Produto.Codigo;
+      query.ParamByName('QUANTIDADE').AsInteger    := Item.Quantidade;
+      query.ExecSQL;
+
+      if QuantidadeAnterior > Item.Quantidade then
+        EstoqueDAO.AtualizaQuantidade(Item.Produto.Codigo, 'C', QuantidadeAnterior - Item.Quantidade)
+      else if QuantidadeAnterior < Item.Quantidade then
+        EstoqueDAO.AtualizaQuantidade(Item.Produto.Codigo, 'D', Item.Quantidade - QuantidadeAnterior);
+
+      Result := True;
+    except
+      Result := False;
+    end;
+  finally
+    query.Free;
+  end;
+end;
 
 constructor TPedidoVendaDAO.Create;
 begin
@@ -86,6 +125,43 @@ begin
   if (DataFinal <> 0) then
     FComm.Text := FComm.Text + 'AND CONVERT(CHAR(8), DATA, 112) <= '+FormatDateTime('yyyymmdd', DataFinal)+' ';
   Result := FComm.ExecuteQuery;
+end;
+
+function TPedidoVendaDAO.Update(PedidoVenda: TPedidoVenda): Boolean;
+var
+  query: TSQLQuery;
+begin
+  query := TSQLQuery.Create(nil);
+  try
+    query.SQLConnection := SCPrincipal.ConnTopCommerce;
+    try
+      query.SQL.Text := 'UPDATE PEDIDOS_VENDA SET DESCONTO = :DESCONTO, TIPO_PAGAMENTO = :TIPO_PAGAMENTO, FECHADA = :FECHADA ';
+
+      if PedidoVenda.Cliente <> nil then
+        query.SQL.Text := query.SQL.Text + ', CODIGO_CLIENTE = :CODIGO_CLIENTE, NOME_CLIENTE_AVULSO = :NOME_CLIENTE_AVULSO '
+      else
+        query.SQL.Text := query.SQL.Text + ', NOME_CLIENTE_AVULSO = :NOME_CLIENTE_AVULSO ';
+
+      query.SQL.Text := query.SQL.Text + 'WHERE CODIGO = :CODIGO';
+
+      query.ParamByName('CODIGO').AsString          := PedidoVenda.Codigo;
+      query.ParamByName('DESCONTO').AsCurrency      := PedidoVenda.Desconto;
+      query.ParamByName('TIPO_PAGAMENTO').AsInteger := PedidoVenda.TipoPagamento;
+      query.ParamByName('FECHADA').AsBoolean        := PedidoVenda.Fechada;
+
+      if PedidoVenda.Cliente <> nil then
+        query.ParamByName('CODIGO_CLIENTE').AsString := PedidoVenda.Cliente.Codigo;
+
+      query.ParamByName('NOME_CLIENTE_AVULSO').AsString := PedidoVenda.NomeClienteAvulso;
+      query.ExecSQL;
+
+      Result := True;
+    except
+      Result := False;
+    end;
+  finally
+    query.Free;
+  end;
 end;
 
 function TPedidoVendaDAO.VendasAbertas: TDBXReader;
@@ -148,7 +224,7 @@ begin
       query.ParamByName('DATA').AsDateTime          := PedidoVenda.Data;
       query.ParamByName('DESCONTO').AsCurrency      := PedidoVenda.Desconto;
       query.ParamByName('TIPO_PAGAMENTO').AsInteger := PedidoVenda.TipoPagamento;
-      query.ParamByName('FECHADA').AsBoolean        := True;
+      query.ParamByName('FECHADA').AsBoolean        := PedidoVenda.Fechada;
 
       if PedidoVenda.Cliente <> nil then
         query.ParamByName('CODIGO_CLIENTE').AsString := PedidoVenda.Cliente.Codigo;

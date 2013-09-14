@@ -38,6 +38,8 @@ type
     cdsValidades: TClientDataSet;
     cdsValidadesDATA: TDateTimeField;
     cedPrecoVenda: TDXPCurrencyEdit;
+    Label3: TLabel;
+    sedEstoqueMinimo: TSpinEdit;
     procedure sbtNovoClick(Sender: TObject);
     procedure sbtEditarClick(Sender: TObject);
     procedure sbtExcluirClick(Sender: TObject);
@@ -116,6 +118,7 @@ begin
                              edtDescricao.Text,
                              edtCodigoBarras.Text,
                              cedPrecoVenda.Value,
+                             sedEstoqueMinimo.Value,
                              nil,
                              nil);
 
@@ -159,6 +162,7 @@ begin
     cds.FieldByName('DESCRICAO_TIPO_PRODUTO').AsString := FramePesquisaTipoProduto.edtDescricaoTipoProduto.Text;
     cds.FieldByName('CODIGO_BARRAS').AsString          := edtCodigoBarras.Text;
     cds.FieldByName('PRECO_VENDA').AsFloat             := cedPrecoVenda.Value;
+    cds.FieldByName('ESTOQUE_MINIMO').AsInteger        := sedEstoqueMinimo.Value;
     cds.Post;
   end
   else
@@ -178,6 +182,7 @@ begin
     cds.FieldByName('DESCRICAO_TIPO_PRODUTO').AsString := FramePesquisaTipoProduto.edtDescricaoTipoProduto.Text;
     cds.FieldByName('CODIGO_BARRAS').AsString          := edtCodigoBarras.Text;
     cds.FieldByName('PRECO_VENDA').AsFloat             := cedPrecoVenda.Value;
+    cds.FieldByName('ESTOQUE_MINIMO').AsInteger        := sedEstoqueMinimo.Value;
     cds.Post;
   end;
 end;
@@ -199,6 +204,7 @@ begin
       FramePesquisaTipoProduto.edtDescricaoTipoProduto.Text := Produto.TipoProduto.Descricao;
       edtCodigoBarras.Text         := Produto.CodigoBarras;
       cedPrecoVenda.Value          := Produto.PrecoVenda;
+      sedEstoqueMinimo.Value       := Produto.EstoqueMinimo;
       sedQuantidadeEstoque.Value   := Produto.QuantidadeEstoque;
 
       QuantidadeAnterior           := Produto.QuantidadeEstoque;

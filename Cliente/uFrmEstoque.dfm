@@ -7,13 +7,6 @@ inherited FrmEstoque: TFrmEstoque
   inherited pnlBotoes: TPanel
     ExplicitWidth = 599
   end
-  inherited pnlPesquisar: TPanel
-    inherited edtPesquisar: TEdit
-      ExplicitLeft = 1
-      ExplicitTop = 19
-      ExplicitWidth = 590
-    end
-  end
   inherited cdsCrud: TClientDataSet
     IndexDefs = <
       item

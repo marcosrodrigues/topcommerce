@@ -32,7 +32,6 @@ object FrmPrincipal: TFrmPrincipal
     Color = clMoneyGreen
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1075
     DesignSize = (
       1091
       51)
@@ -275,12 +274,11 @@ object FrmPrincipal: TFrmPrincipal
       BevelOuter = bvNone
       Enabled = False
       TabOrder = 0
-      ExplicitWidth = 656
       object edtDescricaoProduto: TEdit
         Left = 0
         Top = 0
         Width = 672
-        Height = 39
+        Height = 19
         Align = alClient
         Alignment = taCenter
         Color = clMenuBar
@@ -293,7 +291,6 @@ object FrmPrincipal: TFrmPrincipal
         ParentCtl3D = False
         ParentFont = False
         TabOrder = 0
-        ExplicitWidth = 656
       end
     end
   end
@@ -321,7 +318,6 @@ object FrmPrincipal: TFrmPrincipal
       Color = clMoneyGreen
       ParentBackground = False
       TabOrder = 0
-      ExplicitTop = 444
       object Image2: TImage
         Left = 6
         Top = 32
@@ -15913,7 +15909,6 @@ object FrmPrincipal: TFrmPrincipal
       Color = clMoneyGreen
       ParentBackground = False
       TabOrder = 1
-      ExplicitHeight = 444
       object Label1: TLabel
         Left = 16
         Top = 12
@@ -16108,8 +16103,6 @@ object FrmPrincipal: TFrmPrincipal
     Font.Style = []
     ParentFont = False
     TabOrder = 2
-    ExplicitWidth = 720
-    ExplicitHeight = 699
     object Panel5: TPanel
       Left = 0
       Top = 665
@@ -16120,8 +16113,6 @@ object FrmPrincipal: TFrmPrincipal
       Color = clMoneyGreen
       ParentBackground = False
       TabOrder = 0
-      ExplicitTop = 627
-      ExplicitWidth = 720
       DesignSize = (
         725
         72)
@@ -16165,7 +16156,7 @@ object FrmPrincipal: TFrmPrincipal
           Left = 0
           Top = 0
           Width = 186
-          Height = 48
+          Height = 22
           Align = alClient
           Alignment = taRightJustify
           Color = clMenuBar
@@ -16195,7 +16186,7 @@ object FrmPrincipal: TFrmPrincipal
           Left = 0
           Top = 0
           Width = 514
-          Height = 48
+          Height = 22
           Align = alClient
           Alignment = taCenter
           Color = clMenuBar
@@ -16209,7 +16200,6 @@ object FrmPrincipal: TFrmPrincipal
           ParentFont = False
           TabOrder = 0
           Text = 'VENDA'
-          ExplicitWidth = 475
           ExplicitHeight = 46
         end
       end
@@ -16223,8 +16213,6 @@ object FrmPrincipal: TFrmPrincipal
       BevelOuter = bvNone
       Enabled = False
       TabOrder = 1
-      ExplicitWidth = 720
-      ExplicitHeight = 627
       object grdProdutos: TDBGrid
         Left = 0
         Top = 0
@@ -16253,11 +16241,6 @@ object FrmPrincipal: TFrmPrincipal
             ButtonStyle = cbsNone
             Expanded = False
             FieldName = 'CODIGO'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -17
-            Font.Name = 'Tahoma'
-            Font.Style = []
             Visible = True
           end
           item
