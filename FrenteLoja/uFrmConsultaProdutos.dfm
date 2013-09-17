@@ -136,6 +136,10 @@ object FrmConsultaProdutos: TFrmConsultaProdutos
       DisplayLabel = 'Pre'#231'o de Venda'
       FieldName = 'PRECO_VENDA'
     end
+    object cdsConsultaESTOQUE_MINIMO: TIntegerField
+      FieldName = 'ESTOQUE_MINIMO'
+      Visible = False
+    end
     object cdsConsultaCODIGO_BARRAS: TStringField
       FieldName = 'CODIGO_BARRAS'
       Visible = False

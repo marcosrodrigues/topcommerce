@@ -22,14 +22,17 @@ type
     btnPesquisarCliente: TDXPButton;
     btnLimpar: TDXPButton;
     btnFechar: TDXPButton;
-    cedDesconto: TDXPCurrencyEdit;
+    cedDescontoValor: TDXPCurrencyEdit;
+    Label6: TLabel;
+    cedDescontoPercentual: TDXPCurrencyEdit;
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
-    procedure cedDescontoExit(Sender: TObject);
+    procedure cedDescontoValorExit(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure btnPesquisarClienteClick(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
     procedure btnLimparClick(Sender: TObject);
     procedure cbFormaPagamentoChange(Sender: TObject);
+    procedure cedDescontoPercentualExit(Sender: TObject);
   private
     { Private declarations }
   public
@@ -85,12 +88,20 @@ begin
   edCliente.Enabled := cbFormaPagamento.ItemIndex <> 1;
 end;
 
-procedure TFrmFecharVenda.cedDescontoExit(Sender: TObject);
+procedure TFrmFecharVenda.cedDescontoPercentualExit(Sender: TObject);
 begin
-  if (cedDesconto.Value = 0) then
+  if (cedDescontoPercentual.Value = 0) then
     edtTotal.Text := FormatCurr(',0.00', Total)
   else
-    edtTotal.Text := FormatCurr(',0.00', Total - cedDesconto.Value);
+    edtTotal.Text := FormatCurr(',0.00', Total - (Total * (cedDescontoPercentual.Value / 100)));
+end;
+
+procedure TFrmFecharVenda.cedDescontoValorExit(Sender: TObject);
+begin
+  if (cedDescontoValor.Value = 0) then
+    edtTotal.Text := FormatCurr(',0.00', Total)
+  else
+    edtTotal.Text := FormatCurr(',0.00', Total - cedDescontoValor.Value);
 end;
 
 procedure TFrmFecharVenda.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
@@ -104,7 +115,9 @@ procedure TFrmFecharVenda.FormKeyPress(Sender: TObject; var Key: Char);
 begin
   if (Ord(Key) = 13) then
   begin
-    if (Self.ActiveControl = cedDesconto) then
+    if (Self.ActiveControl = cedDescontoValor) then
+      cedDescontoPercentual.SetFocus
+    else if (Self.ActiveControl = cedDescontoPercentual) then
       cbFormaPagamento.SetFocus
     else if (Self.ActiveControl = cbFormaPagamento) then
       btnPesquisarCliente.SetFocus;

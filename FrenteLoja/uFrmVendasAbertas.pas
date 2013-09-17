@@ -14,10 +14,12 @@ type
     cdsConsultaNOME: TStringField;
     cdsConsultaNOME_CLIENTE_AVULSO: TStringField;
     dsConsulta: TDataSource;
+    cdsConsultaCODIGO: TStringField;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormShow(Sender: TObject);
+    procedure grdConsultaKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
     DAOClient: TPedidoVendaDAOClient;
@@ -48,13 +50,25 @@ procedure TFrmVendasAbertas.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   case Key of
-    VK_ESCAPE: Self.Close;
+    VK_ESCAPE: begin
+                 Self.ModalResult := mrCancel;
+                 Self.CloseModal;
+               end;
   end;
 end;
 
 procedure TFrmVendasAbertas.FormShow(Sender: TObject);
 begin
   CopyReaderToClientDataSet(DAOClient.VendasAbertas, cdsConsulta);
+end;
+
+procedure TFrmVendasAbertas.grdConsultaKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Ord(Key) = 13 then
+  begin
+    Self.ModalResult := mrOk;
+    Self.CloseModal;
+  end;
 end;
 
 end.

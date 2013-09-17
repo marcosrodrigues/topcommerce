@@ -41,12 +41,17 @@ object FrmVendasAbertas: TFrmVendasAbertas
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    OnKeyPress = grdConsultaKeyPress
   end
   object cdsConsulta: TClientDataSet
     Aggregates = <>
     Params = <>
     Left = 40
     Top = 128
+    object cdsConsultaCODIGO: TStringField
+      FieldName = 'CODIGO'
+      Visible = False
+    end
     object cdsConsultaDATA: TDateTimeField
       DisplayLabel = 'Data'
       FieldName = 'DATA'

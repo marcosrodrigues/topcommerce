@@ -4,7 +4,7 @@ interface
 
 uses
   Classes, DBXCommon, PedidoVenda, ItemPedidoVenda, SqlExpr, SysUtils,
-  EstoqueDAO;
+  EstoqueDAO, ClienteDAO, ProdutoDAO, Generics.Collections;
 
 type
   {$MethodInfo ON}
@@ -12,6 +12,8 @@ type
   private
     FComm: TDBXCommand;
     EstoqueDAO: TEstoqueDAO;
+    ClienteDAO: TClienteDAO;
+    ProdutoDAO: TProdutoDAO;
 
     procedure PrepareCommand;
   public
@@ -26,6 +28,7 @@ type
     function VendasFechadas: TDBXReader;
     function VendasAbertas: TDBXReader;
     function Recibo(CodigoPedidoVenda: string): TDBXReader;
+    function FindByCodigo(Codigo: string): TPedidoVenda;
 
     constructor Create;
     destructor Destroy; override;
@@ -77,12 +80,63 @@ end;
 constructor TPedidoVendaDAO.Create;
 begin
   EstoqueDAO := TEstoqueDAO.Create;
+  ClienteDAO := TClienteDAO.Create;
+  ProdutoDAO := TProdutoDAO.Create;
 end;
 
 destructor TPedidoVendaDAO.Destroy;
 begin
+  ProdutoDAO.Free;
+  ClienteDAO.Free;
   EstoqueDAO.Free;
   inherited;
+end;
+
+function TPedidoVendaDAO.FindByCodigo(Codigo: string): TPedidoVenda;
+var
+  query: TSQLQuery;
+  pedido: TPedidoVenda;
+  item: TItemPedidoVenda;
+begin
+  query := TSQLQuery.Create(nil);
+  try
+    query.SQLConnection := SCPrincipal.ConnTopCommerce;
+    query.SQL.Text := 'SELECT * FROM PEDIDOS_VENDA '+
+                      'WHERE CODIGO = ''' + Codigo + '''';
+    query.Open;
+
+    pedido := TPedidoVenda.Create;
+    pedido.Codigo   := query.FieldByName('CODIGO').AsString;
+    pedido.Data     := query.FieldByName('DATA').AsDateTime;
+    pedido.Desconto := query.FieldByName('DESCONTO').AsCurrency;
+    pedido.TipoPagamento := query.FieldByName('TIPO_PAGAMENTO').AsInteger;
+
+    if not query.FieldByName('CODIGO_CLIENTE').IsNull then
+      pedido.Cliente := ClienteDAO.FindByCodigo(query.FieldByName('CODIGO_CLIENTE').AsString);
+
+    pedido.NomeClienteAvulso := query.FieldByName('NOME_CLIENTE_AVULSO').AsString;
+    pedido.Fechada := query.FieldByName('FECHADA').AsBoolean;
+
+    query.Close;
+    query.SQL.Text := 'SELECT * FROM ITENS_PEDIDO_VENDA WHERE CODIGO_PEDIDO = ''' + Codigo + '''';
+    query.Open;
+
+    pedido.Itens := TList<TItemPedidoVenda>.Create;
+    while not query.Eof do
+    begin
+      item := TItemPedidoVenda.Create;
+      item.Produto := ProdutoDAO.FindByCodigo(query.FieldByName('CODIGO_PRODUTO').AsString);
+      item.Quantidade := query.FieldByName('QUANTIDADE').AsInteger;
+
+      pedido.Itens.Add(item);
+
+      query.Next;
+    end;
+
+    Result := pedido;
+  finally
+    query.Free;
+  end;
 end;
 
 procedure TPedidoVendaDAO.PrepareCommand;
@@ -167,7 +221,7 @@ end;
 function TPedidoVendaDAO.VendasAbertas: TDBXReader;
 begin
   PrepareCommand;
-  FComm.Text := 'SELECT V.DATA, C.NOME, V.NOME_CLIENTE_AVULSO '+
+  FComm.Text := 'SELECT V.CODIGO, V.DATA, C.NOME, V.NOME_CLIENTE_AVULSO '+
                 'FROM PEDIDOS_VENDA V '+
                 'LEFT JOIN CLIENTES C ON C.CODIGO = V.CODIGO_CLIENTE '+
                 'WHERE V.FECHADA = 0 '+
@@ -178,7 +232,7 @@ end;
 function TPedidoVendaDAO.VendasFechadas: TDBXReader;
 begin
   PrepareCommand;
-  FComm.Text := 'SELECT V.DATA, C.NOME, V.NOME_CLIENTE_AVULSO '+
+  FComm.Text := 'SELECT V.CODIGO, V.DATA, C.NOME, V.NOME_CLIENTE_AVULSO '+
                 'FROM PEDIDOS_VENDA V '+
                 'LEFT JOIN CLIENTES C ON C.CODIGO = V.CODIGO_CLIENTE '+
                 'WHERE V.FECHADA = 1 '+

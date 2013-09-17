@@ -278,7 +278,7 @@ object FrmPrincipal: TFrmPrincipal
         Left = 0
         Top = 0
         Width = 672
-        Height = 19
+        Height = 39
         Align = alClient
         Alignment = taCenter
         Color = clMenuBar
@@ -16156,7 +16156,7 @@ object FrmPrincipal: TFrmPrincipal
           Left = 0
           Top = 0
           Width = 186
-          Height = 22
+          Height = 48
           Align = alClient
           Alignment = taRightJustify
           Color = clMenuBar
@@ -16186,7 +16186,7 @@ object FrmPrincipal: TFrmPrincipal
           Left = 0
           Top = 0
           Width = 514
-          Height = 22
+          Height = 48
           Align = alClient
           Alignment = taCenter
           Color = clMenuBar

@@ -179,10 +179,34 @@ end;
 procedure TFrmPrincipal.VendasAbertas;
 var
   fVendasAbertas: TFrmVendasAbertas;
+  pedido: TPedidoVenda;
+  i: Integer;
 begin
   fVendasAbertas := TFrmVendasAbertas.Create(Self);
   try
     fVendasAbertas.ShowModal;
+
+    if fVendasAbertas.ModalResult = mrOk then
+    begin
+      pedido := DAOPedidoVenda.FindByCodigo(fVendasAbertas.cdsConsultaCODIGO.AsString);
+
+      CodigoPedidoVendaAtual := pedido.Codigo;
+      DataPedidoVendaAtual := pedido.Data;
+
+      cdsProdutos.Close;
+      cdsProdutos.CreateDataSet;
+
+      for i := 0 to pedido.Itens.Count - 1 do
+      begin
+        cdsProdutos.Append;
+        cdsProdutosCODIGO.AsString := pedido.Itens[i].Produto.Codigo;
+        cdsProdutosDESCRICAO.AsString := pedido.Itens[i].Produto.Descricao;
+        cdsProdutosQUANTIDADE.AsInteger := pedido.Itens[i].Quantidade;
+        cdsProdutosPRECO_UNITARIO.AsCurrency := pedido.Itens[i].Produto.PrecoVenda;
+        cdsProdutosPRECO_TOTAL.AsCurrency := cdsProdutosQUANTIDADE.AsInteger * cdsProdutosPRECO_UNITARIO.AsCurrency;
+        cdsProdutos.Post;
+      end;
+    end;
   finally
     fVendasAbertas.Free;
   end;
@@ -191,10 +215,34 @@ end;
 procedure TFrmPrincipal.VendasFechadas;
 var
   fVendasFechadas: TFrmVendasFechadas;
+  pedido: TPedidoVenda;
+  i: Integer;
 begin
   fVendasFechadas := TFrmVendasFechadas.Create(Self);
   try
     fVendasFechadas.ShowModal;
+
+    if fVendasFechadas.ModalResult = mrOk then
+    begin
+      pedido := DAOPedidoVenda.FindByCodigo(fVendasFechadas.cdsConsultaCODIGO.AsString);
+
+      CodigoPedidoVendaAtual := pedido.Codigo;
+      DataPedidoVendaAtual := pedido.Data;
+
+      cdsProdutos.Close;
+      cdsProdutos.CreateDataSet;
+
+      for i := 0 to pedido.Itens.Count - 1 do
+      begin
+        cdsProdutos.Append;
+        cdsProdutosCODIGO.AsString := pedido.Itens[i].Produto.Codigo;
+        cdsProdutosDESCRICAO.AsString := pedido.Itens[i].Produto.Descricao;
+        cdsProdutosQUANTIDADE.AsInteger := pedido.Itens[i].Quantidade;
+        cdsProdutosPRECO_UNITARIO.AsCurrency := pedido.Itens[i].Produto.PrecoVenda;
+        cdsProdutosPRECO_TOTAL.AsCurrency := cdsProdutosQUANTIDADE.AsInteger * cdsProdutosPRECO_UNITARIO.AsCurrency;
+        cdsProdutos.Post;
+      end;
+    end;
   finally
     fVendasFechadas.Free;
   end;
@@ -332,7 +380,7 @@ begin
 
     if (f.Fechar) then
     begin
-      CodigoVenda := GravarVenda(f.cedDesconto.Value, f.cbFormaPagamento.ItemIndex, f.Cliente, f.NomeCliente);
+      CodigoVenda := GravarVenda(f.cedDescontoValor.Value, f.cbFormaPagamento.ItemIndex, f.Cliente, f.NomeCliente);
 
       recibo := TFrmRelReciboVenda.Create(Self);
       try

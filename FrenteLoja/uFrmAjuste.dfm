@@ -48,12 +48,11 @@ object FrmAjuste: TFrmAjuste
     Color = clHotLight
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 578
     object lblDescricaoProduto: TLabel
       Left = 1
       Top = 1
-      Width = 176
-      Height = 23
+      Width = 454
+      Height = 39
       Align = alClient
       Alignment = taCenter
       Caption = 'lblDescricaoProduto'
@@ -64,6 +63,8 @@ object FrmAjuste: TFrmAjuste
       Font.Style = []
       ParentFont = False
       Layout = tlCenter
+      ExplicitWidth = 176
+      ExplicitHeight = 23
     end
   end
   object edtQuantidade: TEdit
@@ -72,6 +73,7 @@ object FrmAjuste: TFrmAjuste
     Width = 167
     Height = 32
     Alignment = taRightJustify
+    NumbersOnly = True
     TabOrder = 1
     Text = '1'
     OnChange = edtQuantidadeChange

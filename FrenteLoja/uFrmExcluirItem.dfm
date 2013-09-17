@@ -5,7 +5,7 @@ object FrmExcluirItem: TFrmExcluirItem
   BorderStyle = bsSingle
   Caption = 'Excluir Item'
   ClientHeight = 328
-  ClientWidth = 894
+  ClientWidth = 934
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,7 +21,7 @@ object FrmExcluirItem: TFrmExcluirItem
   object grdItens: TDBGrid
     Left = 0
     Top = 0
-    Width = 894
+    Width = 934
     Height = 328
     Align = alClient
     DataSource = FrmPrincipal.dsProdutos

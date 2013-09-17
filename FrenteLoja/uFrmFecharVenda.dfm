@@ -22,9 +22,9 @@ object FrmFecharVenda: TFrmFecharVenda
   object Label2: TLabel
     Left = 10
     Top = 50
-    Width = 83
+    Width = 135
     Height = 24
-    Caption = 'Desconto'
+    Caption = 'Desconto Valor'
   end
   object Label4: TLabel
     Left = 10
@@ -47,6 +47,13 @@ object FrmFecharVenda: TFrmFecharVenda
     Height = 24
     Caption = 'Cliente'
   end
+  object Label6: TLabel
+    Left = 202
+    Top = 50
+    Width = 183
+    Height = 24
+    Caption = 'Desconto Percentual'
+  end
   object Panel1: TPanel
     Left = 0
     Top = 0
@@ -55,8 +62,7 @@ object FrmFecharVenda: TFrmFecharVenda
     Align = alTop
     Color = clHotLight
     ParentBackground = False
-    TabOrder = 7
-    ExplicitWidth = 629
+    TabOrder = 8
     object Label1: TLabel
       Left = 1
       Top = 1
@@ -84,7 +90,7 @@ object FrmFecharVenda: TFrmFecharVenda
     AutoSize = True
     BevelOuter = bvNone
     Enabled = False
-    TabOrder = 1
+    TabOrder = 2
     object edtTotal: TEdit
       Left = 0
       Top = 0
@@ -102,7 +108,7 @@ object FrmFecharVenda: TFrmFecharVenda
     Height = 32
     Style = csDropDownList
     ItemIndex = 0
-    TabOrder = 2
+    TabOrder = 3
     Text = 'Dinheiro'
     OnChange = cbFormaPagamentoChange
     Items.Strings = (
@@ -117,7 +123,7 @@ object FrmFecharVenda: TFrmFecharVenda
     Top = 287
     Width = 535
     Height = 32
-    TabOrder = 3
+    TabOrder = 4
   end
   object btnPesquisarCliente: TDXPButton
     Left = 548
@@ -164,7 +170,7 @@ object FrmFecharVenda: TFrmFecharVenda
       85F2F2F21CB3D99C8BE079F457C4F9A37BBCD3F80FEE70DE0C73C982D0000000
       227A545874536F667477617265000078DA2B2F2FD7CBCCCB2E4E4E2C48D5CB2F
       4A070036D806581053CA5C0000000049454E44AE426082}
-    TabOrder = 4
+    TabOrder = 5
   end
   object btnLimpar: TDXPButton
     Left = 588
@@ -209,7 +215,7 @@ object FrmFecharVenda: TFrmFecharVenda
       D3A5B8BEBE026728B258449128E1A3AA1654F16AFF03A72859684E95566DB36A
       96942A591579C8114B0125A1F272EE41E21BAD2EAC4969274C4981C453E207EC
       6F8E96B328609DAFC60000000049454E44AE426082}
-    TabOrder = 5
+    TabOrder = 6
   end
   object btnFechar: TDXPButton
     Left = 10
@@ -272,9 +278,9 @@ object FrmFecharVenda: TFrmFecharVenda
       EF67151F12403CAC2EA64E5CCE3352EED6BD4F73BF3CFAE0F3880F19E06CE4C8
       AF9FB3C7E9D701F085C63700FF01CCCF4AD32DDF5C9F0000000049454E44AE42
       6082}
-    TabOrder = 6
+    TabOrder = 7
   end
-  object cedDesconto: TDXPCurrencyEdit
+  object cedDescontoValor: TDXPCurrencyEdit
     Left = 8
     Top = 76
     Width = 168
@@ -283,6 +289,17 @@ object FrmFecharVenda: TFrmFecharVenda
     Options = []
     TabOrder = 0
     Text = '0,00'
-    OnExit = cedDescontoExit
+    OnExit = cedDescontoValorExit
+  end
+  object cedDescontoPercentual: TDXPCurrencyEdit
+    Left = 200
+    Top = 76
+    Width = 168
+    Height = 32
+    Alignment = taRightJustify
+    Options = []
+    TabOrder = 1
+    Text = '0,00'
+    OnExit = cedDescontoPercentualExit
   end
 end

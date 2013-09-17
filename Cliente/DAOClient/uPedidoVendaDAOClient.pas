@@ -18,6 +18,7 @@ type
     FVendasFechadasCommand: TDBXCommand;
     FVendasAbertasCommand: TDBXCommand;
     FReciboCommand: TDBXCommand;
+    FFindByCodigoCommand: TDBXCommand;
   public
     constructor Create(ADBXConnection: TDBXConnection); overload;
     constructor Create(ADBXConnection: TDBXConnection; AInstanceOwner: Boolean); overload;
@@ -33,6 +34,7 @@ type
     function VendasFechadas: TDBXReader;
     function VendasAbertas: TDBXReader;
     function Recibo(CodigoPedidoVenda: string): TDBXReader;
+    function FindByCodigo(Codigo: string): TPedidoVenda;
   end;
 
 implementation
@@ -264,7 +266,34 @@ begin
   FreeAndNil(FVendasFechadasCommand);
   FreeAndNil(FVendasAbertasCommand);
   FreeAndNil(FReciboCommand);
+  FreeAndNil(FFindByCodigoCommand);
   inherited;
+end;
+
+function TPedidoVendaDAOClient.FindByCodigo(Codigo: string): TPedidoVenda;
+begin
+  if FFindByCodigoCommand = nil then
+  begin
+    FFindByCodigoCommand := FDBXConnection.CreateCommand;
+    FFindByCodigoCommand.CommandType := TDBXCommandTypes.DSServerMethod;
+    FFindByCodigoCommand.Text := 'TPedidoVendaDAO.FindByCodigo';
+    FFindByCodigoCommand.Prepare;
+  end;
+  FFindByCodigoCommand.Parameters[0].Value.SetWideString(Codigo);
+  FFindByCodigoCommand.ExecuteUpdate;
+  if not FFindByCodigoCommand.Parameters[1].Value.IsNull then
+  begin
+    FUnMarshal := TDBXClientCommand(FFindByCodigoCommand.Parameters[1].ConnectionHandler).GetJSONUnMarshaler;
+    try
+      Result := TPedidoVenda(FUnMarshal.UnMarshal(FFindByCodigoCommand.Parameters[1].Value.GetJSONValue(True)));
+      if FInstanceOwner then
+        FFindByCodigoCommand.FreeOnExecute(Result);
+    finally
+      FreeAndNil(FUnMarshal)
+    end
+  end
+  else
+    Result := nil;
 end;
 
 end.
