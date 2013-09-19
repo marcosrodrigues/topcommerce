@@ -16211,7 +16211,6 @@ object FrmPrincipal: TFrmPrincipal
       Height = 665
       Align = alClient
       BevelOuter = bvNone
-      Enabled = False
       TabOrder = 1
       object grdProdutos: TDBGrid
         Left = 0
@@ -16219,15 +16218,18 @@ object FrmPrincipal: TFrmPrincipal
         Width = 725
         Height = 665
         Align = alClient
+        BorderStyle = bsNone
         Ctl3D = False
         DataSource = dsProdutos
-        DrawingStyle = gdsGradient
+        DrawingStyle = gdsClassic
+        FixedColor = clWhite
+        GradientEndColor = clMaroon
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
-        Font.Height = -17
+        Font.Height = -16
         Font.Name = 'Tahoma'
         Font.Style = []
-        Options = [dgTitles, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+        Options = [dgTitles, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
         ParentCtl3D = False
         ParentFont = False
         TabOrder = 0
@@ -16309,6 +16311,7 @@ object FrmPrincipal: TFrmPrincipal
       Size = 60
     end
     object cdsProdutosQUANTIDADE: TIntegerField
+      Alignment = taCenter
       DisplayLabel = 'Quantidade'
       FieldName = 'QUANTIDADE'
     end

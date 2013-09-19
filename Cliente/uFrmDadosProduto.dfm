@@ -18,8 +18,6 @@ inherited FrmDadosProduto: TFrmDadosProduto
     Height = 228
     Align = alClient
     TabOrder = 4
-    ExplicitTop = 218
-    ExplicitHeight = 254
   end
   inherited pnlBotoes: TPanel
     Width = 575
@@ -61,6 +59,13 @@ inherited FrmDadosProduto: TFrmDadosProduto
       Width = 88
       Height = 14
       Caption = 'Pre'#231'o de Venda'
+    end
+    object Label7: TLabel
+      Left = 8
+      Top = 132
+      Width = 52
+      Height = 14
+      Caption = 'Endere'#231'o'
     end
     object edtCodigo: TEdit
       Left = 104
@@ -210,23 +215,34 @@ inherited FrmDadosProduto: TFrmDadosProduto
       TabOrder = 5
       Text = '0,00'
     end
+    object edtEndereco: TEdit
+      Left = 104
+      Top = 129
+      Width = 201
+      Height = 22
+      MaxLength = 60
+      TabOrder = 7
+    end
   end
   inherited pnlDetails: TPanel
     Top = 244
     Width = 575
     Height = 228
-    ExplicitTop = 218
+    ExplicitTop = 244
     ExplicitWidth = 575
-    ExplicitHeight = 254
+    ExplicitHeight = 228
     inherited pgcDetail: TPageControl
       Width = 573
       Height = 226
       ActivePage = tbsValidades
       ExplicitWidth = 573
-      ExplicitHeight = 252
+      ExplicitHeight = 226
       object tbsFornecedores: TTabSheet
         Caption = '&Fornecedores'
-        ExplicitHeight = 223
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object grdFornecedores: TDBGrid
           Left = 0
           Top = 0
@@ -246,7 +262,6 @@ inherited FrmDadosProduto: TFrmDadosProduto
       object tbsValidades: TTabSheet
         Caption = '&Validades'
         ImageIndex = 1
-        ExplicitHeight = 223
         object grdValidades: TDBGrid
           Left = 0
           Top = 0
@@ -268,7 +283,7 @@ inherited FrmDadosProduto: TFrmDadosProduto
   inherited pnlBotoesDetails: TPanel
     Top = 216
     Width = 575
-    ExplicitTop = 190
+    ExplicitTop = 216
     ExplicitWidth = 575
     inherited sbtNovo: TSpeedButton
       OnClick = sbtNovoClick

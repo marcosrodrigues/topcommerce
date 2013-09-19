@@ -70,7 +70,7 @@ type
     procedure NovaVenda;
     procedure FecharVenda;
     procedure ConsultarProduto;
-    function GravarVenda(Desconto: Currency; TipoPagamento: Integer; Cliente: TCliente; NomeCliente: string): string;
+    function GravarVenda(Desconto, DescontoPercentual: Currency; TipoPagamento: Integer; Cliente: TCliente; NomeCliente: string): string;
     procedure ExcluirItem;
     procedure IniciaControles;
     procedure VendasFechadas;
@@ -127,7 +127,7 @@ begin
   IniciaControles;
 end;
 
-function TFrmPrincipal.GravarVenda(Desconto: Currency; TipoPagamento: Integer; Cliente: TCliente; NomeCliente: string): string;
+function TFrmPrincipal.GravarVenda(Desconto, DescontoPercentual: Currency; TipoPagamento: Integer; Cliente: TCliente; NomeCliente: string): string;
 var
   Pedido: TPedidoVenda;
   //Item: TItemPedidoVenda;
@@ -142,6 +142,7 @@ begin
   Pedido.TipoPagamento := TipoPagamento;
   Pedido.Cliente       := Cliente;
   Pedido.Fechada       := True;
+  Pedido.DescontoPercentual := DescontoPercentual;
   if Cliente = nil then
     Pedido.NomeClienteAvulso := NomeCliente;
 
@@ -351,6 +352,7 @@ begin
     begin
       edtSubtotal.Text := FormatCurr(',0.00', StrToCurr(edtSubtotal.Text) - cdsProdutosQUANTIDADE.AsInteger * cdsProdutosPRECO_UNITARIO.AsCurrency);
 
+      DAOPedidoVenda.DeleteItemDoPedido(cdsProdutosCODIGO.AsString, CodigoPedidoVendaAtual);
       cdsProdutos.Delete;
     end;
 
@@ -380,7 +382,7 @@ begin
 
     if (f.Fechar) then
     begin
-      CodigoVenda := GravarVenda(f.cedDescontoValor.Value, f.cbFormaPagamento.ItemIndex, f.Cliente, f.NomeCliente);
+      CodigoVenda := GravarVenda(f.cedDescontoValor.Value, f.cedDescontoPercentual.Value, f.cbFormaPagamento.ItemIndex, f.Cliente, f.NomeCliente);
 
       recibo := TFrmRelReciboVenda.Create(Self);
       try

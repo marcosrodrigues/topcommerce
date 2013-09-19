@@ -40,6 +40,8 @@ type
     cedPrecoVenda: TDXPCurrencyEdit;
     Label3: TLabel;
     sedEstoqueMinimo: TSpinEdit;
+    Label7: TLabel;
+    edtEndereco: TEdit;
     procedure sbtNovoClick(Sender: TObject);
     procedure sbtEditarClick(Sender: TObject);
     procedure sbtExcluirClick(Sender: TObject);
@@ -120,7 +122,8 @@ begin
                              cedPrecoVenda.Value,
                              sedEstoqueMinimo.Value,
                              nil,
-                             nil);
+                             nil,
+                             edtEndereco.Text);
 
   cdsFornecedores.DisableControls;
   cdsFornecedores.First;
@@ -163,6 +166,7 @@ begin
     cds.FieldByName('CODIGO_BARRAS').AsString          := edtCodigoBarras.Text;
     cds.FieldByName('PRECO_VENDA').AsFloat             := cedPrecoVenda.Value;
     cds.FieldByName('ESTOQUE_MINIMO').AsInteger        := sedEstoqueMinimo.Value;
+    cds.FieldByName('ENDERECO').AsString               := edtEndereco.Text;
     cds.Post;
   end
   else
@@ -183,6 +187,7 @@ begin
     cds.FieldByName('CODIGO_BARRAS').AsString          := edtCodigoBarras.Text;
     cds.FieldByName('PRECO_VENDA').AsFloat             := cedPrecoVenda.Value;
     cds.FieldByName('ESTOQUE_MINIMO').AsInteger        := sedEstoqueMinimo.Value;
+    cds.FieldByName('ENDERECO').AsString               := edtEndereco.Text;
     cds.Post;
   end;
 end;
@@ -206,6 +211,7 @@ begin
       cedPrecoVenda.Value          := Produto.PrecoVenda;
       sedEstoqueMinimo.Value       := Produto.EstoqueMinimo;
       sedQuantidadeEstoque.Value   := Produto.QuantidadeEstoque;
+      edtEndereco.Text             := Produto.Endereco;
 
       QuantidadeAnterior           := Produto.QuantidadeEstoque;
 

@@ -26,6 +26,7 @@ type
     cdsConsultaPRECO_VENDA: TCurrencyField;
     cdsConsultaQUANTIDADE: TIntegerField;
     cdsConsultaESTOQUE_MINIMO: TIntegerField;
+    cdsConsultaENDERECO: TStringField;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);

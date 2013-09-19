@@ -189,7 +189,7 @@ begin
   try
     query.SQLConnection := SCPrincipal.ConnTopCommerce;
     try
-      query.SQL.Text := 'UPDATE PEDIDOS_VENDA SET DESCONTO = :DESCONTO, TIPO_PAGAMENTO = :TIPO_PAGAMENTO, FECHADA = :FECHADA ';
+      query.SQL.Text := 'UPDATE PEDIDOS_VENDA SET DESCONTO = :DESCONTO, TIPO_PAGAMENTO = :TIPO_PAGAMENTO, FECHADA = :FECHADA, DESCONTO_PERCENTUAL = :DESCONTO_PERCENTUAL ';
 
       if PedidoVenda.Cliente <> nil then
         query.SQL.Text := query.SQL.Text + ', CODIGO_CLIENTE = :CODIGO_CLIENTE, NOME_CLIENTE_AVULSO = :NOME_CLIENTE_AVULSO '
@@ -202,6 +202,7 @@ begin
       query.ParamByName('DESCONTO').AsCurrency      := PedidoVenda.Desconto;
       query.ParamByName('TIPO_PAGAMENTO').AsInteger := PedidoVenda.TipoPagamento;
       query.ParamByName('FECHADA').AsBoolean        := PedidoVenda.Fechada;
+      query.ParamByName('DESCONTO_PERCENTUAL').AsCurrency := PedidoVenda.DescontoPercentual;
 
       if PedidoVenda.Cliente <> nil then
         query.ParamByName('CODIGO_CLIENTE').AsString := PedidoVenda.Cliente.Codigo;
@@ -267,18 +268,19 @@ begin
   try
     query.SQLConnection := SCPrincipal.ConnTopCommerce;
     try
-      query.SQL.Text := 'INSERT INTO PEDIDOS_VENDA (CODIGO, DATA, DESCONTO, TIPO_PAGAMENTO, FECHADA';
+      query.SQL.Text := 'INSERT INTO PEDIDOS_VENDA (CODIGO, DATA, DESCONTO, TIPO_PAGAMENTO, FECHADA, DESCONTO_PERCENTUAL';
 
       if PedidoVenda.Cliente <> nil then
-        query.SQL.Text := query.SQL.Text + ', CODIGO_CLIENTE, NOME_CLIENTE_AVULSO) VALUES (:CODIGO, :DATA, :DESCONTO, :TIPO_PAGAMENTO, :FECHADA, :CODIGO_CLIENTE, :NOME_CLIENTE_AVULSO)'
+        query.SQL.Text := query.SQL.Text + ', CODIGO_CLIENTE, NOME_CLIENTE_AVULSO) VALUES (:CODIGO, :DATA, :DESCONTO, :TIPO_PAGAMENTO, :FECHADA, :DESCONTO_PERCENTUAL, :CODIGO_CLIENTE, :NOME_CLIENTE_AVULSO)'
       else
-        query.SQL.Text := query.SQL.Text + ', NOME_CLIENTE_AVULSO) VALUES (:CODIGO, :DATA, :DESCONTO, :TIPO_PAGAMENTO, :FECHADA, :NOME_CLIENTE_AVULSO)';
+        query.SQL.Text := query.SQL.Text + ', NOME_CLIENTE_AVULSO) VALUES (:CODIGO, :DATA, :DESCONTO, :TIPO_PAGAMENTO, :FECHADA, :DESCONTO_PERCENTUAL, :NOME_CLIENTE_AVULSO)';
 
       query.ParamByName('CODIGO').AsString          := PedidoVenda.Codigo;
       query.ParamByName('DATA').AsDateTime          := PedidoVenda.Data;
       query.ParamByName('DESCONTO').AsCurrency      := PedidoVenda.Desconto;
       query.ParamByName('TIPO_PAGAMENTO').AsInteger := PedidoVenda.TipoPagamento;
       query.ParamByName('FECHADA').AsBoolean        := PedidoVenda.Fechada;
+      query.ParamByName('DESCONTO_PERCENTUAL').AsCurrency := PedidoVenda.DescontoPercentual;
 
       if PedidoVenda.Cliente <> nil then
         query.ParamByName('CODIGO_CLIENTE').AsString := PedidoVenda.Cliente.Codigo;
@@ -377,6 +379,8 @@ begin
     query.SQLConnection := SCPrincipal.ConnTopCommerce;
     try
       query.SQL.Text := 'SELECT * FROM ITENS_PEDIDO_VENDA WHERE CODIGO_PEDIDO = :CODIGO_PEDIDO AND CODIGO_PRODUTO = :CODIGO_PRODUTO';
+      query.ParamByName('CODIGO_PEDIDO').AsString  := CodigoPedidoVenda;
+      query.ParamByName('CODIGO_PRODUTO').AsString := CodigoProduto;
       query.Open;
       query.First;
       EstoqueDAO.AtualizaQuantidade(query.FieldByName('CODIGO_PRODUTO').AsString, 'C', query.FieldByName('QUANTIDADE').AsInteger);

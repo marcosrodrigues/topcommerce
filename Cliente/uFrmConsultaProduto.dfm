@@ -2,7 +2,6 @@ inherited FrmConsultaProduto: TFrmConsultaProduto
   Caption = 'Consulta de Produtos'
   ClientWidth = 592
   ExplicitWidth = 608
-  ExplicitHeight = 240
   PixelsPerInch = 96
   TextHeight = 14
   inherited pnlParametros: TPanel
@@ -15,6 +14,7 @@ inherited FrmConsultaProduto: TFrmConsultaProduto
   end
   inherited grdConsulta: TDBGrid
     Width = 592
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
   end
   inherited cdsConsulta: TClientDataSet
     object cdsConsultaCODIGO: TStringField

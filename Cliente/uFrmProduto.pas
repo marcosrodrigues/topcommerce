@@ -17,6 +17,7 @@ type
     cdsCrudPRECO_VENDA: TCurrencyField;
     cdsCrudQUANTIDADE: TIntegerField;
     cdsCrudESTOQUE_MINIMO: TIntegerField;
+    cdsCrudENDERECO: TStringField;
   private
     { Private declarations }
     DAOClient: TProdutoDAOClient;
@@ -100,6 +101,7 @@ begin
     f.Produto.PrecoVenda        := cdsCrudPRECO_VENDA.AsCurrency;
     f.Produto.EstoqueMinimo     := cdsCrudESTOQUE_MINIMO.AsInteger;
     f.Produto.QuantidadeEstoque := cdsCrudQUANTIDADE.AsInteger;
+    f.Produto.Endereco          := cdsCrudENDERECO.AsString;
 
     f.Operacao := opEdit;
     f.ShowModal;

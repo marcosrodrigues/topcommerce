@@ -70,5 +70,10 @@ inherited FrmProduto: TFrmProduto
       FieldName = 'QUANTIDADE'
       Visible = False
     end
+    object cdsCrudENDERECO: TStringField
+      DisplayLabel = 'Endere'#231'o'
+      FieldName = 'ENDERECO'
+      Size = 50
+    end
   end
 end

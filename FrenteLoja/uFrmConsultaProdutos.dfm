@@ -62,7 +62,13 @@ object FrmConsultaProdutos: TFrmConsultaProdutos
     Height = 308
     Align = alClient
     DataSource = dsConsulta
-    Options = [dgTitles, dgIndicator, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -17
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    Options = [dgTitles, dgIndicator, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
+    ParentFont = False
     TabOrder = 1
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -117,7 +123,7 @@ object FrmConsultaProdutos: TFrmConsultaProdutos
     end
     object cdsConsultaDESCRICAO: TStringField
       DisplayLabel = 'Descri'#231#227'o'
-      DisplayWidth = 35
+      DisplayWidth = 55
       FieldName = 'DESCRICAO'
       Size = 60
     end
@@ -130,10 +136,12 @@ object FrmConsultaProdutos: TFrmConsultaProdutos
       DisplayLabel = 'Tipo de Produto'
       DisplayWidth = 25
       FieldName = 'DESCRICAO_TIPO_PRODUTO'
+      Visible = False
       Size = 60
     end
     object cdsConsultaPRECO_VENDA: TCurrencyField
-      DisplayLabel = 'Pre'#231'o de Venda'
+      DisplayLabel = 'Pre'#231'o'
+      DisplayWidth = 15
       FieldName = 'PRECO_VENDA'
     end
     object cdsConsultaESTOQUE_MINIMO: TIntegerField
@@ -145,8 +153,15 @@ object FrmConsultaProdutos: TFrmConsultaProdutos
       Visible = False
     end
     object cdsConsultaQUANTIDADE: TIntegerField
-      DisplayLabel = 'Quantidade'
+      Alignment = taCenter
+      DisplayLabel = 'Estoque'
       FieldName = 'QUANTIDADE'
+    end
+    object cdsConsultaENDERECO: TStringField
+      DisplayLabel = 'Endere'#231'o'
+      DisplayWidth = 20
+      FieldName = 'ENDERECO'
+      Size = 50
     end
   end
 end

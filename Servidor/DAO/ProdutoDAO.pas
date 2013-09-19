@@ -54,7 +54,7 @@ function TProdutoDAO.List: TDBXReader;
 begin
   PrepareCommand;
   FComm.Text := 'SELECT P.CODIGO, P.DESCRICAO, P.CODIGO_TIPO_PRODUTO, T.DESCRICAO AS DESCRICAO_TIPO_PRODUTO, '+
-                '       P.PRECO_VENDA, P.ESTOQUE_MINIMO, P.CODIGO_BARRAS, E.QUANTIDADE '+
+                '       P.PRECO_VENDA, P.ESTOQUE_MINIMO, P.CODIGO_BARRAS, E.QUANTIDADE, P.ENDERECO '+
                 'FROM PRODUTOS P '+
                 'INNER JOIN TIPOS_PRODUTO T ON T.CODIGO = P.CODIGO_TIPO_PRODUTO '+
                 'LEFT JOIN ESTOQUE E ON E.CODIGO_PRODUTO = P.CODIGO';
@@ -184,13 +184,14 @@ begin
   try
     query.SQLConnection := SCPrincipal.ConnTopCommerce;
     try
-      query.SQL.Text := 'INSERT INTO ' + TABELA +' (CODIGO, CODIGO_TIPO_PRODUTO, DESCRICAO, CODIGO_BARRAS, PRECO_VENDA, ESTOQUE_MINIMO) VALUES (:CODIGO, :CODIGO_TIPO_PRODUTO, :DESCRICAO, :CODIGO_BARRAS, :PRECO_VENDA, :ESTOQUE_MINIMO)';
+      query.SQL.Text := 'INSERT INTO ' + TABELA +' (CODIGO, CODIGO_TIPO_PRODUTO, DESCRICAO, CODIGO_BARRAS, PRECO_VENDA, ESTOQUE_MINIMO, ENDERECO) VALUES (:CODIGO, :CODIGO_TIPO_PRODUTO, :DESCRICAO, :CODIGO_BARRAS, :PRECO_VENDA, :ESTOQUE_MINIMO, :ENDERECO)';
       query.ParamByName('CODIGO').AsString              := produto.Codigo;
       query.ParamByName('CODIGO_TIPO_PRODUTO').AsString := produto.TipoProduto.Codigo;
       query.ParamByName('DESCRICAO').AsString           := produto.Descricao;
       query.ParamByName('CODIGO_BARRAS').AsString       := produto.CodigoBarras;
       query.ParamByName('PRECO_VENDA').AsCurrency       := produto.PrecoVenda;
       query.ParamByName('ESTOQUE_MINIMO').AsInteger     := produto.EstoqueMinimo;
+      query.ParamByName('ENDERECO').AsString            := produto.Endereco;
       query.ExecSQL;
 
       query.SQL.Text := 'INSERT INTO FORNECEDORES_PRODUTO (CODIGO_PRODUTO, CODIGO_FORNECEDOR, PRECO_COMPRA) '+
@@ -237,14 +238,17 @@ begin
                       ' DESCRICAO = :DESCRICAO,                     '+
                       ' CODIGO_BARRAS = :CODIGO_BARRAS,             '+
                       ' PRECO_VENDA = :PRECO_VENDA,                 '+
-                      ' ESTOQUE_MINIMO = :ESTOQUE_MINIMO            '+
+                      ' ESTOQUE_MINIMO = :ESTOQUE_MINIMO,           '+
+                      ' ENDERECO = :ENDERECO                        '+
                       'WHERE CODIGO = :CODIGO                       ';
     query.ParamByName('CODIGO_TIPO_PRODUTO').AsString := produto.TipoProduto.Codigo;
     query.ParamByName('DESCRICAO').AsString           := produto.Descricao;
     query.ParamByName('CODIGO_BARRAS').AsString       := produto.CodigoBarras;
     query.ParamByName('PRECO_VENDA').AsCurrency       := produto.PrecoVenda;
     query.ParamByName('ESTOQUE_MINIMO').AsInteger     := produto.EstoqueMinimo;
+    query.ParamByName('ENDERECO').AsString            := produto.Endereco;
     query.ParamByName('CODIGO').AsString              := produto.Codigo;
+
     try
       query.ExecSQL;
 
@@ -331,7 +335,8 @@ begin
                               query.FieldByName('PRECO_VENDA').AsCurrency,
                               query.FieldByName('ESTOQUE_MINIMO').AsInteger,
                               nil,
-                              nil);
+                              nil,
+                              query.FieldByName('ENDERECO').AsString);
   finally
     query.Free;
   end;

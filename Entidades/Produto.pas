@@ -25,6 +25,7 @@ type
     FFornecedores: TList<TFornecedorProduto>;
     FValidades: TList<TValidade>;
     FEstoqueMinimo: Integer;
+    FEndereco: string;
   public
     property Codigo: string read FCodigo write FCodigo;
     property TipoProduto: TTipoProduto read FTipoProduto write FTipoProduto;
@@ -35,11 +36,12 @@ type
     property Fornecedores: TList<TFornecedorProduto> read FFornecedores write FFornecedores;
     property Validades: TList<TValidade> read FValidades write FValidades;
     property EstoqueMinimo: Integer read FEstoqueMinimo write FEstoqueMinimo;
+    property Endereco: string read FEndereco write FEndereco;
 
     constructor Create; overload;
     constructor Create(Codigo: string); overload;
     constructor Create(Codigo: string; TipoProduto: TTipoProduto; Descricao,
-      CodigoBarras: string; PrecoVenda: Currency; EstoqueMinimo: Integer; Fornecedores: TList<TFornecedorProduto>; Validades: TList<TValidade>); overload;
+      CodigoBarras: string; PrecoVenda: Currency; EstoqueMinimo: Integer; Fornecedores: TList<TFornecedorProduto>; Validades: TList<TValidade>; Endereco: string); overload;
 
     destructor Destroy; override;
   end;
@@ -80,7 +82,7 @@ end;
 
 constructor TProduto.Create(Codigo: string; TipoProduto: TTipoProduto; Descricao,
   CodigoBarras: string; PrecoVenda: Currency; EstoqueMinimo: Integer; Fornecedores: TList<TFornecedorProduto>;
-  Validades: TList<TValidade>);
+  Validades: TList<TValidade>; Endereco: string);
 begin
   Self.FCodigo        := Codigo;
   Self.FTipoProduto   := TipoProduto;
@@ -90,6 +92,7 @@ begin
   Self.FEstoqueMinimo := EstoqueMinimo;
   Self.FFornecedores  := Fornecedores;
   Self.FValidades     := Validades;
+  Self.FEndereco      := Endereco;
 end;
 
 destructor TProduto.Destroy;

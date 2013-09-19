@@ -92,7 +92,8 @@ begin
                                          0,
                                          0,
                                          nil,
-                                         nil);
+                                         nil,
+                                         '');
     f.Estoque.Quantidade := cdsCrudQUANTIDADE.AsInteger;
 
     f.Operacao := opEdit;
