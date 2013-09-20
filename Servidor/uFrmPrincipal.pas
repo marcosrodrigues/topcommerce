@@ -5,7 +5,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Buttons, IniFiles;
+  Dialogs, StdCtrls, Buttons, IniFiles, WinSvc;
 
 type
   TFrmPrincipal = class(TForm)
@@ -28,6 +28,7 @@ type
     procedure FormShow(Sender: TObject);
   private
     procedure ConectarBancoDados;
+    function ServiceGetStatus(sMachine, sService: PChar): DWORD;
     { Private declarations }
   public
     { Public declarations }
@@ -72,6 +73,12 @@ end;
 
 procedure TFrmPrincipal.bbtIniciarPararClick(Sender: TObject);
 begin
+  if not SCPrincipal.ConnTopCommerce.Connected then
+  begin
+    Atencao('Só é possível ativar o servidor após conectar com o banco de dados.');
+    Exit;
+  end;
+
   if (SCPrincipal.DSServer.Started) then
   begin
     SCPrincipal.DSServer.Stop;
@@ -109,8 +116,55 @@ begin
   end;
 end;
 
+function TFrmPrincipal.ServiceGetStatus(sMachine, sService: PChar): DWORD;
+  {******************************************}
+  {*** Parameters: ***}
+  {*** sService: specifies the name of the service to open
+  {*** sMachine: specifies the name of the target computer
+  {*** ***}
+  {*** Return Values: ***}
+  {*** -1 = Error opening service ***}
+  {*** 1 = SERVICE_STOPPED ***}
+  {*** 2 = SERVICE_START_PENDING ***}
+  {*** 3 = SERVICE_STOP_PENDING ***}
+  {*** 4 = SERVICE_RUNNING ***}
+  {*** 5 = SERVICE_CONTINUE_PENDING ***}
+  {*** 6 = SERVICE_PAUSE_PENDING ***}
+  {*** 7 = SERVICE_PAUSED ***}
+  {******************************************}
+var
+  SCManHandle, SvcHandle: SC_Handle;
+  SS: TServiceStatus;
+  dwStat: DWORD;
+begin
+  dwStat := 0;
+  // Open service manager handle.
+  SCManHandle := OpenSCManager(sMachine, nil, SC_MANAGER_CONNECT);
+  if (SCManHandle > 0) then
+  begin
+    SvcHandle := OpenService(SCManHandle, sService, SERVICE_QUERY_STATUS);
+    // if Service installed
+    if (SvcHandle > 0) then
+    begin
+      // SS structure holds the service status (TServiceStatus);
+      if (QueryServiceStatus(SvcHandle, SS)) then
+        dwStat := ss.dwCurrentState;
+      CloseServiceHandle(SvcHandle);
+    end;
+    CloseServiceHandle(SCManHandle);
+  end;
+  Result := dwStat;
+end;
+
 procedure TFrmPrincipal.ConectarBancoDados;
 begin
+  // Esperar serviço do banco de dados iniciar
+  while SERVICE_RUNNING <> ServiceGetStatus(nil, 'MSSQLSERVER') do
+  begin
+
+  end;
+
+
   SCPrincipal.ConnTopCommerce.Params.Add('HostName=' + edtServidor.Text);
   SCPrincipal.ConnTopCommerce.Params.Add('Database=' + edtBancoDados.Text);
   SCPrincipal.ConnTopCommerce.Params.Add('User_Name=' + edtUsuario.Text);

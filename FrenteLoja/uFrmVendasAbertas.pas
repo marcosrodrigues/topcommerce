@@ -15,6 +15,7 @@ type
     cdsConsultaNOME_CLIENTE_AVULSO: TStringField;
     dsConsulta: TDataSource;
     cdsConsultaCODIGO: TStringField;
+    cdsConsultaTOTAL: TCurrencyField;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);

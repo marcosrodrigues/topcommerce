@@ -62,7 +62,8 @@ uses
   Cliente in '..\Entidades\Cliente.pas',
   uFrmCliente in 'uFrmCliente.pas' {FrmCliente},
   uFrmDadosCliente in 'uFrmDadosCliente.pas' {FrmDadosCliente},
-  uFrmConexaoServidor in 'uFrmConexaoServidor.pas' {FrmConexaoServidor};
+  uFrmConexaoServidor in 'uFrmConexaoServidor.pas' {FrmConexaoServidor},
+  uFrmConectandoServidor in 'uFrmConectandoServidor.pas' {FrmConectandoServidor};
 
 {$R *.res}
 
@@ -90,7 +91,8 @@ begin
     if fLogin.FLoginSucess then
     begin
       Application.CreateForm(TFrmPrincipal, FrmPrincipal);
-      if ( fLogin.Usuario <> nil ) then
+  Application.CreateForm(TFrmConectandoServidor, FrmConectandoServidor);
+  if ( fLogin.Usuario <> nil ) then
         FrmPrincipal.lblLogin.Caption := 'Usuário: ' + fLogin.Usuario.Login
       else
         FrmPrincipal.lblLogin.Caption := 'Usuário: TOP';

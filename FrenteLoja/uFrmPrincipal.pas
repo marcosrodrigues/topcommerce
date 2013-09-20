@@ -7,7 +7,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, StdCtrls, Grids, DBGrids, jpeg, DB, DBClient, SqlExpr, DBXDataSnap,
   DBXCommon, DBXDBReaders, uPedidoVendaDAOClient, PedidoVenda, ItemPedidoVenda, Produto,
-  Generics.Collections, Cliente, pngimage, RLConsts;
+  Generics.Collections, Cliente, pngimage, RLConsts, DXPCurrencyEdit;
 
 type
   TFrmPrincipal = class(TForm)
@@ -31,8 +31,6 @@ type
     edtQuantidade: TEdit;
     Panel9: TPanel;
     Panel10: TPanel;
-    Panel11: TPanel;
-    edtSubtotal: TEdit;
     dsProdutos: TDataSource;
     cdsProdutos: TClientDataSet;
     ConnServidor: TSQLConnection;
@@ -55,12 +53,17 @@ type
     imgRelogio: TImage;
     Memo1: TMemo;
     Panel14: TPanel;
+    cedSubtotal: TDXPCurrencyEdit;
+    cdsProdutosDESCONTO_VALOR: TCurrencyField;
+    cdsProdutosDESCONTO_PERCENTUAL: TCurrencyField;
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure tmHoraTimer(Sender: TObject);
+    procedure cdsProdutosDESCONTO_PERCENTUALGetText(Sender: TField;
+      var Text: string; DisplayText: Boolean);
   private
     { Private declarations }
     DAOPedidoVenda: TPedidoVendaDAOClient;
@@ -70,7 +73,7 @@ type
     procedure NovaVenda;
     procedure FecharVenda;
     procedure ConsultarProduto;
-    function GravarVenda(Desconto, DescontoPercentual: Currency; TipoPagamento: Integer; Cliente: TCliente; NomeCliente: string): string;
+    procedure GravarVenda(Desconto, DescontoPercentual, Total: Currency; TipoPagamento: Integer; Cliente: TCliente; NomeCliente: string);
     procedure ExcluirItem;
     procedure IniciaControles;
     procedure VendasFechadas;
@@ -85,7 +88,8 @@ var
 implementation
 
 uses uFrmConsultaProdutos, uFrmAjuste, uFrmFecharVenda, uFrmExcluirItem, MensagensUtils,
-  uFrmVendasFechadas, uFrmVendasAbertas, uFrmRelReciboVenda;
+  uFrmVendasFechadas, uFrmVendasAbertas, uFrmRelReciboVenda,
+  uFrmConectandoServidor;
 
 {$R *.dfm}
 
@@ -95,8 +99,35 @@ begin
 end;
 
 procedure TFrmPrincipal.FormCreate(Sender: TObject);
+var
+  fLoad: TFrmConectandoServidor;
+  Direcao: Integer;
 begin
-  ConnServidor.Open;
+  fLoad := TFrmConectandoServidor.Create(Application);
+  fLoad.Show;
+  Direcao := 1;
+  while not ConnServidor.Connected do
+  begin
+    try
+      if (Direcao = 1) then
+        fLoad.ProgressBar.Position := fLoad.ProgressBar.Position + 10
+      else
+        fLoad.ProgressBar.Position := fLoad.ProgressBar.Position - 10;
+
+      if fLoad.ProgressBar.Position = 100 then
+        Direcao := -1;
+      if fLoad.ProgressBar.Position = 0 then
+        Direcao := 1;
+
+      Application.ProcessMessages;
+      ConnServidor.Open;
+
+      Break;
+    except
+      
+    end;
+  end;
+  fLoad.Close;
   DAOPedidoVenda := TPedidoVendaDAOClient.Create(ConnServidor.DBXConnection);
 end;
 
@@ -127,15 +158,11 @@ begin
   IniciaControles;
 end;
 
-function TFrmPrincipal.GravarVenda(Desconto, DescontoPercentual: Currency; TipoPagamento: Integer; Cliente: TCliente; NomeCliente: string): string;
+procedure TFrmPrincipal.GravarVenda(Desconto, DescontoPercentual, Total: Currency; TipoPagamento: Integer; Cliente: TCliente; NomeCliente: string);
 var
   Pedido: TPedidoVenda;
-  //Item: TItemPedidoVenda;
 begin
   Pedido               := TPedidoVenda.Create;
-
-  //Result := DAOPedidoVenda.NextCodigo;
-
   Pedido.Codigo        := CodigoPedidoVendaAtual;
   Pedido.Data          := DataPedidoVendaAtual;
   Pedido.Desconto      := Desconto;
@@ -143,22 +170,9 @@ begin
   Pedido.Cliente       := Cliente;
   Pedido.Fechada       := True;
   Pedido.DescontoPercentual := DescontoPercentual;
+  Pedido.Total := Total;
   if Cliente = nil then
     Pedido.NomeClienteAvulso := NomeCliente;
-
-  {cdsProdutos.First;
-  cdsProdutos.DisableControls;
-  Pedido.Itens := TList<TItemPedidoVenda>.Create;
-  while not(cdsProdutos.Eof) do
-  begin
-    Item := TItemPedidoVenda.Create;
-    Item.Produto    := TProduto.Create(cdsProdutosCODIGO.AsString);
-    Item.Quantidade := cdsProdutosQUANTIDADE.AsInteger;
-    Pedido.Itens.Add(Item);
-
-    cdsProdutos.Next;
-  end;
-  cdsProdutos.EnableControls;}
 
   DAOPedidoVenda.Update(Pedido);
 end;
@@ -194,6 +208,8 @@ begin
       CodigoPedidoVendaAtual := pedido.Codigo;
       DataPedidoVendaAtual := pedido.Data;
 
+      cedSubtotal.Value := pedido.Total;
+
       cdsProdutos.Close;
       cdsProdutos.CreateDataSet;
 
@@ -204,7 +220,9 @@ begin
         cdsProdutosDESCRICAO.AsString := pedido.Itens[i].Produto.Descricao;
         cdsProdutosQUANTIDADE.AsInteger := pedido.Itens[i].Quantidade;
         cdsProdutosPRECO_UNITARIO.AsCurrency := pedido.Itens[i].Produto.PrecoVenda;
-        cdsProdutosPRECO_TOTAL.AsCurrency := cdsProdutosQUANTIDADE.AsInteger * cdsProdutosPRECO_UNITARIO.AsCurrency;
+        cdsProdutosDESCONTO_VALOR.AsCurrency := pedido.Itens[i].DescontoValor;
+        cdsProdutosDESCONTO_PERCENTUAL.AsCurrency := pedido.Itens[i].DescontoPercentual;
+        cdsProdutosPRECO_TOTAL.AsCurrency := pedido.Itens[i].Valor;
         cdsProdutos.Post;
       end;
     end;
@@ -230,6 +248,8 @@ begin
       CodigoPedidoVendaAtual := pedido.Codigo;
       DataPedidoVendaAtual := pedido.Data;
 
+      cedSubtotal.Value := pedido.Total;
+
       cdsProdutos.Close;
       cdsProdutos.CreateDataSet;
 
@@ -240,13 +260,21 @@ begin
         cdsProdutosDESCRICAO.AsString := pedido.Itens[i].Produto.Descricao;
         cdsProdutosQUANTIDADE.AsInteger := pedido.Itens[i].Quantidade;
         cdsProdutosPRECO_UNITARIO.AsCurrency := pedido.Itens[i].Produto.PrecoVenda;
-        cdsProdutosPRECO_TOTAL.AsCurrency := cdsProdutosQUANTIDADE.AsInteger * cdsProdutosPRECO_UNITARIO.AsCurrency;
+        cdsProdutosDESCONTO_VALOR.AsCurrency := pedido.Itens[i].DescontoValor;
+        cdsProdutosDESCONTO_PERCENTUAL.AsCurrency := pedido.Itens[i].DescontoPercentual;
+        cdsProdutosPRECO_TOTAL.AsCurrency := pedido.Itens[i].Valor;
         cdsProdutos.Post;
       end;
     end;
   finally
     fVendasFechadas.Free;
   end;
+end;
+
+procedure TFrmPrincipal.cdsProdutosDESCONTO_PERCENTUALGetText(Sender: TField;
+  var Text: string; DisplayText: Boolean);
+begin
+  Text := Sender.AsString + ' %';
 end;
 
 procedure TFrmPrincipal.ConsultarProduto;
@@ -265,9 +293,9 @@ begin
       fAjuste := TFrmAjuste.Create(Self);
       try
         fAjuste.lblDescricaoProduto.Caption := fConsultaProdutos.Produto.Descricao;
-        fAjuste.edtPrecoUnitario.Text       := FormatCurr(',0.00', fConsultaProdutos.Produto.PrecoVenda);
+        fAjuste.cedPrecoUnitario.Value      := fConsultaProdutos.Produto.PrecoVenda;
         fAjuste.edtQuantidade.Text          := '1';
-        fAjuste.edtPrecoTotal.Text          := FormatCurr(',0.00', fConsultaProdutos.Produto.PrecoVenda);
+        fAjuste.cedPrecoTotal.Value         := fConsultaProdutos.Produto.PrecoVenda;
 
         fAjuste.ShowModal;
 
@@ -275,7 +303,7 @@ begin
         edtCodigo.Text           := fConsultaProdutos.Produto.Codigo;
         edtQuantidade.Text       := fAjuste.edtQuantidade.Text;
         edtPrecoUnitario.Text    := FormatCurr(',0.00', fConsultaProdutos.Produto.PrecoVenda);
-        edtPrecoTotal.Text       := fAjuste.edtPrecoTotal.Text;
+        edtPrecoTotal.Text       := fAjuste.cedPrecoTotal.Text;
 
         if (cdsProdutos.FindKey([fConsultaProdutos.Produto.Codigo])) then
         begin
@@ -283,14 +311,21 @@ begin
           if (Confirma('Este produto já se encontra no pedido. Deseja adicionar a quantidade?')) then
           begin
             cdsProdutosQUANTIDADE.AsInteger   := cdsProdutosQUANTIDADE.AsInteger + StrToInt(fAjuste.edtQuantidade.Text);
-            cdsProdutosPRECO_TOTAL.AsCurrency := cdsProdutosPRECO_TOTAL.AsCurrency + StrToCurr(fAjuste.edtPrecoTotal.Text);
+            cdsProdutosPRECO_TOTAL.AsCurrency := cdsProdutosPRECO_TOTAL.AsCurrency + fAjuste.cedPrecoTotal.Value;
 
-            edtSubtotal.Text   := FormatCurr(',0.00', StrToCurr(edtSubtotal.Text) + StrToInt(fAjuste.edtQuantidade.Text) * cdsProdutosPRECO_UNITARIO.AsCurrency);
+            cedSubtotal.Value := cedSubtotal.Value + fAjuste.cedPrecoTotal.Value;
 
             Item := TItemPedidoVenda.Create;
             Item.Produto    := TProduto.Create(cdsProdutosCODIGO.AsString);
             Item.Quantidade := cdsProdutosQUANTIDADE.AsInteger;
             DAOPedidoVenda.AtualizaItemDoPedido(CodigoPedidoVendaAtual, Item);
+
+            Pedido := TPedidoVenda.Create;
+            Pedido.Codigo := CodigoPedidoVendaAtual;
+            Pedido.Data   := DataPedidoVendaAtual;
+            Pedido.Total  := cedSubtotal.Value;
+
+            DAOPedidoVenda.Update(Pedido);
           end;
         end
         else
@@ -298,11 +333,13 @@ begin
           cdsProdutos.Append;
           cdsProdutosCODIGO.AsString           := fConsultaProdutos.Produto.Codigo;
           cdsProdutosDESCRICAO.AsString        := fConsultaProdutos.Produto.Descricao;
-          cdsProdutosQUANTIDADE.AsInteger      := StrToInt(fAjuste.edtQuantidade.Text);
           cdsProdutosPRECO_UNITARIO.AsCurrency := fConsultaProdutos.Produto.PrecoVenda;
-          cdsProdutosPRECO_TOTAL.AsCurrency    := StrToCurr(fAjuste.edtPrecoTotal.Text);
+          cdsProdutosQUANTIDADE.AsInteger      := StrToInt(fAjuste.edtQuantidade.Text);
+          cdsProdutosDESCONTO_VALOR.AsCurrency := fAjuste.cedDescValor.Value;
+          cdsProdutosDESCONTO_PERCENTUAL.AsCurrency := fAjuste.cedDescPercentual.Value;
+          cdsProdutosPRECO_TOTAL.AsCurrency    := fAjuste.cedPrecoTotal.Value;
 
-          edtSubtotal.Text := FormatCurr(',0.00', StrToCurr(edtSubtotal.Text) + cdsProdutosQUANTIDADE.AsInteger * cdsProdutosPRECO_UNITARIO.AsCurrency);
+          cedSubtotal.Value := cedSubtotal.Value + cdsProdutosPRECO_TOTAL.AsCurrency;
 
           if CodigoPedidoVendaAtual = '' then
           begin
@@ -310,8 +347,9 @@ begin
             DataPedidoVendaAtual := Now;
 
             Pedido := TPedidoVenda.Create;
-            Pedido.Codigo := CodigoPedidoVendaAtual;
+            Pedido.Codigo  := CodigoPedidoVendaAtual;
             Pedido.Data    := DataPedidoVendaAtual;
+            Pedido.Total   := cedSubtotal.Value;
             Pedido.Fechada := False;
 
             DAOPedidoVenda.Insert(Pedido);
@@ -320,7 +358,17 @@ begin
           Item := TItemPedidoVenda.Create;
           Item.Produto    := TProduto.Create(cdsProdutosCODIGO.AsString);
           Item.Quantidade := cdsProdutosQUANTIDADE.AsInteger;
+          Item.DescontoValor := cdsProdutosDESCONTO_VALOR.AsCurrency;
+          Item.DescontoPercentual := cdsProdutosDESCONTO_PERCENTUAL.AsCurrency;
+          Item.Valor := cdsProdutosPRECO_TOTAL.AsCurrency;
           DAOPedidoVenda.InsertItemNoPedido(CodigoPedidoVendaAtual, Item);
+
+          Pedido := TPedidoVenda.Create;
+          Pedido.Codigo := CodigoPedidoVendaAtual;
+          Pedido.Data   := DataPedidoVendaAtual;
+          Pedido.Total  := cedSubtotal.Value;
+
+          DAOPedidoVenda.Update(Pedido);
         end;
         cdsProdutos.Post;
 
@@ -350,7 +398,7 @@ begin
 
     if (f.Excluir) then
     begin
-      edtSubtotal.Text := FormatCurr(',0.00', StrToCurr(edtSubtotal.Text) - cdsProdutosQUANTIDADE.AsInteger * cdsProdutosPRECO_UNITARIO.AsCurrency);
+      cedSubtotal.Value := cedSubtotal.Value - cdsProdutosQUANTIDADE.AsInteger * cdsProdutosPRECO_UNITARIO.AsCurrency;
 
       DAOPedidoVenda.DeleteItemDoPedido(cdsProdutosCODIGO.AsString, CodigoPedidoVendaAtual);
       cdsProdutos.Delete;
@@ -366,7 +414,6 @@ procedure TFrmPrincipal.FecharVenda;
 var
   f: TFrmFecharVenda;
   recibo: TFrmRelReciboVenda;
-  CodigoVenda: string;
 begin
   if cdsProdutos.RecordCount <= 0 then
   begin
@@ -376,24 +423,21 @@ begin
   edtAvisos.Text := 'FECHAR VENDA';
   f := TFrmFecharVenda.Create(Self);
   try
-    f.edtTotal.Text := edtSubtotal.Text;
-    f.Total         := StrToCurr(edtSubtotal.Text);
+    f.cedTotal.Value := cedSubtotal.Value;
+    f.Total         := cedSubtotal.Value;
     f.ShowModal;
 
     if (f.Fechar) then
     begin
-      CodigoVenda := GravarVenda(f.cedDescontoValor.Value, f.cedDescontoPercentual.Value, f.cbFormaPagamento.ItemIndex, f.Cliente, f.NomeCliente);
+      GravarVenda(f.cedDescontoValor.Value, f.cedDescontoPercentual.Value, f.cedTotal.Value, f.cbFormaPagamento.ItemIndex, f.Cliente, f.NomeCliente);
 
       recibo := TFrmRelReciboVenda.Create(Self);
       try
-        recibo.CodigoVenda := CodigoVenda;
-        recibo.RLReport.Preview;
+        recibo.CodigoVenda := CodigoPedidoVendaAtual;
+        recibo.RLReport.Print;
       finally
         recibo.Free;
       end;
-      
-      //NovaVenda;
-      //edtAvisos.Text := 'VENDA';
     end;
   finally
     f.Free;
@@ -407,7 +451,7 @@ begin
   edtQuantidade.Clear;
   edtPrecoUnitario.Clear;
   edtPrecoTotal.Clear;
-  edtSubtotal.Text := '0,00';
+  cedSubtotal.Value := 0;
   edtAvisos.Text := 'VENDA';
 
   lblData.Caption := FormatDateTime('dd/mm/yyyy', Now);

@@ -4,7 +4,7 @@ object FrmFecharVenda: TFrmFecharVenda
   BorderIcons = []
   BorderStyle = bsSingle
   Caption = 'Fechar Venda'
-  ClientHeight = 370
+  ClientHeight = 364
   ClientWidth = 639
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -20,35 +20,35 @@ object FrmFecharVenda: TFrmFecharVenda
   PixelsPerInch = 96
   TextHeight = 24
   object Label2: TLabel
-    Left = 10
+    Left = 8
     Top = 50
     Width = 135
     Height = 24
     Caption = 'Desconto Valor'
   end
   object Label4: TLabel
-    Left = 10
+    Left = 8
     Top = 119
     Width = 46
     Height = 24
     Caption = 'Total'
   end
   object Label3: TLabel
-    Left = 10
+    Left = 8
     Top = 189
     Width = 191
     Height = 24
     Caption = 'Forma de Pagamento'
   end
   object Label5: TLabel
-    Left = 10
+    Left = 8
     Top = 261
     Width = 62
     Height = 24
     Caption = 'Cliente'
   end
   object Label6: TLabel
-    Left = 202
+    Left = 200
     Top = 50
     Width = 183
     Height = 24
@@ -82,27 +82,8 @@ object FrmFecharVenda: TFrmFecharVenda
       ExplicitHeight = 23
     end
   end
-  object Panel3: TPanel
-    Left = 10
-    Top = 145
-    Width = 166
-    Height = 32
-    AutoSize = True
-    BevelOuter = bvNone
-    Enabled = False
-    TabOrder = 2
-    object edtTotal: TEdit
-      Left = 0
-      Top = 0
-      Width = 166
-      Height = 32
-      Alignment = taRightJustify
-      TabOrder = 0
-      Text = '0,00'
-    end
-  end
   object cbFormaPagamento: TComboBox
-    Left = 10
+    Left = 8
     Top = 216
     Width = 231
     Height = 32
@@ -119,7 +100,7 @@ object FrmFecharVenda: TFrmFecharVenda
       'Cheque')
   end
   object edCliente: TEdit
-    Left = 10
+    Left = 8
     Top = 287
     Width = 535
     Height = 32
@@ -218,7 +199,7 @@ object FrmFecharVenda: TFrmFecharVenda
     TabOrder = 6
   end
   object btnFechar: TDXPButton
-    Left = 10
+    Left = 8
     Top = 323
     Width = 112
     Height = 32
@@ -301,5 +282,15 @@ object FrmFecharVenda: TFrmFecharVenda
     TabOrder = 1
     Text = '0,00'
     OnExit = cedDescontoPercentualExit
+  end
+  object cedTotal: TDXPCurrencyEdit
+    Left = 8
+    Top = 145
+    Width = 168
+    Height = 32
+    Alignment = taRightJustify
+    Options = []
+    TabOrder = 2
+    Text = '0,00'
   end
 end

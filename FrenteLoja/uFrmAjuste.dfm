@@ -4,8 +4,8 @@ object FrmAjuste: TFrmAjuste
   BorderIcons = []
   BorderStyle = bsSingle
   Caption = 'Item do Pedido'
-  ClientHeight = 261
-  ClientWidth = 456
+  ClientHeight = 309
+  ClientWidth = 371
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,6 +16,7 @@ object FrmAjuste: TFrmAjuste
   OldCreateOrder = False
   Position = poMainFormCenter
   OnKeyDown = FormKeyDown
+  OnKeyPress = FormKeyPress
   PixelsPerInch = 96
   TextHeight = 24
   object Label1: TLabel
@@ -27,31 +28,46 @@ object FrmAjuste: TFrmAjuste
   end
   object Label2: TLabel
     Left = 10
-    Top = 120
+    Top = 113
     Width = 103
     Height = 24
     Caption = 'Quantidade'
   end
   object Label4: TLabel
     Left = 10
-    Top = 191
+    Top = 241
     Width = 101
     Height = 24
     Caption = 'Pre'#231'o Total'
   end
+  object Label3: TLabel
+    Left = 10
+    Top = 179
+    Width = 101
+    Height = 24
+    Caption = 'Desc. Valor'
+  end
+  object Label5: TLabel
+    Left = 194
+    Top = 179
+    Width = 149
+    Height = 24
+    Caption = 'Desc. Percentual'
+  end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 456
+    Width = 371
     Height = 41
     Align = alTop
     Color = clHotLight
     ParentBackground = False
-    TabOrder = 0
+    TabOrder = 5
+    ExplicitWidth = 456
     object lblDescricaoProduto: TLabel
       Left = 1
       Top = 1
-      Width = 454
+      Width = 369
       Height = 39
       Align = alClient
       Alignment = taCenter
@@ -69,7 +85,7 @@ object FrmAjuste: TFrmAjuste
   end
   object edtQuantidade: TEdit
     Left = 10
-    Top = 147
+    Top = 140
     Width = 167
     Height = 32
     Alignment = taRightJustify
@@ -77,44 +93,48 @@ object FrmAjuste: TFrmAjuste
     TabOrder = 1
     Text = '1'
     OnChange = edtQuantidadeChange
-    OnKeyPress = edtQuantidadeKeyPress
   end
-  object Panel2: TPanel
+  object cedPrecoUnitario: TDXPCurrencyEdit
     Left = 10
-    Top = 76
-    Width = 167
-    Height = 32
-    AutoSize = True
-    BevelOuter = bvNone
-    Enabled = False
-    TabOrder = 2
-    object edtPrecoUnitario: TEdit
-      Left = 0
-      Top = 0
-      Width = 167
-      Height = 32
-      Alignment = taRightJustify
-      TabOrder = 0
-      Text = '0,00'
-    end
-  end
-  object Panel3: TPanel
-    Left = 10
-    Top = 217
+    Top = 77
     Width = 166
     Height = 32
-    AutoSize = True
-    BevelOuter = bvNone
+    Alignment = taRightJustify
     Enabled = False
+    Options = []
+    TabOrder = 0
+    Text = '0,00'
+  end
+  object cedDescValor: TDXPCurrencyEdit
+    Left = 10
+    Top = 204
+    Width = 166
+    Height = 32
+    Alignment = taRightJustify
+    Options = []
+    TabOrder = 2
+    Text = '0,00'
+    OnExit = cedDescValorExit
+  end
+  object cedDescPercentual: TDXPCurrencyEdit
+    Left = 194
+    Top = 204
+    Width = 166
+    Height = 32
+    Alignment = taRightJustify
+    Options = []
     TabOrder = 3
-    object edtPrecoTotal: TEdit
-      Left = 0
-      Top = 0
-      Width = 166
-      Height = 32
-      Alignment = taRightJustify
-      TabOrder = 0
-      Text = '0,00'
-    end
+    Text = '0,00'
+    OnExit = cedDescPercentualExit
+  end
+  object cedPrecoTotal: TDXPCurrencyEdit
+    Left = 10
+    Top = 267
+    Width = 166
+    Height = 32
+    Alignment = taRightJustify
+    Options = []
+    TabOrder = 4
+    Text = '0,00'
   end
 end

@@ -1,11 +1,12 @@
 inherited FrmRelReciboVenda: TFrmRelReciboVenda
   Caption = 'FrmRelReciboVenda'
-  ExplicitLeft = -24
   ExplicitWidth = 834
   ExplicitHeight = 662
   PixelsPerInch = 96
   TextHeight = 13
   inherited RLReport: TRLReport
+    PreviewOptions.WindowState = wsNormal
+    PreviewOptions.ShowModal = True
     object RLBand2: TRLBand
       Left = 38
       Top = 107

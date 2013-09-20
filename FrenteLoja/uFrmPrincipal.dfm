@@ -16143,36 +16143,6 @@ object FrmPrincipal: TFrmPrincipal
         Font.Style = []
         ParentFont = False
       end
-      object Panel11: TPanel
-        Left = 538
-        Top = 20
-        Width = 186
-        Height = 48
-        Anchors = [akTop, akRight]
-        BevelOuter = bvNone
-        Enabled = False
-        TabOrder = 0
-        object edtSubtotal: TEdit
-          Left = 0
-          Top = 0
-          Width = 186
-          Height = 48
-          Align = alClient
-          Alignment = taRightJustify
-          Color = clMenuBar
-          Ctl3D = False
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -33
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentCtl3D = False
-          ParentFont = False
-          TabOrder = 0
-          Text = '0,00'
-          ExplicitHeight = 46
-        end
-      end
       object Panel12: TPanel
         Left = 0
         Top = 20
@@ -16181,7 +16151,7 @@ object FrmPrincipal: TFrmPrincipal
         Anchors = [akLeft, akTop, akRight]
         BevelOuter = bvNone
         Enabled = False
-        TabOrder = 1
+        TabOrder = 0
         object edtAvisos: TEdit
           Left = 0
           Top = 0
@@ -16202,6 +16172,24 @@ object FrmPrincipal: TFrmPrincipal
           Text = 'VENDA'
           ExplicitHeight = 46
         end
+      end
+      object cedSubtotal: TDXPCurrencyEdit
+        Left = 538
+        Top = 20
+        Width = 187
+        Height = 48
+        Alignment = taRightJustify
+        Anchors = [akTop, akRight]
+        Enabled = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -33
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        Options = []
+        ParentFont = False
+        TabOrder = 1
+        Text = '0,00'
       end
     end
     object Panel6: TPanel
@@ -16248,12 +16236,7 @@ object FrmPrincipal: TFrmPrincipal
           item
             Expanded = False
             FieldName = 'DESCRICAO'
-            Width = 500
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'QUANTIDADE'
+            Width = 430
             Visible = True
           end
           item
@@ -16263,7 +16246,23 @@ object FrmPrincipal: TFrmPrincipal
           end
           item
             Expanded = False
+            FieldName = 'QUANTIDADE'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'DESCONTO_VALOR'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'DESCONTO_PERCENTUAL'
+            Visible = True
+          end
+          item
+            Expanded = False
             FieldName = 'PRECO_TOTAL'
+            Width = 100
             Visible = True
           end>
       end
@@ -16306,18 +16305,27 @@ object FrmPrincipal: TFrmPrincipal
     end
     object cdsProdutosDESCRICAO: TStringField
       DisplayLabel = 'Descri'#231#227'o'
-      DisplayWidth = 68
+      DisplayWidth = 60
       FieldName = 'DESCRICAO'
       Size = 60
+    end
+    object cdsProdutosPRECO_UNITARIO: TCurrencyField
+      DisplayLabel = 'Pre'#231'o Unit'#225'rio'
+      FieldName = 'PRECO_UNITARIO'
     end
     object cdsProdutosQUANTIDADE: TIntegerField
       Alignment = taCenter
       DisplayLabel = 'Quantidade'
       FieldName = 'QUANTIDADE'
     end
-    object cdsProdutosPRECO_UNITARIO: TCurrencyField
-      DisplayLabel = 'Pre'#231'o Unit'#225'rio'
-      FieldName = 'PRECO_UNITARIO'
+    object cdsProdutosDESCONTO_VALOR: TCurrencyField
+      DisplayLabel = 'Desc. Valor'
+      FieldName = 'DESCONTO_VALOR'
+    end
+    object cdsProdutosDESCONTO_PERCENTUAL: TCurrencyField
+      DisplayLabel = 'Desc. Perc.'
+      FieldName = 'DESCONTO_PERCENTUAL'
+      OnGetText = cdsProdutosDESCONTO_PERCENTUALGetText
     end
     object cdsProdutosPRECO_TOTAL: TCurrencyField
       DisplayLabel = 'Pre'#231'o Total'

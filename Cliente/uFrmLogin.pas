@@ -37,7 +37,7 @@ var
 
 implementation
 
-uses MensagensUtils, uFrmConexaoServidor;
+uses MensagensUtils, uFrmConexaoServidor, uFrmConectandoServidor;
 
 {$R *.dfm}
 
@@ -65,6 +65,8 @@ end;
 procedure TFrmLogin.FormCreate(Sender: TObject);
 var
   Ini: TIniFile;
+  fLoad: TFrmConectandoServidor;
+  Direcao: Integer;
 
   procedure ConexaoServidor;
   var
@@ -88,7 +90,31 @@ begin
       Ini.Free;
     end;
 
-    ConnServidor.Open;
+    fLoad := TFrmConectandoServidor.Create(Application);
+    fLoad.Show;
+    Direcao := 1;
+    while not ConnServidor.Connected do
+    begin
+      try
+        if (Direcao = 1) then
+          fLoad.ProgressBar.Position := fLoad.ProgressBar.Position + 10
+        else
+          fLoad.ProgressBar.Position := fLoad.ProgressBar.Position - 10;
+
+        if fLoad.ProgressBar.Position = 100 then
+          Direcao := -1;
+        if fLoad.ProgressBar.Position = 0 then
+          Direcao := 1;
+
+        Application.ProcessMessages;
+        ConnServidor.Open;
+
+        Break;
+      except
+
+      end;
+    end;
+    fLoad.Close;
   end
   else
     ConexaoServidor;

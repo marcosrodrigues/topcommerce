@@ -167,6 +167,8 @@ object FrmPrincipal: TFrmPrincipal
       Width = 271
       Height = 17
       Caption = 'Conectar banco de dados ao iniciar o servidor.'
+      Checked = True
+      State = cbChecked
       TabOrder = 5
     end
   end

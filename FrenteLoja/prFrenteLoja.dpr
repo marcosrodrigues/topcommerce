@@ -24,7 +24,8 @@ uses
   uFrmVendasFechadas in 'uFrmVendasFechadas.pas' {FrmVendasFechadas},
   uFrmVendasAbertas in 'uFrmVendasAbertas.pas' {FrmVendasAbertas},
   uFrmRelBase in '..\Cliente\uFrmRelBase.pas' {FrmRelBase},
-  uFrmRelReciboVenda in 'uFrmRelReciboVenda.pas' {FrmRelReciboVenda};
+  uFrmRelReciboVenda in 'uFrmRelReciboVenda.pas' {FrmRelReciboVenda},
+  uFrmConectandoServidor in '..\Cliente\uFrmConectandoServidor.pas' {FrmConectandoServidor};
 
 {$R *.res}
 
@@ -38,5 +39,6 @@ begin
   Application.CreateForm(TFrmVendasAbertas, FrmVendasAbertas);
   Application.CreateForm(TFrmRelBase, FrmRelBase);
   Application.CreateForm(TFrmRelReciboVenda, FrmRelReciboVenda);
+  Application.CreateForm(TFrmConectandoServidor, FrmConectandoServidor);
   Application.Run;
 end.

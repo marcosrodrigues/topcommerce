@@ -12,8 +12,6 @@ type
     Panel1: TPanel;
     Label1: TLabel;
     Label2: TLabel;
-    Panel3: TPanel;
-    edtTotal: TEdit;
     Label4: TLabel;
     Label3: TLabel;
     cbFormaPagamento: TComboBox;
@@ -25,6 +23,7 @@ type
     cedDescontoValor: TDXPCurrencyEdit;
     Label6: TLabel;
     cedDescontoPercentual: TDXPCurrencyEdit;
+    cedTotal: TDXPCurrencyEdit;
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure cedDescontoValorExit(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
@@ -35,6 +34,7 @@ type
     procedure cedDescontoPercentualExit(Sender: TObject);
   private
     { Private declarations }
+    procedure CalcularTotal;
   public
     { Public declarations }
     Total: Currency;
@@ -83,6 +83,17 @@ begin
   end;
 end;
 
+procedure TFrmFecharVenda.CalcularTotal;
+begin
+  if (cedDescontoValor.Value = 0) then
+    cedTotal.Value := Total
+  else
+    cedTotal.Value := Total - cedDescontoValor.Value;
+
+  if (cedDescontoPercentual.Value <> 0) then
+    cedTotal.Value := cedTotal.Value - (cedTotal.Value * (cedDescontoPercentual.Value / 100));
+end;
+
 procedure TFrmFecharVenda.cbFormaPagamentoChange(Sender: TObject);
 begin
   edCliente.Enabled := cbFormaPagamento.ItemIndex <> 1;
@@ -90,18 +101,12 @@ end;
 
 procedure TFrmFecharVenda.cedDescontoPercentualExit(Sender: TObject);
 begin
-  if (cedDescontoPercentual.Value = 0) then
-    edtTotal.Text := FormatCurr(',0.00', Total)
-  else
-    edtTotal.Text := FormatCurr(',0.00', Total - (Total * (cedDescontoPercentual.Value / 100)));
+  CalcularTotal;
 end;
 
 procedure TFrmFecharVenda.cedDescontoValorExit(Sender: TObject);
 begin
-  if (cedDescontoValor.Value = 0) then
-    edtTotal.Text := FormatCurr(',0.00', Total)
-  else
-    edtTotal.Text := FormatCurr(',0.00', Total - cedDescontoValor.Value);
+  CalcularTotal;
 end;
 
 procedure TFrmFecharVenda.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);

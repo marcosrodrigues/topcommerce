@@ -24,7 +24,11 @@ type
     FTipoPagamento: Integer;
     FItens: TList<TItemPedidoVenda>;
     FFechada: Boolean;
+    [JSONReflect(ctString, rtString, TDoubleInterceptor, nil, true)]
     FDescontoPercentual: Currency;
+    [JSONReflect(ctString, rtString, TDoubleInterceptor, nil, true)]
+    FTotal: Currency;
+    FCancelada: Boolean;
   public
     property Codigo: string read FCodigo write FCodigo;
     property Data: TDateTime read FData write FData;
@@ -35,6 +39,8 @@ type
     property Itens: TList<TItemPedidoVenda> read FItens write FItens;
     property Fechada: Boolean read FFechada write FFechada;
     property DescontoPercentual: Currency read FDescontoPercentual write FDescontoPercentual;
+    property Total: Currency read FTotal write FTotal;
+    property Cancelada: Boolean read FCancelada write FCancelada;
   end;
 
 implementation

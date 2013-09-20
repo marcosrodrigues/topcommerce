@@ -5,7 +5,7 @@ object FrmVendasAbertas: TFrmVendasAbertas
   BorderStyle = bsSingle
   Caption = 'Vendas Abertas'
   ClientHeight = 376
-  ClientWidth = 714
+  ClientWidth = 794
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -24,13 +24,13 @@ object FrmVendasAbertas: TFrmVendasAbertas
   object grdConsulta: TDBGrid
     Left = 0
     Top = 0
-    Width = 714
+    Width = 794
     Height = 376
     Align = alClient
     DataSource = dsConsulta
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -20
+    Font.Height = -17
     Font.Name = 'Tahoma'
     Font.Style = []
     Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -67,6 +67,10 @@ object FrmVendasAbertas: TFrmVendasAbertas
       DisplayWidth = 20
       FieldName = 'NOME_CLIENTE_AVULSO'
       Size = 60
+    end
+    object cdsConsultaTOTAL: TCurrencyField
+      DisplayLabel = 'Total'
+      FieldName = 'TOTAL'
     end
   end
   object dsConsulta: TDataSource
