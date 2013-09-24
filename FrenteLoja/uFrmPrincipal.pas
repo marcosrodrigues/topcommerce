@@ -7,55 +7,96 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, StdCtrls, Grids, DBGrids, jpeg, DB, DBClient, SqlExpr, DBXDataSnap,
   DBXCommon, DBXDBReaders, uPedidoVendaDAOClient, PedidoVenda, ItemPedidoVenda, Produto,
-  Generics.Collections, Cliente, pngimage, RLConsts, DXPCurrencyEdit;
+  Generics.Collections, Cliente, pngimage, RLConsts, DXPCurrencyEdit,
+  ImageButton4, DBCtrls;
 
 type
   TFrmPrincipal = class(TForm)
-    Panel1: TPanel;
-    Panel2: TPanel;
-    pnlGrid: TPanel;
-    Panel3: TPanel;
-    Panel4: TPanel;
+    imgBackground: TImage;
+    pnlLeftContainer: TPanel;
+    imgRoloImpressora: TImage;
+    pnlSubTotal: TPanel;
+    imgSubtotal: TImage;
     Label1: TLabel;
-    Label2: TLabel;
-    Label3: TLabel;
+    DBGrid1: TDBGrid;
+    pnlFooter: TPanel;
+    imgFooterLeft: TImage;
+    imgFooterMiddle: TImage;
+    imgFooterRight: TImage;
+    pnlRelogio: TPanel;
+    lblHora: TLabel;
+    pnlStatus: TPanel;
+    lblStatusPDV: TLabel;
+    pnlRightContainer: TPanel;
     Label4: TLabel;
-    Panel5: TPanel;
-    Label5: TLabel;
+    Label7: TLabel;
+    Label9: TLabel;
+    Label11: TLabel;
+    Image21: TImage;
+    Image22: TImage;
+    Image23: TImage;
+    Image24: TImage;
+    Image25: TImage;
+    Image26: TImage;
+    Label15: TLabel;
+    Label12: TLabel;
+    Label16: TLabel;
+    Image18: TImage;
+    Label17: TLabel;
+    Label18: TLabel;
+    Label19: TLabel;
+    Label20: TLabel;
+    Panel1: TPanel;
+    Image3: TImage;
     Image2: TImage;
+    Image1: TImage;
+    Label2: TLabel;
+    pnlCodigoProduto: TPanel;
+    Image6: TImage;
+    Image7: TImage;
+    Image8: TImage;
+    Panel2: TPanel;
+    Image9: TImage;
+    Image10: TImage;
+    Image11: TImage;
+    Panel3: TPanel;
+    Image12: TImage;
+    Image13: TImage;
+    Image14: TImage;
+    Panel4: TPanel;
+    Image15: TImage;
+    Image16: TImage;
+    Image17: TImage;
     Panel6: TPanel;
-    grdProdutos: TDBGrid;
-    Panel7: TPanel;
-    edtCodigo: TEdit;
-    Panel8: TPanel;
-    edtQuantidade: TEdit;
-    Panel9: TPanel;
-    Panel10: TPanel;
-    dsProdutos: TDataSource;
-    cdsProdutos: TClientDataSet;
+    Image29: TImage;
+    Label13: TLabel;
+    Image27: TImage;
+    Label14: TLabel;
+    Image28: TImage;
     ConnServidor: TSQLConnection;
+    cdsProdutos: TClientDataSet;
     cdsProdutosCODIGO: TStringField;
     cdsProdutosDESCRICAO: TStringField;
-    cdsProdutosQUANTIDADE: TIntegerField;
     cdsProdutosPRECO_UNITARIO: TCurrencyField;
-    cdsProdutosPRECO_TOTAL: TCurrencyField;
-    edtPrecoUnitario: TEdit;
-    edtPrecoTotal: TEdit;
-    Label6: TLabel;
-    Panel12: TPanel;
-    edtAvisos: TEdit;
-    Panel13: TPanel;
-    edtDescricaoProduto: TEdit;
-    lblData: TLabel;
-    lblHora: TLabel;
-    tmHora: TTimer;
-    imgCalendario: TImage;
-    imgRelogio: TImage;
-    Memo1: TMemo;
-    Panel14: TPanel;
-    cedSubtotal: TDXPCurrencyEdit;
+    cdsProdutosQUANTIDADE: TIntegerField;
     cdsProdutosDESCONTO_VALOR: TCurrencyField;
     cdsProdutosDESCONTO_PERCENTUAL: TCurrencyField;
+    cdsProdutosPRECO_TOTAL: TCurrencyField;
+    dsProdutos: TDataSource;
+    tmHora: TTimer;
+    lblSubtotal: TLabel;
+    Image19: TImage;
+    Panel5: TPanel;
+    Image4: TImage;
+    Image5: TImage;
+    DBText1: TDBText;
+    DBText2: TDBText;
+    DBText3: TDBText;
+    DBText4: TDBText;
+    DBText5: TDBText;
+    Panel7: TPanel;
+    imgFotoProduto: TImage;
+    imgFrameFotoProduto: TImage;
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -64,11 +105,16 @@ type
     procedure tmHoraTimer(Sender: TObject);
     procedure cdsProdutosDESCONTO_PERCENTUALGetText(Sender: TField;
       var Text: string; DisplayText: Boolean);
+    procedure FormPaint(Sender: TObject);
+    procedure Image19Click(Sender: TObject);
+    procedure cdsProdutosQUANTIDADEGetText(Sender: TField; var Text: string;
+      DisplayText: Boolean);
   private
     { Private declarations }
     DAOPedidoVenda: TPedidoVendaDAOClient;
     CodigoPedidoVendaAtual: string;
     DataPedidoVendaAtual: TDateTime;
+    MyBitmap: TBitmap;
 
     procedure NovaVenda;
     procedure FecharVenda;
@@ -129,10 +175,14 @@ begin
   end;
   fLoad.Close;
   DAOPedidoVenda := TPedidoVendaDAOClient.Create(ConnServidor.DBXConnection);
+
+  MyBitmap := TBitmap.Create;
+  MyBitmap.Assign(imgBackground.Picture.Bitmap);
 end;
 
 procedure TFrmPrincipal.FormDestroy(Sender: TObject);
 begin
+  MyBitmap.Free;
   DAOPedidoVenda.Free;
 end;
 
@@ -145,6 +195,26 @@ begin
     VK_F6: ConsultarProduto;
     VK_F8: VendasAbertas;
     VK_F9: VendasFechadas;
+  end;
+end;
+
+procedure TFrmPrincipal.FormPaint(Sender: TObject);
+var
+  x, y: Integer;
+  iBMWid, iBMHeight : Integer;
+begin
+  iBMWid := MyBitmap.Width;
+  iBMHeight := MyBitmap.Height;
+  y := 0;
+  while y < Height do
+  begin
+    x := 0;
+    while x < Width do
+    begin
+      Canvas.Draw(x, y, MyBitmap);
+      x := x + iBMWid;
+    end;
+    y := y + iBMHeight;
   end;
 end;
 
@@ -208,7 +278,7 @@ begin
       CodigoPedidoVendaAtual := pedido.Codigo;
       DataPedidoVendaAtual := pedido.Data;
 
-      cedSubtotal.Value := pedido.Total;
+      lblSubtotal.Caption := FormatCurr(',0.00', pedido.Total);
 
       cdsProdutos.Close;
       cdsProdutos.CreateDataSet;
@@ -248,7 +318,7 @@ begin
       CodigoPedidoVendaAtual := pedido.Codigo;
       DataPedidoVendaAtual := pedido.Data;
 
-      cedSubtotal.Value := pedido.Total;
+      lblSubtotal.Caption := FormatCurr(',0.00', pedido.Total);
 
       cdsProdutos.Close;
       cdsProdutos.CreateDataSet;
@@ -277,6 +347,15 @@ begin
   Text := Sender.AsString + ' %';
 end;
 
+procedure TFrmPrincipal.cdsProdutosQUANTIDADEGetText(Sender: TField;
+  var Text: string; DisplayText: Boolean);
+begin
+  if Sender.IsNull then
+    Text := ''
+  else
+    Text := IntToStr(Sender.AsInteger)+' x';
+end;
+
 procedure TFrmPrincipal.ConsultarProduto;
 var
   fConsultaProdutos: TFrmConsultaProdutos;
@@ -284,7 +363,7 @@ var
   Item: TItemPedidoVenda;
   Pedido: TPedidoVenda;
 begin
-  edtAvisos.Text := 'CONSULTAR PRODUTO';
+  lblStatusPDV.Caption := 'CONSULTAR PRODUTO';
   fConsultaProdutos := TFrmConsultaProdutos.Create(Self);
   try
     fConsultaProdutos.ShowModal;
@@ -299,12 +378,6 @@ begin
 
         fAjuste.ShowModal;
 
-        edtDescricaoProduto.Text := fConsultaProdutos.Produto.Descricao;
-        edtCodigo.Text           := fConsultaProdutos.Produto.Codigo;
-        edtQuantidade.Text       := fAjuste.edtQuantidade.Text;
-        edtPrecoUnitario.Text    := FormatCurr(',0.00', fConsultaProdutos.Produto.PrecoVenda);
-        edtPrecoTotal.Text       := fAjuste.cedPrecoTotal.Text;
-
         if (cdsProdutos.FindKey([fConsultaProdutos.Produto.Codigo])) then
         begin
           cdsProdutos.Edit;
@@ -313,7 +386,7 @@ begin
             cdsProdutosQUANTIDADE.AsInteger   := cdsProdutosQUANTIDADE.AsInteger + StrToInt(fAjuste.edtQuantidade.Text);
             cdsProdutosPRECO_TOTAL.AsCurrency := cdsProdutosPRECO_TOTAL.AsCurrency + fAjuste.cedPrecoTotal.Value;
 
-            cedSubtotal.Value := cedSubtotal.Value + fAjuste.cedPrecoTotal.Value;
+            lblSubtotal.Caption := FormatCurr(',0.00', StrToCurrDef(lblSubtotal.Caption, 0) + fAjuste.cedPrecoTotal.Value);
 
             Item := TItemPedidoVenda.Create;
             Item.Produto    := TProduto.Create(cdsProdutosCODIGO.AsString);
@@ -323,7 +396,7 @@ begin
             Pedido := TPedidoVenda.Create;
             Pedido.Codigo := CodigoPedidoVendaAtual;
             Pedido.Data   := DataPedidoVendaAtual;
-            Pedido.Total  := cedSubtotal.Value;
+            Pedido.Total  := StrToCurrDef(lblSubtotal.Caption, 0);
 
             DAOPedidoVenda.Update(Pedido);
           end;
@@ -339,7 +412,7 @@ begin
           cdsProdutosDESCONTO_PERCENTUAL.AsCurrency := fAjuste.cedDescPercentual.Value;
           cdsProdutosPRECO_TOTAL.AsCurrency    := fAjuste.cedPrecoTotal.Value;
 
-          cedSubtotal.Value := cedSubtotal.Value + cdsProdutosPRECO_TOTAL.AsCurrency;
+          lblSubtotal.Caption := FormatCurr(',0.00', StrToCurrDef(lblSubtotal.Caption, 0) + cdsProdutosPRECO_TOTAL.AsCurrency);
 
           if CodigoPedidoVendaAtual = '' then
           begin
@@ -349,7 +422,7 @@ begin
             Pedido := TPedidoVenda.Create;
             Pedido.Codigo  := CodigoPedidoVendaAtual;
             Pedido.Data    := DataPedidoVendaAtual;
-            Pedido.Total   := cedSubtotal.Value;
+            Pedido.Total   := StrToCurrDef(lblSubtotal.Caption, 0);
             Pedido.Fechada := False;
 
             DAOPedidoVenda.Insert(Pedido);
@@ -366,7 +439,7 @@ begin
           Pedido := TPedidoVenda.Create;
           Pedido.Codigo := CodigoPedidoVendaAtual;
           Pedido.Data   := DataPedidoVendaAtual;
-          Pedido.Total  := cedSubtotal.Value;
+          Pedido.Total  := StrToCurrDef(lblSubtotal.Caption, 0);
 
           DAOPedidoVenda.Update(Pedido);
         end;
@@ -379,7 +452,7 @@ begin
   finally
     fConsultaProdutos.Free;
   end;
-  edtAvisos.Text := 'VENDA';
+  lblStatusPDV.Caption := 'VENDA';
 end;
 
 procedure TFrmPrincipal.ExcluirItem;
@@ -391,20 +464,20 @@ begin
     Atencao('Ainda não foi incluído nenhum item na venda.');
     Exit;
   end;
-  edtAvisos.Text := 'EXCLUIR ITEM';
+  lblStatusPDV.Caption := 'EXCLUIR ITEM';
   f := TFrmExcluirItem.Create(Self);
   try
     f.ShowModal;
 
     if (f.Excluir) then
     begin
-      cedSubtotal.Value := cedSubtotal.Value - cdsProdutosQUANTIDADE.AsInteger * cdsProdutosPRECO_UNITARIO.AsCurrency;
+      lblSubtotal.Caption := FormatCurr(',0.00', StrToCurrDef(lblSubtotal.Caption, 0) - cdsProdutosQUANTIDADE.AsInteger * cdsProdutosPRECO_UNITARIO.AsCurrency);
 
       DAOPedidoVenda.DeleteItemDoPedido(cdsProdutosCODIGO.AsString, CodigoPedidoVendaAtual);
       cdsProdutos.Delete;
     end;
 
-    edtAvisos.Text := 'VENDA';
+    lblStatusPDV.Caption := 'VENDA';
   finally
     f.Free;
   end;
@@ -420,11 +493,11 @@ begin
     Atencao('Ainda não foi incluído nenhum item na venda.');
     Exit;
   end;
-  edtAvisos.Text := 'FECHAR VENDA';
+  lblStatusPDV.Caption := 'FECHAR VENDA';
   f := TFrmFecharVenda.Create(Self);
   try
-    f.cedTotal.Value := cedSubtotal.Value;
-    f.Total         := cedSubtotal.Value;
+    f.cedTotal.Value := StrToCurrDef(lblSubtotal.Caption, 0);
+    f.Total          := StrToCurrDef(lblSubtotal.Caption, 0);
     f.ShowModal;
 
     if (f.Fechar) then
@@ -444,17 +517,17 @@ begin
   end;
 end;
 
+procedure TFrmPrincipal.Image19Click(Sender: TObject);
+begin
+  Self.Close;
+end;
+
 procedure TFrmPrincipal.IniciaControles;
 begin
-  edtDescricaoProduto.Clear;
-  edtCodigo.Clear;
-  edtQuantidade.Clear;
-  edtPrecoUnitario.Clear;
-  edtPrecoTotal.Clear;
-  cedSubtotal.Value := 0;
-  edtAvisos.Text := 'VENDA';
+  lblSubtotal.Caption := '';
+  lblStatusPDV.Caption := 'VENDA';
 
-  lblData.Caption := FormatDateTime('dd/mm/yyyy', Now);
+  //lblData.Caption := FormatDateTime('dd/mm/yyyy', Now);
   tmHora.Enabled  := True;
 
   cdsProdutos.CreateDataSet;

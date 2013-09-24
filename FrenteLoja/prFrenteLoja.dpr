@@ -34,11 +34,5 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.Title := 'Frente de Loja - Top Commerce';
   Application.CreateForm(TFrmPrincipal, FrmPrincipal);
-  Application.CreateForm(TFrmConsultaClientes, FrmConsultaClientes);
-  Application.CreateForm(TFrmVendasFechadas, FrmVendasFechadas);
-  Application.CreateForm(TFrmVendasAbertas, FrmVendasAbertas);
-  Application.CreateForm(TFrmRelBase, FrmRelBase);
-  Application.CreateForm(TFrmRelReciboVenda, FrmRelReciboVenda);
-  Application.CreateForm(TFrmConectandoServidor, FrmConectandoServidor);
   Application.Run;
 end.
