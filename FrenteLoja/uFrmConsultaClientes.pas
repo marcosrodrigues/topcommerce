@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, DBClient, Grids, DBGrids, StdCtrls, ExtCtrls, uClienteDAOClient,
-  Cliente, DataUtils;
+  Cliente, DataUtils, pngimage;
 
 type
   TFrmConsultaClientes = class(TForm)
@@ -21,6 +21,8 @@ type
     cdsConsultaCODIGO: TStringField;
     cdsConsultaNOME: TStringField;
     cdsConsultaTELEFONE: TStringField;
+    Panel1: TPanel;
+    Image19: TImage;
     procedure edtConsultarChange(Sender: TObject);
     procedure edtConsultarKeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);
@@ -29,6 +31,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure grdConsultaDblClick(Sender: TObject);
     procedure grdConsultaKeyPress(Sender: TObject; var Key: Char);
+    procedure Image19Click(Sender: TObject);
   private
     { Private declarations }
     DAOClient: TClienteDAOClient;
@@ -79,6 +82,7 @@ procedure TFrmConsultaClientes.FormKeyDown(Sender: TObject; var Key: Word; Shift
 begin
   case Key of
     VK_ESCAPE: Self.Close;
+    VK_DOWN: grdConsulta.SetFocus;
   end;
 end;
 
@@ -97,6 +101,11 @@ procedure TFrmConsultaClientes.grdConsultaKeyPress(Sender: TObject; var Key: Cha
 begin
   if (Ord(Key) = 13) then
     Selecionar;
+end;
+
+procedure TFrmConsultaClientes.Image19Click(Sender: TObject);
+begin
+  Self.Close;
 end;
 
 procedure TFrmConsultaClientes.Selecionar;

@@ -97,6 +97,18 @@ type
     Panel7: TPanel;
     imgFotoProduto: TImage;
     imgFrameFotoProduto: TImage;
+    Panel8: TPanel;
+    Image20: TImage;
+    Image30: TImage;
+    Image31: TImage;
+    DBText6: TDBText;
+    Label3: TLabel;
+    Label5: TLabel;
+    Panel9: TPanel;
+    Image32: TImage;
+    Image33: TImage;
+    Image34: TImage;
+    DBText7: TDBText;
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -119,11 +131,12 @@ type
     procedure NovaVenda;
     procedure FecharVenda;
     procedure ConsultarProduto;
-    procedure GravarVenda(Desconto, DescontoPercentual, Total: Currency; TipoPagamento: Integer; Cliente: TCliente; NomeCliente: string);
+    procedure GravarVenda(Desconto, DescontoPercentual, Recebido, Troco, Total: Currency; TipoPagamento: Integer; Cliente: TCliente; NomeCliente: string);
     procedure ExcluirItem;
     procedure IniciaControles;
     procedure VendasFechadas;
     procedure VendasAbertas;
+    procedure ImprimirRecibo;
   public
     { Public declarations }
   end;
@@ -193,6 +206,7 @@ begin
     VK_F3: FecharVenda;
     VK_F5: ExcluirItem;
     VK_F6: ConsultarProduto;
+    VK_F7: ImprimirRecibo;
     VK_F8: VendasAbertas;
     VK_F9: VendasFechadas;
   end;
@@ -228,7 +242,7 @@ begin
   IniciaControles;
 end;
 
-procedure TFrmPrincipal.GravarVenda(Desconto, DescontoPercentual, Total: Currency; TipoPagamento: Integer; Cliente: TCliente; NomeCliente: string);
+procedure TFrmPrincipal.GravarVenda(Desconto, DescontoPercentual, Recebido, Troco, Total: Currency; TipoPagamento: Integer; Cliente: TCliente; NomeCliente: string);
 var
   Pedido: TPedidoVenda;
 begin
@@ -240,6 +254,8 @@ begin
   Pedido.Cliente       := Cliente;
   Pedido.Fechada       := True;
   Pedido.DescontoPercentual := DescontoPercentual;
+  Pedido.Recebido := Recebido;
+  Pedido.Troco := Troco;
   Pedido.Total := Total;
   if Cliente = nil then
     Pedido.NomeClienteAvulso := NomeCliente;
@@ -344,7 +360,10 @@ end;
 procedure TFrmPrincipal.cdsProdutosDESCONTO_PERCENTUALGetText(Sender: TField;
   var Text: string; DisplayText: Boolean);
 begin
-  Text := Sender.AsString + ' %';
+  if Sender.IsNull then
+    Text := ''
+  else
+    Text := Sender.AsString + ' %';
 end;
 
 procedure TFrmPrincipal.cdsProdutosQUANTIDADEGetText(Sender: TField;
@@ -486,7 +505,6 @@ end;
 procedure TFrmPrincipal.FecharVenda;
 var
   f: TFrmFecharVenda;
-  recibo: TFrmRelReciboVenda;
 begin
   if cdsProdutos.RecordCount <= 0 then
   begin
@@ -502,24 +520,41 @@ begin
 
     if (f.Fechar) then
     begin
-      GravarVenda(f.cedDescontoValor.Value, f.cedDescontoPercentual.Value, f.cedTotal.Value, f.cbFormaPagamento.ItemIndex, f.Cliente, f.NomeCliente);
+      GravarVenda(f.cedDescontoValor.Value, f.cedDescontoPercentual.Value, f.cedValorRecebido.Value, f.cedTroco.Value, f.cedTotal.Value, f.cbFormaPagamento.ItemIndex, f.Cliente, f.NomeCliente);
 
-      recibo := TFrmRelReciboVenda.Create(Self);
-      try
-        recibo.CodigoVenda := CodigoPedidoVendaAtual;
-        recibo.RLReport.Print;
-      finally
-        recibo.Free;
-      end;
+      ImprimirRecibo;
     end;
   finally
+    if f.Fechar then
+      NovaVenda;
+
     f.Free;
+    lblStatusPDV.Caption := 'VENDA';
   end;
 end;
 
 procedure TFrmPrincipal.Image19Click(Sender: TObject);
 begin
   Self.Close;
+end;
+
+procedure TFrmPrincipal.ImprimirRecibo;
+var
+  recibo: TFrmRelReciboVenda;
+begin
+  if CodigoPedidoVendaAtual = '' then
+  begin
+    Atencao('Nenhuma venda ativa');
+    Exit;
+  end;
+
+  recibo := TFrmRelReciboVenda.Create(Self);
+  try
+    recibo.CodigoVenda := CodigoPedidoVendaAtual;
+    recibo.RLReport.Print;
+  finally
+    recibo.Free;
+  end;
 end;
 
 procedure TFrmPrincipal.IniciaControles;

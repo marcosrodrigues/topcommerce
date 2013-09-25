@@ -29,6 +29,10 @@ type
     [JSONReflect(ctString, rtString, TDoubleInterceptor, nil, true)]
     FTotal: Currency;
     FCancelada: Boolean;
+    [JSONReflect(ctString, rtString, TDoubleInterceptor, nil, true)]
+    FRecebido: Currency;
+    [JSONReflect(ctString, rtString, TDoubleInterceptor, nil, true)]
+    FTroco: Currency;
   public
     property Codigo: string read FCodigo write FCodigo;
     property Data: TDateTime read FData write FData;
@@ -41,6 +45,8 @@ type
     property DescontoPercentual: Currency read FDescontoPercentual write FDescontoPercentual;
     property Total: Currency read FTotal write FTotal;
     property Cancelada: Boolean read FCancelada write FCancelada;
+    property Recebido: Currency read FRecebido write FRecebido;
+    property Troco: Currency read FTroco write FTroco;
   end;
 
 implementation

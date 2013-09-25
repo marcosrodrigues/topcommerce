@@ -195,7 +195,7 @@ begin
   try
     query.SQLConnection := SCPrincipal.ConnTopCommerce;
     try
-      query.SQL.Text := 'UPDATE PEDIDOS_VENDA SET DESCONTO = :DESCONTO, TIPO_PAGAMENTO = :TIPO_PAGAMENTO, FECHADA = :FECHADA, DESCONTO_PERCENTUAL = :DESCONTO_PERCENTUAL, TOTAL = :TOTAL, CANCELADA = :CANCELADA';
+      query.SQL.Text := 'UPDATE PEDIDOS_VENDA SET DESCONTO = :DESCONTO, TIPO_PAGAMENTO = :TIPO_PAGAMENTO, FECHADA = :FECHADA, DESCONTO_PERCENTUAL = :DESCONTO_PERCENTUAL, TOTAL = :TOTAL, CANCELADA = :CANCELADA, RECEBIDO = :RECEBIDO, TROCO = :TROCO';
 
       if PedidoVenda.Cliente <> nil then
         query.SQL.Text := query.SQL.Text + ', CODIGO_CLIENTE = :CODIGO_CLIENTE, NOME_CLIENTE_AVULSO = :NOME_CLIENTE_AVULSO '
@@ -211,6 +211,8 @@ begin
       query.ParamByName('DESCONTO_PERCENTUAL').AsCurrency := PedidoVenda.DescontoPercentual;
       query.ParamByName('TOTAL').AsCurrency := PedidoVenda.Total;
       query.ParamByName('CANCELADA').AsBoolean := PedidoVenda.Cancelada;
+      query.ParamByName('RECEBIDO').AsCurrency := PedidoVenda.Recebido;
+      query.ParamByName('TROCO').AsCurrency := PedidoVenda.Troco;
 
       if PedidoVenda.Cliente <> nil then
         query.ParamByName('CODIGO_CLIENTE').AsString := PedidoVenda.Cliente.Codigo;

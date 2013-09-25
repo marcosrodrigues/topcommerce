@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ExtCtrls, Grids, DBGrids, DB, DBClient, uProdutoDAOClient,
-  DBXDBReaders, Produto;
+  DBXDBReaders, Produto, pngimage;
 
 type
   TFrmConsultaProdutos = class(TForm)
@@ -27,6 +27,8 @@ type
     cdsConsultaQUANTIDADE: TIntegerField;
     cdsConsultaESTOQUE_MINIMO: TIntegerField;
     cdsConsultaENDERECO: TStringField;
+    Panel1: TPanel;
+    Image19: TImage;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -35,6 +37,7 @@ type
     procedure grdConsultaKeyPress(Sender: TObject; var Key: Char);
     procedure edtConsultarChange(Sender: TObject);
     procedure edtConsultarKeyPress(Sender: TObject; var Key: Char);
+    procedure Image19Click(Sender: TObject);
   private
     { Private declarations }
     DAOClient: TProdutoDAOClient;
@@ -103,6 +106,11 @@ procedure TFrmConsultaProdutos.grdConsultaKeyPress(Sender: TObject; var Key: Cha
 begin
   if (Ord(Key) = 13) then
     Selecionar;
+end;
+
+procedure TFrmConsultaProdutos.Image19Click(Sender: TObject);
+begin
+  Self.Close;
 end;
 
 procedure TFrmConsultaProdutos.Selecionar;

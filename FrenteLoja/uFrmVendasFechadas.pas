@@ -4,7 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, DBClient, Grids, DBGrids, uPedidoVendaDAOClient;
+  Dialogs, DB, DBClient, Grids, DBGrids, uPedidoVendaDAOClient, ExtCtrls,
+  pngimage;
 
 type
   TFrmVendasFechadas = class(TForm)
@@ -16,11 +17,14 @@ type
     cdsConsultaNOME_CLIENTE_AVULSO: TStringField;
     cdsConsultaCODIGO: TStringField;
     cdsConsultaTOTAL: TCurrencyField;
+    Panel1: TPanel;
+    Image19: TImage;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormShow(Sender: TObject);
     procedure grdConsultaKeyPress(Sender: TObject; var Key: Char);
+    procedure Image19Click(Sender: TObject);
   private
     { Private declarations }
     DAOClient: TPedidoVendaDAOClient;
@@ -71,6 +75,11 @@ begin
     Self.ModalResult := mrOk;
     Self.CloseModal;
   end;
+end;
+
+procedure TFrmVendasFechadas.Image19Click(Sender: TObject);
+begin
+  Self.Close;
 end;
 
 end.

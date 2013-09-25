@@ -2,10 +2,10 @@ object FrmAjuste: TFrmAjuste
   Left = 0
   Top = 0
   BorderIcons = []
-  BorderStyle = bsSingle
+  BorderStyle = bsNone
   Caption = 'Item do Pedido'
-  ClientHeight = 309
-  ClientWidth = 371
+  ClientHeight = 310
+  ClientWidth = 500
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -57,30 +57,30 @@ object FrmAjuste: TFrmAjuste
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 371
+    Width = 500
     Height = 41
     Align = alTop
-    Color = clHotLight
+    Color = 3682350
     ParentBackground = False
     TabOrder = 5
-    ExplicitWidth = 456
+    ExplicitWidth = 371
     object lblDescricaoProduto: TLabel
       Left = 1
       Top = 1
-      Width = 369
+      Width = 498
       Height = 39
       Align = alClient
       Alignment = taCenter
       Caption = 'lblDescricaoProduto'
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindow
-      Font.Height = -20
-      Font.Name = 'Arial'
+      Font.Color = 4244613
+      Font.Height = -27
+      Font.Name = 'Ubuntu Condensed'
       Font.Style = []
       ParentFont = False
       Layout = tlCenter
-      ExplicitWidth = 176
-      ExplicitHeight = 23
+      ExplicitWidth = 208
+      ExplicitHeight = 32
     end
   end
   object edtQuantidade: TEdit
