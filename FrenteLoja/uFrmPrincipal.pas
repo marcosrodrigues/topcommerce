@@ -69,7 +69,7 @@ type
     Image17: TImage;
     Panel6: TPanel;
     Image29: TImage;
-    Label13: TLabel;
+    lblUsuario: TLabel;
     Image27: TImage;
     Label14: TLabel;
     Image28: TImage;
@@ -109,6 +109,8 @@ type
     Image33: TImage;
     Image34: TImage;
     DBText7: TDBText;
+    Image35: TImage;
+    Label6: TLabel;
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);

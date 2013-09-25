@@ -91,8 +91,8 @@ begin
     if fLogin.FLoginSucess then
     begin
       Application.CreateForm(TFrmPrincipal, FrmPrincipal);
-  Application.CreateForm(TFrmConectandoServidor, FrmConectandoServidor);
-  if ( fLogin.Usuario <> nil ) then
+      Application.CreateForm(TFrmConectandoServidor, FrmConectandoServidor);
+      if fLogin.Usuario <> nil then
         FrmPrincipal.lblLogin.Caption := 'Usuário: ' + fLogin.Usuario.Login
       else
         FrmPrincipal.lblLogin.Caption := 'Usuário: TOP';
