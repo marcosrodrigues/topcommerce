@@ -1,15 +1,14 @@
-object FrmFecharVenda: TFrmFecharVenda
+object FrmAbrirCaixa: TFrmAbrirCaixa
   Left = 0
   Top = 0
-  BorderIcons = []
   BorderStyle = bsNone
-  Caption = 'Fechar Venda'
-  ClientHeight = 299
-  ClientWidth = 645
+  Caption = 'FrmAbrirCaixa'
+  ClientHeight = 147
+  ClientWidth = 334
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -20
+  Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
   KeyPreview = True
@@ -18,56 +17,41 @@ object FrmFecharVenda: TFrmFecharVenda
   OnKeyDown = FormKeyDown
   OnKeyPress = FormKeyPress
   PixelsPerInch = 96
-  TextHeight = 24
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 8
+    Top = 48
+    Width = 36
+    Height = 24
+    Caption = 'Data'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -20
+    Font.Name = 'Ubuntu Condensed'
+    Font.Style = []
+    ParentFont = False
+  end
   object Label2: TLabel
-    Left = 8
-    Top = 50
-    Width = 135
-    Height = 24
-    Caption = 'Desconto Valor'
-  end
-  object Label4: TLabel
-    Left = 408
-    Top = 50
-    Width = 46
-    Height = 24
-    Caption = 'Total'
-  end
-  object Label3: TLabel
-    Left = 8
-    Top = 189
-    Width = 191
-    Height = 24
-    Caption = 'Forma de Pagamento'
-  end
-  object Label6: TLabel
-    Left = 200
-    Top = 50
-    Width = 183
-    Height = 24
-    Caption = 'Desconto Percentual'
-  end
-  object Label7: TLabel
-    Left = 8
-    Top = 114
+    Left = 152
+    Top = 48
     Width = 133
     Height = 24
-    Caption = 'Valor Recebido'
-  end
-  object Label8: TLabel
-    Left = 200
-    Top = 114
-    Width = 50
-    Height = 24
-    Caption = 'Troco'
+    Caption = 'Valor de Abertura'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -20
+    Font.Name = 'Ubuntu Condensed'
+    Font.Style = []
+    ParentFont = False
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 645
+    Width = 334
     Height = 41
     Align = alTop
-    Caption = 'Fechar Venda'
+    BevelOuter = bvNone
+    Caption = 'Abrir Caixa'
     Color = 3682350
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4244613
@@ -76,12 +60,14 @@ object FrmFecharVenda: TFrmFecharVenda
     Font.Style = []
     ParentBackground = False
     ParentFont = False
-    TabOrder = 7
+    TabOrder = 0
+    ExplicitLeft = -412
+    ExplicitWidth = 1050
     DesignSize = (
-      645
+      334
       41)
     object Image19: TImage
-      Left = 616
+      Left = 304
       Top = 3
       Width = 24
       Height = 24
@@ -221,31 +207,53 @@ object FrmFecharVenda: TFrmFecharVenda
         FA9A8A936452B13296028000F88AF68DBAC26352FFB8A256F190AFA9E9897F00
         4478C4DFA95E948D0000000049454E44AE426082}
       OnClick = Image19Click
+      ExplicitLeft = 1020
     end
   end
-  object cbFormaPagamento: TComboBox
+  object deData: TDateTimePicker
     Left = 8
-    Top = 216
-    Width = 231
+    Top = 72
+    Width = 121
     Height = 32
-    Style = csDropDownList
-    ItemIndex = 0
-    TabOrder = 5
-    Text = 'Dinheiro'
-    Items.Strings = (
-      'Dinheiro'
-      'Credi'#225'rio'
-      'Cart'#227'o de Cr'#233'dito'
-      'Cart'#227'o de D'#233'bito'
-      'Cheque')
+    Date = 41503.566427175920000000
+    Time = 41503.566427175920000000
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -20
+    Font.Name = 'Ubuntu Condensed'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 1
   end
-  object btnFechar: TDXPButton
+  object cedValorAbertura: TDXPCurrencyEdit
+    Left = 152
+    Top = 72
+    Width = 174
+    Height = 32
+    Alignment = taRightJustify
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -20
+    Font.Name = 'Ubuntu Condensed'
+    Font.Style = []
+    Options = []
+    ParentFont = False
+    TabOrder = 2
+    Text = '0,00'
+  end
+  object btnAbrir: TDXPButton
     Left = 8
-    Top = 259
+    Top = 109
     Width = 112
     Height = 32
-    OnClick = btnFecharClick
-    Caption = '      Fechar'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -20
+    Font.Name = 'Ubuntu Condensed'
+    Font.Style = []
+    ParentFont = False
+    OnClick = btnAbrirClick
+    Caption = '      Abrir'
     Flat = True
     GlyphPng.Data = {
       89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
@@ -301,61 +309,6 @@ object FrmFecharVenda: TFrmFecharVenda
       EF67151F12403CAC2EA64E5CCE3352EED6BD4F73BF3CFAE0F3880F19E06CE4C8
       AF9FB3C7E9D701F085C63700FF01CCCF4AD32DDF5C9F0000000049454E44AE42
       6082}
-    TabOrder = 6
-  end
-  object cedDescontoValor: TDXPCurrencyEdit
-    Left = 8
-    Top = 76
-    Width = 168
-    Height = 32
-    Alignment = taRightJustify
-    Options = []
-    TabOrder = 0
-    Text = '0,00'
-    OnExit = cedDescontoValorExit
-  end
-  object cedDescontoPercentual: TDXPCurrencyEdit
-    Left = 200
-    Top = 76
-    Width = 168
-    Height = 32
-    Alignment = taRightJustify
-    Options = []
-    TabOrder = 1
-    Text = '0,00'
-    OnExit = cedDescontoPercentualExit
-  end
-  object cedTotal: TDXPCurrencyEdit
-    Left = 408
-    Top = 76
-    Width = 168
-    Height = 32
-    Alignment = taRightJustify
-    Options = []
-    TabOrder = 2
-    Text = '0,00'
-  end
-  object cedValorRecebido: TDXPCurrencyEdit
-    Left = 8
-    Top = 140
-    Width = 168
-    Height = 32
-    Alignment = taRightJustify
-    Options = []
     TabOrder = 3
-    Text = '0,00'
-    OnExit = cedValorRecebidoExit
-  end
-  object cedTroco: TDXPCurrencyEdit
-    Left = 200
-    Top = 140
-    Width = 168
-    Height = 32
-    Alignment = taRightJustify
-    Enabled = False
-    Options = []
-    TabOrder = 4
-    Text = '0,00'
-    OnExit = cedDescontoValorExit
   end
 end

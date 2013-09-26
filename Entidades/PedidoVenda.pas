@@ -33,6 +33,7 @@ type
     FRecebido: Currency;
     [JSONReflect(ctString, rtString, TDoubleInterceptor, nil, true)]
     FTroco: Currency;
+    FLoginUsuario: string;
   public
     property Codigo: string read FCodigo write FCodigo;
     property Data: TDateTime read FData write FData;
@@ -47,6 +48,7 @@ type
     property Cancelada: Boolean read FCancelada write FCancelada;
     property Recebido: Currency read FRecebido write FRecebido;
     property Troco: Currency read FTroco write FTroco;
+    property LoginUsuario: string read FLoginUsuario write FLoginUsuario;
   end;
 
 implementation

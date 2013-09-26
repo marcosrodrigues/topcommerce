@@ -14,10 +14,6 @@ type
     Label4: TLabel;
     Label3: TLabel;
     cbFormaPagamento: TComboBox;
-    Label5: TLabel;
-    edCliente: TEdit;
-    btnPesquisarCliente: TDXPButton;
-    btnLimpar: TDXPButton;
     btnFechar: TDXPButton;
     cedDescontoValor: TDXPCurrencyEdit;
     Label6: TLabel;
@@ -31,10 +27,7 @@ type
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure cedDescontoValorExit(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
-    procedure btnPesquisarClienteClick(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
-    procedure btnLimparClick(Sender: TObject);
-    procedure cbFormaPagamentoChange(Sender: TObject);
     procedure cedDescontoPercentualExit(Sender: TObject);
     procedure cedValorRecebidoExit(Sender: TObject);
     procedure Image19Click(Sender: TObject);
@@ -45,8 +38,6 @@ type
     { Public declarations }
     Total: Currency;
     Fechar: Boolean;
-    Cliente: TCliente;
-    NomeCliente: string;
   end;
 
 var
@@ -60,35 +51,8 @@ uses uFrmConsultaClientes, MensagensUtils;
 
 procedure TFrmFecharVenda.btnFecharClick(Sender: TObject);
 begin
-  NomeCliente := edCliente.Text;
   Fechar := True;
   Close;
-end;
-
-procedure TFrmFecharVenda.btnLimparClick(Sender: TObject);
-begin
-  edCliente.Clear;
-  Cliente := nil;
-end;
-
-procedure TFrmFecharVenda.btnPesquisarClienteClick(Sender: TObject);
-var
-  fConsultaClientes: TFrmConsultaClientes;
-begin
-  fConsultaClientes := TFrmConsultaClientes.Create(Self);
-  try
-    fConsultaClientes.ShowModal;
-    if Assigned(fConsultaClientes.Cliente) then
-    begin
-      Cliente := TCliente.Create(fConsultaClientes.Cliente.Codigo, fConsultaClientes.Cliente.Nome, fConsultaClientes.Cliente.Telefone);
-
-      edCliente.Text := Cliente.Nome;
-
-      btnFechar.SetFocus;
-    end;
-  finally
-    fConsultaClientes.Free;
-  end;
 end;
 
 procedure TFrmFecharVenda.CalcularTotal;
@@ -100,11 +64,6 @@ begin
 
   if (cedDescontoPercentual.Value <> 0) then
     cedTotal.Value := cedTotal.Value - (cedTotal.Value * (cedDescontoPercentual.Value / 100));
-end;
-
-procedure TFrmFecharVenda.cbFormaPagamentoChange(Sender: TObject);
-begin
-  edCliente.Enabled := cbFormaPagamento.ItemIndex <> 1;
 end;
 
 procedure TFrmFecharVenda.cedDescontoPercentualExit(Sender: TObject);
@@ -148,7 +107,7 @@ begin
     else if (Self.ActiveControl = cedValorRecebido) then
       cbFormaPagamento.SetFocus
     else if (Self.ActiveControl = cbFormaPagamento) then
-      btnPesquisarCliente.SetFocus;
+      btnFechar.SetFocus;
   end;
 end;
 

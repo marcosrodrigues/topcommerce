@@ -103,4 +103,11 @@ object SCPrincipal: TSCPrincipal
     Left = 300
     Top = 116
   end
+  object Caixa: TDSServerClass
+    OnGetClass = CaixaGetClass
+    Server = DSServer
+    LifeCycle = 'Session'
+    Left = 300
+    Top = 169
+  end
 end

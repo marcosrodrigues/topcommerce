@@ -23,7 +23,9 @@ uses
   UsuarioDAO in 'DAO\UsuarioDAO.pas',
   BaseDAO in 'DAO\BaseDAO.pas',
   Cliente in '..\Entidades\Cliente.pas',
-  ClienteDAO in 'DAO\ClienteDAO.pas';
+  ClienteDAO in 'DAO\ClienteDAO.pas',
+  Caixa in '..\Entidades\Caixa.pas',
+  CaixaDAO in 'DAO\CaixaDAO.pas';
 
 {$R *.res}
 

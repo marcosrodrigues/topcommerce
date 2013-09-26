@@ -34,7 +34,6 @@ type
     Label11: TLabel;
     Image21: TImage;
     Image22: TImage;
-    Image23: TImage;
     Image24: TImage;
     Image25: TImage;
     Image26: TImage;
@@ -42,7 +41,6 @@ type
     Label12: TLabel;
     Label16: TLabel;
     Image18: TImage;
-    Label17: TLabel;
     Label18: TLabel;
     Label19: TLabel;
     Label20: TLabel;
@@ -111,6 +109,8 @@ type
     DBText7: TDBText;
     Image35: TImage;
     Label6: TLabel;
+    Image23: TImage;
+    Label8: TLabel;
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -133,12 +133,13 @@ type
     procedure NovaVenda;
     procedure FecharVenda;
     procedure ConsultarProduto;
-    procedure GravarVenda(Desconto, DescontoPercentual, Recebido, Troco, Total: Currency; TipoPagamento: Integer; Cliente: TCliente; NomeCliente: string);
+    procedure GravarVenda(Desconto, DescontoPercentual, Recebido, Troco, Total: Currency; TipoPagamento: Integer);
     procedure ExcluirItem;
     procedure IniciaControles;
     procedure VendasFechadas;
     procedure VendasAbertas;
     procedure ImprimirRecibo;
+    procedure AbrirCaixa;
   public
     { Public declarations }
   end;
@@ -150,7 +151,8 @@ implementation
 
 uses uFrmConsultaProdutos, uFrmAjuste, uFrmFecharVenda, uFrmExcluirItem, MensagensUtils,
   uFrmVendasFechadas, uFrmVendasAbertas, uFrmRelReciboVenda,
-  uFrmConectandoServidor;
+  uFrmConectandoServidor, uFrmInformarCliente, uFrmAbrirCaixa, uCaixaDAOClient,
+  Caixa;
 
 {$R *.dfm}
 
@@ -211,6 +213,7 @@ begin
     VK_F7: ImprimirRecibo;
     VK_F8: VendasAbertas;
     VK_F9: VendasFechadas;
+    VK_F10: AbrirCaixa;
   end;
 end;
 
@@ -244,7 +247,7 @@ begin
   IniciaControles;
 end;
 
-procedure TFrmPrincipal.GravarVenda(Desconto, DescontoPercentual, Recebido, Troco, Total: Currency; TipoPagamento: Integer; Cliente: TCliente; NomeCliente: string);
+procedure TFrmPrincipal.GravarVenda(Desconto, DescontoPercentual, Recebido, Troco, Total: Currency; TipoPagamento: Integer);
 var
   Pedido: TPedidoVenda;
 begin
@@ -253,14 +256,11 @@ begin
   Pedido.Data          := DataPedidoVendaAtual;
   Pedido.Desconto      := Desconto;
   Pedido.TipoPagamento := TipoPagamento;
-  Pedido.Cliente       := Cliente;
   Pedido.Fechada       := True;
   Pedido.DescontoPercentual := DescontoPercentual;
   Pedido.Recebido := Recebido;
   Pedido.Troco := Troco;
   Pedido.Total := Total;
-  if Cliente = nil then
-    Pedido.NomeClienteAvulso := NomeCliente;
 
   DAOPedidoVenda.Update(Pedido);
 end;
@@ -359,6 +359,37 @@ begin
   end;
 end;
 
+procedure TFrmPrincipal.AbrirCaixa;
+var
+  f: TFrmAbrirCaixa;
+  dao: TCaixaDAOClient;
+  caixa: TCaixa;
+begin
+  lblStatusPDV.Caption := 'ABRIR CAIXA';
+  f := TFrmAbrirCaixa.Create(Self);
+  try
+    f.ShowModal;
+
+    if (f.Abrir) then
+    begin
+      dao := TCaixaDAOClient.Create(ConnServidor.DBXConnection);
+      try
+        caixa := TCaixa.Create;
+        caixa.Data := f.deData.DateTime;
+        caixa.Fechado := False;
+        caixa.ValorAbertura := f.cedValorAbertura.Value;
+
+        dao.Abrir(caixa);
+      finally
+        dao.Free;
+      end;
+    end;
+  finally
+    f.Free;
+    lblStatusPDV.Caption := 'VENDA';
+  end;
+end;
+
 procedure TFrmPrincipal.cdsProdutosDESCONTO_PERCENTUALGetText(Sender: TField;
   var Text: string; DisplayText: Boolean);
 begin
@@ -383,6 +414,7 @@ var
   fAjuste: TFrmAjuste;
   Item: TItemPedidoVenda;
   Pedido: TPedidoVenda;
+  fInformarCliente: TFrmInformarCliente;
 begin
   lblStatusPDV.Caption := 'CONSULTAR PRODUTO';
   fConsultaProdutos := TFrmConsultaProdutos.Create(Self);
@@ -441,10 +473,29 @@ begin
             DataPedidoVendaAtual := Now;
 
             Pedido := TPedidoVenda.Create;
+            Pedido.Itens := TList<TItemPedidoVenda>.Create;
             Pedido.Codigo  := CodigoPedidoVendaAtual;
             Pedido.Data    := DataPedidoVendaAtual;
             Pedido.Total   := StrToCurrDef(lblSubtotal.Caption, 0);
             Pedido.Fechada := False;
+            Pedido.LoginUsuario := lblUsuario.Caption;
+
+            lblStatusPDV.Caption := 'INFORMAR CLIENTE';
+            fInformarCliente := TFrmInformarCliente.Create(Self);
+            try
+              fInformarCliente.ShowModal;
+
+              if (fInformarCliente.Salvar) then
+              begin
+                if fInformarCliente.Cliente <> nil then
+                  Pedido.Cliente := fInformarCliente.Cliente
+                else
+                  Pedido.NomeClienteAvulso := fInformarCliente.NomeCliente;
+              end;
+            finally
+              fInformarCliente.Free;
+              lblStatusPDV.Caption := 'VENDA';
+            end;
 
             DAOPedidoVenda.Insert(Pedido);
           end;
@@ -522,7 +573,7 @@ begin
 
     if (f.Fechar) then
     begin
-      GravarVenda(f.cedDescontoValor.Value, f.cedDescontoPercentual.Value, f.cedValorRecebido.Value, f.cedTroco.Value, f.cedTotal.Value, f.cbFormaPagamento.ItemIndex, f.Cliente, f.NomeCliente);
+      GravarVenda(f.cedDescontoValor.Value, f.cedDescontoPercentual.Value, f.cedValorRecebido.Value, f.cedTroco.Value, f.cedTotal.Value, f.cbFormaPagamento.ItemIndex);
 
       ImprimirRecibo;
     end;

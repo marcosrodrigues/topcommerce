@@ -103,6 +103,14 @@
 			</DCCReference>
 			<DCCReference Include="..\Entidades\Usuario.pas"/>
 			<DCCReference Include="..\Cliente\DAOClient\uUsuarioDAOClient.pas"/>
+			<DCCReference Include="uFrmInformarCliente.pas">
+				<Form>FrmInformarCliente</Form>
+			</DCCReference>
+			<DCCReference Include="..\Cliente\DAOClient\uCaixaDAOClient.pas"/>
+			<DCCReference Include="..\Entidades\Caixa.pas"/>
+			<DCCReference Include="uFrmAbrirCaixa.pas">
+				<Form>FrmAbrirCaixa</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Release">
 				<Key>Cfg_2</Key>
 				<CfgParent>Base</CfgParent>

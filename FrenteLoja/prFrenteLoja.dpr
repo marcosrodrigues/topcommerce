@@ -31,7 +31,11 @@ uses
   uFrmConexaoServidor in '..\Cliente\uFrmConexaoServidor.pas' {FrmConexaoServidor},
   uFrmLogin in '..\Cliente\uFrmLogin.pas' {FrmLogin},
   Usuario in '..\Entidades\Usuario.pas',
-  uUsuarioDAOClient in '..\Cliente\DAOClient\uUsuarioDAOClient.pas';
+  uUsuarioDAOClient in '..\Cliente\DAOClient\uUsuarioDAOClient.pas',
+  uFrmInformarCliente in 'uFrmInformarCliente.pas' {FrmInformarCliente},
+  uCaixaDAOClient in '..\Cliente\DAOClient\uCaixaDAOClient.pas',
+  Caixa in '..\Entidades\Caixa.pas',
+  uFrmAbrirCaixa in 'uFrmAbrirCaixa.pas' {FrmAbrirCaixa};
 
 {$R *.res}
 
@@ -59,8 +63,10 @@ begin
     if fLogin.FLoginSucess then
     begin
       Application.CreateForm(TFrmPrincipal, FrmPrincipal);
-      Application.CreateForm(TFrmConectandoServidor, FrmConectandoServidor);
-      if fLogin.Usuario <> nil then
+  Application.CreateForm(TFrmConectandoServidor, FrmConectandoServidor);
+  Application.CreateForm(TFrmInformarCliente, FrmInformarCliente);
+  Application.CreateForm(TFrmAbrirCaixa, FrmAbrirCaixa);
+  if fLogin.Usuario <> nil then
         FrmPrincipal.lblUsuario.Caption := fLogin.Usuario.Login
       else
         FrmPrincipal.lblUsuario.Caption := 'TOP';
