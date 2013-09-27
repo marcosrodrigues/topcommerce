@@ -46,6 +46,7 @@ object FrmPrincipal: TFrmPrincipal
     Width = 681
     Height = 45
     Align = alTop
+    BevelOuter = bvNone
     TabOrder = 0
     DesignSize = (
       681
@@ -74,6 +75,7 @@ object FrmPrincipal: TFrmPrincipal
       ParentShowHint = False
       ShowHint = True
       OnClick = N11Usurios1Click
+      Flat = True
       GlyphPng.Data = {
         89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
         F40000000473424954080808087C0864880000084A4944415478DAC5970950D4
@@ -155,6 +157,7 @@ object FrmPrincipal: TFrmPrincipal
       ParentShowHint = False
       ShowHint = True
       OnClick = N12Clientes1Click
+      Flat = True
       GlyphPng.Data = {
         89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
         F40000001974455874536F6674776172650041646F626520496D616765526561
@@ -246,6 +249,7 @@ object FrmPrincipal: TFrmPrincipal
       ParentShowHint = False
       ShowHint = True
       OnClick = N12Fornecedores1Click
+      Flat = True
       GlyphPng.Data = {
         89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
         F4000007F54944415478DAED57696C54D715FEEEDB66F1CCD89E198F630C6606
@@ -324,6 +328,7 @@ object FrmPrincipal: TFrmPrincipal
       ParentShowHint = False
       ShowHint = True
       OnClick = N12Produtos1Click
+      Flat = True
       GlyphPng.Data = {
         89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
         F40000076F4944415478DAC5960B6C13F71DC7BFF7F2DDD971EC3809499C1448
@@ -398,6 +403,7 @@ object FrmPrincipal: TFrmPrincipal
       ParentShowHint = False
       ShowHint = True
       OnClick = N21MovimentarEstoque1Click
+      Flat = True
       GlyphPng.Data = {
         89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
         F40000086B4944415478DAC597694C5CD715C7FF6F369BD5F56E189801068359
@@ -480,6 +486,7 @@ object FrmPrincipal: TFrmPrincipal
       ParentShowHint = False
       ShowHint = True
       OnClick = N33Estoque1Click
+      Flat = True
       GlyphPng.Data = {
         89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
         F4000000097048597300000B1300000B1301009A9C1800000A4D694343505068
@@ -633,6 +640,7 @@ object FrmPrincipal: TFrmPrincipal
       ParentShowHint = False
       ShowHint = True
       OnClick = N34PedidosdeVenda1Click
+      Flat = True
       GlyphPng.Data = {
         89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
         F4000005464944415478DAAD976B481C5714C7FFB36F67D5188DA835353469A8
@@ -690,6 +698,7 @@ object FrmPrincipal: TFrmPrincipal
       ParentShowHint = False
       ShowHint = True
       OnClick = btnSairClick
+      Flat = True
       GlyphPng.Data = {
         89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
         F4000006924944415478DAC5967B6C53551CC7BFF7DEAEEB6B1DC36E7DDD6E6B
@@ -900,6 +909,10 @@ object FrmPrincipal: TFrmPrincipal
       object N34PedidosdeVenda1: TMenuItem
         Caption = 'Pedidos de Venda'
         OnClick = N34PedidosdeVenda1Click
+      end
+      object Caixas1: TMenuItem
+        Caption = 'Caixas'
+        OnClick = Caixas1Click
       end
     end
     object Utilitrios1: TMenuItem

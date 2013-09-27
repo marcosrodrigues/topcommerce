@@ -54,6 +54,7 @@ type
     btnSair: TDXPButton;
     Utilitrios1: TMenuItem;
     Configuraes1: TMenuItem;
+    Caixas1: TMenuItem;
     procedure N11TiposdeProdutos1Click(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure N12Produtos1Click(Sender: TObject);
@@ -69,6 +70,7 @@ type
     procedure N11Usurios1Click(Sender: TObject);
     procedure N12Clientes1Click(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
+    procedure Caixas1Click(Sender: TObject);
   private
     { Private declarations }
     procedure CarregaProdutosVencer;
@@ -84,7 +86,8 @@ implementation
 
 uses uFrmTipoProduto, MensagensUtils, uFrmProduto, uFrmFornecedor, uFrmEstoque,
   uFrmFiltrosFornecedor, uFrmFiltrosProduto, uFrmFiltrosPedidoVenda, uFrmFiltrosEstoque,
-  uProdutoDAOClient, DataUtils, uFrmUsuario, uFrmCliente, uFrmConexaoServidor;
+  uProdutoDAOClient, DataUtils, uFrmUsuario, uFrmCliente, uFrmConexaoServidor,
+  uFrmFiltrosCaixas;
 
 {$R *.dfm}
 
@@ -92,6 +95,16 @@ procedure TFrmPrincipal.bbtAtualizarClick(Sender: TObject);
 begin
   cdsProdutosVencer.Close;
   CarregaProdutosVencer;
+end;
+
+procedure TFrmPrincipal.Caixas1Click(Sender: TObject);
+var
+  f: TFrmFiltrosCaixas;
+begin
+  f := nil;
+  if (f = nil) then
+    f := TFrmFiltrosCaixas.Create(Self);
+  f.ShowModal;
 end;
 
 procedure TFrmPrincipal.CarregaProdutosVencer;

@@ -10,8 +10,8 @@ inherited FrmCrudBase: TFrmCrudBase
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnShow = FormShow
-  ExplicitWidth = 600
-  ExplicitHeight = 380
+  ExplicitWidth = 608
+  ExplicitHeight = 391
   PixelsPerInch = 96
   TextHeight = 14
   object pnlBotoes: TPanel
@@ -31,6 +31,7 @@ inherited FrmCrudBase: TFrmCrudBase
       Height = 25
       Hint = 'Adicionar novo registro. (F2)'
       Caption = 'Novo F2'
+      Flat = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -75,6 +76,7 @@ inherited FrmCrudBase: TFrmCrudBase
       Height = 25
       Hint = 'Editar registro selecionado. (F3)'
       Caption = 'Editar F3'
+      Flat = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -119,6 +121,7 @@ inherited FrmCrudBase: TFrmCrudBase
       Height = 25
       Hint = 'Excluir registro selecionado. (F4)'
       Caption = 'Excluir F4'
+      Flat = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -164,6 +167,7 @@ inherited FrmCrudBase: TFrmCrudBase
       Hint = 'Fechar tela. (ESC)'
       Anchors = [akTop, akRight]
       Caption = 'Fechar ESC'
+      Flat = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -209,6 +213,7 @@ inherited FrmCrudBase: TFrmCrudBase
       Height = 25
       Hint = 'Seleciona o primeiro registro. (F10)'
       Caption = 'Primeiro F10'
+      Flat = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -253,6 +258,7 @@ inherited FrmCrudBase: TFrmCrudBase
       Height = 25
       Hint = 'Seleciona o '#250'ltimo registro. (F11)'
       Caption = #218'ltimo F11'
+      Flat = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11

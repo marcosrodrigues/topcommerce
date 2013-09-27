@@ -191,6 +191,14 @@
 			<DCCReference Include="uFrmConectandoServidor.pas">
 				<Form>FrmConectandoServidor</Form>
 			</DCCReference>
+			<DCCReference Include="DAOClient\uCaixaDAOClient.pas"/>
+			<DCCReference Include="..\Entidades\Caixa.pas"/>
+			<DCCReference Include="uFrmFiltrosCaixas.pas">
+				<Form>FrmFiltrosCaixas</Form>
+			</DCCReference>
+			<DCCReference Include="uFrmRelCaixas.pas">
+				<Form>FrmRelCaixas</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Release">
 				<Key>Cfg_2</Key>
 				<CfgParent>Base</CfgParent>

@@ -6,7 +6,7 @@ object FrmLogin: TFrmLogin
   Caption = 'Login - Top Commerce'
   ClientHeight = 190
   ClientWidth = 397
-  Color = 8816262
+  Color = clMenu
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -595,7 +595,7 @@ object FrmLogin: TFrmLogin
     Height = 29
     Caption = 'Usu'#225'rio'
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWhite
+    Font.Color = clBlack
     Font.Height = -23
     Font.Name = 'Ubuntu Condensed'
     Font.Style = []
@@ -608,7 +608,7 @@ object FrmLogin: TFrmLogin
     Height = 29
     Caption = 'Senha'
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWhite
+    Font.Color = clBlack
     Font.Height = -23
     Font.Name = 'Ubuntu Condensed'
     Font.Style = []
@@ -808,8 +808,6 @@ object FrmLogin: TFrmLogin
     ParentBackground = False
     ParentFont = False
     TabOrder = 4
-    ExplicitLeft = -669
-    ExplicitWidth = 1050
     DesignSize = (
       397
       41)

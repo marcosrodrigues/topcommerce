@@ -63,7 +63,11 @@ uses
   uFrmCliente in 'uFrmCliente.pas' {FrmCliente},
   uFrmDadosCliente in 'uFrmDadosCliente.pas' {FrmDadosCliente},
   uFrmConexaoServidor in 'uFrmConexaoServidor.pas' {FrmConexaoServidor},
-  uFrmConectandoServidor in 'uFrmConectandoServidor.pas' {FrmConectandoServidor};
+  uFrmConectandoServidor in 'uFrmConectandoServidor.pas' {FrmConectandoServidor},
+  uCaixaDAOClient in 'DAOClient\uCaixaDAOClient.pas',
+  Caixa in '..\Entidades\Caixa.pas',
+  uFrmFiltrosCaixas in 'uFrmFiltrosCaixas.pas' {FrmFiltrosCaixas},
+  uFrmRelCaixas in 'uFrmRelCaixas.pas' {FrmRelCaixas};
 
 {$R *.res}
 
@@ -91,8 +95,10 @@ begin
     if fLogin.FLoginSucess then
     begin
       Application.CreateForm(TFrmPrincipal, FrmPrincipal);
-      Application.CreateForm(TFrmConectandoServidor, FrmConectandoServidor);
-      if fLogin.Usuario <> nil then
+  Application.CreateForm(TFrmConectandoServidor, FrmConectandoServidor);
+  Application.CreateForm(TFrmFiltrosCaixas, FrmFiltrosCaixas);
+  Application.CreateForm(TFrmRelCaixas, FrmRelCaixas);
+  if fLogin.Usuario <> nil then
         FrmPrincipal.lblLogin.Caption := 'Usuário: ' + fLogin.Usuario.Login
       else
         FrmPrincipal.lblLogin.Caption := 'Usuário: TOP';

@@ -8,7 +8,7 @@ uses
   Dialogs, ExtCtrls, StdCtrls, Grids, DBGrids, jpeg, DB, DBClient, SqlExpr, DBXDataSnap,
   DBXCommon, DBXDBReaders, uPedidoVendaDAOClient, PedidoVenda, ItemPedidoVenda, Produto,
   Generics.Collections, Cliente, pngimage, RLConsts, DXPCurrencyEdit,
-  ImageButton4, DBCtrls;
+  ImageButton4, DBCtrls, Caixa;
 
 type
   TFrmPrincipal = class(TForm)
@@ -69,7 +69,7 @@ type
     Image29: TImage;
     lblUsuario: TLabel;
     Image27: TImage;
-    Label14: TLabel;
+    lblCaixa: TLabel;
     Image28: TImage;
     ConnServidor: TSQLConnection;
     cdsProdutos: TClientDataSet;
@@ -111,6 +111,8 @@ type
     Label6: TLabel;
     Image23: TImage;
     Label8: TLabel;
+    Image36: TImage;
+    Label10: TLabel;
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -129,6 +131,7 @@ type
     CodigoPedidoVendaAtual: string;
     DataPedidoVendaAtual: TDateTime;
     MyBitmap: TBitmap;
+    CaixaAbertoAtual: TCaixa;
 
     procedure NovaVenda;
     procedure FecharVenda;
@@ -140,6 +143,8 @@ type
     procedure VendasAbertas;
     procedure ImprimirRecibo;
     procedure AbrirCaixa;
+    procedure FecharCaixa;
+    procedure AtualizaCaixa;
   public
     { Public declarations }
   end;
@@ -151,8 +156,7 @@ implementation
 
 uses uFrmConsultaProdutos, uFrmAjuste, uFrmFecharVenda, uFrmExcluirItem, MensagensUtils,
   uFrmVendasFechadas, uFrmVendasAbertas, uFrmRelReciboVenda,
-  uFrmConectandoServidor, uFrmInformarCliente, uFrmAbrirCaixa, uCaixaDAOClient,
-  Caixa;
+  uFrmConectandoServidor, uFrmInformarCliente, uFrmAbrirCaixa, uCaixaDAOClient;
 
 {$R *.dfm}
 
@@ -214,6 +218,7 @@ begin
     VK_F8: VendasAbertas;
     VK_F9: VendasFechadas;
     VK_F10: AbrirCaixa;
+    VK_F11: FecharCaixa;
   end;
 end;
 
@@ -245,6 +250,7 @@ begin
   SetBounds(r.Left, r.Top, r.Right-r.Left, r.Bottom-r.Top);
 
   IniciaControles;
+  AtualizaCaixa;
 end;
 
 procedure TFrmPrincipal.GravarVenda(Desconto, DescontoPercentual, Recebido, Troco, Total: Currency; TipoPagamento: Integer);
@@ -267,6 +273,12 @@ end;
 
 procedure TFrmPrincipal.NovaVenda;
 begin
+  if CaixaAbertoAtual = nil then
+  begin
+    Atencao('Caixa fechado');
+    Exit;
+  end;
+
   cdsProdutos.Close;
 
   IniciaControles;
@@ -276,7 +288,7 @@ end;
 
 procedure TFrmPrincipal.tmHoraTimer(Sender: TObject);
 begin
-  lblHora.Caption := FormatDateTime('hh:mm:ss', Now);
+  lblHora.Caption := FormatDateTime('dd/mm/yyyy hh:mm:ss', Now);
 end;
 
 procedure TFrmPrincipal.VendasAbertas;
@@ -365,6 +377,12 @@ var
   dao: TCaixaDAOClient;
   caixa: TCaixa;
 begin
+  if CaixaAbertoAtual <> nil then
+  begin
+    Atencao('Caixa atualmente aberto');
+    Exit;
+  end;
+
   lblStatusPDV.Caption := 'ABRIR CAIXA';
   f := TFrmAbrirCaixa.Create(Self);
   try
@@ -380,6 +398,8 @@ begin
         caixa.ValorAbertura := f.cedValorAbertura.Value;
 
         dao.Abrir(caixa);
+
+        AtualizaCaixa;
       finally
         dao.Free;
       end;
@@ -387,6 +407,31 @@ begin
   finally
     f.Free;
     lblStatusPDV.Caption := 'VENDA';
+  end;
+end;
+
+procedure TFrmPrincipal.AtualizaCaixa;
+var
+  dao: TCaixaDAOClient;
+  caixa: TCaixa;
+begin
+  dao := TCaixaDAOClient.Create(ConnServidor.DBXConnection);
+  try
+    caixa := dao.CaixaAberto;
+
+    if caixa <> nil then
+    begin
+      lblCaixa.Caption := 'Caixa '+IntToStr(caixa.Id);
+
+      CaixaAbertoAtual := caixa;
+    end
+    else
+    begin
+      lblCaixa.Caption := 'Caixa Fechado';
+      lblStatusPDV.Caption := 'CAIXA FECHADO';
+    end;
+  finally
+    dao.Free;
   end;
 end;
 
@@ -422,6 +467,12 @@ begin
     fConsultaProdutos.ShowModal;
     if (Assigned(fConsultaProdutos.Produto)) then
     begin
+      if CaixaAbertoAtual = nil then
+      begin
+        Atencao('Caixa fechado');
+        Exit;
+      end;
+
       fAjuste := TFrmAjuste.Create(Self);
       try
         fAjuste.lblDescricaoProduto.Caption := fConsultaProdutos.Produto.Descricao;
@@ -553,6 +604,32 @@ begin
   finally
     f.Free;
   end;
+end;
+
+procedure TFrmPrincipal.FecharCaixa;
+var
+  dao: TCaixaDAOClient;
+begin
+  if CaixaAbertoAtual = nil then
+  begin
+    Atencao('Caixa atualmente fechado');
+    Exit;
+  end;
+
+  lblStatusPDV.Caption := 'ABRIR CAIXA';
+  if Confirma('Deseja fechar o caixa?') then
+  begin
+    dao := TCaixaDAOClient.Create(ConnServidor.DBXConnection);
+    try
+      dao.Fechar;
+      CaixaAbertoAtual := nil;
+    finally
+      dao.Free;
+    end;
+    lblStatusPDV.Caption := 'CAIXA FECHADO';
+  end
+  else
+    lblStatusPDV.Caption := 'VENDA';
 end;
 
 procedure TFrmPrincipal.FecharVenda;

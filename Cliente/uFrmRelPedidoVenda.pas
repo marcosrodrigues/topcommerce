@@ -13,7 +13,7 @@ type
     cdsRelatorioCODIGO_PRODUTO: TStringField;
     cdsRelatorioQUANTIDADE: TIntegerField;
     cdsRelatorioDESCRICAO: TStringField;
-    cdsRelatorioPRECO_VENDA: TCurrencyField;
+    cdsRelatorioVALOR: TCurrencyField;
     cdsRelatorioDATA: TSQLTimeStampField;
     cdsRelatorioDESCONTO: TCurrencyField;
     cdsRelatorioTIPO_PAGAMENTO: TIntegerField;
@@ -25,6 +25,16 @@ type
     RLDBText1: TRLDBText;
     RLBand3: TRLBand;
     RLDBText2: TRLDBText;
+    RLLabel3: TRLLabel;
+    RLDBText3: TRLDBText;
+    RLLabel4: TRLLabel;
+    RLLabel5: TRLLabel;
+    RLLabel7: TRLLabel;
+    RLLabel9: TRLLabel;
+    RLLabel8: TRLLabel;
+    RLDBText4: TRLDBText;
+    RLDBText5: TRLDBText;
+    RLDBText6: TRLDBText;
     procedure cdsRelatorioTIPO_PAGAMENTOGetText(Sender: TField; var Text: string;
       DisplayText: Boolean);
     procedure cdsRelatorioNOMEGetText(Sender: TField; var Text: string; DisplayText: Boolean);

@@ -10,12 +10,16 @@ uses
   Operacao: 1 - Entrada
 }
 
+//TODO: Criar a possibilidade de ter mais de um caixa aberto
+
 type
   TCaixaDAO = class(TBaseDAO)
   public
     function Abrir(Caixa: TCaixa): Boolean;
     function CaixaAberto: TCaixa;
     function RegistrarMovimentacao(Origem: integer; Valor: Currency; Operacao: Integer): Boolean;
+    function Fechar: Boolean;
+    function Relatorio(DataInicial, DataFinal: TDateTime): TDBXReader;
   end;
 
 
@@ -61,11 +65,42 @@ begin
     query.SQL.Text := 'SELECT * FROM CAIXAS WHERE FECHADO = 0';
     query.Open;
     //
+    if query.IsEmpty then
+    begin
+      Result := nil;
+      Exit;
+    end;
+
     Result := TCaixa.Create;
     Result.Id := query.FieldByName('ID').AsInteger;
     Result.Data := query.FieldByName('DATA').AsDateTime;
     Result.Fechado := False;
     Result.ValorAbertura := query.FieldByName('VALOR_ABERTURA').AsCurrency;
+  finally
+    query.Free;
+  end;
+end;
+
+function TCaixaDAO.Fechar: Boolean;
+var
+  query: TSQLQuery;
+  Caixa: TCaixa;
+begin
+  Caixa := CaixaAberto;
+
+  query := TSQLQuery.Create(nil);
+  try
+    query.SQLConnection := SCPrincipal.ConnTopCommerce;
+    //
+    query.SQL.Text := 'UPDATE CAIXAS SET FECHADO = 1 WHERE ID = :ID';
+    //
+    query.ParamByName('ID').AsInteger := Caixa.Id;
+    try
+      query.ExecSQL;
+      Result := True;
+    except
+      Result := False;
+    end;
   finally
     query.Free;
   end;
@@ -98,6 +133,21 @@ begin
   finally
     query.Free;
   end;
+end;
+
+function TCaixaDAO.Relatorio(DataInicial, DataFinal: TDateTime): TDBXReader;
+begin
+  PrepareCommand;
+  FComm.Text := 'SELECT C.ID, C.DATA, C.FECHADO, C.VALOR_ABERTURA, M.ORIGEM, M.VALOR, M.OPERACAO '+
+                'FROM CAIXAS C '+
+                'LEFT JOIN MOVIMENTACOES_CAIXA M ON M.CAIXA_ID = C.ID '+
+                'WHERE C.ID <> 0 ';
+  if (DataInicial <> 0) then
+    FComm.Text := FComm.Text + 'AND CONVERT(CHAR(8), DATA, 112) >= '+FormatDateTime('yyyymmdd', DataInicial)+' ';
+  if (DataFinal <> 0) then
+    FComm.Text := FComm.Text + 'AND CONVERT(CHAR(8), DATA, 112) <= '+FormatDateTime('yyyymmdd', DataFinal)+' ';
+
+  Result := FComm.ExecuteQuery;
 end;
 
 end.

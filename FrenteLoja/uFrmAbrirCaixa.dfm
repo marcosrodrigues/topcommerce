@@ -16,6 +16,7 @@ object FrmAbrirCaixa: TFrmAbrirCaixa
   Position = poMainFormCenter
   OnKeyDown = FormKeyDown
   OnKeyPress = FormKeyPress
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
@@ -61,8 +62,6 @@ object FrmAbrirCaixa: TFrmAbrirCaixa
     ParentBackground = False
     ParentFont = False
     TabOrder = 0
-    ExplicitLeft = -412
-    ExplicitWidth = 1050
     DesignSize = (
       334
       41)

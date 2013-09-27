@@ -35,8 +35,6 @@ object FrmConsultaProdutos: TFrmConsultaProdutos
     Font.Style = []
     ParentFont = False
     TabOrder = 0
-    ExplicitTop = 0
-    ExplicitWidth = 1044
     DesignSize = (
       1050
       49)
@@ -56,14 +54,13 @@ object FrmConsultaProdutos: TFrmConsultaProdutos
       TabOrder = 0
       OnChange = edtConsultarChange
       OnKeyPress = edtConsultarKeyPress
-      ExplicitWidth = 934
     end
   end
   object grdConsulta: TDBGrid
     Left = 0
     Top = 90
     Width = 1050
-    Height = 295
+    Height = 336
     Align = alClient
     DataSource = dsConsulta
     DrawingStyle = gdsClassic
@@ -110,36 +107,6 @@ object FrmConsultaProdutos: TFrmConsultaProdutos
         Visible = True
       end>
   end
-  object pnlResultado: TPanel
-    Left = 0
-    Top = 385
-    Width = 1050
-    Height = 41
-    Align = alBottom
-    TabOrder = 2
-    ExplicitTop = 357
-    ExplicitWidth = 1044
-    object Label2: TLabel
-      Left = 8
-      Top = 9
-      Width = 189
-      Height = 24
-      Caption = 'Total de Registros:'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -20
-      Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object lblTotalRegistros: TLabel
-      Left = 201
-      Top = 9
-      Width = 149
-      Height = 24
-      Caption = 'lblTotalRegistros'
-    end
-  end
   object Panel1: TPanel
     Left = 0
     Top = 0
@@ -156,10 +123,7 @@ object FrmConsultaProdutos: TFrmConsultaProdutos
     Font.Style = []
     ParentBackground = False
     ParentFont = False
-    TabOrder = 3
-    ExplicitLeft = -16
-    ExplicitTop = -23
-    ExplicitWidth = 1044
+    TabOrder = 2
     DesignSize = (
       1050
       41)

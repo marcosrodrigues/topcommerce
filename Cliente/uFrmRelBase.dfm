@@ -51,21 +51,21 @@ object FrmRelBase: TFrmRelBase
         ParentFont = False
       end
       object RLSystemInfo1: TRLSystemInfo
-        Left = 520
+        Left = 496
         Top = 3
         Width = 60
         Height = 16
         Info = itFullDate
       end
       object RLSystemInfo2: TRLSystemInfo
-        Left = 571
+        Left = 547
         Top = 21
         Width = 87
         Height = 16
         Info = itPageNumber
       end
       object RLLabel2: TRLLabel
-        Left = 520
+        Left = 496
         Top = 21
         Width = 48
         Height = 16

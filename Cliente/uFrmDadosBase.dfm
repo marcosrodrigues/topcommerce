@@ -41,6 +41,7 @@ object FrmDadosBase: TFrmDadosBase
       Height = 25
       Hint = 'Salvar registro. (F5)'
       Caption = 'Salvar F5'
+      Flat = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -85,6 +86,7 @@ object FrmDadosBase: TFrmDadosBase
       Height = 25
       Hint = 'Cancelar a inclus'#227'o do registro. (ESC)'
       Caption = 'Cancelar ESC'
+      Flat = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11

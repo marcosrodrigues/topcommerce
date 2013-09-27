@@ -174,7 +174,8 @@ end;
 function TPedidoVendaDAO.RelatorioPedidosVenda(DataInicial, DataFinal: TDateTime): TDBXReader;
 begin
   PrepareCommand;
-  FComm.Text := 'SELECT V.*, I.CODIGO_PRODUTO, I.QUANTIDADE, P.DESCRICAO, P.PRECO_VENDA, C.NOME '+
+  FComm.Text := 'SELECT V.CODIGO, V.DATA, V.DESCONTO, V.TIPO_PAGAMENTO, V.CODIGO_CLIENTE, '+
+                       'V.NOME_CLIENTE_AVULSO, I.CODIGO_PRODUTO, I.QUANTIDADE, P.DESCRICAO, I.VALOR, C.NOME '+
                 'FROM PEDIDOS_VENDA V '+
                 'INNER JOIN ITENS_PEDIDO_VENDA I ON I.CODIGO_PEDIDO = V.CODIGO '+
                 'INNER JOIN PRODUTOS P ON P.CODIGO = I.CODIGO_PRODUTO '+

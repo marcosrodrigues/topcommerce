@@ -14,6 +14,7 @@ object FrmPrincipal: TFrmPrincipal
   Font.Style = []
   OldCreateOrder = False
   Position = poDesktopCenter
+  WindowState = wsMinimized
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 14

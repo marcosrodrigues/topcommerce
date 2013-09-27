@@ -13,11 +13,8 @@ type
     Label1: TLabel;
     edtConsultar: TEdit;
     grdConsulta: TDBGrid;
-    pnlResultado: TPanel;
-    Label2: TLabel;
     cdsConsulta: TClientDataSet;
     dsConsulta: TDataSource;
-    lblTotalRegistros: TLabel;
     cdsConsultaCODIGO: TStringField;
     cdsConsultaNOME: TStringField;
     cdsConsultaTELEFONE: TStringField;
@@ -58,8 +55,6 @@ begin
   cdsConsulta.Filtered := False;
   cdsConsulta.Filter   := 'UPPER(NOME) LIKE ' + QuotedStr('%'+UpperCase(edtConsultar.Text)+'%');
   cdsConsulta.Filtered := True;
-
-  lblTotalRegistros.Caption := IntToStr(cdsConsulta.RecordCount);
 end;
 
 procedure TFrmConsultaClientes.edtConsultarKeyPress(Sender: TObject; var Key: Char);
@@ -89,7 +84,6 @@ end;
 procedure TFrmConsultaClientes.FormShow(Sender: TObject);
 begin
   CopyReaderToClientDataSet(DAOClient.List, cdsConsulta);
-  lblTotalRegistros.Caption := IntToStr(cdsConsulta.RecordCount);
 end;
 
 procedure TFrmConsultaClientes.grdConsultaDblClick(Sender: TObject);

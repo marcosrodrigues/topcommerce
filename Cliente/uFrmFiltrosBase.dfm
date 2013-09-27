@@ -6,7 +6,7 @@ inherited FrmFiltrosBase: TFrmFiltrosBase
   ClientWidth = 425
   Position = poMainFormCenter
   ExplicitWidth = 431
-  ExplicitHeight = 344
+  ExplicitHeight = 347
   PixelsPerInch = 96
   TextHeight = 14
   object pnlBotoes: TPanel
@@ -26,6 +26,7 @@ inherited FrmFiltrosBase: TFrmFiltrosBase
       Height = 25
       Hint = 'Visualizar Relat'#243'rio. (F8)'
       Caption = 'Visualizar F8'
+      Flat = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -70,6 +71,7 @@ inherited FrmFiltrosBase: TFrmFiltrosBase
       Height = 25
       Hint = 'Imprimir Relat'#243'rio. (F9)'
       Caption = 'Imprimir F9'
+      Flat = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11

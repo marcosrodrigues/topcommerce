@@ -136,7 +136,7 @@ begin
   PrepareCommand;
   FComm.Text := 'SELECT E.CODIGO_PRODUTO, P.DESCRICAO AS DESCRICAO_PRODUTO, E.QUANTIDADE, '+
                       '(SELECT TOP 1 F.PRECO_COMPRA FROM FORNECEDORES_PRODUTO F '+
-                       'WHERE F.CODIGO_PRODUTO = P.CODIGO) PRECO_COMPRA '+
+                       'WHERE F.CODIGO_PRODUTO = P.CODIGO) PRECO_COMPRA, P.ESTOQUE_MINIMO '+
                 'FROM ESTOQUE E '+
                 'INNER JOIN PRODUTOS P ON P.CODIGO = E.CODIGO_PRODUTO '+
                 'WHERE E.CODIGO_PRODUTO IS NOT NULL ';
@@ -144,6 +144,7 @@ begin
   case Estoque of
     1: FComm.Text := FComm.Text + 'AND E.QUANTIDADE > 0';
     2: FComm.Text := FComm.Text + 'AND E.QUANTIDADE = 0';
+    3: FComm.Text := FComm.Text + 'AND E.QUANTIDADE <= P.ESTOQUE_MINIMO';
   end;
 
   Result := FComm.ExecuteQuery;

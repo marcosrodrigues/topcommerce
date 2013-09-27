@@ -2,7 +2,7 @@ inherited FrmDadosMasterDetailBase: TFrmDadosMasterDetailBase
   ClientHeight = 378
   ClientWidth = 577
   ExplicitWidth = 583
-  ExplicitHeight = 403
+  ExplicitHeight = 406
   PixelsPerInch = 96
   TextHeight = 14
   object splDados: TSplitter [0]
@@ -63,6 +63,7 @@ inherited FrmDadosMasterDetailBase: TFrmDadosMasterDetailBase
       Height = 25
       Hint = 'Adicionar novo registro. (F2)'
       Caption = 'Novo F2'
+      Flat = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -106,6 +107,7 @@ inherited FrmDadosMasterDetailBase: TFrmDadosMasterDetailBase
       Height = 25
       Hint = 'Editar registro selecionado. (F3)'
       Caption = 'Editar F3'
+      Flat = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -149,6 +151,7 @@ inherited FrmDadosMasterDetailBase: TFrmDadosMasterDetailBase
       Height = 25
       Hint = 'Excluir registro selecionado. (F4)'
       Caption = 'Excluir F4'
+      Flat = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11

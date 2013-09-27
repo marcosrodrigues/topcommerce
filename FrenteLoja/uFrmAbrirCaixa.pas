@@ -20,6 +20,7 @@ type
     procedure btnAbrirClick(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -57,6 +58,11 @@ begin
     else if (Self.ActiveControl = cedValorAbertura) then
       btnAbrir.SetFocus;
   end;
+end;
+
+procedure TFrmAbrirCaixa.FormShow(Sender: TObject);
+begin
+  deData.DateTime := Now;
 end;
 
 procedure TFrmAbrirCaixa.Image19Click(Sender: TObject);
