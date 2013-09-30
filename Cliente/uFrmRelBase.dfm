@@ -74,9 +74,11 @@ object FrmRelBase: TFrmRelBase
       object RLLabel6: TRLLabel
         Left = 101
         Top = 51
-        Width = 320
+        Width = 436
         Height = 14
-        Caption = 'TEC Motos. Rua Prefeito Vitoriano Antunes, 2131. (85) 3334-1123'
+        Caption = 
+          'TEC Motos. Rua Padra Maximiano, 2609 - Cascavel - CE. (85) 3334-' +
+          '0985 / (85) 9790-6551'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = 14

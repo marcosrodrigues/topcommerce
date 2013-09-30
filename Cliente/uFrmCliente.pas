@@ -79,6 +79,7 @@ begin
   try
     f.Cliente.Codigo := cdsCrudCODIGO.AsString;
     f.Cliente.Nome   := cdsCrudNOME.AsString;
+    f.Cliente.Telefone := cdsCrudTELEFONE.AsString;
 
     f.Operacao := opEdit;
     f.ShowModal;

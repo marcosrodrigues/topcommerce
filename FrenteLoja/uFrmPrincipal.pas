@@ -581,6 +581,7 @@ end;
 procedure TFrmPrincipal.ExcluirItem;
 var
   f: TFrmExcluirItem;
+  Pedido: TPedidoVenda;
 begin
   if cdsProdutos.RecordCount <= 0 then
   begin
@@ -594,10 +595,17 @@ begin
 
     if (f.Excluir) then
     begin
-      lblSubtotal.Caption := FormatCurr(',0.00', StrToCurrDef(lblSubtotal.Caption, 0) - cdsProdutosQUANTIDADE.AsInteger * cdsProdutosPRECO_UNITARIO.AsCurrency);
+      lblSubtotal.Caption := FormatCurr(',0.00', StrToCurrDef(lblSubtotal.Caption, 0) - cdsProdutosPRECO_TOTAL.AsCurrency);
 
       DAOPedidoVenda.DeleteItemDoPedido(cdsProdutosCODIGO.AsString, CodigoPedidoVendaAtual);
       cdsProdutos.Delete;
+
+      Pedido := TPedidoVenda.Create;
+      Pedido.Codigo := CodigoPedidoVendaAtual;
+      Pedido.Data   := DataPedidoVendaAtual;
+      Pedido.Total  := StrToCurrDef(lblSubtotal.Caption, 0);
+
+      DAOPedidoVenda.Update(Pedido);
     end;
 
     lblStatusPDV.Caption := 'VENDA';

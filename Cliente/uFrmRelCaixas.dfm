@@ -1,6 +1,5 @@
 inherited FrmRelCaixas: TFrmRelCaixas
   Caption = 'FrmRelCaixas'
-  ExplicitLeft = -97
   ExplicitWidth = 834
   ExplicitHeight = 662
   PixelsPerInch = 96
@@ -8,7 +7,7 @@ inherited FrmRelCaixas: TFrmRelCaixas
   inherited RLReport: TRLReport
     object RLGroup1: TRLGroup
       Left = 38
-      Top = 107
+      Top = 132
       Width = 718
       Height = 103
       DataFields = 'ID'
@@ -185,12 +184,17 @@ inherited FrmRelCaixas: TFrmRelCaixas
         Width = 718
         Height = 19
         BandType = btColumnFooter
+        Borders.Sides = sdCustom
+        Borders.DrawLeft = False
+        Borders.DrawTop = True
+        Borders.DrawRight = False
+        Borders.DrawBottom = False
         BeforePrint = RLBand4BeforePrint
-        object rlbTotal: TRLLabel
-          Left = 672
-          Top = 0
-          Width = 46
-          Height = 19
+        object rlbTotalMovimentos: TRLLabel
+          Left = 603
+          Top = 1
+          Width = 115
+          Height = 18
           Align = faRight
           Alignment = taRightJustify
           Font.Charset = DEFAULT_CHARSET
@@ -201,12 +205,12 @@ inherited FrmRelCaixas: TFrmRelCaixas
           ParentFont = False
         end
         object RLLabel10: TRLLabel
-          Left = 632
-          Top = 0
-          Width = 40
-          Height = 19
+          Left = 277
+          Top = 1
+          Width = 104
+          Height = 18
           Align = faRight
-          Caption = 'Total:'
+          Caption = 'Total do Caixa:'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -214,6 +218,61 @@ inherited FrmRelCaixas: TFrmRelCaixas
           Font.Style = [fsBold]
           ParentFont = False
         end
+        object RLLabel11: TRLLabel
+          Left = 460
+          Top = 1
+          Width = 143
+          Height = 18
+          Align = faRight
+          Caption = 'Total de Movimentos:'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object rlbTotalCaixa: TRLLabel
+          Left = 381
+          Top = 1
+          Width = 79
+          Height = 18
+          Align = faRight
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          ParentFont = False
+        end
+      end
+    end
+    object RLBand5: TRLBand
+      Left = 38
+      Top = 107
+      Width = 718
+      Height = 25
+      BandType = btHeader
+      object RLLabel12: TRLLabel
+        Left = 0
+        Top = 0
+        Width = 718
+        Height = 25
+        Align = faClient
+        Alignment = taCenter
+        Borders.Sides = sdCustom
+        Borders.DrawLeft = True
+        Borders.DrawTop = False
+        Borders.DrawRight = True
+        Borders.DrawBottom = True
+        Caption = 'Caixa'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -20
+        Font.Name = 'Arial'
+        Font.Style = []
+        Layout = tlCenter
+        ParentFont = False
       end
     end
   end

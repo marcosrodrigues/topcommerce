@@ -9,7 +9,7 @@ inherited FrmRelReciboVenda: TFrmRelReciboVenda
     PreviewOptions.ShowModal = True
     object RLBand2: TRLBand
       Left = 38
-      Top = 107
+      Top = 132
       Width = 718
       Height = 112
       BandType = btColumnHeader
@@ -207,7 +207,7 @@ inherited FrmRelReciboVenda: TFrmRelReciboVenda
     end
     object RLBand3: TRLBand
       Left = 38
-      Top = 219
+      Top = 244
       Width = 718
       Height = 20
       BeforePrint = RLBand3BeforePrint
@@ -256,7 +256,7 @@ inherited FrmRelReciboVenda: TFrmRelReciboVenda
     end
     object RLBand4: TRLBand
       Left = 38
-      Top = 239
+      Top = 264
       Width = 718
       Height = 25
       BandType = btSummary
@@ -299,6 +299,34 @@ inherited FrmRelReciboVenda: TFrmRelReciboVenda
         Font.Height = -17
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Layout = tlCenter
+        ParentFont = False
+      end
+    end
+    object RLBand5: TRLBand
+      Left = 38
+      Top = 107
+      Width = 718
+      Height = 25
+      BandType = btHeader
+      object RLLabel12: TRLLabel
+        Left = 0
+        Top = 0
+        Width = 718
+        Height = 25
+        Align = faClient
+        Alignment = taCenter
+        Borders.Sides = sdCustom
+        Borders.DrawLeft = True
+        Borders.DrawTop = False
+        Borders.DrawRight = True
+        Borders.DrawBottom = True
+        Caption = 'Recibo de Venda'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -20
+        Font.Name = 'Arial'
+        Font.Style = []
         Layout = tlCenter
         ParentFont = False
       end

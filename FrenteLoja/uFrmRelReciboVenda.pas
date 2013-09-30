@@ -42,6 +42,8 @@ type
     RLBand4: TRLBand;
     RLLabel13: TRLLabel;
     rlbTotalVenda: TRLLabel;
+    RLBand5: TRLBand;
+    RLLabel12: TRLLabel;
     procedure rlbClienteBeforePrint(Sender: TObject; var Text: string;
       var PrintIt: Boolean);
     procedure rlbTotalBeforePrint(Sender: TObject; var Text: string;

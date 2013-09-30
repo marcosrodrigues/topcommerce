@@ -31,8 +31,12 @@ type
     RLDBText5: TRLDBText;
     RLDBText6: TRLDBText;
     RLBand4: TRLBand;
-    rlbTotal: TRLLabel;
+    rlbTotalMovimentos: TRLLabel;
     RLLabel10: TRLLabel;
+    RLLabel11: TRLLabel;
+    rlbTotalCaixa: TRLLabel;
+    RLBand5: TRLBand;
+    RLLabel12: TRLLabel;
     procedure cdsRelatorioORIGEMGetText(Sender: TField; var Text: string;
       DisplayText: Boolean);
     procedure cdsRelatorioOPERACAOGetText(Sender: TField; var Text: string;
@@ -42,7 +46,7 @@ type
     procedure RLBand4BeforePrint(Sender: TObject; var PrintIt: Boolean);
   private
     { Private declarations }
-    TotalCaixa: Currency;
+    TotalMovimentos: Currency;
   protected
     procedure OnBeforePrint; override;
   public
@@ -96,21 +100,22 @@ procedure TFrmRelCaixas.RLBand3BeforePrint(Sender: TObject;
   var PrintIt: Boolean);
 begin
   inherited;
-  TotalCaixa := TotalCaixa + cdsRelatorioVALOR.AsCurrency;
+  TotalMovimentos := TotalMovimentos + cdsRelatorioVALOR.AsCurrency;
 end;
 
 procedure TFrmRelCaixas.RLBand4BeforePrint(Sender: TObject;
   var PrintIt: Boolean);
 begin
   inherited;
-  rlbTotal.Caption := FormatCurr(',0.00', TotalCaixa);
+  rlbTotalMovimentos.Caption := FormatCurr(',0.00', TotalMovimentos);
+  rlbTotalCaixa.Caption := FormatCurr(',0.00', TotalMovimentos + cdsRelatorioVALOR_ABERTURA.AsCurrency);
 end;
 
 procedure TFrmRelCaixas.RLGroup1BeforePrint(Sender: TObject;
   var PrintIt: Boolean);
 begin
   inherited;
-  TotalCaixa := 0;
+  TotalMovimentos := 0;
 end;
 
 end.

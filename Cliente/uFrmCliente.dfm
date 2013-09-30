@@ -1,7 +1,5 @@
 inherited FrmCliente: TFrmCliente
   Caption = 'Cadastro de Clientes'
-  ExplicitWidth = 608
-  ExplicitHeight = 391
   PixelsPerInch = 96
   TextHeight = 14
   inherited cdsCrud: TClientDataSet
