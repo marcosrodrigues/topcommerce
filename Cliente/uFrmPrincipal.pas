@@ -179,50 +179,80 @@ end;
 procedure TFrmPrincipal.N11TiposdeProdutos1Click(Sender: TObject);
 var
   f: TFrmTipoProduto;
+  i: integer;
 begin
-  f := nil;
-  if (f = nil) then
-    f := TFrmTipoProduto.Create(Self);
+  for i := 0 to MDIChildCount do
+    if MDIChildren[i] is TFrmTipoProduto then
+    begin
+      MDIChildren[i].Show;
+      Exit;
+    end;
+
+  f := TFrmTipoProduto.Create(Self);
   f.Show;
 end;
 
 procedure TFrmPrincipal.N11Usurios1Click(Sender: TObject);
 var
   f: TFrmUsuario;
+  i: integer;
 begin
-  f := nil;
-  if (f = nil) then
-    f := TFrmUsuario.Create(Self);
+  for i := 0 to MDIChildCount do
+    if MDIChildren[i] is TFrmUsuario then
+    begin
+      MDIChildren[i].Show;
+      Exit;
+    end;
+
+  f := TFrmUsuario.Create(Self);
   f.Show;
 end;
 
 procedure TFrmPrincipal.N12Fornecedores1Click(Sender: TObject);
 var
   f: TFrmFornecedor;
+  i: integer;
 begin
-  f := nil;
-  if (f = nil) then
-    f := TFrmFornecedor.Create(Self);
+  for i := 0 to MDIChildCount do
+    if MDIChildren[i] is TFrmFornecedor then
+    begin
+      MDIChildren[i].Show;
+      Exit;
+    end;
+
+  f := TFrmFornecedor.Create(Self);
   f.Show;
 end;
 
 procedure TFrmPrincipal.N12Produtos1Click(Sender: TObject);
 var
   f: TFrmProduto;
+  i: integer;
 begin
-  f := nil;
-  if (f = nil) then
-    f := TFrmProduto.Create(Self);
+  for i := 0 to MDIChildCount do
+    if MDIChildren[i] is TFrmProduto then
+    begin
+      MDIChildren[i].Show;
+      Exit;
+    end;
+
+  f := TFrmProduto.Create(Self);
   f.Show;
 end;
 
 procedure TFrmPrincipal.N21MovimentarEstoque1Click(Sender: TObject);
 var
   f: TFrmEstoque;
+  i: integer;
 begin
-  f := nil;
-  if (f = nil) then
-    f := TFrmEstoque.Create(Self);
+  for i := 0 to MDIChildCount do
+    if MDIChildren[i] is TFrmEstoque then
+    begin
+      MDIChildren[i].Show;
+      Exit;
+    end;
+
+  f := TFrmEstoque.Create(Self);
   f.Show;
 end;
 
@@ -269,10 +299,16 @@ end;
 procedure TFrmPrincipal.N12Clientes1Click(Sender: TObject);
 var
   f: TFrmCliente;
+  i: integer;
 begin
-  f := nil;
-  if (f = nil) then
-    f := TFrmCliente.Create(Self);
+  for i := 0 to MDIChildCount do
+    if MDIChildren[i] is TFrmCliente then
+    begin
+      MDIChildren[i].Show;
+      Exit;
+    end;
+
+  f := TFrmCliente.Create(Self);
   f.Show;
 end;
 

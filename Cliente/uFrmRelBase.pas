@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, DBXCommon, DB, DBClient,
-  RLReport, RLFilters, RLPDFFilter, pngimage;
+  RLReport, RLFilters, RLPDFFilter, pngimage, jpeg;
 
 type
   TFrmRelBase = class(TForm)

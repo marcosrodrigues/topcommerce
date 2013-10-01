@@ -8,7 +8,7 @@ uses
   Dialogs, ExtCtrls, StdCtrls, Grids, DBGrids, jpeg, DB, DBClient, SqlExpr, DBXDataSnap,
   DBXCommon, DBXDBReaders, uPedidoVendaDAOClient, PedidoVenda, ItemPedidoVenda, Produto,
   Generics.Collections, Cliente, pngimage, RLConsts, DXPCurrencyEdit,
-  ImageButton4, DBCtrls, Caixa;
+  ImageButton4, DBCtrls, Caixa, ImgList;
 
 type
   TFrmPrincipal = class(TForm)
@@ -113,6 +113,9 @@ type
     Label8: TLabel;
     Image36: TImage;
     Label10: TLabel;
+    tmImagens: TTimer;
+    Label13: TLabel;
+    lblCliente: TLabel;
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -125,6 +128,16 @@ type
     procedure Image19Click(Sender: TObject);
     procedure cdsProdutosQUANTIDADEGetText(Sender: TField; var Text: string;
       DisplayText: Boolean);
+    procedure tmImagensTimer(Sender: TObject);
+    procedure Label15Click(Sender: TObject);
+    procedure Label6Click(Sender: TObject);
+    procedure Label12Click(Sender: TObject);
+    procedure Label16Click(Sender: TObject);
+    procedure Label18Click(Sender: TObject);
+    procedure Label19Click(Sender: TObject);
+    procedure Label20Click(Sender: TObject);
+    procedure Label8Click(Sender: TObject);
+    procedure Label10Click(Sender: TObject);
   private
     { Private declarations }
     DAOPedidoVenda: TPedidoVendaDAOClient;
@@ -132,6 +145,7 @@ type
     DataPedidoVendaAtual: TDateTime;
     MyBitmap: TBitmap;
     CaixaAbertoAtual: TCaixa;
+    ImagemAtual: Integer;
 
     procedure NovaVenda;
     procedure FecharVenda;
@@ -291,6 +305,17 @@ begin
   lblHora.Caption := FormatDateTime('dd/mm/yyyy hh:mm:ss', Now);
 end;
 
+procedure TFrmPrincipal.tmImagensTimer(Sender: TObject);
+begin
+  if (ImagemAtual = 0) or (ImagemAtual = 3) then
+    ImagemAtual := 1
+  else
+    Inc(ImagemAtual);
+
+  if FileExists(ExtractFileDir(Application.ExeName)+'/imagens/'+IntToStr(ImagemAtual)+'.jpg') then
+    imgFotoProduto.Picture.LoadFromFile(ExtractFileDir(Application.ExeName)+'/imagens/'+IntToStr(ImagemAtual)+'.jpg');
+end;
+
 procedure TFrmPrincipal.VendasAbertas;
 var
   fVendasAbertas: TFrmVendasAbertas;
@@ -307,6 +332,11 @@ begin
 
       CodigoPedidoVendaAtual := pedido.Codigo;
       DataPedidoVendaAtual := pedido.Data;
+
+      if pedido.Cliente <> nil then
+        lblCliente.Caption := pedido.Cliente.Nome
+      else
+        lblCliente.Caption := pedido.NomeClienteAvulso;
 
       lblSubtotal.Caption := FormatCurr(',0.00', pedido.Total);
 
@@ -347,6 +377,11 @@ begin
 
       CodigoPedidoVendaAtual := pedido.Codigo;
       DataPedidoVendaAtual := pedido.Data;
+
+      if pedido.Cliente <> nil then
+        lblCliente.Caption := pedido.Cliente.Nome
+      else
+        lblCliente.Caption := pedido.NomeClienteAvulso;
 
       lblSubtotal.Caption := FormatCurr(',0.00', pedido.Total);
 
@@ -539,9 +574,15 @@ begin
               if (fInformarCliente.Salvar) then
               begin
                 if fInformarCliente.Cliente <> nil then
-                  Pedido.Cliente := fInformarCliente.Cliente
+                begin
+                  Pedido.Cliente := fInformarCliente.Cliente;
+                  lblCliente.Caption := Pedido.Cliente.Nome;
+                end
                 else
+                begin
                   Pedido.NomeClienteAvulso := fInformarCliente.NomeCliente;
+                  lblCliente.Caption := Pedido.NomeClienteAvulso;
+                end;
               end;
             finally
               fInformarCliente.Free;
@@ -697,6 +738,7 @@ end;
 
 procedure TFrmPrincipal.IniciaControles;
 begin
+  lblCliente.Caption := '';
   lblSubtotal.Caption := '';
   lblStatusPDV.Caption := 'VENDA';
 
@@ -704,6 +746,51 @@ begin
   tmHora.Enabled  := True;
 
   cdsProdutos.CreateDataSet;
+end;
+
+procedure TFrmPrincipal.Label10Click(Sender: TObject);
+begin
+  FecharCaixa;
+end;
+
+procedure TFrmPrincipal.Label12Click(Sender: TObject);
+begin
+  FecharVenda;
+end;
+
+procedure TFrmPrincipal.Label15Click(Sender: TObject);
+begin
+  NovaVenda;
+end;
+
+procedure TFrmPrincipal.Label16Click(Sender: TObject);
+begin
+  ExcluirItem;
+end;
+
+procedure TFrmPrincipal.Label18Click(Sender: TObject);
+begin
+  ImprimirRecibo;
+end;
+
+procedure TFrmPrincipal.Label19Click(Sender: TObject);
+begin
+  VendasAbertas;
+end;
+
+procedure TFrmPrincipal.Label20Click(Sender: TObject);
+begin
+  VendasFechadas;
+end;
+
+procedure TFrmPrincipal.Label6Click(Sender: TObject);
+begin
+  ConsultarProduto;
+end;
+
+procedure TFrmPrincipal.Label8Click(Sender: TObject);
+begin
+  AbrirCaixa;
 end;
 
 initialization

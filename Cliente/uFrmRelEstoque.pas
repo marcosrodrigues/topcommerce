@@ -5,7 +5,8 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, uFrmRelBase, DB, DBClient, ExtCtrls,
-  uEstoqueDAOClient, DBXDBReaders, RLReport, pngimage, RLFilters, RLPDFFilter;
+  uEstoqueDAOClient, DBXDBReaders, RLReport, pngimage, RLFilters, RLPDFFilter,
+  jpeg;
 
 type
   TFrmRelEstoque = class(TFrmRelBase)
@@ -26,6 +27,8 @@ type
     cdsRelatorioESTOQUE_MINIMO: TIntegerField;
     RLLabel8: TRLLabel;
     RLDBText5: TRLDBText;
+    RLBand4: TRLBand;
+    RLLabel9: TRLLabel;
   private
     { Private declarations }
   protected
