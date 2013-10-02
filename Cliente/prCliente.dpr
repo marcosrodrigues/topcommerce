@@ -67,7 +67,15 @@ uses
   uCaixaDAOClient in 'DAOClient\uCaixaDAOClient.pas',
   Caixa in '..\Entidades\Caixa.pas',
   uFrmFiltrosCaixas in 'uFrmFiltrosCaixas.pas' {FrmFiltrosCaixas},
-  uFrmRelCaixas in 'uFrmRelCaixas.pas' {FrmRelCaixas};
+  uFrmRelCaixas in 'uFrmRelCaixas.pas' {FrmRelCaixas},
+  uContaPagarDAOClient in 'DAOClient\uContaPagarDAOClient.pas',
+  uContaReceberDAOClient in 'DAOClient\uContaReceberDAOClient.pas',
+  ContaPagar in '..\Entidades\ContaPagar.pas',
+  ContaReceber in '..\Entidades\ContaReceber.pas',
+  uFrmContaPagar in 'uFrmContaPagar.pas' {FrmContaPagar},
+  uFrmContaReceber in 'uFrmContaReceber.pas' {FrmContaReceber},
+  uFrmDadosContaPagar in 'uFrmDadosContaPagar.pas' {FrmDadosContaPagar},
+  uFrmDadosContaReceber in 'uFrmDadosContaReceber.pas' {FrmDadosContaReceber};
 
 {$R *.res}
 
@@ -95,9 +103,6 @@ begin
     if fLogin.FLoginSucess then
     begin
       Application.CreateForm(TFrmPrincipal, FrmPrincipal);
-  Application.CreateForm(TFrmConectandoServidor, FrmConectandoServidor);
-  Application.CreateForm(TFrmFiltrosCaixas, FrmFiltrosCaixas);
-  Application.CreateForm(TFrmRelCaixas, FrmRelCaixas);
   if fLogin.Usuario <> nil then
         FrmPrincipal.lblLogin.Caption := 'Usuário: ' + fLogin.Usuario.Login
       else

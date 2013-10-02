@@ -25,7 +25,11 @@ uses
   Cliente in '..\Entidades\Cliente.pas',
   ClienteDAO in 'DAO\ClienteDAO.pas',
   Caixa in '..\Entidades\Caixa.pas',
-  CaixaDAO in 'DAO\CaixaDAO.pas';
+  CaixaDAO in 'DAO\CaixaDAO.pas',
+  ContaPagar in '..\Entidades\ContaPagar.pas',
+  ContaReceber in '..\Entidades\ContaReceber.pas',
+  ContaPagarDAO in 'DAO\ContaPagarDAO.pas',
+  ContaReceberDAO in 'DAO\ContaReceberDAO.pas';
 
 {$R *.res}
 

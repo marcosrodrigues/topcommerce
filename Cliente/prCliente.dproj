@@ -199,6 +199,22 @@
 			<DCCReference Include="uFrmRelCaixas.pas">
 				<Form>FrmRelCaixas</Form>
 			</DCCReference>
+			<DCCReference Include="DAOClient\uContaPagarDAOClient.pas"/>
+			<DCCReference Include="DAOClient\uContaReceberDAOClient.pas"/>
+			<DCCReference Include="..\Entidades\ContaPagar.pas"/>
+			<DCCReference Include="..\Entidades\ContaReceber.pas"/>
+			<DCCReference Include="uFrmContaPagar.pas">
+				<Form>FrmContaPagar</Form>
+			</DCCReference>
+			<DCCReference Include="uFrmContaReceber.pas">
+				<Form>FrmContaReceber</Form>
+			</DCCReference>
+			<DCCReference Include="uFrmDadosContaPagar.pas">
+				<Form>FrmDadosContaPagar</Form>
+			</DCCReference>
+			<DCCReference Include="uFrmDadosContaReceber.pas">
+				<Form>FrmDadosContaReceber</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Release">
 				<Key>Cfg_2</Key>
 				<CfgParent>Base</CfgParent>

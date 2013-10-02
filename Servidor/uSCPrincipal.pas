@@ -20,6 +20,8 @@ type
     Usuario: TDSServerClass;
     Cliente: TDSServerClass;
     Caixa: TDSServerClass;
+    ContaPagar: TDSServerClass;
+    ContaReceber: TDSServerClass;
     procedure TipoProdutoGetClass(DSServerClass: TDSServerClass;
       var PersistentClass: TPersistentClass);
     procedure ProdutoGetClass(DSServerClass: TDSServerClass;
@@ -34,6 +36,10 @@ type
     procedure ClienteGetClass(DSServerClass: TDSServerClass; var PersistentClass: TPersistentClass);
     procedure CaixaGetClass(DSServerClass: TDSServerClass;
       var PersistentClass: TPersistentClass);
+    procedure ContaPagarGetClass(DSServerClass: TDSServerClass;
+      var PersistentClass: TPersistentClass);
+    procedure ContaReceberGetClass(DSServerClass: TDSServerClass;
+      var PersistentClass: TPersistentClass);
   private
     { Private declarations }
   public
@@ -45,7 +51,7 @@ var
 implementation
 
 uses Windows, TipoProdutoDAO, ProdutoDAO, FornecedorDAO, EstoqueDAO, PedidoVendaDAO, UsuarioDAO,
-  ClienteDAO, CaixaDAO;
+  ClienteDAO, CaixaDAO, ContaPagarDAO, ContaReceberDAO;
 
 {$R *.dfm}
 
@@ -78,6 +84,18 @@ end;
 procedure TSCPrincipal.ClienteGetClass(DSServerClass: TDSServerClass; var PersistentClass: TPersistentClass);
 begin
   PersistentClass := TClienteDAO;
+end;
+
+procedure TSCPrincipal.ContaPagarGetClass(DSServerClass: TDSServerClass;
+  var PersistentClass: TPersistentClass);
+begin
+  PersistentClass := TContaPagarDAO;
+end;
+
+procedure TSCPrincipal.ContaReceberGetClass(DSServerClass: TDSServerClass;
+  var PersistentClass: TPersistentClass);
+begin
+  PersistentClass := TContaReceberDAO;
 end;
 
 procedure TSCPrincipal.EstoqueGetClass(DSServerClass: TDSServerClass; var PersistentClass: TPersistentClass);

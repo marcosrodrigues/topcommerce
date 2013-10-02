@@ -78,6 +78,10 @@
 			<DCCReference Include="DAO\ClienteDAO.pas"/>
 			<DCCReference Include="..\Entidades\Caixa.pas"/>
 			<DCCReference Include="DAO\CaixaDAO.pas"/>
+			<DCCReference Include="..\Entidades\ContaPagar.pas"/>
+			<DCCReference Include="..\Entidades\ContaReceber.pas"/>
+			<DCCReference Include="DAO\ContaPagarDAO.pas"/>
+			<DCCReference Include="DAO\ContaReceberDAO.pas"/>
 			<BuildConfiguration Include="Release">
 				<Key>Cfg_2</Key>
 				<CfgParent>Base</CfgParent>

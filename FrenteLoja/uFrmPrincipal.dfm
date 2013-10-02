@@ -5832,7 +5832,7 @@ object FrmPrincipal: TFrmPrincipal
       object imgSubtotal: TImage
         Left = 0
         Top = 0
-        Width = 410
+        Width = 401
         Height = 90
         Align = alClient
         AutoSize = True
@@ -7498,13 +7498,12 @@ object FrmPrincipal: TFrmPrincipal
           CE3C5F0B485B378CC89BF2E2852C07337B86D54B996A0C3EEEFDA900BC27568A
           EF6B5168B7341E65EE659EBDF2F8F06A409A7F003C8D4548037FE3DE00000000
           49454E44AE426082}
-        ExplicitWidth = 401
       end
       object Label1: TLabel
         Left = 8
         Top = 2
-        Width = 60
-        Height = 23
+        Width = 69
+        Height = 22
         Caption = 'Subtotal'
         Color = 3682350
         Font.Charset = ANSI_CHARSET
@@ -7517,10 +7516,10 @@ object FrmPrincipal: TFrmPrincipal
         Transparent = True
       end
       object lblSubtotal: TLabel
-        Left = 241
+        Left = 198
         Top = 6
-        Width = 155
-        Height = 74
+        Width = 198
+        Height = 72
         Alignment = taRightJustify
         Caption = '600,00'
         Color = 3682350
@@ -8909,8 +8908,8 @@ object FrmPrincipal: TFrmPrincipal
       object lblStatusPDV: TLabel
         Left = 4
         Top = 3
-        Width = 96
-        Height = 40
+        Width = 93
+        Height = 37
         Caption = 'Venda'
         Font.Charset = ANSI_CHARSET
         Font.Color = 4244613
@@ -10425,8 +10424,8 @@ object FrmPrincipal: TFrmPrincipal
     object Label4: TLabel
       Left = 8
       Top = 117
-      Width = 50
-      Height = 23
+      Width = 62
+      Height = 22
       Caption = 'C'#243'digo'
       Color = 3682350
       Font.Charset = ANSI_CHARSET
@@ -10441,8 +10440,8 @@ object FrmPrincipal: TFrmPrincipal
     object Label7: TLabel
       Left = 221
       Top = 118
-      Width = 83
-      Height = 23
+      Width = 97
+      Height = 22
       Caption = 'Quantidade'
       Color = 3682350
       Font.Charset = ANSI_CHARSET
@@ -10457,8 +10456,8 @@ object FrmPrincipal: TFrmPrincipal
     object Label9: TLabel
       Left = 432
       Top = 118
-      Width = 101
-      Height = 23
+      Width = 119
+      Height = 22
       Caption = 'Pre'#231'o Unit'#225'rio'
       Color = 3682350
       Font.Charset = ANSI_CHARSET
@@ -10473,8 +10472,8 @@ object FrmPrincipal: TFrmPrincipal
     object Label11: TLabel
       Left = 432
       Top = 191
-      Width = 78
-      Height = 23
+      Width = 96
+      Height = 22
       Caption = 'Pre'#231'o Total'
       Color = 3682350
       Font.Charset = ANSI_CHARSET
@@ -21251,8 +21250,8 @@ object FrmPrincipal: TFrmPrincipal
     object Label3: TLabel
       Left = 8
       Top = 193
-      Width = 77
-      Height = 23
+      Width = 98
+      Height = 22
       Caption = 'Desc. Valor'
       Color = 3682350
       Font.Charset = ANSI_CHARSET
@@ -21267,8 +21266,8 @@ object FrmPrincipal: TFrmPrincipal
     object Label5: TLabel
       Left = 221
       Top = 193
-      Width = 115
-      Height = 23
+      Width = 145
+      Height = 22
       Caption = 'Desc. Percentual'
       Color = 3682350
       Font.Charset = ANSI_CHARSET
@@ -25954,8 +25953,8 @@ object FrmPrincipal: TFrmPrincipal
       object Label2: TLabel
         Left = 8
         Top = 5
-        Width = 57
-        Height = 23
+        Width = 67
+        Height = 22
         Caption = 'Produto'
         Color = 3682350
         Font.Charset = ANSI_CHARSET
@@ -32814,10 +32813,10 @@ object FrmPrincipal: TFrmPrincipal
         454E44AE426082}
     end
     object lblUsuario: TLabel
-      Left = 1119
+      Left = 1082
       Top = 2
-      Width = 98
-      Height = 25
+      Width = 135
+      Height = 24
       Alignment = taRightJustify
       Anchors = [akTop, akRight]
       Caption = 'SUPERVISOR'
@@ -32830,7 +32829,6 @@ object FrmPrincipal: TFrmPrincipal
       ParentColor = False
       ParentFont = False
       Transparent = True
-      ExplicitLeft = 905
     end
     object Image27: TImage
       Left = 1226
@@ -32855,10 +32853,10 @@ object FrmPrincipal: TFrmPrincipal
       ExplicitLeft = 1012
     end
     object lblCaixa: TLabel
-      Left = 1145
+      Left = 1121
       Top = 31
-      Width = 72
-      Height = 25
+      Width = 96
+      Height = 24
       Alignment = taRightJustify
       Anchors = [akTop, akRight]
       Caption = 'Caixa 001'
@@ -32871,7 +32869,6 @@ object FrmPrincipal: TFrmPrincipal
       ParentColor = False
       ParentFont = False
       Transparent = True
-      ExplicitLeft = 931
     end
     object Image28: TImage
       Left = 1223
@@ -33044,8 +33041,8 @@ object FrmPrincipal: TFrmPrincipal
     object Label13: TLabel
       Left = 465
       Top = 2
-      Width = 60
-      Height = 25
+      Width = 71
+      Height = 24
       Anchors = [akTop, akRight]
       Caption = 'Cliente:'
       Color = 3682350
@@ -33061,8 +33058,8 @@ object FrmPrincipal: TFrmPrincipal
     object lblCliente: TLabel
       Left = 529
       Top = 2
-      Width = 75
-      Height = 25
+      Width = 84
+      Height = 24
       Anchors = [akTop, akRight]
       Caption = 'lblCliente'
       Color = 3682350

@@ -8,7 +8,7 @@ uses
   Dialogs, ExtCtrls, StdCtrls, Grids, DBGrids, jpeg, DB, DBClient, SqlExpr, DBXDataSnap,
   DBXCommon, DBXDBReaders, uPedidoVendaDAOClient, PedidoVenda, ItemPedidoVenda, Produto,
   Generics.Collections, Cliente, pngimage, RLConsts, DXPCurrencyEdit,
-  ImageButton4, DBCtrls, Caixa, ImgList;
+  DBCtrls, Caixa, ImgList;
 
 type
   TFrmPrincipal = class(TForm)

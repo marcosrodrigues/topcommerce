@@ -885,6 +885,17 @@ object FrmPrincipal: TFrmPrincipal
         Caption = 'Movimentar Estoque'
         OnClick = N21MovimentarEstoque1Click
       end
+      object N3: TMenuItem
+        Caption = '-'
+      end
+      object ContasaPagar1: TMenuItem
+        Caption = 'Contas a Pagar'
+        OnClick = ContasaPagar1Click
+      end
+      object ContasaReceber1: TMenuItem
+        Caption = 'Contas a Receber'
+        OnClick = ContasaReceber1Click
+      end
     end
     object N3Relatrios1: TMenuItem
       Caption = 'Relat'#243'rios e Listagens'

@@ -55,6 +55,9 @@ type
     Utilitrios1: TMenuItem;
     Configuraes1: TMenuItem;
     Caixas1: TMenuItem;
+    N3: TMenuItem;
+    ContasaPagar1: TMenuItem;
+    ContasaReceber1: TMenuItem;
     procedure N11TiposdeProdutos1Click(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure N12Produtos1Click(Sender: TObject);
@@ -71,6 +74,8 @@ type
     procedure N12Clientes1Click(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
     procedure Caixas1Click(Sender: TObject);
+    procedure ContasaPagar1Click(Sender: TObject);
+    procedure ContasaReceber1Click(Sender: TObject);
   private
     { Private declarations }
     procedure CarregaProdutosVencer;
@@ -87,7 +92,7 @@ implementation
 uses uFrmTipoProduto, MensagensUtils, uFrmProduto, uFrmFornecedor, uFrmEstoque,
   uFrmFiltrosFornecedor, uFrmFiltrosProduto, uFrmFiltrosPedidoVenda, uFrmFiltrosEstoque,
   uProdutoDAOClient, DataUtils, uFrmUsuario, uFrmCliente, uFrmConexaoServidor,
-  uFrmFiltrosCaixas;
+  uFrmFiltrosCaixas, uFrmContaPagar, uFrmContaReceber;
 
 {$R *.dfm}
 
@@ -117,6 +122,38 @@ begin
   finally
     ProdutoDao.Free;
   end;
+end;
+
+procedure TFrmPrincipal.ContasaPagar1Click(Sender: TObject);
+var
+  f: TFrmContaPagar;
+  i: integer;
+begin
+  for i := 0 to MDIChildCount do
+    if MDIChildren[i] is TFrmContaPagar then
+    begin
+      MDIChildren[i].Show;
+      Exit;
+    end;
+
+  f := TFrmContaPagar.Create(Self);
+  f.Show;
+end;
+
+procedure TFrmPrincipal.ContasaReceber1Click(Sender: TObject);
+var
+  f: TFrmContaReceber;
+  i: integer;
+begin
+  for i := 0 to MDIChildCount do
+    if MDIChildren[i] is TFrmContaReceber then
+    begin
+      MDIChildren[i].Show;
+      Exit;
+    end;
+
+  f := TFrmContaReceber.Create(Self);
+  f.Show;
 end;
 
 procedure TFrmPrincipal.btnSairClick(Sender: TObject);

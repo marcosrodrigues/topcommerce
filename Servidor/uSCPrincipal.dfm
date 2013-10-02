@@ -1,7 +1,7 @@
 object SCPrincipal: TSCPrincipal
   OldCreateOrder = False
   Height = 271
-  Width = 415
+  Width = 475
   object DSServer: TDSServer
     AutoStart = True
     HideDSAdmin = False
@@ -109,5 +109,19 @@ object SCPrincipal: TSCPrincipal
     LifeCycle = 'Session'
     Left = 300
     Top = 169
+  end
+  object ContaPagar: TDSServerClass
+    OnGetClass = ContaPagarGetClass
+    Server = DSServer
+    LifeCycle = 'Session'
+    Left = 385
+    Top = 14
+  end
+  object ContaReceber: TDSServerClass
+    OnGetClass = ContaReceberGetClass
+    Server = DSServer
+    LifeCycle = 'Session'
+    Left = 385
+    Top = 65
   end
 end
