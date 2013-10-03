@@ -9,7 +9,7 @@ inherited FrmRelReciboVenda: TFrmRelReciboVenda
     PreviewOptions.ShowModal = True
     object RLBand2: TRLBand
       Left = 38
-      Top = 132
+      Top = 153
       Width = 718
       Height = 112
       BandType = btColumnHeader
@@ -207,7 +207,7 @@ inherited FrmRelReciboVenda: TFrmRelReciboVenda
     end
     object RLBand3: TRLBand
       Left = 38
-      Top = 244
+      Top = 265
       Width = 718
       Height = 20
       BeforePrint = RLBand3BeforePrint
@@ -228,7 +228,7 @@ inherited FrmRelReciboVenda: TFrmRelReciboVenda
         Height = 16
         Alignment = taRightJustify
         AutoSize = False
-        DataField = 'PRECO_VENDA'
+        DataField = 'VALOR'
         DataSource = dsRelatorio
         Holder = RLPanel3
       end
@@ -256,7 +256,7 @@ inherited FrmRelReciboVenda: TFrmRelReciboVenda
     end
     object RLBand4: TRLBand
       Left = 38
-      Top = 264
+      Top = 285
       Width = 718
       Height = 25
       BandType = btSummary
@@ -305,7 +305,7 @@ inherited FrmRelReciboVenda: TFrmRelReciboVenda
     end
     object RLBand5: TRLBand
       Left = 38
-      Top = 107
+      Top = 128
       Width = 718
       Height = 25
       BandType = btHeader
@@ -341,8 +341,8 @@ inherited FrmRelReciboVenda: TFrmRelReciboVenda
       FieldName = 'DESCRICAO'
       Size = 60
     end
-    object cdsRelatorioPRECO_VENDA: TCurrencyField
-      FieldName = 'PRECO_VENDA'
+    object cdsRelatorioVALOR: TCurrencyField
+      FieldName = 'VALOR'
     end
     object cdsRelatorioDATA: TDateTimeField
       FieldName = 'DATA'

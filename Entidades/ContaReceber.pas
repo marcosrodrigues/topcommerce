@@ -31,6 +31,10 @@ type
     property Valor: Currency read FValor write FValor;
     property Observacoes: string read FObservacoes write FObservacoes;
     property Baixada: Boolean read FBaixada write FBaixada;
+
+    constructor Create; overload;
+    constructor Create(Id: integer); overload;
+    destructor Destroy; override;
   end;
 
 implementation
@@ -53,6 +57,25 @@ var
 begin
   LValue := TDBXPlatform.JsonToFloat(Arg);
   LRttiContext.GetType(Data.ClassType).GetField(Field).SetValue(Data, TValue.From<Double>(LValue));
+end;
+
+{ TContaReceber }
+
+constructor TContaReceber.Create;
+begin
+
+end;
+
+constructor TContaReceber.Create(Id: integer);
+begin
+  Self.FId := Id;
+end;
+
+destructor TContaReceber.Destroy;
+begin
+  if Assigned(FCliente) then
+    FCliente.Free;
+  inherited;
 end;
 
 end.

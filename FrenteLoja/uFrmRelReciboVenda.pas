@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, uFrmRelBase, RLFilters, RLPDFFilter, DB, DBClient, pngimage, RLReport,
-  uPedidoVendaDAOClient;
+  uPedidoVendaDAOClient, jpeg;
 
 type
   TFrmRelReciboVenda = class(TFrmRelBase)
@@ -13,7 +13,7 @@ type
     RLDBText1: TRLDBText;
     cdsRelatorioQUANTIDADE: TIntegerField;
     cdsRelatorioDESCRICAO: TStringField;
-    cdsRelatorioPRECO_VENDA: TCurrencyField;
+    cdsRelatorioVALOR: TCurrencyField;
     cdsRelatorioDATA: TDateTimeField;
     cdsRelatorioDESCONTO: TCurrencyField;
     cdsRelatorioTIPO_PAGAMENTO: TIntegerField;

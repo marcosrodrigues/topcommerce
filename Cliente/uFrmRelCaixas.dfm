@@ -5,9 +5,16 @@ inherited FrmRelCaixas: TFrmRelCaixas
   PixelsPerInch = 96
   TextHeight = 13
   inherited RLReport: TRLReport
+    inherited RLBand1: TRLBand
+      inherited RLLabel1: TRLLabel
+        Width = 65
+        Caption = 'Caixas'
+        ExplicitWidth = 65
+      end
+    end
     object RLGroup1: TRLGroup
       Left = 38
-      Top = 132
+      Top = 128
       Width = 718
       Height = 103
       DataFields = 'ID'
@@ -245,34 +252,6 @@ inherited FrmRelCaixas: TFrmRelCaixas
           Font.Style = []
           ParentFont = False
         end
-      end
-    end
-    object RLBand5: TRLBand
-      Left = 38
-      Top = 107
-      Width = 718
-      Height = 25
-      BandType = btHeader
-      object RLLabel12: TRLLabel
-        Left = 0
-        Top = 0
-        Width = 718
-        Height = 25
-        Align = faClient
-        Alignment = taCenter
-        Borders.Sides = sdCustom
-        Borders.DrawLeft = True
-        Borders.DrawTop = False
-        Borders.DrawRight = True
-        Borders.DrawBottom = True
-        Caption = 'Caixa'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = -20
-        Font.Name = 'Arial'
-        Font.Style = []
-        Layout = tlCenter
-        ParentFont = False
       end
     end
   end

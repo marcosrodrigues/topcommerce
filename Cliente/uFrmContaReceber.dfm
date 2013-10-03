@@ -10,8 +10,10 @@ inherited FrmContaReceber: TFrmContaReceber
   TextHeight = 14
   inherited pnlBotoes: TPanel
     Width = 824
+    ExplicitWidth = 824
     inherited sbtFechar: TSpeedButton
       Left = 742
+      ExplicitLeft = 742
     end
     object sbtBaixarConta: TSpeedButton
       Left = 462
@@ -56,7 +58,7 @@ inherited FrmContaReceber: TFrmContaReceber
       ParentFont = False
       ParentShowHint = False
       ShowHint = True
-      OnClick = sbtUltimoClick
+      OnClick = sbtBaixarContaClick
     end
   end
   inherited grdCrud: TDBGrid
@@ -66,8 +68,11 @@ inherited FrmContaReceber: TFrmContaReceber
   inherited pnlPesquisar: TPanel
     Top = 370
     Width = 824
+    ExplicitTop = 370
+    ExplicitWidth = 824
     inherited edtPesquisar: TEdit
       Width = 822
+      ExplicitWidth = 822
     end
   end
   inherited cdsCrud: TClientDataSet

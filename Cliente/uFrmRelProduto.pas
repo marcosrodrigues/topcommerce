@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, uFrmRelBase, ExtCtrls, DB, DBClient, uProdutoDAOClient,
-  DBXDBReaders, RLReport, pngimage, RLFilters, RLPDFFilter;
+  DBXDBReaders, RLReport, pngimage, RLFilters, RLPDFFilter, jpeg;
 
 type
   TFrmRelProduto = class(TFrmRelBase)

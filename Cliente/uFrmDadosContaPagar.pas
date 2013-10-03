@@ -60,46 +60,50 @@ end;
 procedure TFrmDadosContaPagar.OnSave;
 var
   cds: TClientDataSet;
+  ContaPagarTemp: TContaPagar;
 begin
   inherited;
   cds := TClientDataSet(Owner.FindComponent('cdsCrud'));
   if (Operacao = opInsert) then
   begin
-    ContaPagar.Fornecedor := TFornecedor.Create(FramePesquisaFornecedor.edtCodigoFornecedor.Text, FramePesquisaFornecedor.edtNomeFornecedor.Text, '');
-    ContaPagar.Vencimento  := deVencimento.Date;
-    ContaPagar.Valor       := cedValor.Value;
-    ContaPagar.Observacoes := mmObservacoes.Text;
-    ContaPagar.Baixada     := False;
+    ContaPagarTemp := TContaPagar.Create;
+    ContaPagarTemp.Fornecedor := TFornecedor.Create(FramePesquisaFornecedor.edtCodigoFornecedor.Text, FramePesquisaFornecedor.edtNomeFornecedor.Text, '');
+    ContaPagarTemp.Vencimento  := deVencimento.Date;
+    ContaPagarTemp.Valor       := cedValor.Value;
+    ContaPagarTemp.Observacoes := mmObservacoes.Text;
+    ContaPagarTemp.Baixada     := False;
 
-    if not(DAOClient.Insert(ContaPagar)) then
+    if not(DAOClient.Insert(ContaPagarTemp)) then
       Erro('Ocorreu algum erro durante a inclusão.');
 
     cds.Append;
-    cds.FieldByName('FORNECEDOR_CODIGO').AsString := ContaPagar.Fornecedor.Codigo;
-    cds.FieldByName('NOME').AsString              := ContaPagar.Fornecedor.Nome;
-    cds.FieldByName('VENCIMENTO').AsDateTime      := ContaPagar.Vencimento;
-    cds.FieldByName('VALOR').AsCurrency           := ContaPagar.Valor;
-    cds.FieldByName('OBSERVACOES').AsString       := ContaPagar.Observacoes;
-    cds.FieldByName('BAIXADA').AsBoolean          := ContaPagar.Baixada;
+    cds.FieldByName('FORNECEDOR_CODIGO').AsString := FramePesquisaFornecedor.edtCodigoFornecedor.Text;
+    cds.FieldByName('NOME').AsString              := FramePesquisaFornecedor.edtNomeFornecedor.Text;
+    cds.FieldByName('VENCIMENTO').AsDateTime      := deVencimento.Date;
+    cds.FieldByName('VALOR').AsCurrency           := cedValor.Value;
+    cds.FieldByName('OBSERVACOES').AsString       := mmObservacoes.Text;
+    cds.FieldByName('BAIXADA').AsBoolean          := False;
     cds.Post;
   end
   else
   begin
-    ContaPagar.Id := StrToInt(edtId.Text);
-    ContaPagar.Fornecedor := TFornecedor.Create(FramePesquisaFornecedor.edtCodigoFornecedor.Text, FramePesquisaFornecedor.edtNomeFornecedor.Text, '');
-    ContaPagar.Vencimento  := deVencimento.Date;
-    ContaPagar.Valor       := cedValor.Value;
-    ContaPagar.Observacoes := mmObservacoes.Text;
+    //TODO - Ver memory leaks
+    ContaPagarTemp := TContaPagar.Create;
+    ContaPagarTemp.Id := StrToInt(edtId.Text);
+    ContaPagarTemp.Fornecedor := TFornecedor.Create(FramePesquisaFornecedor.edtCodigoFornecedor.Text, FramePesquisaFornecedor.edtNomeFornecedor.Text, '');
+    ContaPagarTemp.Vencimento  := deVencimento.Date;
+    ContaPagarTemp.Valor       := cedValor.Value;
+    ContaPagarTemp.Observacoes := mmObservacoes.Text;
 
-    if not(DAOClient.Update(ContaPagar)) then
+    if not(DAOClient.Update(ContaPagarTemp)) then
       Erro('Ocorreu algum erro durante a alteração.');
 
     cds.Edit;
-    cds.FieldByName('FORNECEDOR_CODIGO').AsString := ContaPagar.Fornecedor.Codigo;
-    cds.FieldByName('NOME').AsString              := ContaPagar.Fornecedor.Nome;
-    cds.FieldByName('VENCIMENTO').AsDateTime      := ContaPagar.Vencimento;
-    cds.FieldByName('VALOR').AsCurrency           := ContaPagar.Valor;
-    cds.FieldByName('OBSERVACOES').AsString       := ContaPagar.Observacoes;
+    cds.FieldByName('FORNECEDOR_CODIGO').AsString := FramePesquisaFornecedor.edtCodigoFornecedor.Text;
+    cds.FieldByName('NOME').AsString              := FramePesquisaFornecedor.edtNomeFornecedor.Text;
+    cds.FieldByName('VENCIMENTO').AsDateTime      := deVencimento.Date;
+    cds.FieldByName('VALOR').AsCurrency           := cedValor.Value;
+    cds.FieldByName('OBSERVACOES').AsString       := mmObservacoes.Text;
     cds.Post;
   end;
   if (chbContinuarIncluindo.Checked) then

@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, uFrmRelBase, ExtCtrls, uFornecedorDAOClient, DB, DBClient,
-  DBXDBReaders, RLReport, RLFilters, RLPDFFilter, pngimage;
+  DBXDBReaders, RLReport, RLFilters, RLPDFFilter, pngimage, jpeg;
 
 type
   TFrmRelFornecedor = class(TFrmRelBase)

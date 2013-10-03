@@ -8,8 +8,10 @@ inherited FrmDadosContaPagar: TFrmDadosContaPagar
   TextHeight = 14
   inherited pnlBotoes: TPanel
     Width = 589
+    ExplicitWidth = 589
     inherited chbContinuarIncluindo: TCheckBox
       Left = 463
+      ExplicitLeft = 463
     end
   end
   inherited pnlDados: TPanel

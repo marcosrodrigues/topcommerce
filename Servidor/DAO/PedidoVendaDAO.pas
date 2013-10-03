@@ -24,7 +24,7 @@ type
     function InsertItemNoPedido(CodigoPedidoVenda: string; Item: TItemPedidoVenda): Boolean;
     function DeleteItemDoPedido(CodigoProduto, CodigoPedidoVenda: string): Boolean;
     function AtualizaItemDoPedido(CodigoPedidoVenda: string; Item: TItemPedidoVenda): Boolean;
-    function RelatorioPedidosVenda(DataInicial, DataFinal: TDateTime): TDBXReader;
+    function RelatorioPedidosVenda(DataInicial, DataFinal: TDateTime; TipoPagamento: Integer; ClienteCodigo: string): TDBXReader;
     function VendasFechadas: TDBXReader;
     function VendasAbertas: TDBXReader;
     function Recibo(CodigoPedidoVenda: string): TDBXReader;
@@ -161,7 +161,7 @@ end;
 function TPedidoVendaDAO.Recibo(CodigoPedidoVenda: string): TDBXReader;
 begin
   PrepareCommand;
-  FComm.Text := 'SELECT I.QUANTIDADE, P.DESCRICAO, P.PRECO_VENDA, V.DATA, V.DESCONTO, V.TIPO_PAGAMENTO, '+
+  FComm.Text := 'SELECT I.QUANTIDADE, P.DESCRICAO, I.VALOR, V.DATA, V.DESCONTO, V.TIPO_PAGAMENTO, '+
                        'V.NOME_CLIENTE_AVULSO, C.NOME '+
                 'FROM ITENS_PEDIDO_VENDA I '+
                 'INNER JOIN PRODUTOS P ON P.CODIGO = I.CODIGO_PRODUTO '+
@@ -171,7 +171,7 @@ begin
   Result := FComm.ExecuteQuery;
 end;
 
-function TPedidoVendaDAO.RelatorioPedidosVenda(DataInicial, DataFinal: TDateTime): TDBXReader;
+function TPedidoVendaDAO.RelatorioPedidosVenda(DataInicial, DataFinal: TDateTime; TipoPagamento: Integer; ClienteCodigo: string): TDBXReader;
 begin
   PrepareCommand;
   FComm.Text := 'SELECT V.CODIGO, V.DATA, V.DESCONTO, V.TIPO_PAGAMENTO, V.CODIGO_CLIENTE, '+
@@ -185,6 +185,10 @@ begin
     FComm.Text := FComm.Text + 'AND CONVERT(CHAR(8), DATA, 112) >= '+FormatDateTime('yyyymmdd', DataInicial)+' ';
   if (DataFinal <> 0) then
     FComm.Text := FComm.Text + 'AND CONVERT(CHAR(8), DATA, 112) <= '+FormatDateTime('yyyymmdd', DataFinal)+' ';
+  if (TipoPagamento <> 0) then
+    FComm.Text := FComm.Text + 'AND TIPO_PAGAMENTO = '+IntToStr(TipoPagamento+1); //TODO - Melhorar esse codigo
+  if (Trim(ClienteCodigo) <> '') then
+    FComm.Text := FComm.Text + 'AND CODIGO_CLIENTE = '''+ClienteCodigo+'''';
   Result := FComm.ExecuteQuery;
 end;
 

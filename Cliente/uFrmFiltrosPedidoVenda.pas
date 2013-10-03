@@ -12,6 +12,8 @@ type
     Label2: TLabel;
     deDataInicial: TDateTimePicker;
     deDataFinal: TDateTimePicker;
+    Label3: TLabel;
+    cbTipoPagamento: TComboBox;
     procedure FormShow(Sender: TObject);
   private
     { Private declarations }
@@ -56,6 +58,8 @@ begin
   try
     r.DataInicial := DateOf(deDataInicial.Date);
     r.DataFinal   := DateOf(deDataFinal.Date);
+    r.TipoPagamento := cbTipoPagamento.ItemIndex;
+    r.ClienteCodigo := '';
     r.RLReport.Preview;
   finally
     r.Free;

@@ -32,6 +32,7 @@ type
 
     constructor Create; overload;
     constructor Create(Id: integer); overload;
+    destructor Destroy; override;
   end;
 
 implementation
@@ -66,6 +67,13 @@ end;
 constructor TContaPagar.Create(Id: integer);
 begin
   Self.Id := Id;
+end;
+
+destructor TContaPagar.Destroy;
+begin
+  if Assigned(FFornecedor) then
+    FFornecedor.Free;
+  inherited;
 end;
 
 end.

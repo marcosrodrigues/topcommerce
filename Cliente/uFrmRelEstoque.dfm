@@ -1,11 +1,20 @@
 inherited FrmRelEstoque: TFrmRelEstoque
   Caption = 'FrmRelEstoque'
+  ExplicitWidth = 834
+  ExplicitHeight = 662
   PixelsPerInch = 96
   TextHeight = 13
   inherited RLReport: TRLReport
+    inherited RLBand1: TRLBand
+      inherited RLLabel1: TRLLabel
+        Width = 78
+        Caption = 'Estoque'
+        ExplicitWidth = 78
+      end
+    end
     object RLBand2: TRLBand
       Left = 38
-      Top = 153
+      Top = 128
       Width = 718
       Height = 20
       BandType = btColumnHeader
@@ -84,7 +93,7 @@ inherited FrmRelEstoque: TFrmRelEstoque
     end
     object RLBand3: TRLBand
       Left = 38
-      Top = 173
+      Top = 148
       Width = 718
       Height = 20
       object RLDBText1: TRLDBText
@@ -139,34 +148,6 @@ inherited FrmRelEstoque: TFrmRelEstoque
         DataField = 'ESTOQUE_MINIMO'
         DataSource = dsRelatorio
         Holder = RLLabel8
-      end
-    end
-    object RLBand4: TRLBand
-      Left = 38
-      Top = 128
-      Width = 718
-      Height = 25
-      BandType = btHeader
-      object RLLabel9: TRLLabel
-        Left = 0
-        Top = 0
-        Width = 718
-        Height = 25
-        Align = faClient
-        Alignment = taCenter
-        Borders.Sides = sdCustom
-        Borders.DrawLeft = True
-        Borders.DrawTop = False
-        Borders.DrawRight = True
-        Borders.DrawBottom = True
-        Caption = 'Estoque'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = -20
-        Font.Name = 'Arial'
-        Font.Style = []
-        Layout = tlCenter
-        ParentFont = False
       end
     end
   end

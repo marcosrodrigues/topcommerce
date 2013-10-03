@@ -27,8 +27,6 @@ type
     cdsRelatorioESTOQUE_MINIMO: TIntegerField;
     RLLabel8: TRLLabel;
     RLDBText5: TRLDBText;
-    RLBand4: TRLBand;
-    RLLabel9: TRLLabel;
   private
     { Private declarations }
   protected

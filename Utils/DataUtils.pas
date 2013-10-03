@@ -32,6 +32,8 @@ begin
         TDBXDataTypes.DateType,
         TDBXDataTypes.TimeStampType:
           ClientDataSet.Fields[i].AsDateTime := Reader.Value[i].AsDateTime;
+        TDBXDataTypes.BooleanType:
+          ClientDataSet.Fields[i].AsBoolean := Reader.Value[i].AsBoolean;
       end;
     end;
     ClientDataSet.Post;

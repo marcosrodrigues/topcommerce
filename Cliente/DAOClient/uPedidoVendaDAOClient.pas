@@ -30,7 +30,7 @@ type
     function InsertItemNoPedido(CodigoPedidoVenda: string; Item: TItemPedidoVenda): Boolean;
     function DeleteItemDoPedido(CodigoProduto: string; CodigoPedidoVenda: string): Boolean;
     function AtualizaItemDoPedido(CodigoPedidoVenda: string; Item: TItemPedidoVenda): Boolean;
-    function RelatorioPedidosVenda(DataInicial, DataFinal: TDateTime): TDBXReader;
+    function RelatorioPedidosVenda(DataInicial, DataFinal: TDateTime; TipoPagamento: Integer; ClienteCodigo: string): TDBXReader;
     function VendasFechadas: TDBXReader;
     function VendasAbertas: TDBXReader;
     function Recibo(CodigoPedidoVenda: string): TDBXReader;
@@ -148,7 +148,7 @@ begin
   Result := FReciboCommand.Parameters[1].Value.GetDBXReader(FInstanceOwner);
 end;
 
-function TPedidoVendaDAOClient.RelatorioPedidosVenda(DataInicial, DataFinal: TDateTime): TDBXReader;
+function TPedidoVendaDAOClient.RelatorioPedidosVenda(DataInicial, DataFinal: TDateTime; TipoPagamento: Integer; ClienteCodigo: string): TDBXReader;
 begin
   if FRelatorioPedidosVendaCommand = nil then
   begin
@@ -159,8 +159,10 @@ begin
   end;
   FRelatorioPedidosVendaCommand.Parameters[0].Value.AsDateTime := DataInicial;
   FRelatorioPedidosVendaCommand.Parameters[1].Value.AsDateTime := DataFinal;
+  FRelatorioPedidosVendaCommand.Parameters[2].Value.AsInt32    := TipoPagamento;
+  FRelatorioPedidosVendaCommand.Parameters[3].Value.AsString   := ClienteCodigo;
   FRelatorioPedidosVendaCommand.ExecuteUpdate;
-  Result := FRelatorioPedidosVendaCommand.Parameters[2].Value.GetDBXReader(FInstanceOwner);
+  Result := FRelatorioPedidosVendaCommand.Parameters[4].Value.GetDBXReader(FInstanceOwner);
 end;
 
 function TPedidoVendaDAOClient.Update(PedidoVenda: TPedidoVenda): Boolean;

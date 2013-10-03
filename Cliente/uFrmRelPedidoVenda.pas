@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, uFrmRelBase, DB, DBClient, ExtCtrls, uPedidoVendaDAOClient,
-  DBXDBReaders, RLReport, pngimage, RLFilters, RLPDFFilter;
+  DBXDBReaders, RLReport, pngimage, RLFilters, RLPDFFilter, jpeg;
 
 type
   TFrmRelPedidoVenda = class(TFrmRelBase)
@@ -35,9 +35,17 @@ type
     RLDBText4: TRLDBText;
     RLDBText5: TRLDBText;
     RLDBText6: TRLDBText;
+    RLLabel10: TRLLabel;
+    RLDBText7: TRLDBText;
+    RLLabel11: TRLLabel;
+    RLDBText8: TRLDBText;
     procedure cdsRelatorioTIPO_PAGAMENTOGetText(Sender: TField; var Text: string;
       DisplayText: Boolean);
     procedure cdsRelatorioNOMEGetText(Sender: TField; var Text: string; DisplayText: Boolean);
+    procedure RLDBText7BeforePrint(Sender: TObject; var Text: string;
+      var PrintIt: Boolean);
+    procedure RLDBText8BeforePrint(Sender: TObject; var Text: string;
+      var PrintIt: Boolean);
   private
     { Private declarations }
     Total, TotalGeral, TotalDesconto: Currency;
@@ -46,6 +54,8 @@ type
   public
     { Public declarations }
     DataInicial, DataFinal: TDateTime;
+    TipoPagamento: Integer;
+    ClienteCodigo: string;
   end;
 
 var
@@ -86,9 +96,32 @@ begin
   inherited;
   DAOClient := TPedidoVendaDAOClient.Create(DBXConnection);
   try
-    CopyReaderToClientDataSet(DAOClient.RelatorioPedidosVenda(DataInicial, DataFinal), cdsRelatorio);
+    CopyReaderToClientDataSet(DAOClient.RelatorioPedidosVenda(DataInicial, DataFinal, TipoPagamento, ClienteCodigo), cdsRelatorio);
   finally
     DAOClient.Free;
+  end;
+end;
+
+procedure TFrmRelPedidoVenda.RLDBText7BeforePrint(Sender: TObject;
+  var Text: string; var PrintIt: Boolean);
+begin
+  inherited;
+  if cdsRelatorioNOME.IsNull then
+    Text := cdsRelatorioNOME_CLIENTE_AVULSO.AsString
+  else
+    Text := cdsRelatorioNOME.AsString;
+end;
+
+procedure TFrmRelPedidoVenda.RLDBText8BeforePrint(Sender: TObject;
+  var Text: string; var PrintIt: Boolean);
+begin
+  inherited;
+  case cdsRelatorioTIPO_PAGAMENTO.AsInteger of
+    0: Text := 'Dinheiro';
+    1: Text := 'Crediário';
+    2: Text := 'Cartão de Crédito';
+    3: Text := 'Cartão de Débito';
+    4: Text := 'Cheque';
   end;
 end;
 

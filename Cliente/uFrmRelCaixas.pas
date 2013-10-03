@@ -4,7 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, uFrmRelBase, RLFilters, RLPDFFilter, DB, DBClient, pngimage, RLReport;
+  Dialogs, uFrmRelBase, RLFilters, RLPDFFilter, DB, DBClient, pngimage, RLReport,
+  jpeg;
 
 type
   TFrmRelCaixas = class(TFrmRelBase)
@@ -35,8 +36,6 @@ type
     RLLabel10: TRLLabel;
     RLLabel11: TRLLabel;
     rlbTotalCaixa: TRLLabel;
-    RLBand5: TRLBand;
-    RLLabel12: TRLLabel;
     procedure cdsRelatorioORIGEMGetText(Sender: TField; var Text: string;
       DisplayText: Boolean);
     procedure cdsRelatorioOPERACAOGetText(Sender: TField; var Text: string;

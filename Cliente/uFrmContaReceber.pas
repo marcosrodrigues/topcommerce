@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, uFrmCrudBase, DB, DBClient, StdCtrls, Grids, DBGrids, Buttons,
-  ExtCtrls, uContaReceberDAOClient;
+  ExtCtrls, uContaReceberDAOClient, ContaReceber;
 
 type
   TFrmContaReceber = class(TFrmCrudBase)
@@ -18,6 +18,7 @@ type
     cdsCrudNOME: TStringField;
     cdsCrudNOME_CLIENTE_AVULSO: TStringField;
     sbtBaixarConta: TSpeedButton;
+    procedure sbtBaixarContaClick(Sender: TObject);
   private
     { Private declarations }
     DAOClient: TContaReceberDAOClient;
@@ -110,6 +111,18 @@ procedure TFrmContaReceber.OnShow;
 begin
   inherited;
   CopyReaderToClientDataSet(DAOClient.List, cdsCrud);
+end;
+
+procedure TFrmContaReceber.sbtBaixarContaClick(Sender: TObject);
+begin
+  inherited;
+  if Confirma('Baixar a conta selecionada?') then
+    if DAOClient.BaixarConta(TContaReceber.Create(cdsCrudID.AsInteger)) then
+    begin
+      cdsCrud.Edit;
+      cdsCrudBAIXADA.AsBoolean := True;
+      cdsCrud.Post;
+    end;
 end;
 
 end.

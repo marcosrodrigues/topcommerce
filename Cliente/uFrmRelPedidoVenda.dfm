@@ -1,25 +1,36 @@
 inherited FrmRelPedidoVenda: TFrmRelPedidoVenda
   Caption = 'FrmRelPedidoVenda'
-  ExplicitLeft = -120
   ExplicitWidth = 834
   ExplicitHeight = 662
   PixelsPerInch = 96
   TextHeight = 13
   inherited RLReport: TRLReport
+    inherited RLBand1: TRLBand
+      inherited RLLabel1: TRLLabel
+        Width = 167
+        Caption = 'Pedidos de Venda'
+        ExplicitWidth = 167
+      end
+    end
     object RLGroup1: TRLGroup
       Left = 38
-      Top = 107
+      Top = 128
       Width = 718
-      Height = 81
+      Height = 126
+      Borders.Sides = sdCustom
+      Borders.DrawLeft = True
+      Borders.DrawTop = True
+      Borders.DrawRight = True
+      Borders.DrawBottom = True
       DataFields = 'CODIGO'
       object RLBand2: TRLBand
-        Left = 0
-        Top = 0
-        Width = 718
-        Height = 50
+        Left = 1
+        Top = 1
+        Width = 716
+        Height = 88
         BandType = btColumnHeader
         object RLDBText1: TRLDBText
-          Left = 184
+          Left = 187
           Top = 8
           Width = 38
           Height = 16
@@ -40,7 +51,7 @@ inherited FrmRelPedidoVenda: TFrmRelPedidoVenda
           ParentFont = False
         end
         object RLDBText3: TRLDBText
-          Left = 61
+          Left = 64
           Top = 8
           Width = 55
           Height = 16
@@ -48,7 +59,7 @@ inherited FrmRelPedidoVenda: TFrmRelPedidoVenda
           DataSource = dsRelatorio
         end
         object RLLabel4: TRLLabel
-          Left = 144
+          Left = 147
           Top = 8
           Width = 37
           Height = 16
@@ -62,7 +73,7 @@ inherited FrmRelPedidoVenda: TFrmRelPedidoVenda
         end
         object RLLabel5: TRLLabel
           Left = 0
-          Top = 30
+          Top = 68
           Width = 49
           Height = 20
           Align = faLeftBottom
@@ -81,8 +92,8 @@ inherited FrmRelPedidoVenda: TFrmRelPedidoVenda
         end
         object RLLabel7: TRLLabel
           Left = 49
-          Top = 30
-          Width = 553
+          Top = 68
+          Width = 477
           Height = 20
           Align = faClientBottom
           Borders.Sides = sdCustom
@@ -99,9 +110,9 @@ inherited FrmRelPedidoVenda: TFrmRelPedidoVenda
           ParentFont = False
         end
         object RLLabel9: TRLLabel
-          Left = 680
-          Top = 30
-          Width = 38
+          Left = 626
+          Top = 68
+          Width = 90
           Height = 20
           Align = faRightBottom
           Alignment = taCenter
@@ -119,9 +130,9 @@ inherited FrmRelPedidoVenda: TFrmRelPedidoVenda
           ParentFont = False
         end
         object RLLabel8: TRLLabel
-          Left = 602
-          Top = 30
-          Width = 78
+          Left = 526
+          Top = 68
+          Width = 100
           Height = 20
           Align = faRightBottom
           Alignment = taCenter
@@ -138,16 +149,60 @@ inherited FrmRelPedidoVenda: TFrmRelPedidoVenda
           Font.Style = [fsBold]
           ParentFont = False
         end
+        object RLLabel10: TRLLabel
+          Left = 8
+          Top = 29
+          Width = 53
+          Height = 16
+          Caption = 'Cliente:'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object RLDBText7: TRLDBText
+          Left = 64
+          Top = 29
+          Width = 43
+          Height = 16
+          DataField = 'NOME'
+          DataSource = dsRelatorio
+          BeforePrint = RLDBText7BeforePrint
+        end
+        object RLLabel11: TRLLabel
+          Left = 8
+          Top = 49
+          Width = 133
+          Height = 16
+          Caption = 'Tipo de Pagamento:'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object RLDBText8: TRLDBText
+          Left = 145
+          Top = 49
+          Width = 123
+          Height = 16
+          DataField = 'TIPO_PAGAMENTO'
+          DataSource = dsRelatorio
+          BeforePrint = RLDBText8BeforePrint
+        end
       end
       object RLBand3: TRLBand
-        Left = 0
-        Top = 50
-        Width = 718
+        Left = 1
+        Top = 89
+        Width = 716
         Height = 20
         object RLDBText2: TRLDBText
           Left = 49
           Top = 0
-          Width = 553
+          Width = 477
           Height = 20
           Align = faClient
           AutoSize = False
@@ -167,9 +222,9 @@ inherited FrmRelPedidoVenda: TFrmRelPedidoVenda
           Holder = RLLabel5
         end
         object RLDBText5: TRLDBText
-          Left = 602
+          Left = 526
           Top = 0
-          Width = 78
+          Width = 100
           Height = 20
           Align = faRight
           Alignment = taRightJustify
@@ -179,9 +234,9 @@ inherited FrmRelPedidoVenda: TFrmRelPedidoVenda
           Holder = RLLabel8
         end
         object RLDBText6: TRLDBText
-          Left = 680
+          Left = 626
           Top = 0
-          Width = 38
+          Width = 90
           Height = 20
           Align = faRight
           Alignment = taRightJustify

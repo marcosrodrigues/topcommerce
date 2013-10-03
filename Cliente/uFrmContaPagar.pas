@@ -17,6 +17,7 @@ type
     cdsCrudNOME: TStringField;
     sbtBaixarConta: TSpeedButton;
     cdsCrudID: TIntegerField;
+    procedure sbtBaixarContaClick(Sender: TObject);
   private
     { Private declarations }
     DAOClient: TContaPagarDAOClient;
@@ -112,6 +113,18 @@ procedure TFrmContaPagar.OnShow;
 begin
   inherited;
   CopyReaderToClientDataSet(DAOClient.List, cdsCrud);
+end;
+
+procedure TFrmContaPagar.sbtBaixarContaClick(Sender: TObject);
+begin
+  inherited;
+  if Confirma('Baixar a conta selecionada?') then
+    if DAOClient.BaixarConta(TContaPagar.Create(cdsCrudID.AsInteger)) then
+    begin
+      cdsCrud.Edit;
+      cdsCrudBAIXADA.AsBoolean := True;
+      cdsCrud.Post;
+    end;
 end;
 
 end.

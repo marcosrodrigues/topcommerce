@@ -58,7 +58,7 @@ inherited FrmContaPagar: TFrmContaPagar
       ParentFont = False
       ParentShowHint = False
       ShowHint = True
-      OnClick = sbtUltimoClick
+      OnClick = sbtBaixarContaClick
     end
   end
   inherited grdCrud: TDBGrid

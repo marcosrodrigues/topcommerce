@@ -12,6 +12,7 @@ type
     function Insert(ContaReceber: TContaReceber): Boolean;
     function Update(ContaReceber: TContaReceber): Boolean;
     function Delete(ContaReceber: TContaReceber): Boolean;
+    function BaixarConta(ContaReceber: TContaReceber): Boolean;
   end;
 
 
@@ -27,6 +28,7 @@ begin
   FComm.Text := 'SELECT C.ID, C.CLIENTE_CODIGO, L.NOME, C.NOME_CLIENTE_AVULSO, C.VENCIMENTO, C.VALOR, C.OBSERVACOES, C.BAIXADA '+
                 'FROM CONTAS_RECEBER C '+
                 'LEFT JOIN CLIENTES L ON L.CODIGO = C.CLIENTE_CODIGO '+
+                'WHERE C.BAIXADA = 0 '+
                 'ORDER BY C.VENCIMENTO';
   Result := FComm.ExecuteQuery;
 end;
@@ -91,6 +93,29 @@ begin
     query.ParamByName('VALOR').AsCurrency      := ContaReceber.Valor;
     query.ParamByName('OBSERVACOES').AsString  := ContaReceber.Observacoes;
     query.ParamByName('BAIXADA').AsBoolean     := ContaReceber.Baixada;
+    //
+    try
+      query.ExecSQL;
+      Result := True;
+    except
+      Result := False;
+    end;
+  finally
+    query.Free;
+  end;
+end;
+
+function TContaReceberDAO.BaixarConta(ContaReceber: TContaReceber): Boolean;
+var
+  query: TSQLQuery;
+begin
+  query := TSQLQuery.Create(nil);
+  try
+    query.SQLConnection := SCPrincipal.ConnTopCommerce;
+    //
+    query.SQL.Text := 'UPDATE CONTAS_RECEBER SET BAIXADA = 1 WHERE ID = :ID';
+    //
+    query.ParamByName('ID').AsInteger := ContaReceber.Id;
     //
     try
       query.ExecSQL;

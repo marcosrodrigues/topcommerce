@@ -12,6 +12,7 @@ type
     function Insert(ContaPagar: TContaPagar): Boolean;
     function Update(ContaPagar: TContaPagar): Boolean;
     function Delete(ContaPagar: TContaPagar): Boolean;
+    function BaixarConta(ContaPagar: TContaPagar): Boolean;
   end;
 
 
@@ -27,6 +28,7 @@ begin
   FComm.Text := 'SELECT C.ID, C.FORNECEDOR_CODIGO, F.NOME, C.VENCIMENTO, C.VALOR, C.OBSERVACOES, C.BAIXADA '+
                 'FROM CONTAS_PAGAR C '+
                 'INNER JOIN FORNECEDORES F ON F.CODIGO = C.FORNECEDOR_CODIGO '+
+                'WHERE C.BAIXADA = 0 '+
                 'ORDER BY C.VENCIMENTO';
   Result := FComm.ExecuteQuery;
 end;
@@ -75,6 +77,29 @@ begin
     query.ParamByName('OBSERVACOES').AsString       := ContaPagar.Observacoes;
     query.ParamByName('BAIXADA').AsBoolean          := ContaPagar.Baixada;
     query.ParamByName('ID').AsInteger               := ContaPagar.Id;
+    //
+    try
+      query.ExecSQL;
+      Result := True;
+    except
+      Result := False;
+    end;
+  finally
+    query.Free;
+  end;
+end;
+
+function TContaPagarDAO.BaixarConta(ContaPagar: TContaPagar): Boolean;
+var
+  query: TSQLQuery;
+begin
+  query := TSQLQuery.Create(nil);
+  try
+    query.SQLConnection := SCPrincipal.ConnTopCommerce;
+    //
+    query.SQL.Text := 'UPDATE CONTAS_PAGAR SET BAIXADA = 1 WHERE ID = :ID';
+    //
+    query.ParamByName('ID').AsInteger := ContaPagar.Id;
     //
     try
       query.ExecSQL;

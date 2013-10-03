@@ -11,6 +11,7 @@ type
     FInsertCommand: TDBXCommand;
     FUpdateCommand: TDBXCommand;
     FDeleteCommand: TDBXCommand;
+    FBaixarContaCommand: TDBXCommand;
   public
     constructor Create(ADBXConnection: TDBXConnection); overload;
     constructor Create(ADBXConnection: TDBXConnection; AInstanceOwner: Boolean); overload;
@@ -19,6 +20,7 @@ type
     function Insert(ContaPagar: TContaPagar): Boolean;
     function Update(ContaPagar: TContaPagar): Boolean;
     function Delete(ContaPagar: TContaPagar): Boolean;
+    function BaixarConta(ContaPagar: TContaPagar): Boolean;
   end;
 
 implementation
@@ -119,6 +121,32 @@ begin
   inherited Create(ADBXConnection);
 end;
 
+function TContaPagarDAOClient.BaixarConta(ContaPagar: TContaPagar): Boolean;
+begin
+  if FBaixarContaCommand = nil then
+  begin
+    FBaixarContaCommand := FDBXConnection.CreateCommand;
+    FBaixarContaCommand.CommandType := TDBXCommandTypes.DSServerMethod;
+    FBaixarContaCommand.Text := 'TContaPagarDAO.BaixarConta';
+    FBaixarContaCommand.Prepare;
+  end;
+  if not Assigned(ContaPagar) then
+    FBaixarContaCommand.Parameters[0].Value.SetNull
+  else
+  begin
+    FMarshal := TDBXClientCommand(FBaixarContaCommand.Parameters[0].ConnectionHandler).GetJSONMarshaler;
+    try
+      FBaixarContaCommand.Parameters[0].Value.SetJSONValue(FMarshal.Marshal(ContaPagar), True);
+      if FInstanceOwner then
+        ContaPagar.Free
+    finally
+      FreeAndNil(FMarshal)
+    end
+    end;
+  FBaixarContaCommand.ExecuteUpdate;
+  Result := FBaixarContaCommand.Parameters[1].Value.GetBoolean;
+end;
+
 constructor TContaPagarDAOClient.Create(ADBXConnection: TDBXConnection; AInstanceOwner: Boolean);
 begin
   inherited Create(ADBXConnection, AInstanceOwner);
@@ -130,6 +158,7 @@ begin
   FreeAndNil(FInsertCommand);
   FreeAndNil(FUpdateCommand);
   FreeAndNil(FDeleteCommand);
+  FreeAndNil(FBaixarContaCommand);
   inherited;
 end;
 

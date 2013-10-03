@@ -117,6 +117,7 @@ inherited FrmFiltrosBase: TFrmFiltrosBase
       Hint = 'Fechar tela. (ESC)'
       Anchors = [akTop, akRight]
       Caption = 'Fechar ESC'
+      Flat = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
