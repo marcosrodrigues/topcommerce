@@ -10,8 +10,10 @@ inherited FrmContaPagar: TFrmContaPagar
   TextHeight = 14
   inherited pnlBotoes: TPanel
     Width = 784
+    ExplicitWidth = 784
     inherited sbtFechar: TSpeedButton
       Left = 702
+      ExplicitLeft = 702
     end
     object sbtBaixarConta: TSpeedButton
       Left = 462
@@ -66,8 +68,11 @@ inherited FrmContaPagar: TFrmContaPagar
   inherited pnlPesquisar: TPanel
     Top = 370
     Width = 784
+    ExplicitTop = 370
+    ExplicitWidth = 784
     inherited edtPesquisar: TEdit
       Width = 782
+      ExplicitWidth = 782
     end
   end
   inherited cdsCrud: TClientDataSet
@@ -89,6 +94,7 @@ inherited FrmContaPagar: TFrmContaPagar
     object cdsCrudVENCIMENTO: TDateTimeField
       DisplayLabel = 'Vencimento'
       FieldName = 'VENCIMENTO'
+      DisplayFormat = 'dd/mm/yyyy'
     end
     object cdsCrudVALOR: TCurrencyField
       DisplayLabel = 'Valor'

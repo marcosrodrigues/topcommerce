@@ -109,7 +109,7 @@ begin
   try
     query.SQLConnection := SCPrincipal.ConnTopCommerce;
     //
-    FComm.Text := 'DELETE FROM CLIENTES WHERE CODIGO = :CODIGO';
+    query.SQL.Text := 'DELETE FROM CLIENTES WHERE CODIGO = :CODIGO';
     //
     query.ParamByName('CODIGO').AsString := Cliente.Codigo;
     //

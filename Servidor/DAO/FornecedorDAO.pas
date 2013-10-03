@@ -107,7 +107,7 @@ begin
   try
     query.SQLConnection := SCPrincipal.ConnTopCommerce;
     //
-    FComm.Text := 'DELETE FROM FORNECEDORES WHERE CODIGO = :CODIGO';
+    query.SQL.Text := 'DELETE FROM FORNECEDORES WHERE CODIGO = :CODIGO';
     //
     query.ParamByName('CODIGO').AsString   := Fornecedor.Codigo;
     //

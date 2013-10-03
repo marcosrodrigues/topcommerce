@@ -9,7 +9,6 @@ uses
 
 type
   TFrmContaPagar = class(TFrmCrudBase)
-    cdsCrudID: TIntegerField;
     cdsCrudFORNECEDOR_CODIGO: TStringField;
     cdsCrudVENCIMENTO: TDateTimeField;
     cdsCrudVALOR: TCurrencyField;
@@ -17,6 +16,7 @@ type
     cdsCrudBAIXADA: TBooleanField;
     cdsCrudNOME: TStringField;
     sbtBaixarConta: TSpeedButton;
+    cdsCrudID: TIntegerField;
   private
     { Private declarations }
     DAOClient: TContaPagarDAOClient;
@@ -37,7 +37,8 @@ var
 
 implementation
 
-uses DataUtils, uFrmDadosContaPagar, TypesUtils, MensagensUtils, ContaPagar;
+uses DataUtils, uFrmDadosContaPagar, TypesUtils, MensagensUtils, ContaPagar,
+  uFornecedorDAOClient, Fornecedor;
 
 {$R *.dfm}
 
@@ -59,7 +60,7 @@ procedure TFrmContaPagar.OnDelete;
 begin
   inherited;
   if (Confirma('Deseja excluir esta Conta a Pagar?')) then
-    //if (DAOClient.Delete(TContaPagar.Create(cdsCrudCODIGO.AsString))) then
+    if (DAOClient.Delete(TContaPagar.Create(cdsCrudID.AsInteger))) then
       cdsCrud.Delete
     else
       Erro('Ocorreu algum erro durante a exlusão.');
@@ -72,9 +73,11 @@ begin
   inherited;
   f := TFrmDadosContaPagar.Create(Self);
   try
-    {f.Cliente.Codigo := cdsCrudCODIGO.AsString;
-    f.Cliente.Nome   := cdsCrudNOME.AsString;
-    f.Cliente.Telefone := cdsCrudTELEFONE.AsString;}
+    f.ContaPagar.Id := cdsCrudID.AsInteger;
+    f.ContaPagar.Fornecedor := TFornecedor.Create(cdsCrudFORNECEDOR_CODIGO.AsString, cdsCrudNOME.AsString, '');
+    f.ContaPagar.Vencimento := cdsCrudVENCIMENTO.AsDateTime;
+    f.ContaPagar.Valor := cdsCrudVALOR.AsCurrency;
+    f.ContaPagar.Observacoes := cdsCrudOBSERVACOES.AsString;
 
     f.Operacao := opEdit;
     f.ShowModal;

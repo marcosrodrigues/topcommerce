@@ -20,7 +20,8 @@ begin
     for i := 0 to Reader.ColumnCount - 1 do
     begin
       case Reader.Value[i].ValueType.DataType of
-        TDBXDataTypes.AnsiStringType:
+        TDBXDataTypes.AnsiStringType,
+        TDBXDataTypes.BlobType:
           ClientDataSet.Fields[i].AsString := Reader.Value[i].AsString;
         TDBXDataTypes.CurrencyType,
         TDBXDataTypes.DoubleType:

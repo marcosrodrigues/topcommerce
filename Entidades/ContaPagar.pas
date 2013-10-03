@@ -29,6 +29,9 @@ type
     property Valor: Currency read FValor write FValor;
     property Observacoes: string read FObservacoes write FObservacoes;
     property Baixada: Boolean read FBaixada write FBaixada;
+
+    constructor Create; overload;
+    constructor Create(Id: integer); overload;
   end;
 
 implementation
@@ -51,6 +54,18 @@ var
 begin
   LValue := TDBXPlatform.JsonToFloat(Arg);
   LRttiContext.GetType(Data.ClassType).GetField(Field).SetValue(Data, TValue.From<Double>(LValue));
+end;
+
+{ TContaPagar }
+
+constructor TContaPagar.Create;
+begin
+
+end;
+
+constructor TContaPagar.Create(Id: integer);
+begin
+  Self.Id := Id;
 end;
 
 end.

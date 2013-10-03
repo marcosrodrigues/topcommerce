@@ -27,7 +27,7 @@ begin
   FComm.Text := 'SELECT C.ID, C.FORNECEDOR_CODIGO, F.NOME, C.VENCIMENTO, C.VALOR, C.OBSERVACOES, C.BAIXADA '+
                 'FROM CONTAS_PAGAR C '+
                 'INNER JOIN FORNECEDORES F ON F.CODIGO = C.FORNECEDOR_CODIGO '+
-                'ORDER BY C.VENCIMENTO DESC';
+                'ORDER BY C.VENCIMENTO';
   Result := FComm.ExecuteQuery;
 end;
 
@@ -74,6 +74,7 @@ begin
     query.ParamByName('VALOR').AsCurrency           := ContaPagar.Valor;
     query.ParamByName('OBSERVACOES').AsString       := ContaPagar.Observacoes;
     query.ParamByName('BAIXADA').AsBoolean          := ContaPagar.Baixada;
+    query.ParamByName('ID').AsInteger               := ContaPagar.Id;
     //
     try
       query.ExecSQL;
@@ -94,7 +95,7 @@ begin
   try
     query.SQLConnection := SCPrincipal.ConnTopCommerce;
     //
-    FComm.Text := 'DELETE FROM CONTAS_PAGAR WHERE ID = :ID';
+    query.SQL.Text := 'DELETE FROM CONTAS_PAGAR WHERE ID = :ID';
     //
     query.ParamByName('ID').AsInteger := ContaPagar.Id;
     //

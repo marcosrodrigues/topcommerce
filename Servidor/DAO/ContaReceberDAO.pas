@@ -27,7 +27,7 @@ begin
   FComm.Text := 'SELECT C.ID, C.CLIENTE_CODIGO, L.NOME, C.NOME_CLIENTE_AVULSO, C.VENCIMENTO, C.VALOR, C.OBSERVACOES, C.BAIXADA '+
                 'FROM CONTAS_RECEBER C '+
                 'LEFT JOIN CLIENTES L ON L.CODIGO = C.CLIENTE_CODIGO '+
-                'ORDER BY C.VENCIMENTO DESC';
+                'ORDER BY C.VENCIMENTO';
   Result := FComm.ExecuteQuery;
 end;
 
@@ -111,7 +111,7 @@ begin
   try
     query.SQLConnection := SCPrincipal.ConnTopCommerce;
     //
-    FComm.Text := 'DELETE FROM CONTAS_RECEBER WHERE ID = :ID';
+    query.SQL.Text := 'DELETE FROM CONTAS_RECEBER WHERE ID = :ID';
     //
     query.ParamByName('ID').AsInteger := ContaReceber.Id;
     //
