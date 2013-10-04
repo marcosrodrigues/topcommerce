@@ -120,11 +120,7 @@ begin
   inherited;
   if Confirma('Baixar a conta selecionada?') then
     if DAOClient.BaixarConta(TContaPagar.Create(cdsCrudID.AsInteger)) then
-    begin
-      cdsCrud.Edit;
-      cdsCrudBAIXADA.AsBoolean := True;
-      cdsCrud.Post;
-    end;
+      cdsCrud.Delete;
 end;
 
 end.

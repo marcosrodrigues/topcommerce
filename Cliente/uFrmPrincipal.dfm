@@ -894,6 +894,7 @@ object FrmPrincipal: TFrmPrincipal
       end
       object ContasaReceber1: TMenuItem
         Caption = 'Contas a Receber'
+        Visible = False
         OnClick = ContasaReceber1Click
       end
     end

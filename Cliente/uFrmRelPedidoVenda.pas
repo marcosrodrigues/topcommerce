@@ -39,12 +39,33 @@ type
     RLDBText7: TRLDBText;
     RLLabel11: TRLLabel;
     RLDBText8: TRLDBText;
+    cdsRelatorioVENDA_DESCONTO_PERCENTUAL: TCurrencyField;
+    cdsRelatorioTOTAL: TCurrencyField;
+    cdsRelatorioRECEBIDO: TCurrencyField;
+    cdsRelatorioTROCO: TCurrencyField;
+    cdsRelatorioLOGIN_USUARIO: TStringField;
+    cdsRelatorioITEM_DESCONTO_VALOR: TCurrencyField;
+    cdsRelatorioITEM_DESCONTO_PERCENTUAL: TCurrencyField;
+    RLLabel12: TRLLabel;
+    RLDBText9: TRLDBText;
+    RLLabel13: TRLLabel;
+    RLDBText10: TRLDBText;
+    RLLabel14: TRLLabel;
+    RLDBText11: TRLDBText;
+    RLLabel15: TRLLabel;
+    RLDBText12: TRLDBText;
+    RLLabel16: TRLLabel;
+    RLDBText13: TRLDBText;
+    RLBand4: TRLBand;
+    RLDBText14: TRLDBText;
     procedure cdsRelatorioTIPO_PAGAMENTOGetText(Sender: TField; var Text: string;
       DisplayText: Boolean);
     procedure cdsRelatorioNOMEGetText(Sender: TField; var Text: string; DisplayText: Boolean);
     procedure RLDBText7BeforePrint(Sender: TObject; var Text: string;
       var PrintIt: Boolean);
     procedure RLDBText8BeforePrint(Sender: TObject; var Text: string;
+      var PrintIt: Boolean);
+    procedure RLDBText10BeforePrint(Sender: TObject; var Text: string;
       var PrintIt: Boolean);
   private
     { Private declarations }
@@ -100,6 +121,13 @@ begin
   finally
     DAOClient.Free;
   end;
+end;
+
+procedure TFrmRelPedidoVenda.RLDBText10BeforePrint(Sender: TObject;
+  var Text: string; var PrintIt: Boolean);
+begin
+  inherited;
+  Text := Text + ' %';
 end;
 
 procedure TFrmRelPedidoVenda.RLDBText7BeforePrint(Sender: TObject;
