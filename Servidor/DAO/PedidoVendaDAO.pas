@@ -185,7 +185,7 @@ begin
     FComm.Text := FComm.Text + 'AND CONVERT(CHAR(8), DATA, 112) >= '+FormatDateTime('yyyymmdd', DataInicial)+' ';
   if (DataFinal <> 0) then
     FComm.Text := FComm.Text + 'AND CONVERT(CHAR(8), DATA, 112) <= '+FormatDateTime('yyyymmdd', DataFinal)+' ';
-  if (TipoPagamento <> 0) then
+  if (TipoPagamento > 0) then
     FComm.Text := FComm.Text + 'AND TIPO_PAGAMENTO = '+IntToStr(TipoPagamento+1); //TODO - Melhorar esse codigo
   if (Trim(ClienteCodigo) <> '') then
     FComm.Text := FComm.Text + 'AND CODIGO_CLIENTE = '''+ClienteCodigo+'''';
