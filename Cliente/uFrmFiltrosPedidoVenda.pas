@@ -4,7 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, uFrmFiltrosBase, Buttons, ExtCtrls, StdCtrls, Mask, ComCtrls, DateUtils;
+  Dialogs, uFrmFiltrosBase, Buttons, ExtCtrls, StdCtrls, Mask, ComCtrls, DateUtils,
+  uFramePesquisaCliente;
 
 type
   TFrmFiltrosPedidoVenda = class(TFrmFiltrosBase)
@@ -14,6 +15,7 @@ type
     deDataFinal: TDateTimePicker;
     Label3: TLabel;
     cbTipoPagamento: TComboBox;
+    FramePesquisaCliente: TFramePesquisaCliente;
     procedure FormShow(Sender: TObject);
   private
     { Private declarations }
@@ -59,7 +61,7 @@ begin
     r.DataInicial := DateOf(deDataInicial.Date);
     r.DataFinal   := DateOf(deDataFinal.Date);
     r.TipoPagamento := cbTipoPagamento.ItemIndex;
-    r.ClienteCodigo := '';
+    r.ClienteCodigo := FramePesquisaCliente.edtCodigoCliente.Text;
     r.RLReport.Preview;
   finally
     r.Free;

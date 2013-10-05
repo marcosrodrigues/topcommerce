@@ -5832,7 +5832,7 @@ object FrmPrincipal: TFrmPrincipal
       object imgSubtotal: TImage
         Left = 0
         Top = 0
-        Width = 401
+        Width = 410
         Height = 90
         Align = alClient
         AutoSize = True
@@ -7498,12 +7498,13 @@ object FrmPrincipal: TFrmPrincipal
           CE3C5F0B485B378CC89BF2E2852C07337B86D54B996A0C3EEEFDA900BC27568A
           EF6B5168B7341E65EE659EBDF2F8F06A409A7F003C8D4548037FE3DE00000000
           49454E44AE426082}
+        ExplicitWidth = 401
       end
       object Label1: TLabel
         Left = 8
         Top = 2
-        Width = 69
-        Height = 22
+        Width = 60
+        Height = 23
         Caption = 'Subtotal'
         Color = 3682350
         Font.Charset = ANSI_CHARSET
@@ -7516,10 +7517,10 @@ object FrmPrincipal: TFrmPrincipal
         Transparent = True
       end
       object lblSubtotal: TLabel
-        Left = 198
+        Left = 241
         Top = 6
-        Width = 198
-        Height = 72
+        Width = 155
+        Height = 74
         Alignment = taRightJustify
         Caption = '600,00'
         Color = 3682350
@@ -8858,23 +8859,25 @@ object FrmPrincipal: TFrmPrincipal
         930B47576AED5B448C48AE2CF85CFBA4C3AD8D6BCE79A7C37B3FFE790C0683C1
         6030180C0683C16030180C0683C16030180C0683C1603018FC652F4B70753D34
         76AF6B0000000049454E44AE426082}
-      ExplicitLeft = 1087
-      ExplicitHeight = 73
+      ExplicitLeft = 1291
+      ExplicitTop = 2
     end
     object pnlRelogio: TPanel
-      Left = 430
+      Left = 510
       Top = 0
-      Width = 445
+      Width = 285
       Height = 50
       Align = alClient
       BevelOuter = bvNone
       Color = 3682350
       ParentBackground = False
       TabOrder = 0
-      object lblHora: TLabel
+      ExplicitLeft = 430
+      ExplicitWidth = 445
+      object lblDataHora: TLabel
         Left = 0
         Top = 0
-        Width = 445
+        Width = 285
         Height = 50
         Align = alClient
         Alignment = taCenter
@@ -8889,16 +8892,13 @@ object FrmPrincipal: TFrmPrincipal
         ParentColor = False
         ParentFont = False
         Transparent = True
-        ExplicitLeft = 5
-        ExplicitTop = -2
-        ExplicitWidth = 115
-        ExplicitHeight = 41
+        ExplicitWidth = 444
       end
     end
     object pnlStatus: TPanel
       Left = 30
       Top = 0
-      Width = 400
+      Width = 480
       Height = 50
       Align = alLeft
       BevelOuter = bvNone
@@ -8906,13 +8906,13 @@ object FrmPrincipal: TFrmPrincipal
       ParentBackground = False
       TabOrder = 1
       object lblStatusPDV: TLabel
-        Left = 4
-        Top = 3
-        Width = 93
-        Height = 37
+        Left = 6
+        Top = 6
+        Width = 96
+        Height = 40
         Caption = 'Venda'
         Font.Charset = ANSI_CHARSET
-        Font.Color = 4244613
+        Font.Color = clSkyBlue
         Font.Height = -32
         Font.Name = 'Ubuntu'
         Font.Style = [fsBold]
@@ -8921,20 +8921,21 @@ object FrmPrincipal: TFrmPrincipal
       end
     end
     object Panel5: TPanel
-      Left = 875
+      Left = 795
       Top = 0
-      Width = 400
+      Width = 480
       Height = 50
       Align = alRight
       BevelOuter = bvNone
       Color = 3682350
       ParentBackground = False
       TabOrder = 2
+      ExplicitLeft = 825
       DesignSize = (
-        400
+        480
         50)
       object Image4: TImage
-        Left = 185
+        Left = 265
         Top = 15
         Width = 173
         Height = 24
@@ -10377,9 +10378,10 @@ object FrmPrincipal: TFrmPrincipal
           3DB1E356C75FA495251E6C3D01094880B401B9FB645A49BB6CD9771F30994685
           BCE08C19330EB5B636154FB753027267CBB49296D86348F1BFF4BF2153F81377
           40FE3FE5BF32C7730427FB02580000000049454E44AE426082}
+        ExplicitLeft = 185
       end
       object Image5: TImage
-        Left = 363
+        Left = 443
         Top = 10
         Width = 32
         Height = 32
@@ -10406,6 +10408,7 @@ object FrmPrincipal: TFrmPrincipal
           AF22F00CE24CE412DCD4AB08CC835A49DF1C854FB7AD7A15815CB04BE19BEA01
           14812337F5768F6125F804EBA4760C2DEBBF009D8A69125CC975BB0000000049
           454E44AE426082}
+        ExplicitLeft = 363
       end
     end
   end
@@ -10424,8 +10427,8 @@ object FrmPrincipal: TFrmPrincipal
     object Label4: TLabel
       Left = 8
       Top = 117
-      Width = 62
-      Height = 22
+      Width = 50
+      Height = 23
       Caption = 'C'#243'digo'
       Color = 3682350
       Font.Charset = ANSI_CHARSET
@@ -10440,8 +10443,8 @@ object FrmPrincipal: TFrmPrincipal
     object Label7: TLabel
       Left = 221
       Top = 118
-      Width = 97
-      Height = 22
+      Width = 83
+      Height = 23
       Caption = 'Quantidade'
       Color = 3682350
       Font.Charset = ANSI_CHARSET
@@ -10456,8 +10459,8 @@ object FrmPrincipal: TFrmPrincipal
     object Label9: TLabel
       Left = 432
       Top = 118
-      Width = 119
-      Height = 22
+      Width = 101
+      Height = 23
       Caption = 'Pre'#231'o Unit'#225'rio'
       Color = 3682350
       Font.Charset = ANSI_CHARSET
@@ -10472,8 +10475,8 @@ object FrmPrincipal: TFrmPrincipal
     object Label11: TLabel
       Left = 432
       Top = 191
-      Width = 96
-      Height = 22
+      Width = 78
+      Height = 23
       Caption = 'Pre'#231'o Total'
       Color = 3682350
       Font.Charset = ANSI_CHARSET
@@ -21250,8 +21253,8 @@ object FrmPrincipal: TFrmPrincipal
     object Label3: TLabel
       Left = 8
       Top = 193
-      Width = 98
-      Height = 22
+      Width = 77
+      Height = 23
       Caption = 'Desc. Valor'
       Color = 3682350
       Font.Charset = ANSI_CHARSET
@@ -21266,8 +21269,8 @@ object FrmPrincipal: TFrmPrincipal
     object Label5: TLabel
       Left = 221
       Top = 193
-      Width = 145
-      Height = 22
+      Width = 115
+      Height = 23
       Caption = 'Desc. Percentual'
       Color = 3682350
       Font.Charset = ANSI_CHARSET
@@ -25953,8 +25956,8 @@ object FrmPrincipal: TFrmPrincipal
       object Label2: TLabel
         Left = 8
         Top = 5
-        Width = 67
-        Height = 22
+        Width = 57
+        Height = 23
         Caption = 'Produto'
         Color = 3682350
         Font.Charset = ANSI_CHARSET
@@ -32813,10 +32816,10 @@ object FrmPrincipal: TFrmPrincipal
         454E44AE426082}
     end
     object lblUsuario: TLabel
-      Left = 1082
+      Left = 1119
       Top = 2
-      Width = 135
-      Height = 24
+      Width = 98
+      Height = 25
       Alignment = taRightJustify
       Anchors = [akTop, akRight]
       Caption = 'SUPERVISOR'
@@ -32853,10 +32856,10 @@ object FrmPrincipal: TFrmPrincipal
       ExplicitLeft = 1012
     end
     object lblCaixa: TLabel
-      Left = 1121
+      Left = 1145
       Top = 31
-      Width = 96
-      Height = 24
+      Width = 72
+      Height = 25
       Alignment = taRightJustify
       Anchors = [akTop, akRight]
       Caption = 'Caixa 001'
@@ -33041,14 +33044,13 @@ object FrmPrincipal: TFrmPrincipal
     object Label13: TLabel
       Left = 465
       Top = 2
-      Width = 71
-      Height = 24
-      Anchors = [akTop, akRight]
+      Width = 79
+      Height = 32
       Caption = 'Cliente:'
       Color = 3682350
       Font.Charset = ANSI_CHARSET
       Font.Color = 8816262
-      Font.Height = -21
+      Font.Height = -27
       Font.Name = 'Ubuntu Condensed'
       Font.Style = []
       ParentColor = False
@@ -33056,16 +33058,15 @@ object FrmPrincipal: TFrmPrincipal
       Transparent = True
     end
     object lblCliente: TLabel
-      Left = 529
+      Left = 551
       Top = 2
-      Width = 84
-      Height = 24
-      Anchors = [akTop, akRight]
+      Width = 100
+      Height = 32
       Caption = 'lblCliente'
       Color = 3682350
       Font.Charset = ANSI_CHARSET
       Font.Color = 8816262
-      Font.Height = -21
+      Font.Height = -27
       Font.Name = 'Ubuntu Condensed'
       Font.Style = []
       ParentColor = False

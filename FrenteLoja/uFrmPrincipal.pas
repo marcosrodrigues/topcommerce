@@ -24,7 +24,7 @@ type
     imgFooterMiddle: TImage;
     imgFooterRight: TImage;
     pnlRelogio: TPanel;
-    lblHora: TLabel;
+    lblDataHora: TLabel;
     pnlStatus: TPanel;
     lblStatusPDV: TLabel;
     pnlRightContainer: TPanel;
@@ -143,6 +143,7 @@ type
     DAOPedidoVenda: TPedidoVendaDAOClient;
     CodigoPedidoVendaAtual: string;
     DataPedidoVendaAtual: TDateTime;
+    VendaFechada: Boolean;
     MyBitmap: TBitmap;
     CaixaAbertoAtual: TCaixa;
     ImagemAtual: Integer;
@@ -159,6 +160,18 @@ type
     procedure AbrirCaixa;
     procedure FecharCaixa;
     procedure AtualizaCaixa;
+
+    procedure SetStatusVenda;
+    procedure SetStatusConsultaProduto;
+    procedure SetStatusAbrirCaixa;
+    procedure SetStatusFecharCaixa;
+    procedure SetStatusExcluirItemDaVenda;
+    procedure SetStatusFecharVenda;
+    procedure SetStatusVendasAbertas;
+    procedure SetStatusVendasFechadas;
+    procedure SetStatusVendaFechada;
+    procedure SetStatusInformarCliente;
+    procedure SetStatusCaixaFechado;
   public
     { Public declarations }
   end;
@@ -297,12 +310,80 @@ begin
 
   IniciaControles;
   CodigoPedidoVendaAtual := '';
-  DataPedidoVendaAtual := 0;
+  DataPedidoVendaAtual   := 0;
+  VendaFechada := False;
+end;
+
+procedure TFrmPrincipal.SetStatusAbrirCaixa;
+begin
+  lblStatusPDV.Caption := 'ABRIR CAIXA';
+  lblStatusPDV.Font.Color := clSkyBlue;
+end;
+
+procedure TFrmPrincipal.SetStatusCaixaFechado;
+begin
+  lblCaixa.Caption := 'Caixa Fechado';
+  lblStatusPDV.Caption := 'CAIXA FECHADO';
+  lblStatusPDV.Font.Color := clRed;
+end;
+
+procedure TFrmPrincipal.SetStatusConsultaProduto;
+begin
+  lblStatusPDV.Caption := 'CONSULTA DE PRODUTOS';
+  lblStatusPDV.Font.Color := clSkyBlue;
+end;
+
+procedure TFrmPrincipal.SetStatusExcluirItemDaVenda;
+begin
+  lblStatusPDV.Caption := 'EXCLUIR ITEM DA VENDA';
+  lblStatusPDV.Font.Color := clSkyBlue;
+end;
+
+procedure TFrmPrincipal.SetStatusFecharCaixa;
+begin
+  lblStatusPDV.Caption := 'FECHAR CAIXA';
+  lblStatusPDV.Font.Color := clSkyBlue;
+end;
+
+procedure TFrmPrincipal.SetStatusFecharVenda;
+begin
+  lblStatusPDV.Caption := 'FECHAR VENDA';
+  lblStatusPDV.Font.Color := clSkyBlue;
+end;
+
+procedure TFrmPrincipal.SetStatusInformarCliente;
+begin
+  lblStatusPDV.Caption := 'INFORMAR CLIENTE';
+  lblStatusPDV.Font.Color := clSkyBlue;
+end;
+
+procedure TFrmPrincipal.SetStatusVenda;
+begin
+  lblStatusPDV.Caption := 'VENDA';
+  lblStatusPDV.Font.Color := $0040C485;
+end;
+
+procedure TFrmPrincipal.SetStatusVendaFechada;
+begin
+  lblStatusPDV.Caption := 'VENDA FECHADA';
+  lblStatusPDV.Font.Color := clRed;
+end;
+
+procedure TFrmPrincipal.SetStatusVendasAbertas;
+begin
+  lblStatusPDV.Caption := 'VENDAS ABERTAS';
+  lblStatusPDV.Font.Color := clSkyBlue;
+end;
+
+procedure TFrmPrincipal.SetStatusVendasFechadas;
+begin
+  lblStatusPDV.Caption := 'VENDAS FECHADAS';
+  lblStatusPDV.Font.Color := clSkyBlue;
 end;
 
 procedure TFrmPrincipal.tmHoraTimer(Sender: TObject);
 begin
-  lblHora.Caption := FormatDateTime('dd/mm/yyyy hh:mm:ss', Now);
+  lblDataHora.Caption := FormatDateTime('dd/mm/yyyy hh:mm:ss', Now);
 end;
 
 procedure TFrmPrincipal.tmImagensTimer(Sender: TObject);
@@ -326,12 +407,15 @@ begin
   try
     fVendasAbertas.ShowModal;
 
+    SetStatusVendasAbertas;
+
     if fVendasAbertas.ModalResult = mrOk then
     begin
       pedido := DAOPedidoVenda.FindByCodigo(fVendasAbertas.cdsConsultaCODIGO.AsString);
 
       CodigoPedidoVendaAtual := pedido.Codigo;
       DataPedidoVendaAtual := pedido.Data;
+      VendaFechada := False;
 
       if pedido.Cliente <> nil then
         lblCliente.Caption := pedido.Cliente.Nome
@@ -359,6 +443,11 @@ begin
   finally
     fVendasAbertas.Free;
   end;
+
+  if VendaFechada then
+    SetStatusVendaFechada
+  else
+    SetStatusVenda;
 end;
 
 procedure TFrmPrincipal.VendasFechadas;
@@ -371,12 +460,17 @@ begin
   try
     fVendasFechadas.ShowModal;
 
+    SetStatusVendasFechadas;
+
     if fVendasFechadas.ModalResult = mrOk then
     begin
       pedido := DAOPedidoVenda.FindByCodigo(fVendasFechadas.cdsConsultaCODIGO.AsString);
 
       CodigoPedidoVendaAtual := pedido.Codigo;
       DataPedidoVendaAtual := pedido.Data;
+      VendaFechada := True;
+
+      SetStatusVendaFechada;
 
       if pedido.Cliente <> nil then
         lblCliente.Caption := pedido.Cliente.Nome
@@ -404,6 +498,11 @@ begin
   finally
     fVendasFechadas.Free;
   end;
+
+  if VendaFechada then
+    SetStatusVendaFechada
+  else
+    SetStatusVenda;
 end;
 
 procedure TFrmPrincipal.AbrirCaixa;
@@ -418,7 +517,8 @@ begin
     Exit;
   end;
 
-  lblStatusPDV.Caption := 'ABRIR CAIXA';
+  SetStatusAbrirCaixa;
+
   f := TFrmAbrirCaixa.Create(Self);
   try
     f.ShowModal;
@@ -441,7 +541,8 @@ begin
     end;
   finally
     f.Free;
-    lblStatusPDV.Caption := 'VENDA';
+
+    SetStatusVenda;
   end;
 end;
 
@@ -461,10 +562,7 @@ begin
       CaixaAbertoAtual := caixa;
     end
     else
-    begin
-      lblCaixa.Caption := 'Caixa Fechado';
-      lblStatusPDV.Caption := 'CAIXA FECHADO';
-    end;
+      SetStatusCaixaFechado;
   finally
     dao.Free;
   end;
@@ -496,7 +594,14 @@ var
   Pedido: TPedidoVenda;
   fInformarCliente: TFrmInformarCliente;
 begin
-  lblStatusPDV.Caption := 'CONSULTAR PRODUTO';
+  if VendaFechada then
+  begin
+    Atencao('Venda já está fechada.');
+    Exit;
+  end;
+
+  SetStatusConsultaProduto;
+
   fConsultaProdutos := TFrmConsultaProdutos.Create(Self);
   try
     fConsultaProdutos.ShowModal;
@@ -566,7 +671,8 @@ begin
             Pedido.Fechada := False;
             Pedido.LoginUsuario := lblUsuario.Caption;
 
-            lblStatusPDV.Caption := 'INFORMAR CLIENTE';
+            SetStatusInformarCliente;
+
             fInformarCliente := TFrmInformarCliente.Create(Self);
             try
               fInformarCliente.ShowModal;
@@ -586,7 +692,8 @@ begin
               end;
             finally
               fInformarCliente.Free;
-              lblStatusPDV.Caption := 'VENDA';
+
+              SetStatusVenda;
             end;
 
             DAOPedidoVenda.Insert(Pedido);
@@ -616,7 +723,8 @@ begin
   finally
     fConsultaProdutos.Free;
   end;
-  lblStatusPDV.Caption := 'VENDA';
+
+  SetStatusVenda;
 end;
 
 procedure TFrmPrincipal.ExcluirItem;
@@ -629,7 +737,15 @@ begin
     Atencao('Ainda não foi incluído nenhum item na venda.');
     Exit;
   end;
-  lblStatusPDV.Caption := 'EXCLUIR ITEM';
+
+  if VendaFechada then
+  begin
+    Atencao('Venda já está fechada.');
+    Exit;
+  end;
+
+  SetStatusExcluirItemDaVenda;
+
   f := TFrmExcluirItem.Create(Self);
   try
     f.ShowModal;
@@ -649,7 +765,7 @@ begin
       DAOPedidoVenda.Update(Pedido);
     end;
 
-    lblStatusPDV.Caption := 'VENDA';
+    SetStatusVenda;
   finally
     f.Free;
   end;
@@ -665,7 +781,8 @@ begin
     Exit;
   end;
 
-  lblStatusPDV.Caption := 'ABRIR CAIXA';
+  SetStatusFecharCaixa;
+
   if Confirma('Deseja fechar o caixa?') then
   begin
     dao := TCaixaDAOClient.Create(ConnServidor.DBXConnection);
@@ -675,10 +792,16 @@ begin
     finally
       dao.Free;
     end;
-    lblStatusPDV.Caption := 'CAIXA FECHADO';
+
+    SetStatusCaixaFechado;
   end
   else
-    lblStatusPDV.Caption := 'VENDA';
+  begin
+    if VendaFechada then
+      SetStatusVendaFechada
+    else
+      SetStatusVenda;
+  end;
 end;
 
 procedure TFrmPrincipal.FecharVenda;
@@ -690,7 +813,15 @@ begin
     Atencao('Ainda não foi incluído nenhum item na venda.');
     Exit;
   end;
-  lblStatusPDV.Caption := 'FECHAR VENDA';
+
+  if VendaFechada then
+  begin
+    Atencao('Venda já está fechada.');
+    Exit;
+  end;
+
+  SetStatusFecharVenda;
+
   f := TFrmFecharVenda.Create(Self);
   try
     f.cedTotal.Value := StrToCurrDef(lblSubtotal.Caption, 0);
@@ -699,7 +830,7 @@ begin
 
     if (f.Fechar) then
     begin
-      GravarVenda(f.cedDescontoValor.Value, f.cedDescontoPercentual.Value, f.cedValorRecebido.Value, f.cedTroco.Value, f.cedTotal.Value, f.cbFormaPagamento.ItemIndex);
+      GravarVenda(f.cedDescontoValor.Value, f.cedDescontoPercentual.Value, f.cedValorRecebido.Value, f.cedTroco.Value, f.cedTotal.Value, f.lbFormaPagamento.ItemIndex);
 
       ImprimirRecibo;
     end;
@@ -708,7 +839,8 @@ begin
       NovaVenda;
 
     f.Free;
-    lblStatusPDV.Caption := 'VENDA';
+
+    SetStatusVenda;
   end;
 end;
 
@@ -740,9 +872,10 @@ procedure TFrmPrincipal.IniciaControles;
 begin
   lblCliente.Caption := '';
   lblSubtotal.Caption := '';
-  lblStatusPDV.Caption := 'VENDA';
 
-  //lblData.Caption := FormatDateTime('dd/mm/yyyy', Now);
+  SetStatusVenda;
+
+  lblDataHora.Caption := FormatDateTime('dd/mm/yyyy hh:mm:ss', Now);
   tmHora.Enabled  := True;
 
   cdsProdutos.CreateDataSet;

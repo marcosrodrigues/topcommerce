@@ -1,25 +1,13 @@
-inherited FrmConsultaFornecedor: TFrmConsultaFornecedor
-  Caption = 'Consulta de Fornecedores'
-  ClientWidth = 592
-  ExplicitWidth = 608
+inherited FrmConsultaCliente: TFrmConsultaCliente
+  Caption = 'Consulta de Clientes'
   PixelsPerInch = 96
   TextHeight = 14
-  inherited pnlParametros: TPanel
-    Width = 592
-    ExplicitWidth = 592
-  end
-  inherited pnlResultado: TPanel
-    Width = 592
-    ExplicitWidth = 592
-  end
-  inherited grdConsulta: TDBGrid
-    Width = 592
-  end
   inherited cdsConsulta: TClientDataSet
     object cdsConsultaCODIGO: TStringField
       DisplayLabel = 'C'#243'digo'
+      DisplayWidth = 6
       FieldName = 'CODIGO'
-      Size = 3
+      Size = 6
     end
     object cdsConsultaNOME: TStringField
       DisplayLabel = 'Nome'

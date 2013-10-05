@@ -12,11 +12,11 @@ inherited FrmRelPedidoVenda: TFrmRelPedidoVenda
         ExplicitWidth = 167
       end
     end
-    object RLGroup1: TRLGroup
+    object RLGroup1: TRLGroup [1]
       Left = 38
-      Top = 128
+      Top = 144
       Width = 718
-      Height = 187
+      Height = 168
       Borders.Sides = sdCustom
       Borders.DrawLeft = False
       Borders.DrawTop = False
@@ -29,6 +29,12 @@ inherited FrmRelPedidoVenda: TFrmRelPedidoVenda
         Width = 718
         Height = 113
         BandType = btColumnHeader
+        Borders.Sides = sdCustom
+        Borders.DrawLeft = True
+        Borders.DrawTop = True
+        Borders.DrawRight = True
+        Borders.DrawBottom = True
+        BeforePrint = RLBand2BeforePrint
         object RLDBText1: TRLDBText
           Left = 187
           Top = 8
@@ -72,17 +78,17 @@ inherited FrmRelPedidoVenda: TFrmRelPedidoVenda
           ParentFont = False
         end
         object RLLabel5: TRLLabel
-          Left = 0
-          Top = 95
+          Left = 1
+          Top = 92
           Width = 49
-          Height = 18
+          Height = 20
           Align = faLeftBottom
           AutoSize = False
           Borders.Sides = sdCustom
           Borders.DrawLeft = False
           Borders.DrawTop = False
           Borders.DrawRight = False
-          Borders.DrawBottom = True
+          Borders.DrawBottom = False
           Caption = 'C'#243'digo'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -92,17 +98,17 @@ inherited FrmRelPedidoVenda: TFrmRelPedidoVenda
           ParentFont = False
         end
         object RLLabel7: TRLLabel
-          Left = 49
-          Top = 95
-          Width = 503
-          Height = 18
-          Align = faClientBottom
+          Left = 50
+          Top = 92
+          Width = 250
+          Height = 20
+          Align = faLeftBottom
           AutoSize = False
           Borders.Sides = sdCustom
           Borders.DrawLeft = False
           Borders.DrawTop = False
           Borders.DrawRight = False
-          Borders.DrawBottom = True
+          Borders.DrawBottom = False
           Caption = 'Produto'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -112,18 +118,18 @@ inherited FrmRelPedidoVenda: TFrmRelPedidoVenda
           ParentFont = False
         end
         object RLLabel9: TRLLabel
-          Left = 630
-          Top = 95
-          Width = 88
-          Height = 18
-          Align = faRightBottom
-          Alignment = taCenter
+          Left = 617
+          Top = 92
+          Width = 100
+          Height = 20
+          Align = faClientBottom
+          Alignment = taRightJustify
           AutoSize = False
           Borders.Sides = sdCustom
           Borders.DrawLeft = False
           Borders.DrawTop = False
           Borders.DrawRight = False
-          Borders.DrawBottom = True
+          Borders.DrawBottom = False
           Caption = 'Valor'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -133,18 +139,18 @@ inherited FrmRelPedidoVenda: TFrmRelPedidoVenda
           ParentFont = False
         end
         object RLLabel8: TRLLabel
-          Left = 552
-          Top = 95
+          Left = 300
+          Top = 92
           Width = 78
-          Height = 18
-          Align = faRightBottom
-          Alignment = taCenter
+          Height = 20
+          Align = faLeftBottom
+          Alignment = taRightJustify
           AutoSize = False
           Borders.Sides = sdCustom
           Borders.DrawLeft = False
           Borders.DrawTop = False
           Borders.DrawRight = False
-          Borders.DrawBottom = True
+          Borders.DrawBottom = False
           Caption = 'Quantidade'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -283,11 +289,11 @@ inherited FrmRelPedidoVenda: TFrmRelPedidoVenda
           DataSource = dsRelatorio
         end
         object RLLabel16: TRLLabel
-          Left = 483
+          Left = 438
           Top = 71
-          Width = 45
+          Width = 97
           Height = 16
-          Caption = 'Caixa:'
+          Caption = 'Usu'#225'rio Caixa:'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -296,12 +302,75 @@ inherited FrmRelPedidoVenda: TFrmRelPedidoVenda
           ParentFont = False
         end
         object RLDBText13: TRLDBText
-          Left = 534
+          Left = 541
           Top = 71
           Width = 108
           Height = 16
           DataField = 'LOGIN_USUARIO'
           DataSource = dsRelatorio
+        end
+        object RLLabel17: TRLLabel
+          Left = 378
+          Top = 92
+          Width = 79
+          Height = 20
+          Align = faLeftBottom
+          Alignment = taRightJustify
+          AutoSize = False
+          Borders.Sides = sdCustom
+          Borders.DrawLeft = False
+          Borders.DrawTop = False
+          Borders.DrawRight = False
+          Borders.DrawBottom = False
+          Caption = 'Pre'#231'o Unit.'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object RLLabel18: TRLLabel
+          Left = 457
+          Top = 92
+          Width = 81
+          Height = 20
+          Align = faLeftBottom
+          Alignment = taRightJustify
+          AutoSize = False
+          Borders.Sides = sdCustom
+          Borders.DrawLeft = False
+          Borders.DrawTop = False
+          Borders.DrawRight = False
+          Borders.DrawBottom = False
+          Caption = 'Desc. Valor'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object RLLabel19: TRLLabel
+          Left = 538
+          Top = 92
+          Width = 79
+          Height = 20
+          Align = faLeftBottom
+          Alignment = taRightJustify
+          AutoSize = False
+          Borders.Sides = sdCustom
+          Borders.DrawLeft = False
+          Borders.DrawTop = False
+          Borders.DrawRight = False
+          Borders.DrawBottom = False
+          Caption = 'Desc. Perc.'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          ParentFont = False
         end
       end
       object RLBand3: TRLBand
@@ -310,33 +379,30 @@ inherited FrmRelPedidoVenda: TFrmRelPedidoVenda
         Width = 718
         Height = 20
         object RLDBText2: TRLDBText
-          Left = 49
+          Left = 50
           Top = 0
-          Width = 503
+          Width = 250
           Height = 20
-          Align = faClient
           AutoSize = False
           DataField = 'DESCRICAO'
           DataSource = dsRelatorio
           Holder = RLLabel7
         end
         object RLDBText4: TRLDBText
-          Left = 0
+          Left = 1
           Top = 0
           Width = 49
           Height = 20
-          Align = faLeft
           AutoSize = False
           DataField = 'CODIGO_PRODUTO'
           DataSource = dsRelatorio
           Holder = RLLabel5
         end
         object RLDBText5: TRLDBText
-          Left = 552
+          Left = 300
           Top = 0
           Width = 78
           Height = 20
-          Align = faRight
           Alignment = taRightJustify
           AutoSize = False
           DataField = 'QUANTIDADE'
@@ -344,52 +410,120 @@ inherited FrmRelPedidoVenda: TFrmRelPedidoVenda
           Holder = RLLabel8
         end
         object RLDBText6: TRLDBText
-          Left = 630
+          Left = 617
           Top = 0
-          Width = 88
+          Width = 100
           Height = 20
-          Align = faRight
           Alignment = taRightJustify
           AutoSize = False
           DataField = 'VALOR'
           DataSource = dsRelatorio
           Holder = RLLabel9
         end
+        object RLDBText15: TRLDBText
+          Left = 538
+          Top = 0
+          Width = 79
+          Height = 20
+          Alignment = taRightJustify
+          AutoSize = False
+          DataField = 'ITEM_DESCONTO_PERCENTUAL'
+          DataSource = dsRelatorio
+          Holder = RLLabel19
+          BeforePrint = RLDBText10BeforePrint
+        end
+        object RLDBText16: TRLDBText
+          Left = 457
+          Top = 0
+          Width = 81
+          Height = 20
+          Alignment = taRightJustify
+          AutoSize = False
+          DataField = 'ITEM_DESCONTO_VALOR'
+          DataSource = dsRelatorio
+          Holder = RLLabel18
+        end
+        object RLDBText17: TRLDBText
+          Left = 378
+          Top = 0
+          Width = 79
+          Height = 20
+          Alignment = taRightJustify
+          AutoSize = False
+          DataField = 'PRECO_VENDA'
+          DataSource = dsRelatorio
+          Holder = RLLabel17
+        end
       end
       object RLBand4: TRLBand
         Left = 0
         Top = 133
         Width = 718
-        Height = 20
+        Height = 30
         BandType = btColumnFooter
         Borders.Sides = sdCustom
         Borders.DrawLeft = False
         Borders.DrawTop = False
         Borders.DrawRight = False
-        Borders.DrawBottom = True
-        object RLDBText14: TRLDBText
-          Left = 630
+        Borders.DrawBottom = False
+        object RLPanel1: TRLPanel
+          Left = 0
           Top = 0
-          Width = 88
-          Height = 19
-          Align = faRight
-          Alignment = taRightJustify
-          AutoSize = False
+          Width = 718
+          Height = 20
+          Align = faTop
           Borders.Sides = sdCustom
-          Borders.DrawLeft = False
+          Borders.DrawLeft = True
           Borders.DrawTop = True
-          Borders.DrawRight = False
-          Borders.DrawBottom = False
-          DataField = 'TOTAL'
-          DataSource = dsRelatorio
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Holder = RLDBText6
-          ParentFont = False
+          Borders.DrawRight = True
+          Borders.DrawBottom = True
+          object RLDBText14: TRLDBText
+            Left = 617
+            Top = 1
+            Width = 100
+            Height = 18
+            Align = faRight
+            Alignment = taRightJustify
+            AutoSize = False
+            Borders.Sides = sdCustom
+            Borders.DrawLeft = False
+            Borders.DrawTop = False
+            Borders.DrawRight = False
+            Borders.DrawBottom = False
+            DataField = 'TOTAL'
+            DataSource = dsRelatorio
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -13
+            Font.Name = 'Arial'
+            Font.Style = [fsBold]
+            Holder = RLDBText6
+            ParentFont = False
+          end
         end
+      end
+    end
+    object RLBand6: TRLBand
+      Left = 38
+      Top = 312
+      Width = 718
+      Height = 20
+      BandType = btSummary
+      Borders.Sides = sdCustom
+      Borders.DrawLeft = True
+      Borders.DrawTop = True
+      Borders.DrawRight = True
+      Borders.DrawBottom = True
+      BeforePrint = RLBand6BeforePrint
+      object rlbTotalVendas: TRLLabel
+        Left = 617
+        Top = 1
+        Width = 100
+        Height = 18
+        Align = faRight
+        Alignment = taRightJustify
+        AutoSize = False
+        Holder = RLDBText14
       end
     end
   end
@@ -437,6 +571,7 @@ inherited FrmRelPedidoVenda: TFrmRelPedidoVenda
     end
     object cdsRelatorioVENDA_DESCONTO_PERCENTUAL: TCurrencyField
       FieldName = 'VENDA_DESCONTO_PERCENTUAL'
+      currency = False
     end
     object cdsRelatorioTOTAL: TCurrencyField
       FieldName = 'TOTAL'
@@ -455,6 +590,10 @@ inherited FrmRelPedidoVenda: TFrmRelPedidoVenda
     end
     object cdsRelatorioITEM_DESCONTO_PERCENTUAL: TCurrencyField
       FieldName = 'ITEM_DESCONTO_PERCENTUAL'
+      currency = False
+    end
+    object cdsRelatorioPRECO_VENDA: TCurrencyField
+      FieldName = 'PRECO_VENDA'
     end
   end
 end

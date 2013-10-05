@@ -9,8 +9,8 @@ object FrmAjuste: TFrmAjuste
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -20
-  Font.Name = 'Tahoma'
+  Font.Height = -21
+  Font.Name = 'Ubuntu Condensed'
   Font.Style = []
   KeyPreview = True
   OldCreateOrder = False
@@ -18,40 +18,40 @@ object FrmAjuste: TFrmAjuste
   OnKeyDown = FormKeyDown
   OnKeyPress = FormKeyPress
   PixelsPerInch = 96
-  TextHeight = 24
+  TextHeight = 25
   object Label1: TLabel
     Left = 10
     Top = 50
-    Width = 125
-    Height = 24
+    Width = 112
+    Height = 25
     Caption = 'Pre'#231'o Unit'#225'rio'
   end
   object Label2: TLabel
     Left = 10
     Top = 113
-    Width = 103
-    Height = 24
+    Width = 92
+    Height = 25
     Caption = 'Quantidade'
   end
   object Label4: TLabel
     Left = 10
     Top = 241
-    Width = 101
-    Height = 24
+    Width = 86
+    Height = 25
     Caption = 'Pre'#231'o Total'
   end
   object Label3: TLabel
     Left = 10
     Top = 179
-    Width = 101
-    Height = 24
+    Width = 84
+    Height = 25
     Caption = 'Desc. Valor'
   end
   object Label5: TLabel
     Left = 194
     Top = 179
-    Width = 149
-    Height = 24
+    Width = 127
+    Height = 25
     Caption = 'Desc. Percentual'
   end
   object Panel1: TPanel
@@ -63,7 +63,6 @@ object FrmAjuste: TFrmAjuste
     Color = 3682350
     ParentBackground = False
     TabOrder = 5
-    ExplicitWidth = 371
     object lblDescricaoProduto: TLabel
       Left = 1
       Top = 1
@@ -87,7 +86,7 @@ object FrmAjuste: TFrmAjuste
     Left = 10
     Top = 140
     Width = 167
-    Height = 32
+    Height = 33
     Alignment = taRightJustify
     NumbersOnly = True
     TabOrder = 1

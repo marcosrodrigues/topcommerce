@@ -75,7 +75,9 @@ uses
   uFrmContaPagar in 'uFrmContaPagar.pas' {FrmContaPagar},
   uFrmContaReceber in 'uFrmContaReceber.pas' {FrmContaReceber},
   uFrmDadosContaPagar in 'uFrmDadosContaPagar.pas' {FrmDadosContaPagar},
-  uFrmDadosContaReceber in 'uFrmDadosContaReceber.pas' {FrmDadosContaReceber};
+  uFrmDadosContaReceber in 'uFrmDadosContaReceber.pas' {FrmDadosContaReceber},
+  uFramePesquisaCliente in 'uFramePesquisaCliente.pas' {FramePesquisaCliente: TFrame},
+  uFrmConsultaCliente in 'uFrmConsultaCliente.pas' {FrmConsultaCliente};
 
 {$R *.res}
 

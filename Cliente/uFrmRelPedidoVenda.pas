@@ -57,7 +57,17 @@ type
     RLLabel16: TRLLabel;
     RLDBText13: TRLDBText;
     RLBand4: TRLBand;
+    cdsRelatorioPRECO_VENDA: TCurrencyField;
+    RLLabel17: TRLLabel;
+    RLLabel18: TRLLabel;
+    RLLabel19: TRLLabel;
+    RLDBText15: TRLDBText;
+    RLDBText16: TRLDBText;
+    RLDBText17: TRLDBText;
+    RLPanel1: TRLPanel;
     RLDBText14: TRLDBText;
+    RLBand6: TRLBand;
+    rlbTotalVendas: TRLLabel;
     procedure cdsRelatorioTIPO_PAGAMENTOGetText(Sender: TField; var Text: string;
       DisplayText: Boolean);
     procedure cdsRelatorioNOMEGetText(Sender: TField; var Text: string; DisplayText: Boolean);
@@ -67,9 +77,12 @@ type
       var PrintIt: Boolean);
     procedure RLDBText10BeforePrint(Sender: TObject; var Text: string;
       var PrintIt: Boolean);
+    procedure RLReportBeforePrint(Sender: TObject; var PrintIt: Boolean);
+    procedure RLBand6BeforePrint(Sender: TObject; var PrintIt: Boolean);
+    procedure RLBand2BeforePrint(Sender: TObject; var PrintIt: Boolean);
   private
     { Private declarations }
-    Total, TotalGeral, TotalDesconto: Currency;
+    TotalVendas: Currency;
   protected
     procedure OnBeforePrint; override;
   public
@@ -123,6 +136,20 @@ begin
   end;
 end;
 
+procedure TFrmRelPedidoVenda.RLBand2BeforePrint(Sender: TObject;
+  var PrintIt: Boolean);
+begin
+  inherited;
+  TotalVendas := TotalVendas + cdsRelatorioTOTAL.AsCurrency;
+end;
+
+procedure TFrmRelPedidoVenda.RLBand6BeforePrint(Sender: TObject;
+  var PrintIt: Boolean);
+begin
+  inherited;
+  rlbTotalVendas.Caption := 'R$ '+FormatCurr(',0.00', TotalVendas);
+end;
+
 procedure TFrmRelPedidoVenda.RLDBText10BeforePrint(Sender: TObject;
   var Text: string; var PrintIt: Boolean);
 begin
@@ -151,6 +178,13 @@ begin
     3: Text := 'Cartão de Débito';
     4: Text := 'Cheque';
   end;
+end;
+
+procedure TFrmRelPedidoVenda.RLReportBeforePrint(Sender: TObject;
+  var PrintIt: Boolean);
+begin
+  inherited;
+  TotalVendas := 0;
 end;
 
 end.

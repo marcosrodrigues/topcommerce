@@ -73,12 +73,10 @@ object FrmRelBase: TFrmRelBase
       end
       object RLLabel6: TRLLabel
         Left = 215
-        Top = 71
-        Width = 436
+        Top = 55
+        Width = 274
         Height = 14
-        Caption = 
-          'TEC Motos. Rua Padra Maximiano, 2609 - Cascavel - CE. (85) 3334-' +
-          '0985 / (85) 9790-6551'
+        Caption = 'TEC Motos. Rua Padra Maximiano, 2609 - Cascavel - CE.'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = 14
@@ -1452,6 +1450,26 @@ object FrmRelBase: TFrmRelBase
           FD86DACCFA14FF00103C22C9B7A76FC5926E66F5924C22E39659AC9B7C8C31AF
           B208738710CCAC675D9CC20831995F0E310FEAFF00FFD9}
       end
+      object RLLabel20: TRLLabel
+        Left = 215
+        Top = 70
+        Width = 192
+        Height = 14
+        Caption = 'Fone: (85) 3334-0985 / (85) 9790-6551'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = 14
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+      end
+    end
+    object RLBand5: TRLBand
+      Left = 38
+      Top = 128
+      Width = 718
+      Height = 16
+      BandType = btHeader
     end
   end
   object cdsRelatorio: TClientDataSet

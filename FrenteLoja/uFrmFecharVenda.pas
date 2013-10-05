@@ -13,7 +13,6 @@ type
     Label2: TLabel;
     Label4: TLabel;
     Label3: TLabel;
-    cbFormaPagamento: TComboBox;
     btnFechar: TDXPButton;
     cedDescontoValor: TDXPCurrencyEdit;
     Label6: TLabel;
@@ -24,6 +23,7 @@ type
     Label8: TLabel;
     cedTroco: TDXPCurrencyEdit;
     Image19: TImage;
+    lbFormaPagamento: TListBox;
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure cedDescontoValorExit(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
@@ -31,6 +31,7 @@ type
     procedure cedDescontoPercentualExit(Sender: TObject);
     procedure cedValorRecebidoExit(Sender: TObject);
     procedure Image19Click(Sender: TObject);
+    procedure lbFormaPagamentoEnter(Sender: TObject);
   private
     { Private declarations }
     procedure CalcularTotal;
@@ -78,6 +79,12 @@ end;
 
 procedure TFrmFecharVenda.cedValorRecebidoExit(Sender: TObject);
 begin
+  if cedValorRecebido.Value = 0 then
+  begin
+    Atencao('Informe o valor recebido.');
+    cedValorRecebido.SetFocus;
+    Exit;
+  end;
   if cedValorRecebido.Value < cedTotal.Value then
   begin
     Atencao('Valor recebido deve ser maior ou igual ao total da venda.');
@@ -105,8 +112,8 @@ begin
     else if (Self.ActiveControl = cedTotal) then
       cedValorRecebido.SetFocus
     else if (Self.ActiveControl = cedValorRecebido) then
-      cbFormaPagamento.SetFocus
-    else if (Self.ActiveControl = cbFormaPagamento) then
+      lbFormaPagamento.SetFocus
+    else if (Self.ActiveControl = lbFormaPagamento) then
       btnFechar.SetFocus;
   end;
 end;
@@ -114,6 +121,11 @@ end;
 procedure TFrmFecharVenda.Image19Click(Sender: TObject);
 begin
   Self.Close;
+end;
+
+procedure TFrmFecharVenda.lbFormaPagamentoEnter(Sender: TObject);
+begin
+  lbFormaPagamento.Selected[0] := True;
 end;
 
 end.

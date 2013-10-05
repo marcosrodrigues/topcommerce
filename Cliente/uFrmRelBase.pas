@@ -20,6 +20,8 @@ type
     RLPDFFilter: TRLPDFFilter;
     RLLabel6: TRLLabel;
     RLImage1: TRLImage;
+    RLBand5: TRLBand;
+    RLLabel20: TRLLabel;
     procedure FormCreate(Sender: TObject);
     procedure RLReportBeforePrint(Sender: TObject; var PrintIt: Boolean);
   private

@@ -10,49 +10,72 @@ uses
 type
   TFrmRelReciboVenda = class(TFrmRelBase)
     RLBand2: TRLBand;
-    RLDBText1: TRLDBText;
+    RLBand3: TRLBand;
+    RLBand4: TRLBand;
+    cdsRelatorioCODIGO: TStringField;
+    cdsRelatorioDATA: TSQLTimeStampField;
+    cdsRelatorioDESCONTO: TCurrencyField;
+    cdsRelatorioCODIGO_CLIENTE: TStringField;
+    cdsRelatorioNOME_CLIENTE_AVULSO: TStringField;
+    cdsRelatorioCODIGO_PRODUTO: TStringField;
     cdsRelatorioQUANTIDADE: TIntegerField;
     cdsRelatorioDESCRICAO: TStringField;
     cdsRelatorioVALOR: TCurrencyField;
-    cdsRelatorioDATA: TDateTimeField;
-    cdsRelatorioDESCONTO: TCurrencyField;
+    cdsRelatorioVENDA_DESCONTO_PERCENTUAL: TCurrencyField;
+    cdsRelatorioTOTAL: TCurrencyField;
+    cdsRelatorioRECEBIDO: TCurrencyField;
+    cdsRelatorioTROCO: TCurrencyField;
+    cdsRelatorioLOGIN_USUARIO: TStringField;
+    cdsRelatorioITEM_DESCONTO_VALOR: TCurrencyField;
+    cdsRelatorioITEM_DESCONTO_PERCENTUAL: TCurrencyField;
     cdsRelatorioTIPO_PAGAMENTO: TIntegerField;
-    cdsRelatorioNOME_CLIENTE_AVULSO: TStringField;
     cdsRelatorioNOME: TStringField;
-    RLBand3: TRLBand;
-    RLDBText2: TRLDBText;
+    cdsRelatorioPRECO_VENDA: TCurrencyField;
     RLLabel3: TRLLabel;
-    RLLabel4: TRLLabel;
-    rlbCliente: TRLLabel;
-    RLLabel5: TRLLabel;
     RLDBText3: TRLDBText;
-    RLLabel7: TRLLabel;
+    RLLabel4: TRLLabel;
+    RLDBText1: TRLDBText;
+    RLLabel12: TRLLabel;
+    RLDBText9: TRLDBText;
+    RLLabel13: TRLLabel;
+    RLDBText10: TRLDBText;
+    RLDBText13: TRLDBText;
+    RLLabel16: TRLLabel;
+    RLDBText12: TRLDBText;
+    RLLabel15: TRLLabel;
     RLDBText4: TRLDBText;
-    RLPanel1: TRLPanel;
-    RLPanel2: TRLPanel;
-    RLPanel3: TRLPanel;
-    RLPanel4: TRLPanel;
+    RLLabel5: TRLLabel;
+    RLDBText11: TRLDBText;
+    RLLabel7: TRLLabel;
+    RLLabel14: TRLLabel;
+    RLDBText14: TRLDBText;
     RLLabel8: TRLLabel;
     RLLabel9: TRLLabel;
+    RLLabel19: TRLLabel;
+    RLLabel18: TRLLabel;
+    RLLabel17: TRLLabel;
     RLLabel10: TRLLabel;
     RLLabel11: TRLLabel;
+    RLDBText2: TRLDBText;
     RLDBText5: TRLDBText;
+    RLDBText15: TRLDBText;
+    RLDBText16: TRLDBText;
+    RLDBText17: TRLDBText;
     RLDBText6: TRLDBText;
-    rlbTotal: TRLLabel;
-    RLBand4: TRLBand;
-    RLLabel13: TRLLabel;
+    RLDBText8: TRLDBText;
     rlbTotalVenda: TRLLabel;
-    RLBand5: TRLBand;
-    RLLabel12: TRLLabel;
     procedure rlbClienteBeforePrint(Sender: TObject; var Text: string;
-      var PrintIt: Boolean);
-    procedure rlbTotalBeforePrint(Sender: TObject; var Text: string;
       var PrintIt: Boolean);
     procedure RLDBText3BeforePrint(Sender: TObject; var Text: string;
       var PrintIt: Boolean);
-    procedure RLReportBeforePrint(Sender: TObject; var PrintIt: Boolean);
-    procedure RLBand3BeforePrint(Sender: TObject; var PrintIt: Boolean);
+    procedure RLDBText9BeforePrint(Sender: TObject; var Text: string;
+      var PrintIt: Boolean);
+    procedure RLDBText4BeforePrint(Sender: TObject; var Text: string;
+      var PrintIt: Boolean);
+    procedure RLDBText10BeforePrint(Sender: TObject; var Text: string;
+      var PrintIt: Boolean);
     procedure RLBand4BeforePrint(Sender: TObject; var PrintIt: Boolean);
+    procedure RLBand2BeforePrint(Sender: TObject; var PrintIt: Boolean);
   private
     { Private declarations }
     TotalVenda: Currency;
@@ -88,18 +111,18 @@ begin
   end;
 end;
 
-procedure TFrmRelReciboVenda.RLBand3BeforePrint(Sender: TObject;
+procedure TFrmRelReciboVenda.RLBand2BeforePrint(Sender: TObject;
   var PrintIt: Boolean);
 begin
   inherited;
-  TotalVenda := TotalVenda + (cdsRelatorioPRECO_VENDA.AsCurrency * cdsRelatorioQUANTIDADE.AsInteger);
+  TotalVenda := cdsRelatorioTOTAL.AsCurrency;
 end;
 
 procedure TFrmRelReciboVenda.RLBand4BeforePrint(Sender: TObject;
   var PrintIt: Boolean);
 begin
   inherited;
-  rlbTotalVenda.Caption := FormatCurr(',0.00', TotalVenda - cdsRelatorioDESCONTO.AsCurrency);
+  rlbTotalVenda.Caption := 'R$ '+FormatCurr(',0.00', TotalVenda);
 end;
 
 procedure TFrmRelReciboVenda.rlbClienteBeforePrint(Sender: TObject;
@@ -110,6 +133,13 @@ begin
     Text := cdsRelatorioNOME.AsString
   else
     Text := cdsRelatorioNOME_CLIENTE_AVULSO.AsString;
+end;
+
+procedure TFrmRelReciboVenda.RLDBText10BeforePrint(Sender: TObject;
+  var Text: string; var PrintIt: Boolean);
+begin
+  inherited;
+  Text := Text + ' %';
 end;
 
 procedure TFrmRelReciboVenda.RLDBText3BeforePrint(Sender: TObject;
@@ -125,18 +155,27 @@ begin
   end;
 end;
 
-procedure TFrmRelReciboVenda.RLReportBeforePrint(Sender: TObject;
-  var PrintIt: Boolean);
-begin
-  inherited;
-  TotalVenda := 0;
-end;
-
-procedure TFrmRelReciboVenda.rlbTotalBeforePrint(Sender: TObject;
+procedure TFrmRelReciboVenda.RLDBText4BeforePrint(Sender: TObject;
   var Text: string; var PrintIt: Boolean);
 begin
   inherited;
-  Text := FormatCurr(',0.00', cdsRelatorioPRECO_VENDA.AsCurrency * cdsRelatorioQUANTIDADE.AsInteger);
+  case cdsRelatorioTIPO_PAGAMENTO.AsInteger of
+    0: Text := 'Dinheiro';
+    1: Text := 'Crediário';
+    2: Text := 'Cartão de Crédito';
+    3: Text := 'Cartão de Débito';
+    4: Text := 'Cheque';
+  end;
+end;
+
+procedure TFrmRelReciboVenda.RLDBText9BeforePrint(Sender: TObject;
+  var Text: string; var PrintIt: Boolean);
+begin
+  inherited;
+  if cdsRelatorioNOME.IsNull then
+    Text := cdsRelatorioNOME_CLIENTE_AVULSO.AsString
+  else
+    Text := cdsRelatorioNOME.AsString;
 end;
 
 end.

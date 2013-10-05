@@ -1,13 +1,25 @@
 inherited FrmFiltrosPedidoVenda: TFrmFiltrosPedidoVenda
   Caption = 'Relat'#243'rio de Pedidos de Venda'
-  ClientHeight = 101
+  ClientHeight = 136
+  ClientWidth = 541
   OnShow = FormShow
-  ExplicitHeight = 129
+  ExplicitWidth = 547
+  ExplicitHeight = 164
   PixelsPerInch = 96
   TextHeight = 14
+  inherited pnlBotoes: TPanel
+    Width = 541
+    ExplicitWidth = 541
+    inherited sbtFechar: TSpeedButton
+      Left = 459
+      ExplicitLeft = 439
+    end
+  end
   inherited pnlFiltros: TPanel
-    Height = 73
-    ExplicitHeight = 41
+    Width = 541
+    Height = 108
+    ExplicitWidth = 541
+    ExplicitHeight = 108
     object Label1: TLabel
       Left = 8
       Top = 11
@@ -57,9 +69,34 @@ inherited FrmFiltrosPedidoVenda: TFrmFiltrosPedidoVenda
       Items.Strings = (
         'Todos'
         'Dinheiro'
+        'Credi'#225'rio'
         'Cart'#227'o de Cr'#233'dito'
         'Cart'#227'o de D'#233'bito'
         'Cheque')
+    end
+    inline FramePesquisaCliente: TFramePesquisaCliente
+      Left = 8
+      Top = 71
+      Width = 526
+      Height = 25
+      AutoSize = True
+      TabOrder = 3
+      ExplicitLeft = 8
+      ExplicitTop = 71
+      inherited Label3: TLabel
+        Width = 37
+        Height = 14
+        ExplicitWidth = 37
+        ExplicitHeight = 14
+      end
+      inherited edtCodigoCliente: TEdit
+        Height = 22
+        ExplicitHeight = 22
+      end
+      inherited edtNomeCliente: TEdit
+        Height = 22
+        ExplicitHeight = 22
+      end
     end
   end
 end
