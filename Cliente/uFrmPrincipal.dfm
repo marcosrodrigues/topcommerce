@@ -24,7 +24,7 @@ object FrmPrincipal: TFrmPrincipal
     Left = 0
     Top = 45
     Width = 181
-    Height = 321
+    Height = 302
     Align = alClient
     Stretch = True
     ExplicitTop = 33
@@ -34,7 +34,7 @@ object FrmPrincipal: TFrmPrincipal
   object Splitter1: TSplitter
     Left = 181
     Top = 45
-    Height = 321
+    Height = 302
     Align = alRight
     ExplicitLeft = 484
     ExplicitTop = 39
@@ -762,15 +762,16 @@ object FrmPrincipal: TFrmPrincipal
     Left = 184
     Top = 45
     Width = 497
-    Height = 321
+    Height = 302
     Align = alRight
     TabOrder = 1
     Visible = False
+    ExplicitHeight = 321
     object dgrProdutosVencer: TDBGrid
       Left = 1
       Top = 30
       Width = 495
-      Height = 290
+      Height = 271
       Align = alClient
       DataSource = dsProdutosVencer
       Font.Charset = DEFAULT_CHARSET
@@ -849,6 +850,24 @@ object FrmPrincipal: TFrmPrincipal
         OnClick = bbtAtualizarClick
       end
     end
+  end
+  object StatusBar: TStatusBar
+    Left = 0
+    Top = 347
+    Width = 681
+    Height = 19
+    Panels = <
+      item
+        Text = 'TopCommerce'
+        Width = 100
+      end
+      item
+        Text = '01/01/2013 08:00:00'
+        Width = 50
+      end>
+    ExplicitLeft = 352
+    ExplicitTop = 200
+    ExplicitWidth = 0
   end
   object mmPrincipal: TMainMenu
     Left = 24
@@ -989,5 +1008,11 @@ object FrmPrincipal: TFrmPrincipal
     DataSet = cdsProdutosVencer
     Left = 368
     Top = 120
+  end
+  object tmDataHora: TTimer
+    Interval = 2000
+    OnTimer = tmDataHoraTimer
+    Left = 336
+    Top = 200
   end
 end

@@ -6,7 +6,8 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Menus, ExtCtrls, Buttons, DBXDataSnap, DBXCommon, DB, SqlExpr, ExtDlgs,
-  IniFiles, StdCtrls, Grids, DBGrids, DBClient, DXPControl, DXPButtons, RLConsts;
+  IniFiles, StdCtrls, Grids, DBGrids, DBClient, DXPControl, DXPButtons, RLConsts,
+  ComCtrls;
 
 type
   TFrmPrincipal = class(TForm)
@@ -58,6 +59,8 @@ type
     N3: TMenuItem;
     ContasaPagar1: TMenuItem;
     ContasaReceber1: TMenuItem;
+    StatusBar: TStatusBar;
+    tmDataHora: TTimer;
     procedure N11TiposdeProdutos1Click(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure N12Produtos1Click(Sender: TObject);
@@ -76,6 +79,7 @@ type
     procedure Caixas1Click(Sender: TObject);
     procedure ContasaPagar1Click(Sender: TObject);
     procedure ContasaReceber1Click(Sender: TObject);
+    procedure tmDataHoraTimer(Sender: TObject);
   private
     { Private declarations }
     procedure CarregaProdutosVencer;
@@ -365,6 +369,11 @@ begin
         Ini.Free;
       end;
     end;
+end;
+
+procedure TFrmPrincipal.tmDataHoraTimer(Sender: TObject);
+begin
+  StatusBar.Panels[1].Text := FormatDateTime('dd/mm/yyyy hh:mm:ss', Now);
 end;
 
 initialization

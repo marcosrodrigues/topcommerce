@@ -8863,21 +8863,21 @@ object FrmPrincipal: TFrmPrincipal
       ExplicitTop = 2
     end
     object pnlRelogio: TPanel
-      Left = 510
+      Left = 495
       Top = 0
-      Width = 285
+      Width = 315
       Height = 50
       Align = alClient
       BevelOuter = bvNone
       Color = 3682350
       ParentBackground = False
       TabOrder = 0
-      ExplicitLeft = 430
-      ExplicitWidth = 445
+      ExplicitLeft = 510
+      ExplicitWidth = 285
       object lblDataHora: TLabel
         Left = 0
         Top = 0
-        Width = 285
+        Width = 315
         Height = 50
         Align = alClient
         Alignment = taCenter
@@ -8898,7 +8898,7 @@ object FrmPrincipal: TFrmPrincipal
     object pnlStatus: TPanel
       Left = 30
       Top = 0
-      Width = 480
+      Width = 465
       Height = 50
       Align = alLeft
       BevelOuter = bvNone
@@ -8921,21 +8921,20 @@ object FrmPrincipal: TFrmPrincipal
       end
     end
     object Panel5: TPanel
-      Left = 795
+      Left = 810
       Top = 0
-      Width = 480
+      Width = 465
       Height = 50
       Align = alRight
       BevelOuter = bvNone
       Color = 3682350
       ParentBackground = False
       TabOrder = 2
-      ExplicitLeft = 825
       DesignSize = (
-        480
+        465
         50)
       object Image4: TImage
-        Left = 265
+        Left = 250
         Top = 15
         Width = 173
         Height = 24
@@ -10381,7 +10380,7 @@ object FrmPrincipal: TFrmPrincipal
         ExplicitLeft = 185
       end
       object Image5: TImage
-        Left = 443
+        Left = 428
         Top = 10
         Width = 32
         Height = 32
