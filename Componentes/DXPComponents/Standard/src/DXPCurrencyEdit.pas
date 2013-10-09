@@ -5,7 +5,7 @@ interface
 uses
   SysUtils, Classes, Controls, StdCtrls, Graphics, Messages,
   Windows, CommCtrl, uIValidatable, Forms, DXPMessageOutPut,
-  DXPUtils;
+  DXPUtils, StrUtils;
 
 type
   // opRequired - Validar se foi preenchido;
@@ -123,7 +123,7 @@ begin
   if ( Text <> '' ) and ( Text <> Name ) then
   begin
     try
-      Result := StrToCurr( Text );
+      Result := StrToCurr( AnsiReplaceStr(Text, '.', '') );
     except
       ShowMsgInformation( 'Valor incorreto.' );
       TryFocus( Self );
@@ -164,7 +164,7 @@ begin
   begin
     Converteu := False;
     try
-      Value := StrToCurr( Text );
+      Value := StrToCurr( AnsiReplaceStr(Text, '.', '') );
       //
       Text := FormatCurr(',0.00', Value);
       //

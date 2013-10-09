@@ -116,6 +116,8 @@ type
     tmImagens: TTimer;
     Label13: TLabel;
     lblCliente: TLabel;
+    Image37: TImage;
+    Label14: TLabel;
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -143,7 +145,7 @@ type
     DAOPedidoVenda: TPedidoVendaDAOClient;
     CodigoPedidoVendaAtual: string;
     DataPedidoVendaAtual: TDateTime;
-    VendaFechada: Boolean;
+    VendaFechada, VendaCancelada: Boolean;
     MyBitmap: TBitmap;
     CaixaAbertoAtual: TCaixa;
     ImagemAtual: Integer;
@@ -160,6 +162,7 @@ type
     procedure AbrirCaixa;
     procedure FecharCaixa;
     procedure AtualizaCaixa;
+    procedure CancelarVenda;
 
     procedure SetStatusVenda;
     procedure SetStatusConsultaProduto;
@@ -172,6 +175,7 @@ type
     procedure SetStatusVendaFechada;
     procedure SetStatusInformarCliente;
     procedure SetStatusCaixaFechado;
+    procedure SetStatusVendaCancelada;
   public
     { Public declarations }
   end;
@@ -246,6 +250,7 @@ begin
     VK_F9: VendasFechadas;
     VK_F10: AbrirCaixa;
     VK_F11: FecharCaixa;
+    VK_F12: CancelarVenda;
   end;
 end;
 
@@ -312,6 +317,7 @@ begin
   CodigoPedidoVendaAtual := '';
   DataPedidoVendaAtual   := 0;
   VendaFechada := False;
+  VendaCancelada := False;
 end;
 
 procedure TFrmPrincipal.SetStatusAbrirCaixa;
@@ -363,6 +369,12 @@ begin
   lblStatusPDV.Font.Color := $0040C485;
 end;
 
+procedure TFrmPrincipal.SetStatusVendaCancelada;
+begin
+  lblStatusPDV.Caption := 'VENDA CANCELADA';
+  lblStatusPDV.Font.Color := clRed;
+end;
+
 procedure TFrmPrincipal.SetStatusVendaFechada;
 begin
   lblStatusPDV.Caption := 'VENDA FECHADA';
@@ -405,9 +417,9 @@ var
 begin
   fVendasAbertas := TFrmVendasAbertas.Create(Self);
   try
-    fVendasAbertas.ShowModal;
-
     SetStatusVendasAbertas;
+
+    fVendasAbertas.ShowModal;
 
     if fVendasAbertas.ModalResult = mrOk then
     begin
@@ -416,6 +428,7 @@ begin
       CodigoPedidoVendaAtual := pedido.Codigo;
       DataPedidoVendaAtual := pedido.Data;
       VendaFechada := False;
+      VendaCancelada := False;
 
       if pedido.Cliente <> nil then
         lblCliente.Caption := pedido.Cliente.Nome
@@ -446,6 +459,8 @@ begin
 
   if VendaFechada then
     SetStatusVendaFechada
+  else if VendaCancelada then
+    SetStatusVendaCancelada
   else
     SetStatusVenda;
 end;
@@ -458,9 +473,9 @@ var
 begin
   fVendasFechadas := TFrmVendasFechadas.Create(Self);
   try
-    fVendasFechadas.ShowModal;
-
     SetStatusVendasFechadas;
+
+    fVendasFechadas.ShowModal;
 
     if fVendasFechadas.ModalResult = mrOk then
     begin
@@ -469,6 +484,7 @@ begin
       CodigoPedidoVendaAtual := pedido.Codigo;
       DataPedidoVendaAtual := pedido.Data;
       VendaFechada := True;
+      VendaCancelada := False;
 
       SetStatusVendaFechada;
 
@@ -501,6 +517,8 @@ begin
 
   if VendaFechada then
     SetStatusVendaFechada
+  else if VendaCancelada then
+    SetStatusVendaCancelada
   else
     SetStatusVenda;
 end;
@@ -568,6 +586,28 @@ begin
   end;
 end;
 
+procedure TFrmPrincipal.CancelarVenda;
+begin
+  if VendaCancelada then
+  begin
+    Atencao('Venda já está cancelada.');
+    Exit;
+  end;
+
+  if CodigoPedidoVendaAtual = '' then
+  begin
+    Atencao('Nenhuma venda ativa');
+    Exit;
+  end;
+
+  if Confirma('Deseja cancelar esta venda?') then
+    if DAOPedidoVenda.CancelarVenda(CodigoPedidoVendaAtual) then
+    begin
+      VendaCancelada := True;
+      SetStatusVendaCancelada;
+    end;
+end;
+
 procedure TFrmPrincipal.cdsProdutosDESCONTO_PERCENTUALGetText(Sender: TField;
   var Text: string; DisplayText: Boolean);
 begin
@@ -597,6 +637,12 @@ begin
   if VendaFechada then
   begin
     Atencao('Venda já está fechada.');
+    Exit;
+  end;
+
+  if VendaCancelada then
+  begin
+    Atencao('Venda cancelada.');
     Exit;
   end;
 
@@ -744,6 +790,12 @@ begin
     Exit;
   end;
 
+  if VendaCancelada then
+  begin
+    Atencao('Venda cancelada.');
+    Exit;
+  end;
+
   SetStatusExcluirItemDaVenda;
 
   f := TFrmExcluirItem.Create(Self);
@@ -817,6 +869,12 @@ begin
   if VendaFechada then
   begin
     Atencao('Venda já está fechada.');
+    Exit;
+  end;
+
+  if VendaCancelada then
+  begin
+    Atencao('Venda cancelada.');
     Exit;
   end;
 

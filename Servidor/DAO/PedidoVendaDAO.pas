@@ -29,6 +29,7 @@ type
     function VendasAbertas: TDBXReader;
     function Recibo(CodigoPedidoVenda: string): TDBXReader;
     function FindByCodigo(Codigo: string): TPedidoVenda;
+    function CancelarVenda(CodigoPedidoVenda: string): Boolean;
 
     constructor Create;
     destructor Destroy; override;
@@ -67,6 +68,27 @@ begin
         EstoqueDAO.AtualizaQuantidade(Item.Produto.Codigo, 'C', QuantidadeAnterior - Item.Quantidade)
       else if QuantidadeAnterior < Item.Quantidade then
         EstoqueDAO.AtualizaQuantidade(Item.Produto.Codigo, 'D', Item.Quantidade - QuantidadeAnterior);
+
+      Result := True;
+    except
+      Result := False;
+    end;
+  finally
+    query.Free;
+  end;
+end;
+
+function TPedidoVendaDAO.CancelarVenda(CodigoPedidoVenda: string): Boolean;
+var
+  query: TSQLQuery;
+begin
+  query := TSQLQuery.Create(nil);
+  try
+    query.SQLConnection := SCPrincipal.ConnTopCommerce;
+    try
+      query.SQL.Text := 'UPDATE PEDIDOS_VENDA SET CANCELADA = 1 WHERE CODIGO = :CODIGO';
+      query.ParamByName('CODIGO').AsString  := CodigoPedidoVenda;
+      query.ExecSQL;
 
       Result := True;
     except
@@ -184,7 +206,7 @@ begin
                 'INNER JOIN ITENS_PEDIDO_VENDA I ON I.CODIGO_PEDIDO = V.CODIGO '+
                 'INNER JOIN PRODUTOS P ON P.CODIGO = I.CODIGO_PRODUTO '+
                 'LEFT JOIN CLIENTES C ON C.CODIGO = V.CODIGO_CLIENTE '+
-                'WHERE P.CODIGO <> '''' ';
+                'WHERE P.CODIGO <> '''' AND V.CANCELADA = 0 ';
   if (DataInicial <> 0) then
     FComm.Text := FComm.Text + 'AND CONVERT(CHAR(8), DATA, 112) >= '+FormatDateTime('yyyymmdd', DataInicial)+' ';
   if (DataFinal <> 0) then

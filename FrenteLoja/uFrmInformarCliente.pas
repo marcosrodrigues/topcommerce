@@ -20,6 +20,7 @@ type
     procedure btnFecharClick(Sender: TObject);
     procedure Image19Click(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
   private
     { Private declarations }
   public
@@ -34,12 +35,20 @@ var
 
 implementation
 
-uses uFrmConsultaClientes;
+uses uFrmConsultaClientes, MensagensUtils;
 
 {$R *.dfm}
 
 procedure TFrmInformarCliente.btnFecharClick(Sender: TObject);
 begin
+  if edCliente.Text = '' then
+  begin
+    Atencao('Informe o cliente da venda. '+#13#10+
+            'Um cliente cadastrado ou apenas o nome do cliente.');
+    edCliente.SetFocus;
+    Exit;
+  end;
+
   NomeCliente := edCliente.Text;
   Salvar := True;
   Close;
@@ -71,12 +80,23 @@ begin
   end;
 end;
 
+procedure TFrmInformarCliente.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+begin
+  if edCliente.Text = '' then
+  begin
+    Atencao('Informe o cliente da venda. '+#13#10+
+            'Um cliente cadastrado ou apenas o nome do cliente.');
+    edCliente.SetFocus;
+    CanClose := False;
+  end;
+end;
+
 procedure TFrmInformarCliente.FormKeyPress(Sender: TObject; var Key: Char);
 begin
   if (Ord(Key) = 13) then
   begin
     if (Self.ActiveControl = edCliente) then
-      btnPesquisarCliente.SetFocus;
+      btnFechar.SetFocus;
   end;
 end;
 

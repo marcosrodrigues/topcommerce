@@ -14,6 +14,7 @@ object FrmInformarCliente: TFrmInformarCliente
   KeyPreview = True
   OldCreateOrder = False
   Position = poMainFormCenter
+  OnCloseQuery = FormCloseQuery
   OnKeyPress = FormKeyPress
   PixelsPerInch = 96
   TextHeight = 25
@@ -213,6 +214,7 @@ object FrmInformarCliente: TFrmInformarCliente
     Width = 37
     Height = 32
     OnClick = btnPesquisarClienteClick
+    Flat = True
     GlyphPng.Data = {
       89504E470D0A1A0A0000000D4948445200000016000000160806000000C4B46C
       3B00000006624B4744000000000000F943BB7F00000009704859730000004800
@@ -253,6 +255,7 @@ object FrmInformarCliente: TFrmInformarCliente
       227A545874536F667477617265000078DA2B2F2FD7CBCCCB2E4E4E2C48D5CB2F
       4A070036D806581053CA5C0000000049454E44AE426082}
     TabOrder = 1
+    TabStop = False
   end
   object btnLimpar: TDXPButton
     Left = 588
@@ -260,6 +263,7 @@ object FrmInformarCliente: TFrmInformarCliente
     Width = 37
     Height = 32
     OnClick = btnLimparClick
+    Flat = True
     GlyphPng.Data = {
       89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
       F80000000473424954080808087C0864880000042C4944415478DAAD946B4C1C
@@ -298,6 +302,7 @@ object FrmInformarCliente: TFrmInformarCliente
       96942A591579C8114B0125A1F272EE41E21BAD2EAC4969274C4981C453E207EC
       6F8E96B328609DAFC60000000049454E44AE426082}
     TabOrder = 2
+    TabStop = False
   end
   object btnFechar: TDXPButton
     Left = 8

@@ -26,7 +26,6 @@ object FrmPrincipal: TFrmPrincipal
     Width = 181
     Height = 302
     Align = alClient
-    Stretch = True
     ExplicitTop = 33
     ExplicitWidth = 476
     ExplicitHeight = 333
@@ -766,7 +765,6 @@ object FrmPrincipal: TFrmPrincipal
     Align = alRight
     TabOrder = 1
     Visible = False
-    ExplicitHeight = 321
     object dgrProdutosVencer: TDBGrid
       Left = 1
       Top = 30
@@ -865,9 +863,6 @@ object FrmPrincipal: TFrmPrincipal
         Text = '01/01/2013 08:00:00'
         Width = 50
       end>
-    ExplicitLeft = 352
-    ExplicitTop = 200
-    ExplicitWidth = 0
   end
   object mmPrincipal: TMainMenu
     Left = 24

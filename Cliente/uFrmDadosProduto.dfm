@@ -120,6 +120,7 @@ inherited FrmDadosProduto: TFrmDadosProduto
         FFFFFFFFFFACD4B0FDFEFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
       ParentDoubleBuffered = False
       TabOrder = 2
+      TabStop = False
       OnClick = bbtGerarCodigoBarrasClick
     end
     object edtDescricao: TEdit
@@ -145,7 +146,7 @@ inherited FrmDadosProduto: TFrmDadosProduto
       ParentBackground = False
       ParentColor = False
       ParentFont = False
-      TabOrder = 6
+      TabOrder = 7
       object Label6: TLabel
         Left = 12
         Top = 24
@@ -200,6 +201,9 @@ inherited FrmDadosProduto: TFrmDadosProduto
         Height = 22
         ExplicitHeight = 22
       end
+      inherited bbtConsultarTipoProduto: TBitBtn
+        TabStop = False
+      end
       inherited edtDescricaoTipoProduto: TEdit
         Height = 22
         ExplicitHeight = 22
@@ -221,7 +225,7 @@ inherited FrmDadosProduto: TFrmDadosProduto
       Width = 201
       Height = 22
       MaxLength = 60
-      TabOrder = 7
+      TabOrder = 6
     end
   end
   inherited pnlDetails: TPanel
@@ -239,10 +243,6 @@ inherited FrmDadosProduto: TFrmDadosProduto
       ExplicitHeight = 226
       object tbsFornecedores: TTabSheet
         Caption = '&Fornecedores'
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object grdFornecedores: TDBGrid
           Left = 0
           Top = 0

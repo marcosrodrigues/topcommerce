@@ -71,9 +71,9 @@ WelcomePageURL=bds:/default.htm
 [View1]
 CustomEditViewType=TEditView
 Module=C:\Projetos\DXPComponents\Standard\src\DXPCurrencyEdit.pas
-CursorX=33
-CursorY=126
-TopLine=107
+CursorX=11
+CursorY=174
+TopLine=155
 LeftCol=1
 Elisions=
 Bookmarks=
@@ -176,11 +176,11 @@ State=0
 Left=0
 Top=0
 Width=2000
-Height=7173
+Height=6788
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=2000
-ClientHeight=7173
+ClientHeight=6788
 TBDockHeight=7154
 LRDockWidth=2000
 Dockable=1
@@ -776,7 +776,7 @@ Dockable=1
 StayOnTop=0
 TabPosition=1
 ActiveTabID=ProjectManager
-TabDockClients=ToolForm,ProjectManager,ModelViewTool,DataExplorer,TemplateView,TFileExplorerForm
+TabDockClients=ToolForm,ProjectManager,ModelViewTool,DataExplorer,TFileExplorerForm,TemplateView
 
 [DockSite3]
 HostDockSite=LeftDockTabSet

@@ -19,6 +19,7 @@ type
     FVendasAbertasCommand: TDBXCommand;
     FReciboCommand: TDBXCommand;
     FFindByCodigoCommand: TDBXCommand;
+    FCancelarVendaCommand: TDBXCommand;
   public
     constructor Create(ADBXConnection: TDBXConnection); overload;
     constructor Create(ADBXConnection: TDBXConnection; AInstanceOwner: Boolean); overload;
@@ -35,6 +36,7 @@ type
     function VendasAbertas: TDBXReader;
     function Recibo(CodigoPedidoVenda: string): TDBXReader;
     function FindByCodigo(Codigo: string): TPedidoVenda;
+    function CancelarVenda(CodigoPedidoVenda: string): Boolean;
   end;
 
 implementation
@@ -247,6 +249,20 @@ begin
   end;
   FAtualizaItemDoPedidoCommand.ExecuteUpdate;
   Result := FAtualizaItemDoPedidoCommand.Parameters[2].Value.GetBoolean;
+end;
+
+function TPedidoVendaDAOClient.CancelarVenda(CodigoPedidoVenda: string): Boolean;
+begin
+  if FCancelarVendaCommand = nil then
+  begin
+    FCancelarVendaCommand := FDBXConnection.CreateCommand;
+    FCancelarVendaCommand.CommandType := TDBXCommandTypes.DSServerMethod;
+    FCancelarVendaCommand.Text := 'TPedidoVendaDAO.CancelarVenda';
+    FCancelarVendaCommand.Prepare;
+  end;
+  FCancelarVendaCommand.Parameters[0].Value.AsString := CodigoPedidoVenda;
+  FCancelarVendaCommand.ExecuteUpdate;
+  Result := FCancelarVendaCommand.Parameters[1].Value.GetBoolean(FInstanceOwner);
 end;
 
 constructor TPedidoVendaDAOClient.Create(ADBXConnection: TDBXConnection; AInstanceOwner: Boolean);

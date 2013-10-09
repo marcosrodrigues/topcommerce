@@ -101,7 +101,7 @@ end;
 procedure TFrmUsuario.OnDelete;
 begin
   inherited;
-  if (Confirma('Deseja excluir este Tipo de Produto?')) then
+  if (Confirma('Deseja excluir este usuário?')) then
     if (DAOClient.Delete(TUsuario.Create(cdsCrudLOGIN.AsString, cdsCrudSENHA.AsString))) then
       cdsCrud.Delete
     else
