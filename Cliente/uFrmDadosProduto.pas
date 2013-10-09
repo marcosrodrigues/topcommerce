@@ -8,7 +8,7 @@ uses
   DBGrids, Produto, TipoProduto, DBClient, uProdutoDAOClient, Mask,
   Spin, uEstoqueDAOClient, Estoque, DB, FornecedorProduto,
   Generics.Collections, Fornecedor, uFramePesquisaTipoProduto, Validade,
-  DXPCurrencyEdit;
+  DXPCurrencyEdit, RxToolEdit, RxCurrEdit;
 
 type
   TFrmDadosProduto = class(TFrmDadosMasterDetailBase)
@@ -37,11 +37,18 @@ type
     dsValidades: TDataSource;
     cdsValidades: TClientDataSet;
     cdsValidadesDATA: TDateTimeField;
-    cedPrecoVenda: TDXPCurrencyEdit;
     Label3: TLabel;
     sedEstoqueMinimo: TSpinEdit;
     Label7: TLabel;
     edtEndereco: TEdit;
+    cedPrecoVenda: TCurrencyEdit;
+    Label8: TLabel;
+    cedMargemLucro: TCurrencyEdit;
+    GroupBox1: TGroupBox;
+    Label9: TLabel;
+    cedDescontoMaximoValor: TCurrencyEdit;
+    Label10: TLabel;
+    cedDescontoMaximoPercentual: TCurrencyEdit;
     procedure sbtNovoClick(Sender: TObject);
     procedure sbtEditarClick(Sender: TObject);
     procedure sbtExcluirClick(Sender: TObject);
@@ -123,7 +130,10 @@ begin
                              sedEstoqueMinimo.Value,
                              nil,
                              nil,
-                             edtEndereco.Text);
+                             edtEndereco.Text,
+                             cedMargemLucro.Value,
+                             cedDescontoMaximoValor.Value,
+                             cedDescontoMaximoPercentual.Value);
 
   cdsFornecedores.DisableControls;
   cdsFornecedores.First;

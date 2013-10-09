@@ -8910,7 +8910,7 @@ object FrmPrincipal: TFrmPrincipal
         Height = 40
         Caption = 'Venda'
         Font.Charset = ANSI_CHARSET
-        Font.Color = clSkyBlue
+        Font.Color = 4244613
         Font.Height = -32
         Font.Name = 'Ubuntu'
         Font.Style = [fsBold]
@@ -27360,7 +27360,7 @@ object FrmPrincipal: TFrmPrincipal
         25D3A6CBAEA1A8550C4952905485E72C0673A5082BB420F10850C3A2A2998A21
         890B52ED39C37CD32453AA4ACF6BFB402906C330E57C0DC04A8FDD1F062E5B00
         00000049454E44AE426082}
-      OnClick = Label10Click
+      OnClick = Label14Click
     end
     object Label14: TLabel
       Left = 668
@@ -27381,7 +27381,7 @@ object FrmPrincipal: TFrmPrincipal
       ParentColor = False
       ParentFont = False
       Transparent = True
-      OnClick = Label10Click
+      OnClick = Label14Click
     end
     object Panel1: TPanel
       Left = 8

@@ -4,7 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, uFrmBase, Buttons, ExtCtrls, StdCtrls, TypesUtils, DBXCommon, Spin;
+  Dialogs, uFrmBase, Buttons, ExtCtrls, StdCtrls, TypesUtils, DBXCommon, Spin,
+  RxCurrEdit, RxToolEdit;
 
 type
   TFrmDadosBase = class(TFrmBase)
@@ -166,19 +167,48 @@ begin
       Result := False;
       Break;
     end;
+    if (Campo is TDateEdit) and ((Campo as TDateEdit).Date = 0) then
+    begin
+      Atencao('Campo obrigatório.');
+      Campo.SetFocus;
+      Result := False;
+      Break;
+    end;
+    if (Campo is TCurrencyEdit) and ((Campo as TCurrencyEdit).Value = 0) then
+    begin
+      Atencao('Campo obrigatório.');
+      Campo.SetFocus;
+      Result := False;
+      Break;
+    end;
   end;
 end;
 
 procedure TFrmDadosBase.LimparControles;
 var
-  i: Integer;
+  i, j: Integer;
 begin
   for i := 0 to pnlDados.ControlCount - 1 do
   begin
     if (pnlDados.Controls[i] is TEdit) then
       (pnlDados.Controls[i] as TEdit).Clear;
+    if (pnlDados.Controls[i] is TDateEdit) then
+      (pnlDados.Controls[i] as TDateEdit).Clear;
+    if (pnlDados.Controls[i] is TCurrencyEdit) then
+      (pnlDados.Controls[i] as TCurrencyEdit).Clear;
+    if (pnlDados.Controls[i] is TMemo) then
+      (pnlDados.Controls[i] as TMemo).Clear;
     if (pnlDados.Controls[i] is TSpinEdit) then
       (pnlDados.Controls[i] as TSpinEdit).Value := (pnlDados.Controls[i] as TSpinEdit).MinValue;
+
+    if (pnlDados.Controls[i] is TFrame) then
+    begin
+      for j := 0 to (pnlDados.Controls[i] as TFrame).ControlCount - 1 do
+      begin
+        if ((pnlDados.Controls[i] as TFrame).Controls[j] is TEdit) then
+          ((pnlDados.Controls[i] as TFrame).Controls[j] as TEdit).Clear;
+      end;
+    end;
   end;
   SetFirstEditOf(pnlDados);
 end;

@@ -57,6 +57,7 @@ object FramePesquisaTipoProduto: TFramePesquisaTipoProduto
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
     ParentDoubleBuffered = False
     TabOrder = 1
+    TabStop = False
     OnClick = bbtConsultarTipoProdutoClick
   end
   object edtDescricaoTipoProduto: TEdit

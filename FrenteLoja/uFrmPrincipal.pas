@@ -8,7 +8,7 @@ uses
   Dialogs, ExtCtrls, StdCtrls, Grids, DBGrids, jpeg, DB, DBClient, SqlExpr, DBXDataSnap,
   DBXCommon, DBXDBReaders, uPedidoVendaDAOClient, PedidoVenda, ItemPedidoVenda, Produto,
   Generics.Collections, Cliente, pngimage, RLConsts, DXPCurrencyEdit,
-  DBCtrls, Caixa, ImgList;
+  DBCtrls, Caixa, ImgList, StrUtils;
 
 type
   TFrmPrincipal = class(TForm)
@@ -140,6 +140,7 @@ type
     procedure Label20Click(Sender: TObject);
     procedure Label8Click(Sender: TObject);
     procedure Label10Click(Sender: TObject);
+    procedure Label14Click(Sender: TObject);
   private
     { Private declarations }
     DAOPedidoVenda: TPedidoVendaDAOClient;
@@ -676,7 +677,7 @@ begin
             cdsProdutosQUANTIDADE.AsInteger   := cdsProdutosQUANTIDADE.AsInteger + StrToInt(fAjuste.edtQuantidade.Text);
             cdsProdutosPRECO_TOTAL.AsCurrency := cdsProdutosPRECO_TOTAL.AsCurrency + fAjuste.cedPrecoTotal.Value;
 
-            lblSubtotal.Caption := FormatCurr(',0.00', StrToCurrDef(lblSubtotal.Caption, 0) + fAjuste.cedPrecoTotal.Value);
+            lblSubtotal.Caption := FormatCurr(',0.00', StrToCurrDef(AnsiReplaceStr(lblSubtotal.Caption,'.',''), 0) + fAjuste.cedPrecoTotal.Value);
 
             Item := TItemPedidoVenda.Create;
             Item.Produto    := TProduto.Create(cdsProdutosCODIGO.AsString);
@@ -686,7 +687,7 @@ begin
             Pedido := TPedidoVenda.Create;
             Pedido.Codigo := CodigoPedidoVendaAtual;
             Pedido.Data   := DataPedidoVendaAtual;
-            Pedido.Total  := StrToCurrDef(lblSubtotal.Caption, 0);
+            Pedido.Total  := StrToCurrDef(AnsiReplaceStr(lblSubtotal.Caption,'.',''), 0);
 
             DAOPedidoVenda.Update(Pedido);
           end;
@@ -702,7 +703,7 @@ begin
           cdsProdutosDESCONTO_PERCENTUAL.AsCurrency := fAjuste.cedDescPercentual.Value;
           cdsProdutosPRECO_TOTAL.AsCurrency    := fAjuste.cedPrecoTotal.Value;
 
-          lblSubtotal.Caption := FormatCurr(',0.00', StrToCurrDef(lblSubtotal.Caption, 0) + cdsProdutosPRECO_TOTAL.AsCurrency);
+          lblSubtotal.Caption := FormatCurr(',0.00', StrToCurrDef(AnsiReplaceStr(lblSubtotal.Caption,'.',''), 0) + cdsProdutosPRECO_TOTAL.AsCurrency);
 
           if CodigoPedidoVendaAtual = '' then
           begin
@@ -713,7 +714,7 @@ begin
             Pedido.Itens := TList<TItemPedidoVenda>.Create;
             Pedido.Codigo  := CodigoPedidoVendaAtual;
             Pedido.Data    := DataPedidoVendaAtual;
-            Pedido.Total   := StrToCurrDef(lblSubtotal.Caption, 0);
+            Pedido.Total   := StrToCurrDef(AnsiReplaceStr(lblSubtotal.Caption,'.',''), 0);
             Pedido.Fechada := False;
             Pedido.LoginUsuario := lblUsuario.Caption;
 
@@ -756,7 +757,7 @@ begin
           Pedido := TPedidoVenda.Create;
           Pedido.Codigo := CodigoPedidoVendaAtual;
           Pedido.Data   := DataPedidoVendaAtual;
-          Pedido.Total  := StrToCurrDef(lblSubtotal.Caption, 0);
+          Pedido.Total  := StrToCurrDef(AnsiReplaceStr(lblSubtotal.Caption,'.',''), 0);
 
           DAOPedidoVenda.Update(Pedido);
         end;
@@ -804,7 +805,7 @@ begin
 
     if (f.Excluir) then
     begin
-      lblSubtotal.Caption := FormatCurr(',0.00', StrToCurrDef(lblSubtotal.Caption, 0) - cdsProdutosPRECO_TOTAL.AsCurrency);
+      lblSubtotal.Caption := FormatCurr(',0.00', StrToCurrDef(AnsiReplaceStr(lblSubtotal.Caption,'.',''), 0) - cdsProdutosPRECO_TOTAL.AsCurrency);
 
       DAOPedidoVenda.DeleteItemDoPedido(cdsProdutosCODIGO.AsString, CodigoPedidoVendaAtual);
       cdsProdutos.Delete;
@@ -812,7 +813,7 @@ begin
       Pedido := TPedidoVenda.Create;
       Pedido.Codigo := CodigoPedidoVendaAtual;
       Pedido.Data   := DataPedidoVendaAtual;
-      Pedido.Total  := StrToCurrDef(lblSubtotal.Caption, 0);
+      Pedido.Total  := StrToCurrDef(AnsiReplaceStr(lblSubtotal.Caption,'.',''), 0);
 
       DAOPedidoVenda.Update(Pedido);
     end;
@@ -882,8 +883,8 @@ begin
 
   f := TFrmFecharVenda.Create(Self);
   try
-    f.cedTotal.Value := StrToCurrDef(lblSubtotal.Caption, 0);
-    f.Total          := StrToCurrDef(lblSubtotal.Caption, 0);
+    f.cedTotal.Value := StrToCurrDef(AnsiReplaceStr(lblSubtotal.Caption,'.',''), 0);
+    f.Total          := StrToCurrDef(AnsiReplaceStr(lblSubtotal.Caption,'.',''), 0);
     f.ShowModal;
 
     if (f.Fechar) then
@@ -928,7 +929,7 @@ end;
 
 procedure TFrmPrincipal.IniciaControles;
 begin
-  lblCliente.Caption := '';
+  lblCliente.Caption  := '';
   lblSubtotal.Caption := '';
 
   SetStatusVenda;
@@ -947,6 +948,11 @@ end;
 procedure TFrmPrincipal.Label12Click(Sender: TObject);
 begin
   FecharVenda;
+end;
+
+procedure TFrmPrincipal.Label14Click(Sender: TObject);
+begin
+  CancelarVenda;
 end;
 
 procedure TFrmPrincipal.Label15Click(Sender: TObject);

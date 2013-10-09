@@ -23,6 +23,8 @@ type
     procedure edtConsultarChange(Sender: TObject);
     procedure grdConsultaDblClick(Sender: TObject);
     procedure grdConsultaKeyPress(Sender: TObject; var Key: Char);
+    procedure edtConsultarKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     { Private declarations }
   protected
@@ -51,6 +53,15 @@ begin
   inherited;
   OnConsultar;
   lblTotalRegistros.Caption := IntToStr(cdsConsulta.RecordCount);
+end;
+
+procedure TFrmConsultaBase.edtConsultarKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  inherited;
+  case Key of
+    VK_DOWN: grdConsulta.SetFocus;
+  end;
 end;
 
 procedure TFrmConsultaBase.FormCreate(Sender: TObject);

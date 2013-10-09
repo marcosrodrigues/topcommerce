@@ -86,6 +86,15 @@ begin
   try
     query.SQLConnection := SCPrincipal.ConnTopCommerce;
     try
+      query.SQL.Text := 'SELECT * FROM ITENS_PEDIDO_VENDA WHERE CODIGO_PEDIDO = :CODIGO_PEDIDO';
+      query.ParamByName('CODIGO_PEDIDO').AsString  := CodigoPedidoVenda;
+      query.Open;
+      while not query.Eof do
+      begin
+        EstoqueDAO.AtualizaQuantidade(query.FieldByName('CODIGO_PRODUTO').AsString, 'C', query.FieldByName('QUANTIDADE').AsInteger);
+        query.Next;
+      end;
+
       query.SQL.Text := 'UPDATE PEDIDOS_VENDA SET CANCELADA = 1 WHERE CODIGO = :CODIGO';
       query.ParamByName('CODIGO').AsString  := CodigoPedidoVenda;
       query.ExecSQL;

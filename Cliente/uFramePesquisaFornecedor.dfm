@@ -57,6 +57,7 @@ object FramePesquisaFornecedor: TFramePesquisaFornecedor
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
     ParentDoubleBuffered = False
     TabOrder = 1
+    TabStop = False
     OnClick = bbtConsultarFornecedorClick
   end
   object edtNomeFornecedor: TEdit

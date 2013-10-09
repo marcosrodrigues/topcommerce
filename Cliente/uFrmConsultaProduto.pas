@@ -78,7 +78,10 @@ begin
                              0,
                              nil,
                              nil,
-                             '');
+                             '',
+                             0,
+                             0,
+                             0);
   Self.Close;
 end;
 

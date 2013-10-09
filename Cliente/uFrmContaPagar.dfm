@@ -98,6 +98,7 @@ inherited FrmContaPagar: TFrmContaPagar
     end
     object cdsCrudVALOR: TCurrencyField
       DisplayLabel = 'Valor'
+      DisplayWidth = 15
       FieldName = 'VALOR'
     end
     object cdsCrudOBSERVACOES: TStringField

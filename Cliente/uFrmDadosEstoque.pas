@@ -81,7 +81,10 @@ begin
                                                             0,
                                                             nil,
                                                             nil,
-                                                            ''),
+                                                            '',
+                                                            0,
+                                                            0,
+                                                            0),
                                          sedQuantidade.Value))) then
       Erro('Ocorreu algum erro durante a inclusão.');
 
@@ -101,7 +104,10 @@ begin
                                                             0,
                                                             nil,
                                                             nil,
-                                                            ''),
+                                                            '',
+                                                            0,
+                                                            0,
+                                                            0),
                                          sedQuantidade.Value))) then
       Erro('Ocorreu algum erro durante a alteração.');
 

@@ -37,6 +37,7 @@ inherited FrmConsultaBase: TFrmConsultaBase
       Anchors = [akLeft, akTop, akRight]
       TabOrder = 0
       OnChange = edtConsultarChange
+      OnKeyDown = edtConsultarKeyDown
     end
   end
   object pnlResultado: TPanel
@@ -74,7 +75,7 @@ inherited FrmConsultaBase: TFrmConsultaBase
     Height = 229
     Align = alClient
     DataSource = dsConsulta
-    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
     TabOrder = 2
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText

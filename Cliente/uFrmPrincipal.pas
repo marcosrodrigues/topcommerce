@@ -56,11 +56,16 @@ type
     Utilitrios1: TMenuItem;
     Configuraes1: TMenuItem;
     Caixas1: TMenuItem;
-    N3: TMenuItem;
     ContasaPagar1: TMenuItem;
     ContasaReceber1: TMenuItem;
     StatusBar: TStatusBar;
     tmDataHora: TTimer;
+    Financeiro1: TMenuItem;
+    btnContasPagar: TDXPButton;
+    btnContasReceber: TDXPButton;
+    ContasaPagar2: TMenuItem;
+    N3: TMenuItem;
+    ContasaReceber2: TMenuItem;
     procedure N11TiposdeProdutos1Click(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure N12Produtos1Click(Sender: TObject);

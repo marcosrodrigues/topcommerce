@@ -93,7 +93,7 @@ inherited FrmContaReceber: TFrmContaReceber
     end
     object cdsCrudNOME_CLIENTE_AVULSO: TStringField
       DisplayLabel = 'Cliente Avulso'
-      DisplayWidth = 40
+      DisplayWidth = 35
       FieldName = 'NOME_CLIENTE_AVULSO'
       Size = 60
     end
@@ -103,6 +103,7 @@ inherited FrmContaReceber: TFrmContaReceber
     end
     object cdsCrudVALOR: TCurrencyField
       DisplayLabel = 'Valor'
+      DisplayWidth = 15
       FieldName = 'VALOR'
     end
     object cdsCrudOBSERVACOES: TStringField

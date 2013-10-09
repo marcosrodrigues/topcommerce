@@ -1,37 +1,40 @@
 inherited FrmDadosProduto: TFrmDadosProduto
-  ClientHeight = 472
-  ClientWidth = 575
-  ExplicitWidth = 581
-  ExplicitHeight = 500
+  ClientHeight = 527
+  ClientWidth = 741
+  ExplicitWidth = 747
+  ExplicitHeight = 555
   PixelsPerInch = 96
   TextHeight = 14
   inherited splDados: TSplitter
-    Top = 213
-    Width = 575
+    Top = 233
+    Width = 741
     ExplicitTop = 163
     ExplicitWidth = 578
   end
   object Panel1: TPanel [1]
     Left = 0
-    Top = 244
-    Width = 575
-    Height = 228
+    Top = 264
+    Width = 741
+    Height = 263
     Align = alClient
     TabOrder = 4
+    ExplicitTop = 244
+    ExplicitWidth = 575
+    ExplicitHeight = 228
   end
   inherited pnlBotoes: TPanel
-    Width = 575
+    Width = 741
     ExplicitWidth = 575
     inherited chbContinuarIncluindo: TCheckBox
-      Left = 449
+      Left = 615
       ExplicitLeft = 449
     end
   end
   inherited pnlDados: TPanel
-    Width = 575
-    Height = 185
-    ExplicitWidth = 575
-    ExplicitHeight = 185
+    Width = 741
+    Height = 205
+    ExplicitWidth = 847
+    ExplicitHeight = 205
     object Label1: TLabel
       Left = 8
       Top = 11
@@ -40,7 +43,7 @@ inherited FrmDadosProduto: TFrmDadosProduto
       Caption = 'C'#243'digo'
     end
     object Label4: TLabel
-      Left = 170
+      Left = 176
       Top = 11
       Width = 91
       Height = 14
@@ -55,20 +58,27 @@ inherited FrmDadosProduto: TFrmDadosProduto
     end
     object Label5: TLabel
       Left = 8
-      Top = 103
+      Top = 139
       Width = 88
       Height = 14
       Caption = 'Pre'#231'o de Venda'
     end
     object Label7: TLabel
       Left = 8
-      Top = 132
+      Top = 168
       Width = 52
       Height = 14
       Caption = 'Endere'#231'o'
     end
+    object Label8: TLabel
+      Left = 8
+      Top = 106
+      Width = 95
+      Height = 14
+      Caption = 'Margem de Lucro'
+    end
     object edtCodigo: TEdit
-      Left = 104
+      Left = 110
       Top = 8
       Width = 51
       Height = 22
@@ -77,7 +87,7 @@ inherited FrmDadosProduto: TFrmDadosProduto
       TabOrder = 0
     end
     object edtCodigoBarras: TEdit
-      Left = 266
+      Left = 272
       Top = 8
       Width = 154
       Height = 22
@@ -86,7 +96,7 @@ inherited FrmDadosProduto: TFrmDadosProduto
       OnExit = edtCodigoBarrasExit
     end
     object bbtGerarCodigoBarras: TBitBtn
-      Left = 422
+      Left = 428
       Top = 6
       Width = 30
       Height = 25
@@ -124,7 +134,7 @@ inherited FrmDadosProduto: TFrmDadosProduto
       OnClick = bbtGerarCodigoBarrasClick
     end
     object edtDescricao: TEdit
-      Left = 104
+      Left = 110
       Top = 38
       Width = 465
       Height = 22
@@ -132,10 +142,10 @@ inherited FrmDadosProduto: TFrmDadosProduto
       TabOrder = 3
     end
     object gbEstoque: TGroupBox
-      Left = 320
+      Left = 481
       Top = 96
       Width = 249
-      Height = 84
+      Height = 91
       Caption = ' Estoque '
       Color = clBtnFace
       Font.Charset = DEFAULT_CHARSET
@@ -146,7 +156,7 @@ inherited FrmDadosProduto: TFrmDadosProduto
       ParentBackground = False
       ParentColor = False
       ParentFont = False
-      TabOrder = 7
+      TabOrder = 8
       object Label6: TLabel
         Left = 12
         Top = 24
@@ -185,12 +195,13 @@ inherited FrmDadosProduto: TFrmDadosProduto
     inline FramePesquisaTipoProduto: TFramePesquisaTipoProduto
       Left = 8
       Top = 68
-      Width = 561
+      Width = 567
       Height = 25
       AutoSize = True
       TabOrder = 4
       ExplicitLeft = 8
       ExplicitTop = 68
+      ExplicitWidth = 567
       inherited Label3: TLabel
         Width = 90
         Height = 14
@@ -198,56 +209,111 @@ inherited FrmDadosProduto: TFrmDadosProduto
         ExplicitHeight = 14
       end
       inherited edtCodigoTipoProduto: TEdit
+        Left = 102
         Height = 22
+        ExplicitLeft = 102
         ExplicitHeight = 22
       end
       inherited bbtConsultarTipoProduto: TBitBtn
-        TabStop = False
+        Left = 137
+        ExplicitLeft = 137
       end
       inherited edtDescricaoTipoProduto: TEdit
+        Left = 167
         Height = 22
+        ExplicitLeft = 167
         ExplicitHeight = 22
       end
     end
-    object cedPrecoVenda: TDXPCurrencyEdit
-      Left = 104
-      Top = 100
-      Width = 121
-      Height = 19
-      Alignment = taRightJustify
-      Options = []
-      TabOrder = 5
-      Text = '0,00'
-    end
     object edtEndereco: TEdit
-      Left = 104
-      Top = 129
-      Width = 201
+      Left = 110
+      Top = 165
+      Width = 121
       Height = 22
       MaxLength = 60
+      TabOrder = 9
+    end
+    object cedPrecoVenda: TCurrencyEdit
+      Left = 110
+      Top = 136
+      Width = 121
+      Height = 22
+      Margins.Left = 4
+      Margins.Top = 1
       TabOrder = 6
+    end
+    object cedMargemLucro: TCurrencyEdit
+      Left = 110
+      Top = 103
+      Width = 121
+      Height = 22
+      Margins.Left = 4
+      Margins.Top = 1
+      TabOrder = 5
+    end
+    object GroupBox1: TGroupBox
+      Left = 256
+      Top = 96
+      Width = 213
+      Height = 91
+      Caption = ' Desconto M'#225'ximo '
+      TabOrder = 7
+      object Label9: TLabel
+        Left = 12
+        Top = 24
+        Width = 27
+        Height = 14
+        Caption = 'Valor'
+      end
+      object Label10: TLabel
+        Left = 12
+        Top = 55
+        Width = 58
+        Height = 14
+        Caption = 'Percentual'
+      end
+      object cedDescontoMaximoValor: TCurrencyEdit
+        Left = 75
+        Top = 21
+        Width = 121
+        Height = 22
+        Margins.Left = 4
+        Margins.Top = 1
+        TabOrder = 0
+      end
+      object cedDescontoMaximoPercentual: TCurrencyEdit
+        Left = 75
+        Top = 52
+        Width = 121
+        Height = 22
+        Margins.Left = 4
+        Margins.Top = 1
+        TabOrder = 1
+      end
     end
   end
   inherited pnlDetails: TPanel
-    Top = 244
-    Width = 575
-    Height = 228
+    Top = 264
+    Width = 741
+    Height = 263
     ExplicitTop = 244
     ExplicitWidth = 575
     ExplicitHeight = 228
     inherited pgcDetail: TPageControl
-      Width = 573
-      Height = 226
+      Width = 739
+      Height = 261
       ActivePage = tbsValidades
       ExplicitWidth = 573
       ExplicitHeight = 226
       object tbsFornecedores: TTabSheet
         Caption = '&Fornecedores'
+        ExplicitWidth = 565
+        ExplicitHeight = 197
         object grdFornecedores: TDBGrid
           Left = 0
           Top = 0
-          Width = 565
-          Height = 197
+          Width = 731
+          Height = 232
           Align = alClient
           DataSource = dsFornecedores
           Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -262,11 +328,13 @@ inherited FrmDadosProduto: TFrmDadosProduto
       object tbsValidades: TTabSheet
         Caption = '&Validades'
         ImageIndex = 1
+        ExplicitWidth = 565
+        ExplicitHeight = 197
         object grdValidades: TDBGrid
           Left = 0
           Top = 0
-          Width = 565
-          Height = 197
+          Width = 731
+          Height = 232
           Align = alClient
           DataSource = dsValidades
           Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -281,8 +349,8 @@ inherited FrmDadosProduto: TFrmDadosProduto
     end
   end
   inherited pnlBotoesDetails: TPanel
-    Top = 216
-    Width = 575
+    Top = 236
+    Width = 741
     ExplicitTop = 216
     ExplicitWidth = 575
     inherited sbtNovo: TSpeedButton

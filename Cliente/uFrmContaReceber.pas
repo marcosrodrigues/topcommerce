@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, uFrmCrudBase, DB, DBClient, StdCtrls, Grids, DBGrids, Buttons,
-  ExtCtrls, uContaReceberDAOClient, ContaReceber;
+  ExtCtrls, uContaReceberDAOClient, ContaReceber, Cliente;
 
 type
   TFrmContaReceber = class(TFrmCrudBase)
@@ -61,7 +61,7 @@ procedure TFrmContaReceber.OnDelete;
 begin
   inherited;
   if (Confirma('Deseja excluir esta Conta a Pagar?')) then
-    //if (DAOClient.Delete(TContaReceber.Create(cdsCrudCODIGO.AsString))) then
+    if (DAOClient.Delete(TContaReceber.Create(cdsCrudID.AsInteger))) then
       cdsCrud.Delete
     else
       Erro('Ocorreu algum erro durante a exlusão.');
@@ -74,9 +74,11 @@ begin
   inherited;
   f := TFrmDadosContaReceber.Create(Self);
   try
-    {f.Cliente.Codigo := cdsCrudCODIGO.AsString;
-    f.Cliente.Nome   := cdsCrudNOME.AsString;
-    f.Cliente.Telefone := cdsCrudTELEFONE.AsString;}
+    f.ContaReceber.Id := cdsCrudID.AsInteger;
+    f.ContaReceber.Cliente := TCliente.Create(cdsCrudCLIENTE_CODIGO.AsString, cdsCrudNOME.AsString, '');
+    f.ContaReceber.Vencimento := cdsCrudVENCIMENTO.AsDateTime;
+    f.ContaReceber.Valor := cdsCrudVALOR.AsCurrency;
+    f.ContaReceber.Observacoes := cdsCrudOBSERVACOES.AsString;
 
     f.Operacao := opEdit;
     f.ShowModal;
@@ -118,11 +120,7 @@ begin
   inherited;
   if Confirma('Baixar a conta selecionada?') then
     if DAOClient.BaixarConta(TContaReceber.Create(cdsCrudID.AsInteger)) then
-    begin
-      cdsCrud.Edit;
-      cdsCrudBAIXADA.AsBoolean := True;
-      cdsCrud.Post;
-    end;
+      cdsCrud.Delete;
 end;
 
 end.

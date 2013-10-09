@@ -91,7 +91,7 @@ end;
 procedure TFrmCliente.OnDelete;
 begin
   inherited;
-  if (Confirma('Deseja excluir este usuário?')) then
+  if (Confirma('Deseja excluir este cliente?')) then
     if (DAOClient.Delete(TCliente.Create(cdsCrudCODIGO.AsString))) then
       cdsCrud.Delete
     else

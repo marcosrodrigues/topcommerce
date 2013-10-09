@@ -184,7 +184,8 @@ begin
   try
     query.SQLConnection := SCPrincipal.ConnTopCommerce;
     try
-      query.SQL.Text := 'INSERT INTO ' + TABELA +' (CODIGO, CODIGO_TIPO_PRODUTO, DESCRICAO, CODIGO_BARRAS, PRECO_VENDA, ESTOQUE_MINIMO, ENDERECO) VALUES (:CODIGO, :CODIGO_TIPO_PRODUTO, :DESCRICAO, :CODIGO_BARRAS, :PRECO_VENDA, :ESTOQUE_MINIMO, :ENDERECO)';
+      query.SQL.Text := 'INSERT INTO ' + TABELA +' (CODIGO, CODIGO_TIPO_PRODUTO, DESCRICAO, CODIGO_BARRAS, PRECO_VENDA, ESTOQUE_MINIMO, ENDERECO, MARGEM_LUCRO, DESCONTO_MAXIMO_VALOR, DESCONTO_MAXIMO_PERCENTUAL) '+
+                        'VALUES (:CODIGO, :CODIGO_TIPO_PRODUTO, :DESCRICAO, :CODIGO_BARRAS, :PRECO_VENDA, :ESTOQUE_MINIMO, :ENDERECO, :MARGEM_LUCRO, :DESCONTO_MAXIMO_VALOR, :DESCONTO_MAXIMO_PERCENTUAL)';
       query.ParamByName('CODIGO').AsString              := produto.Codigo;
       query.ParamByName('CODIGO_TIPO_PRODUTO').AsString := produto.TipoProduto.Codigo;
       query.ParamByName('DESCRICAO').AsString           := produto.Descricao;
@@ -192,6 +193,9 @@ begin
       query.ParamByName('PRECO_VENDA').AsCurrency       := produto.PrecoVenda;
       query.ParamByName('ESTOQUE_MINIMO').AsInteger     := produto.EstoqueMinimo;
       query.ParamByName('ENDERECO').AsString            := produto.Endereco;
+      query.ParamByName('MARGEM_LUCRO').AsCurrency      := produto.MargemLucro;
+      query.ParamByName('DESCONTO_MAXIMO_VALOR').AsCurrency      := produto.DescontoMaximoValor;
+      query.ParamByName('DESCONTO_MAXIMO_PERCENTUAL').AsCurrency := produto.DescontoMaximoPercentual;
       query.ExecSQL;
 
       query.SQL.Text := 'INSERT INTO FORNECEDORES_PRODUTO (CODIGO_PRODUTO, CODIGO_FORNECEDOR, PRECO_COMPRA) '+
@@ -239,7 +243,10 @@ begin
                       ' CODIGO_BARRAS = :CODIGO_BARRAS,             '+
                       ' PRECO_VENDA = :PRECO_VENDA,                 '+
                       ' ESTOQUE_MINIMO = :ESTOQUE_MINIMO,           '+
-                      ' ENDERECO = :ENDERECO                        '+
+                      ' ENDERECO = :ENDERECO,                       '+
+                      ' MARGEM_LUCRO = :MARGEM_LUCRO,               '+
+                      ' DESCONTO_MAXIMO_VALOR = :DESCONTO_MAXIMO_VALOR, '+
+                      ' DESCONTO_MAXIMO_PERCENTUAL = :DESCONTO_MAXIMO_PERCENTUAL '+
                       'WHERE CODIGO = :CODIGO                       ';
     query.ParamByName('CODIGO_TIPO_PRODUTO').AsString := produto.TipoProduto.Codigo;
     query.ParamByName('DESCRICAO').AsString           := produto.Descricao;
@@ -247,6 +254,9 @@ begin
     query.ParamByName('PRECO_VENDA').AsCurrency       := produto.PrecoVenda;
     query.ParamByName('ESTOQUE_MINIMO').AsInteger     := produto.EstoqueMinimo;
     query.ParamByName('ENDERECO').AsString            := produto.Endereco;
+    query.ParamByName('MARGEM_LUCRO').AsCurrency      := produto.MargemLucro;
+    query.ParamByName('DESCONTO_MAXIMO_VALOR').AsCurrency      := produto.DescontoMaximoValor;
+    query.ParamByName('DESCONTO_MAXIMO_PERCENTUAL').AsCurrency := produto.DescontoMaximoPercentual;
     query.ParamByName('CODIGO').AsString              := produto.Codigo;
 
     try
@@ -336,7 +346,10 @@ begin
                               query.FieldByName('ESTOQUE_MINIMO').AsInteger,
                               nil,
                               nil,
-                              query.FieldByName('ENDERECO').AsString);
+                              query.FieldByName('ENDERECO').AsString,
+                              query.FieldByName('MARGEM_LUCRO').AsCurrency,
+                              query.FieldByName('DESCONTO_MAXIMO_VALOR').AsCurrency,
+                              query.FieldByName('DESCONTO_MAXIMO_PERCENTUAL').AsCurrency);
   finally
     query.Free;
   end;

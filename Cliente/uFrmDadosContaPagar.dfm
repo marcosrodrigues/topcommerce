@@ -17,10 +17,8 @@ inherited FrmDadosContaPagar: TFrmDadosContaPagar
   inherited pnlDados: TPanel
     Width = 589
     Height = 252
-    ExplicitLeft = 48
-    ExplicitTop = 29
     ExplicitWidth = 589
-    ExplicitHeight = 242
+    ExplicitHeight = 252
     object Label3: TLabel
       Left = 8
       Top = 76
@@ -82,25 +80,6 @@ inherited FrmDadosContaPagar: TFrmDadosContaPagar
         ExplicitHeight = 22
       end
     end
-    object deVencimento: TDateTimePicker
-      Left = 108
-      Top = 74
-      Width = 103
-      Height = 22
-      Date = 41503.566427175920000000
-      Time = 41503.566427175920000000
-      TabOrder = 2
-    end
-    object cedValor: TDXPCurrencyEdit
-      Left = 108
-      Top = 105
-      Width = 121
-      Height = 19
-      Alignment = taRightJustify
-      Options = []
-      TabOrder = 3
-      Text = '0,00'
-    end
     object mmObservacoes: TMemo
       Left = 108
       Top = 133
@@ -115,6 +94,23 @@ inherited FrmDadosContaPagar: TFrmDadosContaPagar
       Height = 22
       ReadOnly = True
       TabOrder = 0
+    end
+    object deVencimento: TDateEdit
+      Left = 108
+      Top = 73
+      Width = 121
+      Height = 22
+      NumGlyphs = 2
+      TabOrder = 2
+    end
+    object cedValor: TCurrencyEdit
+      Left = 108
+      Top = 105
+      Width = 121
+      Height = 22
+      Margins.Left = 4
+      Margins.Top = 1
+      TabOrder = 3
     end
   end
 end

@@ -57,6 +57,7 @@ object FramePesquisaCliente: TFramePesquisaCliente
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
     ParentDoubleBuffered = False
     TabOrder = 1
+    TabStop = False
     OnClick = bbtConsultarClienteClick
   end
   object edtNomeCliente: TEdit

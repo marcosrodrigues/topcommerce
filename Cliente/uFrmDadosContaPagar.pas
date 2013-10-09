@@ -5,19 +5,20 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, uFrmDadosBase, StdCtrls, Buttons, ExtCtrls, uContaPagarDAOClient, ContaPagar,
-  DBClient, uFramePesquisaFornecedor, DXPCurrencyEdit, ComCtrls, Fornecedor;
+  DBClient, uFramePesquisaFornecedor, DXPCurrencyEdit, ComCtrls, Fornecedor,
+  Mask, RxToolEdit, RxCurrEdit;
 
 type
   TFrmDadosContaPagar = class(TFrmDadosBase)
     FramePesquisaFornecedor: TFramePesquisaFornecedor;
-    deVencimento: TDateTimePicker;
     Label3: TLabel;
-    cedValor: TDXPCurrencyEdit;
     Label1: TLabel;
     Label2: TLabel;
     mmObservacoes: TMemo;
     Label4: TLabel;
     edtId: TEdit;
+    deVencimento: TDateEdit;
+    cedValor: TCurrencyEdit;
   private
     { Private declarations }
     DAOClient: TContaPagarDAOClient;

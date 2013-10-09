@@ -26,6 +26,12 @@ type
     FValidades: TList<TValidade>;
     FEstoqueMinimo: Integer;
     FEndereco: string;
+    [JSONReflect(ctString, rtString, TDoubleInterceptor, nil, true)]
+    FMargemLucro: Currency;
+    [JSONReflect(ctString, rtString, TDoubleInterceptor, nil, true)]
+    FDescontoMaximoValor: Currency;
+    [JSONReflect(ctString, rtString, TDoubleInterceptor, nil, true)]
+    FDescontoMaximoPercentual: Currency;
   public
     property Codigo: string read FCodigo write FCodigo;
     property TipoProduto: TTipoProduto read FTipoProduto write FTipoProduto;
@@ -37,11 +43,15 @@ type
     property Validades: TList<TValidade> read FValidades write FValidades;
     property EstoqueMinimo: Integer read FEstoqueMinimo write FEstoqueMinimo;
     property Endereco: string read FEndereco write FEndereco;
+    property MargemLucro: Currency read FMargemLucro write FMargemLucro;
+    property DescontoMaximoValor: Currency read FDescontoMaximoValor write FDescontoMaximoValor;
+    property DescontoMaximoPercentual: Currency read FDescontoMaximoPercentual write FDescontoMaximoPercentual;
 
     constructor Create; overload;
     constructor Create(Codigo: string); overload;
     constructor Create(Codigo: string; TipoProduto: TTipoProduto; Descricao,
-      CodigoBarras: string; PrecoVenda: Currency; EstoqueMinimo: Integer; Fornecedores: TList<TFornecedorProduto>; Validades: TList<TValidade>; Endereco: string); overload;
+      CodigoBarras: string; PrecoVenda: Currency; EstoqueMinimo: Integer; Fornecedores: TList<TFornecedorProduto>; Validades: TList<TValidade>; Endereco: string;
+      MargemLucro, DescontoMaximoValor, DescontoMaximoPercentual: Currency); overload;
 
     destructor Destroy; override;
   end;
@@ -82,7 +92,7 @@ end;
 
 constructor TProduto.Create(Codigo: string; TipoProduto: TTipoProduto; Descricao,
   CodigoBarras: string; PrecoVenda: Currency; EstoqueMinimo: Integer; Fornecedores: TList<TFornecedorProduto>;
-  Validades: TList<TValidade>; Endereco: string);
+  Validades: TList<TValidade>; Endereco: string; MargemLucro, DescontoMaximoValor, DescontoMaximoPercentual: Currency);
 begin
   Self.FCodigo        := Codigo;
   Self.FTipoProduto   := TipoProduto;
@@ -93,6 +103,9 @@ begin
   Self.FFornecedores  := Fornecedores;
   Self.FValidades     := Validades;
   Self.FEndereco      := Endereco;
+  Self.FMargemLucro   := MargemLucro;
+  Self.FDescontoMaximoValor := DescontoMaximoValor;
+  Self.FDescontoMaximoPercentual := DescontoMaximoPercentual;
 end;
 
 destructor TProduto.Destroy;
