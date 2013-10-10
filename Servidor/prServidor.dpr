@@ -29,7 +29,11 @@ uses
   ContaPagar in '..\Entidades\ContaPagar.pas',
   ContaReceber in '..\Entidades\ContaReceber.pas',
   ContaPagarDAO in 'DAO\ContaPagarDAO.pas',
-  ContaReceberDAO in 'DAO\ContaReceberDAO.pas';
+  ContaReceberDAO in 'DAO\ContaReceberDAO.pas',
+  uFrmConfirm in '..\Utils\uFrmConfirm.pas' {FrmConfirm},
+  uFrmError in '..\Utils\uFrmError.pas' {FrmError},
+  uFrmInformation in '..\Utils\uFrmInformation.pas' {FrmInformation},
+  uFrmWarning in '..\Utils\uFrmWarning.pas' {FrmWarning};
 
 {$R *.res}
 
@@ -39,6 +43,10 @@ begin
   Application.Title := 'Servidor Top Commerce';
   Application.CreateForm(TFrmPrincipal, FrmPrincipal);
   Application.CreateForm(TSCPrincipal, SCPrincipal);
+  Application.CreateForm(TFrmConfirm, FrmConfirm);
+  Application.CreateForm(TFrmError, FrmError);
+  Application.CreateForm(TFrmInformation, FrmInformation);
+  Application.CreateForm(TFrmWarning, FrmWarning);
   Application.Run;
 end.
 

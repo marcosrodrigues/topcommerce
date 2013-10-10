@@ -36,7 +36,11 @@ uses
   uCaixaDAOClient in '..\Cliente\DAOClient\uCaixaDAOClient.pas',
   Caixa in '..\Entidades\Caixa.pas',
   uFrmAbrirCaixa in 'uFrmAbrirCaixa.pas' {FrmAbrirCaixa},
-  FuncoesBematech in '..\Utils\FuncoesBematech.pas';
+  FuncoesBematech in '..\Utils\FuncoesBematech.pas',
+  uFrmConfirm in '..\Utils\uFrmConfirm.pas' {FrmConfirm},
+  uFrmError in '..\Utils\uFrmError.pas' {FrmError},
+  uFrmInformation in '..\Utils\uFrmInformation.pas' {FrmInformation},
+  uFrmWarning in '..\Utils\uFrmWarning.pas' {FrmWarning};
 
 {$R *.res}
 
@@ -67,6 +71,10 @@ begin
   Application.CreateForm(TFrmConectandoServidor, FrmConectandoServidor);
   Application.CreateForm(TFrmInformarCliente, FrmInformarCliente);
   Application.CreateForm(TFrmAbrirCaixa, FrmAbrirCaixa);
+  Application.CreateForm(TFrmConfirm, FrmConfirm);
+  Application.CreateForm(TFrmError, FrmError);
+  Application.CreateForm(TFrmInformation, FrmInformation);
+  Application.CreateForm(TFrmWarning, FrmWarning);
   if fLogin.Usuario <> nil then
         FrmPrincipal.lblUsuario.Caption := fLogin.Usuario.Login
       else
