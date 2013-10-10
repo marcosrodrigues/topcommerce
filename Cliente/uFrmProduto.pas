@@ -18,6 +18,9 @@ type
     cdsCrudQUANTIDADE: TIntegerField;
     cdsCrudESTOQUE_MINIMO: TIntegerField;
     cdsCrudENDERECO: TStringField;
+    cdsCrudMARGEM_LUCRO: TCurrencyField;
+    cdsCrudDESCONTO_MAXIMO_VALOR: TCurrencyField;
+    cdsCrudDESCONTO_MAXIMO_PERCENTUAL: TCurrencyField;
   private
     { Private declarations }
     DAOClient: TProdutoDAOClient;
@@ -102,6 +105,9 @@ begin
     f.Produto.EstoqueMinimo     := cdsCrudESTOQUE_MINIMO.AsInteger;
     f.Produto.QuantidadeEstoque := cdsCrudQUANTIDADE.AsInteger;
     f.Produto.Endereco          := cdsCrudENDERECO.AsString;
+    f.Produto.MargemLucro       := cdsCrudMARGEM_LUCRO.AsCurrency;
+    f.Produto.DescontoMaximoValor := cdsCrudDESCONTO_MAXIMO_VALOR.AsCurrency;
+    f.Produto.DescontoMaximoPercentual := cdsCrudDESCONTO_MAXIMO_PERCENTUAL.AsCurrency;
 
     f.Operacao := opEdit;
     f.ShowModal;

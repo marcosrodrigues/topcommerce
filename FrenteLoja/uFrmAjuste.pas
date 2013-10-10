@@ -30,12 +30,15 @@ type
     procedure CalcularValor;
   public
     { Public declarations }
+    DescontoMaximoValor, DescontoMaximoPercentual: Currency;
   end;
 
 var
   FrmAjuste: TFrmAjuste;
 
 implementation
+
+uses MensagensUtils;
 
 {$R *.dfm}
 
@@ -58,11 +61,23 @@ end;
 
 procedure TFrmAjuste.cedDescPercentualExit(Sender: TObject);
 begin
+  if cedDescPercentual.Value > DescontoMaximoPercentual then
+  begin
+    Atencao('Desconto máximo permitido: '+FormatCurr(',0.00', DescontoMaximoPercentual));
+    cedDescPercentual.Value := DescontoMaximoPercentual;
+  end;
+
   CalcularValor;
 end;
 
 procedure TFrmAjuste.cedDescValorExit(Sender: TObject);
 begin
+  if cedDescValor.Value > DescontoMaximoValor * StrToIntDef(edtQuantidade.Text, 1) then
+  begin
+    Atencao('Desconto máximo permitido: '+FormatCurr(',0.00', DescontoMaximoValor * StrToIntDef(edtQuantidade.Text, 1)));
+    cedDescValor.Value := DescontoMaximoValor;
+  end;
+
   CalcularValor;
 end;
 

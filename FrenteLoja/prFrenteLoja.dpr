@@ -35,7 +35,8 @@ uses
   uFrmInformarCliente in 'uFrmInformarCliente.pas' {FrmInformarCliente},
   uCaixaDAOClient in '..\Cliente\DAOClient\uCaixaDAOClient.pas',
   Caixa in '..\Entidades\Caixa.pas',
-  uFrmAbrirCaixa in 'uFrmAbrirCaixa.pas' {FrmAbrirCaixa};
+  uFrmAbrirCaixa in 'uFrmAbrirCaixa.pas' {FrmAbrirCaixa},
+  FuncoesBematech in '..\Utils\FuncoesBematech.pas';
 
 {$R *.res}
 

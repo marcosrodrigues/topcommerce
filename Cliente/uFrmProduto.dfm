@@ -75,5 +75,17 @@ inherited FrmProduto: TFrmProduto
       FieldName = 'ENDERECO'
       Size = 50
     end
+    object cdsCrudMARGEM_LUCRO: TCurrencyField
+      FieldName = 'MARGEM_LUCRO'
+      Visible = False
+    end
+    object cdsCrudDESCONTO_MAXIMO_VALOR: TCurrencyField
+      FieldName = 'DESCONTO_MAXIMO_VALOR'
+      Visible = False
+    end
+    object cdsCrudDESCONTO_MAXIMO_PERCENTUAL: TCurrencyField
+      FieldName = 'DESCONTO_MAXIMO_PERCENTUAL'
+      Visible = False
+    end
   end
 end

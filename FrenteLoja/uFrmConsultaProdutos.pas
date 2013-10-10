@@ -26,6 +26,9 @@ type
     cdsConsultaENDERECO: TStringField;
     Panel1: TPanel;
     Image19: TImage;
+    cdsConsultaMARGEM_LUCRO: TCurrencyField;
+    cdsConsultaDESCONTO_MAXIMO_VALOR: TCurrencyField;
+    cdsConsultaDESCONTO_MAXIMO_PERCENTUAL: TCurrencyField;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -119,6 +122,8 @@ begin
   Produto.Descricao         := cdsConsultaDESCRICAO.AsString;
   Produto.PrecoVenda        := cdsConsultaPRECO_VENDA.AsCurrency;
   Produto.QuantidadeEstoque := cdsConsultaQUANTIDADE.AsInteger;
+  Produto.DescontoMaximoValor := cdsConsultaDESCONTO_MAXIMO_VALOR.AsCurrency;
+  Produto.DescontoMaximoPercentual := cdsConsultaDESCONTO_MAXIMO_PERCENTUAL.AsCurrency;
   Self.Close;
 end;
 

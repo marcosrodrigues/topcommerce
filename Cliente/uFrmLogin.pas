@@ -33,6 +33,7 @@ type
     { Public declarations }
     Usuario: TUsuario;
     FLoginSucess: Boolean;
+    TrocarUsuario: Boolean;
   end;
 
 var
@@ -62,7 +63,10 @@ end;
 
 procedure TFrmLogin.btnSairClick(Sender: TObject);
 begin
-  Application.Terminate;
+  if TrocarUsuario then
+    Close
+  else
+    Application.Terminate;
 end;
 
 procedure TFrmLogin.FormCreate(Sender: TObject);

@@ -209,6 +209,19 @@ begin
           ((pnlDados.Controls[i] as TFrame).Controls[j] as TEdit).Clear;
       end;
     end;
+
+    if (pnlDados.Controls[i] is TGroupBox) then
+    begin
+      for j := 0 to (pnlDados.Controls[i] as TGroupBox).ControlCount - 1 do
+      begin
+        if ((pnlDados.Controls[i] as TGroupBox).Controls[j] is TEdit) then
+          ((pnlDados.Controls[i] as TGroupBox).Controls[j] as TEdit).Clear;
+        if ((pnlDados.Controls[i] as TGroupBox).Controls[j] is TCurrencyEdit) then
+          ((pnlDados.Controls[i] as TGroupBox).Controls[j] as TCurrencyEdit).Clear;
+        if ((pnlDados.Controls[i] as TGroupBox).Controls[j] is TSpinEdit) then
+          ((pnlDados.Controls[i] as TGroupBox).Controls[j] as TSpinEdit).Value := ((pnlDados.Controls[i] as TGroupBox).Controls[j] as TSpinEdit).MinValue;
+      end;
+    end;
   end;
   SetFirstEditOf(pnlDados);
 end;

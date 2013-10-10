@@ -327,5 +327,17 @@ object FrmConsultaProdutos: TFrmConsultaProdutos
       FieldName = 'ENDERECO'
       Size = 50
     end
+    object cdsConsultaMARGEM_LUCRO: TCurrencyField
+      FieldName = 'MARGEM_LUCRO'
+      Visible = False
+    end
+    object cdsConsultaDESCONTO_MAXIMO_VALOR: TCurrencyField
+      FieldName = 'DESCONTO_MAXIMO_VALOR'
+      Visible = False
+    end
+    object cdsConsultaDESCONTO_MAXIMO_PERCENTUAL: TCurrencyField
+      FieldName = 'DESCONTO_MAXIMO_PERCENTUAL'
+      Visible = False
+    end
   end
 end

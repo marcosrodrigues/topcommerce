@@ -6,35 +6,34 @@ inherited FrmDadosProduto: TFrmDadosProduto
   PixelsPerInch = 96
   TextHeight = 14
   inherited splDados: TSplitter
-    Top = 233
+    Top = 244
     Width = 741
     ExplicitTop = 163
     ExplicitWidth = 578
   end
   object Panel1: TPanel [1]
     Left = 0
-    Top = 264
+    Top = 275
     Width = 741
-    Height = 263
+    Height = 252
     Align = alClient
     TabOrder = 4
-    ExplicitTop = 244
-    ExplicitWidth = 575
-    ExplicitHeight = 228
+    ExplicitTop = 264
+    ExplicitHeight = 263
   end
   inherited pnlBotoes: TPanel
     Width = 741
-    ExplicitWidth = 575
+    ExplicitWidth = 741
     inherited chbContinuarIncluindo: TCheckBox
       Left = 615
-      ExplicitLeft = 449
+      ExplicitLeft = 615
     end
   end
   inherited pnlDados: TPanel
     Width = 741
-    Height = 205
-    ExplicitWidth = 847
-    ExplicitHeight = 205
+    Height = 216
+    ExplicitWidth = 741
+    ExplicitHeight = 216
     object Label1: TLabel
       Left = 8
       Top = 11
@@ -58,14 +57,14 @@ inherited FrmDadosProduto: TFrmDadosProduto
     end
     object Label5: TLabel
       Left = 8
-      Top = 139
+      Top = 161
       Width = 88
       Height = 14
       Caption = 'Pre'#231'o de Venda'
     end
     object Label7: TLabel
       Left = 8
-      Top = 168
+      Top = 190
       Width = 52
       Height = 14
       Caption = 'Endere'#231'o'
@@ -76,6 +75,32 @@ inherited FrmDadosProduto: TFrmDadosProduto
       Width = 95
       Height = 14
       Caption = 'Margem de Lucro'
+    end
+    object Label11: TLabel
+      Left = 8
+      Top = 126
+      Width = 211
+      Height = 13
+      Caption = 'A margem de lucro calcula o pre'#231'o de venda'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clNavy
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label12: TLabel
+      Left = 8
+      Top = 138
+      Width = 172
+      Height = 13
+      Caption = 'com base no maior pre'#231'o de compra'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clNavy
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
     end
     object edtCodigo: TEdit
       Left = 110
@@ -156,7 +181,7 @@ inherited FrmDadosProduto: TFrmDadosProduto
       ParentBackground = False
       ParentColor = False
       ParentFont = False
-      TabOrder = 8
+      TabOrder = 9
       object Label6: TLabel
         Left = 12
         Top = 24
@@ -227,15 +252,15 @@ inherited FrmDadosProduto: TFrmDadosProduto
     end
     object edtEndereco: TEdit
       Left = 110
-      Top = 165
+      Top = 187
       Width = 121
       Height = 22
       MaxLength = 60
-      TabOrder = 9
+      TabOrder = 7
     end
     object cedPrecoVenda: TCurrencyEdit
       Left = 110
-      Top = 136
+      Top = 158
       Width = 121
       Height = 22
       Margins.Left = 4
@@ -249,7 +274,9 @@ inherited FrmDadosProduto: TFrmDadosProduto
       Height = 22
       Margins.Left = 4
       Margins.Top = 1
+      DisplayFormat = '% ,0.00;-% ,0.00'
       TabOrder = 5
+      OnExit = cedMargemLucroExit
     end
     object GroupBox1: TGroupBox
       Left = 256
@@ -257,7 +284,7 @@ inherited FrmDadosProduto: TFrmDadosProduto
       Width = 213
       Height = 91
       Caption = ' Desconto M'#225'ximo '
-      TabOrder = 7
+      TabOrder = 8
       object Label9: TLabel
         Left = 12
         Top = 24
@@ -288,32 +315,32 @@ inherited FrmDadosProduto: TFrmDadosProduto
         Height = 22
         Margins.Left = 4
         Margins.Top = 1
+        DisplayFormat = '% ,0.00;-% ,0.00'
         TabOrder = 1
       end
     end
   end
   inherited pnlDetails: TPanel
-    Top = 264
+    Top = 275
     Width = 741
-    Height = 263
-    ExplicitTop = 244
-    ExplicitWidth = 575
-    ExplicitHeight = 228
+    Height = 252
+    ExplicitTop = 264
+    ExplicitWidth = 741
+    ExplicitHeight = 263
     inherited pgcDetail: TPageControl
       Width = 739
-      Height = 261
-      ActivePage = tbsValidades
-      ExplicitWidth = 573
-      ExplicitHeight = 226
+      Height = 250
+      ActivePage = tbsFornecedores
+      ExplicitWidth = 739
+      ExplicitHeight = 261
       object tbsFornecedores: TTabSheet
         Caption = '&Fornecedores'
-        ExplicitWidth = 565
-        ExplicitHeight = 197
+        ExplicitHeight = 232
         object grdFornecedores: TDBGrid
           Left = 0
           Top = 0
           Width = 731
-          Height = 232
+          Height = 221
           Align = alClient
           DataSource = dsFornecedores
           Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -328,13 +355,12 @@ inherited FrmDadosProduto: TFrmDadosProduto
       object tbsValidades: TTabSheet
         Caption = '&Validades'
         ImageIndex = 1
-        ExplicitWidth = 565
-        ExplicitHeight = 197
+        ExplicitHeight = 232
         object grdValidades: TDBGrid
           Left = 0
           Top = 0
           Width = 731
-          Height = 232
+          Height = 221
           Align = alClient
           DataSource = dsValidades
           Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -349,10 +375,10 @@ inherited FrmDadosProduto: TFrmDadosProduto
     end
   end
   inherited pnlBotoesDetails: TPanel
-    Top = 236
+    Top = 247
     Width = 741
-    ExplicitTop = 216
-    ExplicitWidth = 575
+    ExplicitTop = 236
+    ExplicitWidth = 741
     inherited sbtNovo: TSpeedButton
       OnClick = sbtNovoClick
     end
@@ -376,10 +402,16 @@ inherited FrmDadosProduto: TFrmDadosProduto
         Name = 'x1'
         Fields = 'CODIGO_FORNECEDOR'
         Options = [ixPrimary]
+      end
+      item
+        Name = 'x2'
+        Fields = 'PRECO_COMPRA'
+        Options = [ixCaseInsensitive]
       end>
     IndexFieldNames = 'CODIGO_FORNECEDOR'
     Params = <>
     StoreDefs = True
+    AfterPost = cdsFornecedoresAfterPost
     Left = 32
     Top = 296
     object cdsFornecedoresCODIGO_FORNECEDOR: TStringField

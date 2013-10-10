@@ -1,0 +1,1620 @@
+2013-10-10 0:08:18:769 - ----------------------------------------------------------------------- 
+2013-10-10 0:08:18:770 - Bematech_FI_LeInformacoesConfiguracao 
+2013-10-10 0:08:18:771 - Versão BemaFI32.Dll: 6,1,2,0
+2013-10-10 0:08:18:771 - Versão BemaMFD.dll: 0
+2013-10-10 0:08:18:772 - Versão BemaMFD2.dll: 0
+2013-10-10 0:08:18:772 - path: C:\Projetos\TopCommerce\FrenteLoja\Debug\Win32
+2013-10-10 0:08:18:772 - Log: 1
+2013-10-10 0:08:18:773 - LogDiario: 1
+2013-10-10 0:08:18:773 - Status: 0
+2013-10-10 0:08:18:774 - Retorno: 0
+2013-10-10 0:08:18:774 - ControlePorta: 1
+2013-10-10 0:08:18:775 - StatusFuncao: 0
+2013-10-10 0:08:18:776 - ModeloImp: BEMATECH
+2013-10-10 0:08:18:777 - ModoGaveta: 0
+2013-10-10 0:08:18:777 - EmulMFD: 0
+2013-10-10 0:08:18:778 - StatusCheque: 0
+2013-10-10 0:08:18:778 - Porta: COM5
+2013-10-10 0:08:18:779 - StatusErro: 1
+2013-10-10 0:08:18:779 - TimeOutZ: 99
+2013-10-10 0:08:18:780 - Impressora: 1
+2013-10-10 0:08:18:780 - TimeOutGerencial: 40
+2013-10-10 0:08:18:781 - CrLfVinculado: 0
+2013-10-10 0:08:18:782 - Gerencial: 0
+2013-10-10 0:08:18:783 - ForceWTSClient: 1
+2013-10-10 0:08:18:783 - RetriesWTSCmd: 3
+2013-10-10 0:08:18:783 - Software House - COO: 0
+2013-10-10 0:08:18:784 - Software House - NumeroAplicativo: 0
+2013-10-10 0:08:18:785 - Software House - CNPJ: 0
+2013-10-10 0:08:18:785 - Software House - IE: 0
+2013-10-10 0:08:18:786 - Software House - IM: 0
+2013-10-10 0:08:18:786 - Software House - RazaoSocial: 0
+2013-10-10 0:08:18:787 - Software House - NomeAplicativo: 0
+2013-10-10 0:08:18:787 - Software House - Versao: 0
+2013-10-10 0:08:18:788 - Software House - Linha1: 0
+2013-10-10 0:08:18:789 - Software House - Linha2: 0
+2013-10-10 0:08:18:789 - ECF - IM: 0
+2013-10-10 0:08:18:790 - ECF - UF: 0
+2013-10-10 0:08:18:790 - GerarRFD: 0
+2013-10-10 0:08:18:791 - CalculoIcmsCupom: 0
+2013-10-10 0:08:18:791 - HabilitaRFDImpMFD: 0
+2013-10-10 0:08:18:792 - Retorno Bematech_FI_LeInformacoesConfiguracao: OK
+2013-10-10 0:08:24:158 - ----------------------------------------------------------------------- 
+2013-10-10 0:08:24:158 - Bematech_FI_VerificaTipoImpressora 
+2013-10-10 0:08:24:159 - CreateFile()== INVALID_HANDLE_VALUE!
+GetLastError ( ) = 20
+2013-10-10 0:08:24:159 - Retorno Bematech_FI_AbrePortaSerial: -5 - Erro ao abrir a porta 
+2013-10-10 0:08:24:159 - Bematech_FI_TrataComando - Erro na abertura da porta -5
+2013-10-10 0:08:24:159 - Retorno Bematech_FI_VerificaTipoImpressora: 0 - Erro de comunicacao 
+2013-10-10 0:08:57:583 - ----------------------------------------------------------------------- 
+2013-10-10 0:08:57:584 - Bematech_FI_LeInformacoesConfiguracao 
+2013-10-10 0:08:57:585 - Versão BemaFI32.Dll: 6,1,2,0
+2013-10-10 0:08:57:586 - Versão BemaMFD.dll: 0
+2013-10-10 0:08:57:586 - Versão BemaMFD2.dll: 0
+2013-10-10 0:08:57:586 - path: C:\Projetos\TopCommerce\FrenteLoja\Debug\Win32
+2013-10-10 0:08:57:587 - Log: 1
+2013-10-10 0:08:57:587 - LogDiario: 1
+2013-10-10 0:08:57:587 - Status: 0
+2013-10-10 0:08:57:588 - Retorno: 0
+2013-10-10 0:08:57:588 - ControlePorta: 1
+2013-10-10 0:08:57:589 - StatusFuncao: 0
+2013-10-10 0:08:57:589 - ModeloImp: BEMATECH
+2013-10-10 0:08:57:589 - ModoGaveta: 0
+2013-10-10 0:08:57:590 - EmulMFD: 0
+2013-10-10 0:08:57:590 - StatusCheque: 0
+2013-10-10 0:08:57:591 - Porta: COM1
+2013-10-10 0:08:57:591 - StatusErro: 1
+2013-10-10 0:08:57:591 - TimeOutZ: 99
+2013-10-10 0:08:57:592 - Impressora: 1
+2013-10-10 0:08:57:592 - TimeOutGerencial: 40
+2013-10-10 0:08:57:593 - CrLfVinculado: 0
+2013-10-10 0:08:57:593 - Gerencial: 0
+2013-10-10 0:08:57:594 - ForceWTSClient: 1
+2013-10-10 0:08:57:594 - RetriesWTSCmd: 3
+2013-10-10 0:08:57:594 - Software House - COO: 0
+2013-10-10 0:08:57:595 - Software House - NumeroAplicativo: 0
+2013-10-10 0:08:57:595 - Software House - CNPJ: 0
+2013-10-10 0:08:57:595 - Software House - IE: 0
+2013-10-10 0:08:57:596 - Software House - IM: 0
+2013-10-10 0:08:57:597 - Software House - RazaoSocial: 0
+2013-10-10 0:08:57:597 - Software House - NomeAplicativo: 0
+2013-10-10 0:08:57:598 - Software House - Versao: 0
+2013-10-10 0:08:57:599 - Software House - Linha1: 0
+2013-10-10 0:08:57:599 - Software House - Linha2: 0
+2013-10-10 0:08:57:600 - ECF - IM: 0
+2013-10-10 0:08:57:600 - ECF - UF: 0
+2013-10-10 0:08:57:601 - GerarRFD: 0
+2013-10-10 0:08:57:601 - CalculoIcmsCupom: 0
+2013-10-10 0:08:57:602 - HabilitaRFDImpMFD: 0
+2013-10-10 0:08:57:603 - Retorno Bematech_FI_LeInformacoesConfiguracao: OK
+2013-10-10 0:09:04:357 - ----------------------------------------------------------------------- 
+2013-10-10 0:09:04:358 - Bematech_FI_VerificaTipoImpressora 
+2013-10-10 0:09:04:358 - 0
+2013-10-10 0:09:04:359 - Retorno Bematech_FI_AbrePortaSerial: -5 - Erro ao abrir a porta 
+2013-10-10 0:09:04:360 - Bematech_FI_TrataComando - Erro na abertura da porta -5
+2013-10-10 0:09:04:360 - Retorno Bematech_FI_VerificaTipoImpressora: 0 - Erro de comunicacao 
+2013-10-10 0:10:36:485 - ----------------------------------------------------------------------- 
+2013-10-10 0:10:36:485 - Bematech_FI_LeInformacoesConfiguracao 
+2013-10-10 0:10:36:486 - Versão BemaFI32.Dll: 6,1,2,0
+2013-10-10 0:10:36:486 - Versão BemaMFD.dll: 0
+2013-10-10 0:10:36:487 - Versão BemaMFD2.dll: 0
+2013-10-10 0:10:36:487 - path: C:\Projetos\TopCommerce\FrenteLoja\Debug\Win32
+2013-10-10 0:10:36:487 - Log: 1
+2013-10-10 0:10:36:488 - LogDiario: 1
+2013-10-10 0:10:36:488 - Status: 0
+2013-10-10 0:10:36:488 - Retorno: 0
+2013-10-10 0:10:36:489 - ControlePorta: 1
+2013-10-10 0:10:36:489 - StatusFuncao: 0
+2013-10-10 0:10:36:490 - ModeloImp: BEMATECH
+2013-10-10 0:10:36:490 - ModoGaveta: 0
+2013-10-10 0:10:36:490 - EmulMFD: 0
+2013-10-10 0:10:36:491 - StatusCheque: 0
+2013-10-10 0:10:36:491 - Porta: COM1
+2013-10-10 0:10:36:492 - StatusErro: 1
+2013-10-10 0:10:36:492 - TimeOutZ: 99
+2013-10-10 0:10:36:492 - Impressora: 1
+2013-10-10 0:10:36:493 - TimeOutGerencial: 40
+2013-10-10 0:10:36:494 - CrLfVinculado: 0
+2013-10-10 0:10:36:494 - Gerencial: 0
+2013-10-10 0:10:36:494 - ForceWTSClient: 1
+2013-10-10 0:10:36:495 - RetriesWTSCmd: 3
+2013-10-10 0:10:36:495 - Software House - COO: 0
+2013-10-10 0:10:36:495 - Software House - NumeroAplicativo: 0
+2013-10-10 0:10:36:496 - Software House - CNPJ: 0
+2013-10-10 0:10:36:496 - Software House - IE: 0
+2013-10-10 0:10:36:497 - Software House - IM: 0
+2013-10-10 0:10:36:497 - Software House - RazaoSocial: 0
+2013-10-10 0:10:36:497 - Software House - NomeAplicativo: 0
+2013-10-10 0:10:36:498 - Software House - Versao: 0
+2013-10-10 0:10:36:498 - Software House - Linha1: 0
+2013-10-10 0:10:36:498 - Software House - Linha2: 0
+2013-10-10 0:10:36:499 - ECF - IM: 0
+2013-10-10 0:10:36:499 - ECF - UF: 0
+2013-10-10 0:10:36:500 - GerarRFD: 0
+2013-10-10 0:10:36:500 - CalculoIcmsCupom: 0
+2013-10-10 0:10:36:500 - HabilitaRFDImpMFD: 0
+2013-10-10 0:10:36:501 - Retorno Bematech_FI_LeInformacoesConfiguracao: OK
+2013-10-10 0:10:42:159 - ----------------------------------------------------------------------- 
+2013-10-10 0:10:42:159 - Bematech_FI_VerificaTipoImpressora 
+2013-10-10 0:10:42:159 - 0
+2013-10-10 0:10:42:159 - Retorno Bematech_FI_AbrePortaSerial: -5 - Erro ao abrir a porta 
+2013-10-10 0:10:42:159 - Bematech_FI_TrataComando - Erro na abertura da porta -5
+2013-10-10 0:10:42:160 - Retorno Bematech_FI_VerificaTipoImpressora: 0 - Erro de comunicacao 
+2013-10-10 0:10:48:629 - ----------------------------------------------------------------------- 
+2013-10-10 0:10:48:630 - Bematech_FI_VerificaTipoImpressora 
+2013-10-10 0:10:48:630 - Zq~v0Ñ0
+2013-10-10 0:10:48:631 - Retorno Bematech_FI_AbrePortaSerial: -5 - Erro ao abrir a porta 
+2013-10-10 0:10:48:631 - Bematech_FI_TrataComando - Erro na abertura da porta -5
+2013-10-10 0:10:48:632 - Retorno Bematech_FI_VerificaTipoImpressora: 0 - Erro de comunicacao 
+2013-10-10 0:12:42:993 - ----------------------------------------------------------------------- 
+2013-10-10 0:12:42:993 - Bematech_FI_LeInformacoesConfiguracao 
+2013-10-10 0:12:42:993 - Versão BemaFI32.Dll: 6,1,2,0
+2013-10-10 0:12:42:994 - Versão BemaMFD.dll: 0
+2013-10-10 0:12:42:994 - Versão BemaMFD2.dll: 0
+2013-10-10 0:12:42:995 - path: C:\Projetos\TopCommerce\FrenteLoja\Debug\Win32
+2013-10-10 0:12:42:995 - Log: 1
+2013-10-10 0:12:42:995 - LogDiario: 1
+2013-10-10 0:12:42:995 - Status: 0
+2013-10-10 0:12:42:996 - Retorno: 0
+2013-10-10 0:12:42:996 - ControlePorta: 1
+2013-10-10 0:12:42:996 - StatusFuncao: 0
+2013-10-10 0:12:42:997 - ModeloImp: BEMATECH
+2013-10-10 0:12:42:997 - ModoGaveta: 0
+2013-10-10 0:12:42:997 - EmulMFD: 0
+2013-10-10 0:12:42:998 - StatusCheque: 0
+2013-10-10 0:12:42:998 - Porta: DEFAULT
+2013-10-10 0:12:42:998 - StatusErro: 1
+2013-10-10 0:12:42:999 - TimeOutZ: 99
+2013-10-10 0:12:42:999 - Impressora: 1
+2013-10-10 0:12:42:999 - TimeOutGerencial: 40
+2013-10-10 0:12:43:  0 - CrLfVinculado: 0
+2013-10-10 0:12:43:  1 - Gerencial: 0
+2013-10-10 0:12:43:  1 - ForceWTSClient: 1
+2013-10-10 0:12:43:  1 - RetriesWTSCmd: 3
+2013-10-10 0:12:43:  2 - Software House - COO: 0
+2013-10-10 0:12:43:  2 - Software House - NumeroAplicativo: 0
+2013-10-10 0:12:43:  2 - Software House - CNPJ: 0
+2013-10-10 0:12:43:  3 - Software House - IE: 0
+2013-10-10 0:12:43:  3 - Software House - IM: 0
+2013-10-10 0:12:43:  4 - Software House - RazaoSocial: 0
+2013-10-10 0:12:43:  4 - Software House - NomeAplicativo: 0
+2013-10-10 0:12:43:  4 - Software House - Versao: 0
+2013-10-10 0:12:43:  5 - Software House - Linha1: 0
+2013-10-10 0:12:43:  5 - Software House - Linha2: 0
+2013-10-10 0:12:43:  5 - ECF - IM: 0
+2013-10-10 0:12:43:  6 - ECF - UF: 0
+2013-10-10 0:12:43:  6 - GerarRFD: 0
+2013-10-10 0:12:43:  7 - CalculoIcmsCupom: 0
+2013-10-10 0:12:43:  7 - HabilitaRFDImpMFD: 0
+2013-10-10 0:12:43:  7 - Retorno Bematech_FI_LeInformacoesConfiguracao: OK
+2013-10-10 0:12:47:190 - ----------------------------------------------------------------------- 
+2013-10-10 0:12:47:191 - Bematech_FI_VerificaTipoImpressora 
+2013-10-10 0:12:47:508 - Retorno Bematech_FI_AbrePortaSerial: -5 - Erro ao abrir a porta 
+2013-10-10 0:12:47:508 - Bematech_FI_TrataComando - Erro na abertura da porta -5
+2013-10-10 0:12:47:508 - Retorno Bematech_FI_VerificaTipoImpressora: 0 - Erro de comunicacao 
+2013-10-10 0:14:30:188 - ----------------------------------------------------------------------- 
+2013-10-10 0:14:30:189 - Bematech_FI_LeInformacoesConfiguracao 
+2013-10-10 0:14:30:189 - Versão BemaFI32.Dll: 6,1,2,0
+2013-10-10 0:14:30:190 - Versão BemaMFD.dll: 0
+2013-10-10 0:14:30:191 - Versão BemaMFD2.dll: 0
+2013-10-10 0:14:30:191 - path: C:\Projetos\TopCommerce\FrenteLoja\Debug\Win32
+2013-10-10 0:14:30:191 - Log: 1
+2013-10-10 0:14:30:191 - LogDiario: 1
+2013-10-10 0:14:30:192 - Status: 0
+2013-10-10 0:14:30:192 - Retorno: 0
+2013-10-10 0:14:30:192 - ControlePorta: 1
+2013-10-10 0:14:30:193 - StatusFuncao: 0
+2013-10-10 0:14:30:193 - ModeloImp: BEMATECH
+2013-10-10 0:14:30:194 - ModoGaveta: 0
+2013-10-10 0:14:30:194 - EmulMFD: 0
+2013-10-10 0:14:30:194 - StatusCheque: 0
+2013-10-10 0:14:30:194 - Porta: USB
+2013-10-10 0:14:30:195 - StatusErro: 1
+2013-10-10 0:14:30:196 - TimeOutZ: 99
+2013-10-10 0:14:30:196 - Impressora: 1
+2013-10-10 0:14:30:197 - TimeOutGerencial: 40
+2013-10-10 0:14:30:197 - CrLfVinculado: 0
+2013-10-10 0:14:30:198 - Gerencial: 0
+2013-10-10 0:14:30:198 - ForceWTSClient: 1
+2013-10-10 0:14:30:198 - RetriesWTSCmd: 3
+2013-10-10 0:14:30:199 - Software House - COO: 0
+2013-10-10 0:14:30:199 - Software House - NumeroAplicativo: 0
+2013-10-10 0:14:30:200 - Software House - CNPJ: 0
+2013-10-10 0:14:30:200 - Software House - IE: 0
+2013-10-10 0:14:30:201 - Software House - IM: 0
+2013-10-10 0:14:30:201 - Software House - RazaoSocial: 0
+2013-10-10 0:14:30:202 - Software House - NomeAplicativo: 0
+2013-10-10 0:14:30:202 - Software House - Versao: 0
+2013-10-10 0:14:30:203 - Software House - Linha1: 0
+2013-10-10 0:14:30:203 - Software House - Linha2: 0
+2013-10-10 0:14:30:204 - ECF - IM: 0
+2013-10-10 0:14:30:204 - ECF - UF: 0
+2013-10-10 0:14:30:204 - GerarRFD: 0
+2013-10-10 0:14:30:205 - CalculoIcmsCupom: 0
+2013-10-10 0:14:30:205 - HabilitaRFDImpMFD: 0
+2013-10-10 0:14:30:205 - Retorno Bematech_FI_LeInformacoesConfiguracao: OK
+2013-10-10 0:14:34:948 - ----------------------------------------------------------------------- 
+2013-10-10 0:14:34:949 - Bematech_FI_VerificaTipoImpressora 
+2013-10-10 0:14:35:450 - Retorno Bematech_FI_AbrePortaSerial: -5 - Erro ao abrir a USB 
+2013-10-10 0:14:35:451 - Bematech_FI_TrataComando - Erro na abertura da porta -5
+2013-10-10 0:14:35:451 - Retorno Bematech_FI_VerificaTipoImpressora: 0 - Erro de comunicacao 
+2013-10-10 0:16:15:908 - ----------------------------------------------------------------------- 
+2013-10-10 0:16:15:908 - Bematech_FI_LeInformacoesConfiguracao 
+2013-10-10 0:16:15:908 - Versão BemaFI32.Dll: 6,1,2,0
+2013-10-10 0:16:15:908 - Versão BemaMFD.dll: 0
+2013-10-10 0:16:15:909 - Versão BemaMFD2.dll: 0
+2013-10-10 0:16:15:909 - path: C:\Projetos\TopCommerce\FrenteLoja\Debug\Win32
+2013-10-10 0:16:15:910 - Log: 1
+2013-10-10 0:16:15:910 - LogDiario: 1
+2013-10-10 0:16:15:910 - Status: 0
+2013-10-10 0:16:15:911 - Retorno: 0
+2013-10-10 0:16:15:911 - ControlePorta: 1
+2013-10-10 0:16:15:912 - StatusFuncao: 0
+2013-10-10 0:16:15:912 - ModeloImp: BEMATECH
+2013-10-10 0:16:15:912 - ModoGaveta: 0
+2013-10-10 0:16:15:913 - EmulMFD: 1
+2013-10-10 0:16:15:913 - StatusCheque: 0
+2013-10-10 0:16:15:914 - Porta: USB
+2013-10-10 0:16:15:914 - StatusErro: 1
+2013-10-10 0:16:15:915 - TimeOutZ: 99
+2013-10-10 0:16:15:915 - Impressora: 1
+2013-10-10 0:16:15:916 - TimeOutGerencial: 40
+2013-10-10 0:16:15:917 - CrLfVinculado: 0
+2013-10-10 0:16:15:918 - Gerencial: 0
+2013-10-10 0:16:15:918 - ForceWTSClient: 1
+2013-10-10 0:16:15:918 - RetriesWTSCmd: 3
+2013-10-10 0:16:15:919 - Software House - COO: 0
+2013-10-10 0:16:15:919 - Software House - NumeroAplicativo: 0
+2013-10-10 0:16:15:920 - Software House - CNPJ: 0
+2013-10-10 0:16:15:920 - Software House - IE: 0
+2013-10-10 0:16:15:920 - Software House - IM: 0
+2013-10-10 0:16:15:921 - Software House - RazaoSocial: 0
+2013-10-10 0:16:15:921 - Software House - NomeAplicativo: 0
+2013-10-10 0:16:15:922 - Software House - Versao: 0
+2013-10-10 0:16:15:922 - Software House - Linha1: 0
+2013-10-10 0:16:15:923 - Software House - Linha2: 0
+2013-10-10 0:16:15:923 - ECF - IM: 0
+2013-10-10 0:16:15:923 - ECF - UF: 0
+2013-10-10 0:16:15:924 - GerarRFD: 0
+2013-10-10 0:16:15:924 - CalculoIcmsCupom: 0
+2013-10-10 0:16:15:924 - HabilitaRFDImpMFD: 0
+2013-10-10 0:16:15:925 - Retorno Bematech_FI_LeInformacoesConfiguracao: OK
+2013-10-10 0:16:21:622 - ----------------------------------------------------------------------- 
+2013-10-10 0:16:21:622 - Bematech_FI_VerificaTipoImpressora 
+2013-10-10 0:16:22:969 - Retorno impressora: 1
+2013-10-10 0:16:22:969 - Retorno Bematech_FI_VerificaTipoImpressora: 1
+2013-10-10 0:17:44:195 - ----------------------------------------------------------------------- 
+2013-10-10 0:17:44:195 - Bematech_FI_LeInformacoesConfiguracao 
+2013-10-10 0:17:44:196 - Versão BemaFI32.Dll: 6,1,2,0
+2013-10-10 0:17:44:197 - Versão BemaMFD.dll: 0
+2013-10-10 0:17:44:197 - Versão BemaMFD2.dll: 0
+2013-10-10 0:17:44:198 - path: C:\Projetos\TopCommerce\FrenteLoja\Debug\Win32
+2013-10-10 0:17:44:198 - Log: 1
+2013-10-10 0:17:44:199 - LogDiario: 1
+2013-10-10 0:17:44:200 - Status: 0
+2013-10-10 0:17:44:200 - Retorno: 0
+2013-10-10 0:17:44:201 - ControlePorta: 1
+2013-10-10 0:17:44:202 - StatusFuncao: 0
+2013-10-10 0:17:44:202 - ModeloImp: BEMATECH
+2013-10-10 0:17:44:203 - ModoGaveta: 0
+2013-10-10 0:17:44:203 - EmulMFD: 1
+2013-10-10 0:17:44:204 - StatusCheque: 0
+2013-10-10 0:17:44:205 - Porta: USB
+2013-10-10 0:17:44:205 - StatusErro: 1
+2013-10-10 0:17:44:206 - TimeOutZ: 99
+2013-10-10 0:17:44:206 - Impressora: 1
+2013-10-10 0:17:44:207 - TimeOutGerencial: 40
+2013-10-10 0:17:44:208 - CrLfVinculado: 0
+2013-10-10 0:17:44:209 - Gerencial: 0
+2013-10-10 0:17:44:209 - ForceWTSClient: 1
+2013-10-10 0:17:44:209 - RetriesWTSCmd: 3
+2013-10-10 0:17:44:210 - Software House - COO: 0
+2013-10-10 0:17:44:211 - Software House - NumeroAplicativo: 0
+2013-10-10 0:17:44:212 - Software House - CNPJ: 0
+2013-10-10 0:17:44:212 - Software House - IE: 0
+2013-10-10 0:17:44:213 - Software House - IM: 0
+2013-10-10 0:17:44:213 - Software House - RazaoSocial: 0
+2013-10-10 0:17:44:214 - Software House - NomeAplicativo: 0
+2013-10-10 0:17:44:215 - Software House - Versao: 0
+2013-10-10 0:17:44:216 - Software House - Linha1: 0
+2013-10-10 0:17:44:217 - Software House - Linha2: 0
+2013-10-10 0:17:44:217 - ECF - IM: 0
+2013-10-10 0:17:44:218 - ECF - UF: 0
+2013-10-10 0:17:44:218 - GerarRFD: 0
+2013-10-10 0:17:44:219 - CalculoIcmsCupom: 0
+2013-10-10 0:17:44:220 - HabilitaRFDImpMFD: 0
+2013-10-10 0:17:44:220 - Retorno Bematech_FI_LeInformacoesConfiguracao: OK
+2013-10-10 0:17:48:461 - ----------------------------------------------------------------------- 
+2013-10-10 0:17:48:461 - Bematech_FI_LeituraX 
+2013-10-10 0:17:49:800 - Bematech_FI_VerificaEstadoImpressora 
+2013-10-10 0:17:50:906 - Retorno impressora: 6,0,0
+2013-10-10 0:17:50:906 - Retorno Bematech_FI_VerificaEstadoImpresora: 1
+2013-10-10 0:17:50:907 - Retorno Bematech_FI_LeituraX: 1
+2013-10-10 0:18:03:525 - ----------------------------------------------------------------------- 
+2013-10-10 0:18:03:525 - Bematech_FI_LeituraX 
+2013-10-10 0:18:04:635 - Bematech_FI_VerificaEstadoImpressora 
+2013-10-10 0:18:05:742 - Retorno impressora: 6,0,0
+2013-10-10 0:18:05:743 - Retorno Bematech_FI_VerificaEstadoImpresora: 1
+2013-10-10 0:18:05:744 - Retorno Bematech_FI_LeituraX: 1
+2013-10-10 0:19:24:172 - ----------------------------------------------------------------------- 
+2013-10-10 0:19:24:173 - Bematech_FI_LeInformacoesConfiguracao 
+2013-10-10 0:19:24:173 - Versão BemaFI32.Dll: 6,1,2,0
+2013-10-10 0:19:24:174 - Versão BemaMFD.dll: 0
+2013-10-10 0:19:24:174 - Versão BemaMFD2.dll: 0
+2013-10-10 0:19:24:175 - path: C:\Projetos\TopCommerce\FrenteLoja\Debug\Win32
+2013-10-10 0:19:24:175 - Log: 1
+2013-10-10 0:19:24:175 - LogDiario: 1
+2013-10-10 0:19:24:175 - Status: 0
+2013-10-10 0:19:24:176 - Retorno: 0
+2013-10-10 0:19:24:176 - ControlePorta: 1
+2013-10-10 0:19:24:177 - StatusFuncao: 0
+2013-10-10 0:19:24:177 - ModeloImp: BEMATECH
+2013-10-10 0:19:24:177 - ModoGaveta: 0
+2013-10-10 0:19:24:178 - EmulMFD: 1
+2013-10-10 0:19:24:179 - StatusCheque: 0
+2013-10-10 0:19:24:179 - Porta: USB
+2013-10-10 0:19:24:180 - StatusErro: 1
+2013-10-10 0:19:24:180 - TimeOutZ: 99
+2013-10-10 0:19:24:181 - Impressora: 1
+2013-10-10 0:19:24:181 - TimeOutGerencial: 40
+2013-10-10 0:19:24:182 - CrLfVinculado: 0
+2013-10-10 0:19:24:183 - Gerencial: 0
+2013-10-10 0:19:24:183 - ForceWTSClient: 1
+2013-10-10 0:19:24:183 - RetriesWTSCmd: 3
+2013-10-10 0:19:24:184 - Software House - COO: 0
+2013-10-10 0:19:24:184 - Software House - NumeroAplicativo: 0
+2013-10-10 0:19:24:185 - Software House - CNPJ: 0
+2013-10-10 0:19:24:185 - Software House - IE: 0
+2013-10-10 0:19:24:186 - Software House - IM: 0
+2013-10-10 0:19:24:186 - Software House - RazaoSocial: 0
+2013-10-10 0:19:24:186 - Software House - NomeAplicativo: 0
+2013-10-10 0:19:24:187 - Software House - Versao: 0
+2013-10-10 0:19:24:187 - Software House - Linha1: 0
+2013-10-10 0:19:24:187 - Software House - Linha2: 0
+2013-10-10 0:19:24:188 - ECF - IM: 0
+2013-10-10 0:19:24:188 - ECF - UF: 0
+2013-10-10 0:19:24:189 - GerarRFD: 0
+2013-10-10 0:19:24:189 - CalculoIcmsCupom: 0
+2013-10-10 0:19:24:190 - HabilitaRFDImpMFD: 0
+2013-10-10 0:19:24:190 - Retorno Bematech_FI_LeInformacoesConfiguracao: OK
+2013-10-10 0:19:28:397 - ----------------------------------------------------------------------- 
+2013-10-10 0:19:28:397 - Bematech_FI_UsaComprovanteNaoFiscalVinculado 
+2013-10-10 0:19:28:397 - Parâmetro: D
+2013-10-10 0:19:29:733 - Retorno Bematech_FI_UsaComprovanteNaoFiscalVinculado: 1
+2013-10-10 0:20:17:548 - ----------------------------------------------------------------------- 
+2013-10-10 0:20:17:549 - Bematech_FI_LeInformacoesConfiguracao 
+2013-10-10 0:20:17:550 - Versão BemaFI32.Dll: 6,1,2,0
+2013-10-10 0:20:17:551 - Versão BemaMFD.dll: 0
+2013-10-10 0:20:17:551 - Versão BemaMFD2.dll: 0
+2013-10-10 0:20:17:552 - path: C:\Projetos\TopCommerce\FrenteLoja\Debug\Win32
+2013-10-10 0:20:17:552 - Log: 1
+2013-10-10 0:20:17:553 - LogDiario: 1
+2013-10-10 0:20:17:553 - Status: 0
+2013-10-10 0:20:17:554 - Retorno: 0
+2013-10-10 0:20:17:554 - ControlePorta: 1
+2013-10-10 0:20:17:555 - StatusFuncao: 0
+2013-10-10 0:20:17:556 - ModeloImp: BEMATECH
+2013-10-10 0:20:17:556 - ModoGaveta: 0
+2013-10-10 0:20:17:557 - EmulMFD: 1
+2013-10-10 0:20:17:558 - StatusCheque: 0
+2013-10-10 0:20:17:558 - Porta: USB
+2013-10-10 0:20:17:559 - StatusErro: 1
+2013-10-10 0:20:17:559 - TimeOutZ: 99
+2013-10-10 0:20:17:560 - Impressora: 1
+2013-10-10 0:20:17:560 - TimeOutGerencial: 40
+2013-10-10 0:20:17:561 - CrLfVinculado: 0
+2013-10-10 0:20:17:562 - Gerencial: 0
+2013-10-10 0:20:17:563 - ForceWTSClient: 1
+2013-10-10 0:20:17:563 - RetriesWTSCmd: 3
+2013-10-10 0:20:17:564 - Software House - COO: 0
+2013-10-10 0:20:17:564 - Software House - NumeroAplicativo: 0
+2013-10-10 0:20:17:565 - Software House - CNPJ: 0
+2013-10-10 0:20:17:565 - Software House - IE: 0
+2013-10-10 0:20:17:566 - Software House - IM: 0
+2013-10-10 0:20:17:567 - Software House - RazaoSocial: 0
+2013-10-10 0:20:17:567 - Software House - NomeAplicativo: 0
+2013-10-10 0:20:17:568 - Software House - Versao: 0
+2013-10-10 0:20:17:568 - Software House - Linha1: 0
+2013-10-10 0:20:17:569 - Software House - Linha2: 0
+2013-10-10 0:20:17:569 - ECF - IM: 0
+2013-10-10 0:20:17:570 - ECF - UF: 0
+2013-10-10 0:20:17:571 - GerarRFD: 0
+2013-10-10 0:20:17:572 - CalculoIcmsCupom: 0
+2013-10-10 0:20:17:572 - HabilitaRFDImpMFD: 0
+2013-10-10 0:20:17:573 - Retorno Bematech_FI_LeInformacoesConfiguracao: OK
+2013-10-10 0:20:23: 29 - ----------------------------------------------------------------------- 
+2013-10-10 0:20:23: 29 - Bematech_FI_UsaComprovanteNaoFiscalVinculado 
+2013-10-10 0:20:23: 29 - Parâmetro: D
+2013-10-10 0:20:24:365 - Retorno Bematech_FI_UsaComprovanteNaoFiscalVinculado: 1
+2013-10-10 0:20:25:569 - ----------------------------------------------------------------------- 
+2013-10-10 0:20:25:569 - Bematech_FI_FechaComprovanteNaoFiscalVinculado 
+2013-10-10 0:20:25:570 - Bematech_FI_FechaRelatorioGerencial 
+2013-10-10 0:20:26:673 - Retorno Bematech_FI_FechaRelatorioGerencial: 1
+2013-10-10 0:20:26:673 - Retorno Bematech_FI_FechaComprovanteNaoFiscalVinculado : 1
+2013-10-10 0:24:33:902 - ----------------------------------------------------------------------- 
+2013-10-10 0:24:33:903 - Bematech_FI_LeInformacoesConfiguracao 
+2013-10-10 0:24:33:904 - Versão BemaFI32.Dll: 6,1,2,0
+2013-10-10 0:24:33:904 - Versão BemaMFD.dll: 0
+2013-10-10 0:24:33:905 - Versão BemaMFD2.dll: 0
+2013-10-10 0:24:33:905 - path: C:\Projetos\TopCommerce\FrenteLoja\Debug\Win32
+2013-10-10 0:24:33:905 - Log: 1
+2013-10-10 0:24:33:906 - LogDiario: 1
+2013-10-10 0:24:33:906 - Status: 0
+2013-10-10 0:24:33:907 - Retorno: 0
+2013-10-10 0:24:33:907 - ControlePorta: 1
+2013-10-10 0:24:33:908 - StatusFuncao: 0
+2013-10-10 0:24:33:908 - ModeloImp: BEMATECH
+2013-10-10 0:24:33:908 - ModoGaveta: 0
+2013-10-10 0:24:33:908 - EmulMFD: 1
+2013-10-10 0:24:33:908 - StatusCheque: 0
+2013-10-10 0:24:33:910 - Porta: USB
+2013-10-10 0:24:33:910 - StatusErro: 1
+2013-10-10 0:24:33:911 - TimeOutZ: 99
+2013-10-10 0:24:33:911 - Impressora: 1
+2013-10-10 0:24:33:911 - TimeOutGerencial: 40
+2013-10-10 0:24:33:914 - CrLfVinculado: 0
+2013-10-10 0:24:33:915 - Gerencial: 0
+2013-10-10 0:24:33:915 - ForceWTSClient: 1
+2013-10-10 0:24:33:916 - RetriesWTSCmd: 3
+2013-10-10 0:24:33:916 - Software House - COO: 0
+2013-10-10 0:24:33:916 - Software House - NumeroAplicativo: 0
+2013-10-10 0:24:33:917 - Software House - CNPJ: 0
+2013-10-10 0:24:33:917 - Software House - IE: 0
+2013-10-10 0:24:33:917 - Software House - IM: 0
+2013-10-10 0:24:33:918 - Software House - RazaoSocial: 0
+2013-10-10 0:24:33:918 - Software House - NomeAplicativo: 0
+2013-10-10 0:24:33:919 - Software House - Versao: 0
+2013-10-10 0:24:33:919 - Software House - Linha1: 0
+2013-10-10 0:24:33:920 - Software House - Linha2: 0
+2013-10-10 0:24:33:920 - ECF - IM: 0
+2013-10-10 0:24:33:921 - ECF - UF: 0
+2013-10-10 0:24:33:921 - GerarRFD: 0
+2013-10-10 0:24:33:922 - CalculoIcmsCupom: 0
+2013-10-10 0:24:33:922 - HabilitaRFDImpMFD: 0
+2013-10-10 0:24:33:922 - Retorno Bematech_FI_LeInformacoesConfiguracao: OK
+2013-10-10 0:24:40:534 - ----------------------------------------------------------------------- 
+2013-10-10 0:24:40:534 - Bematech_FI_UsaComprovanteNaoFiscalVinculado 
+2013-10-10 0:24:40:534 - Parâmetro: D
+2013-10-10 0:24:53: 52 - Timout finalizado e ACK não lido - Erro 003 
+2013-10-10 0:24:53: 52 - Qtd bytes ler:   3
+2013-10-10 0:24:53: 52 - Qtd bytes lidos: 0
+2013-10-10 0:24:53: 53 - Retorno Bematech_FI_UsaComprovanteNaoFiscalVinculado: 0 - Erro de comunicacao 
+2013-10-10 0:25:12:214 - ----------------------------------------------------------------------- 
+2013-10-10 0:25:12:214 - Bematech_FI_FechaComprovanteNaoFiscalVinculado 
+2013-10-10 0:25:12:214 - Bematech_FI_FechaRelatorioGerencial 
+2013-10-10 0:25:24:501 - Timout finalizado e ACK não lido - Erro 003 
+2013-10-10 0:25:24:501 - Qtd bytes ler:   3
+2013-10-10 0:25:24:501 - Qtd bytes lidos: 0
+2013-10-10 0:25:24:502 - Retorno Bematech_FI_FechaRelatorioGerencial: 0 - Erro de comunicação 
+2013-10-10 0:25:32:532 - ----------------------------------------------------------------------- 
+2013-10-10 0:25:32:532 - Bematech_FI_UsaComprovanteNaoFiscalVinculado 
+2013-10-10 0:25:32:532 - Parâmetro: D
+2013-10-10 0:25:33:637 - Retorno Bematech_FI_UsaComprovanteNaoFiscalVinculado: 1
+2013-10-10 0:25:41: 81 - ----------------------------------------------------------------------- 
+2013-10-10 0:25:41: 81 - Bematech_FI_FechaComprovanteNaoFiscalVinculado 
+2013-10-10 0:25:41: 82 - Bematech_FI_FechaRelatorioGerencial 
+2013-10-10 0:25:42:185 - Retorno Bematech_FI_FechaRelatorioGerencial: 1
+2013-10-10 0:25:42:185 - Retorno Bematech_FI_FechaComprovanteNaoFiscalVinculado : 1
+2013-10-10 0:25:45:767 - Bematech_FI_UsaComprovanteNaoFiscalVinculado 
+2013-10-10 0:25:45:768 - Parâmetro: D
+2013-10-10 0:25:46:882 - Retorno Bematech_FI_UsaComprovanteNaoFiscalVinculado: 1
+2013-10-10 0:25:46:882 - Bematech_FI_FechaComprovanteNaoFiscalVinculado 
+2013-10-10 0:25:46:882 - Bematech_FI_FechaRelatorioGerencial 
+2013-10-10 0:25:47:989 - Retorno Bematech_FI_FechaRelatorioGerencial: 1
+2013-10-10 0:25:47:990 - Retorno Bematech_FI_FechaComprovanteNaoFiscalVinculado : 1
+2013-10-10 0:26:59:243 - ----------------------------------------------------------------------- 
+2013-10-10 0:26:59:243 - Bematech_FI_LeInformacoesConfiguracao 
+2013-10-10 0:26:59:243 - Versão BemaFI32.Dll: 6,1,2,0
+2013-10-10 0:26:59:243 - Versão BemaMFD.dll: 0
+2013-10-10 0:26:59:244 - Versão BemaMFD2.dll: 0
+2013-10-10 0:26:59:245 - path: C:\Projetos\TopCommerce\FrenteLoja\Debug\Win32
+2013-10-10 0:26:59:245 - Log: 1
+2013-10-10 0:26:59:245 - LogDiario: 1
+2013-10-10 0:26:59:246 - Status: 0
+2013-10-10 0:26:59:246 - Retorno: 0
+2013-10-10 0:26:59:246 - ControlePorta: 1
+2013-10-10 0:26:59:247 - StatusFuncao: 0
+2013-10-10 0:26:59:247 - ModeloImp: BEMATECH
+2013-10-10 0:26:59:247 - ModoGaveta: 0
+2013-10-10 0:26:59:248 - EmulMFD: 1
+2013-10-10 0:26:59:249 - StatusCheque: 0
+2013-10-10 0:26:59:249 - Porta: USB
+2013-10-10 0:26:59:249 - StatusErro: 1
+2013-10-10 0:26:59:250 - TimeOutZ: 99
+2013-10-10 0:26:59:250 - Impressora: 1
+2013-10-10 0:26:59:251 - TimeOutGerencial: 40
+2013-10-10 0:26:59:252 - CrLfVinculado: 0
+2013-10-10 0:26:59:252 - Gerencial: 0
+2013-10-10 0:26:59:253 - ForceWTSClient: 1
+2013-10-10 0:26:59:253 - RetriesWTSCmd: 3
+2013-10-10 0:26:59:254 - Software House - COO: 0
+2013-10-10 0:26:59:255 - Software House - NumeroAplicativo: 0
+2013-10-10 0:26:59:255 - Software House - CNPJ: 0
+2013-10-10 0:26:59:256 - Software House - IE: 0
+2013-10-10 0:26:59:257 - Software House - IM: 0
+2013-10-10 0:26:59:257 - Software House - RazaoSocial: 0
+2013-10-10 0:26:59:257 - Software House - NomeAplicativo: 0
+2013-10-10 0:26:59:258 - Software House - Versao: 0
+2013-10-10 0:26:59:258 - Software House - Linha1: 0
+2013-10-10 0:26:59:259 - Software House - Linha2: 0
+2013-10-10 0:26:59:259 - ECF - IM: 0
+2013-10-10 0:26:59:260 - ECF - UF: 0
+2013-10-10 0:26:59:260 - GerarRFD: 0
+2013-10-10 0:26:59:260 - CalculoIcmsCupom: 0
+2013-10-10 0:26:59:261 - HabilitaRFDImpMFD: 0
+2013-10-10 0:26:59:261 - Retorno Bematech_FI_LeInformacoesConfiguracao: OK
+2013-10-10 0:27:03:947 - ----------------------------------------------------------------------- 
+2013-10-10 0:27:03:947 - Bematech_FI_UsaComprovanteNaoFiscalVinculado 
+2013-10-10 0:27:03:947 - Parâmetro: D
+2013-10-10 0:27:05:287 - Retorno Bematech_FI_UsaComprovanteNaoFiscalVinculado: 1
+2013-10-10 0:27:05:287 - ----------------------------------------------------------------------- 
+2013-10-10 0:27:05:288 - Bematech_FI_FechaComprovanteNaoFiscalVinculado 
+2013-10-10 0:27:05:288 - Bematech_FI_FechaRelatorioGerencial 
+2013-10-10 0:27:06:395 - Retorno Bematech_FI_FechaRelatorioGerencial: 1
+2013-10-10 0:27:06:395 - Retorno Bematech_FI_FechaComprovanteNaoFiscalVinculado : 1
+2013-10-10 0:27:22:891 - Bematech_FI_UsaComprovanteNaoFiscalVinculado 
+2013-10-10 0:27:22:891 - Parâmetro: D
+2013-10-10 0:27:24:  7 - Retorno Bematech_FI_UsaComprovanteNaoFiscalVinculado: 1
+2013-10-10 0:27:24:  7 - Bematech_FI_FechaComprovanteNaoFiscalVinculado 
+2013-10-10 0:27:24:  7 - Bematech_FI_FechaRelatorioGerencial 
+2013-10-10 0:27:25:115 - Retorno Bematech_FI_FechaRelatorioGerencial: 1
+2013-10-10 0:27:25:115 - Retorno Bematech_FI_FechaComprovanteNaoFiscalVinculado : 1
+2013-10-10 0:27:25:117 - Bematech_FI_UsaComprovanteNaoFiscalVinculado 
+2013-10-10 0:27:25:117 - Parâmetro: D
+2013-10-10 0:27:26:222 - Retorno Bematech_FI_UsaComprovanteNaoFiscalVinculado: 1
+2013-10-10 0:27:26:222 - Bematech_FI_FechaComprovanteNaoFiscalVinculado 
+2013-10-10 0:27:26:222 - Bematech_FI_FechaRelatorioGerencial 
+2013-10-10 0:27:27:330 - Retorno Bematech_FI_FechaRelatorioGerencial: 1
+2013-10-10 0:27:27:330 - Retorno Bematech_FI_FechaComprovanteNaoFiscalVinculado : 1
+2013-10-10 0:28:41:634 - ----------------------------------------------------------------------- 
+2013-10-10 0:28:41:635 - Bematech_FI_LeInformacoesConfiguracao 
+2013-10-10 0:28:41:635 - Versão BemaFI32.Dll: 6,1,2,0
+2013-10-10 0:28:41:636 - Versão BemaMFD.dll: 0
+2013-10-10 0:28:41:636 - Versão BemaMFD2.dll: 0
+2013-10-10 0:28:41:637 - path: C:\Projetos\TopCommerce\FrenteLoja\Debug\Win32
+2013-10-10 0:28:41:638 - Log: 1
+2013-10-10 0:28:41:638 - LogDiario: 1
+2013-10-10 0:28:41:638 - Status: 0
+2013-10-10 0:28:41:639 - Retorno: 0
+2013-10-10 0:28:41:639 - ControlePorta: 1
+2013-10-10 0:28:41:640 - StatusFuncao: 0
+2013-10-10 0:28:41:640 - ModeloImp: BEMATECH
+2013-10-10 0:28:41:640 - ModoGaveta: 0
+2013-10-10 0:28:41:641 - EmulMFD: 1
+2013-10-10 0:28:41:641 - StatusCheque: 0
+2013-10-10 0:28:41:642 - Porta: USB
+2013-10-10 0:28:41:642 - StatusErro: 1
+2013-10-10 0:28:41:642 - TimeOutZ: 99
+2013-10-10 0:28:41:643 - Impressora: 1
+2013-10-10 0:28:41:643 - TimeOutGerencial: 40
+2013-10-10 0:28:41:644 - CrLfVinculado: 0
+2013-10-10 0:28:41:645 - Gerencial: 0
+2013-10-10 0:28:41:645 - ForceWTSClient: 1
+2013-10-10 0:28:41:645 - RetriesWTSCmd: 3
+2013-10-10 0:28:41:646 - Software House - COO: 0
+2013-10-10 0:28:41:647 - Software House - NumeroAplicativo: 0
+2013-10-10 0:28:41:647 - Software House - CNPJ: 0
+2013-10-10 0:28:41:647 - Software House - IE: 0
+2013-10-10 0:28:41:648 - Software House - IM: 0
+2013-10-10 0:28:41:648 - Software House - RazaoSocial: 0
+2013-10-10 0:28:41:649 - Software House - NomeAplicativo: 0
+2013-10-10 0:28:41:649 - Software House - Versao: 0
+2013-10-10 0:28:41:649 - Software House - Linha1: 0
+2013-10-10 0:28:41:650 - Software House - Linha2: 0
+2013-10-10 0:28:41:650 - ECF - IM: 0
+2013-10-10 0:28:41:651 - ECF - UF: 0
+2013-10-10 0:28:41:651 - GerarRFD: 0
+2013-10-10 0:28:41:651 - CalculoIcmsCupom: 0
+2013-10-10 0:28:41:652 - HabilitaRFDImpMFD: 0
+2013-10-10 0:28:41:652 - Retorno Bematech_FI_LeInformacoesConfiguracao: OK
+2013-10-10 0:28:45:172 - ----------------------------------------------------------------------- 
+2013-10-10 0:28:45:172 - Bematech_FI_AbreComprovanteNaoFiscalVinculado 
+2013-10-10 0:28:45:173 - Parâmetros: C|
+2013-10-10 0:28:46:517 - Retorno Bematech_FI_AbreComprovanteNaoFiscalVinculado: 1
+2013-10-10 0:28:46:517 - ----------------------------------------------------------------------- 
+2013-10-10 0:28:46:517 - Bematech_FI_UsaComprovanteNaoFiscalVinculado 
+2013-10-10 0:28:46:518 - Parâmetro: D
+2013-10-10 0:28:47:624 - Retorno Bematech_FI_UsaComprovanteNaoFiscalVinculado: 1
+2013-10-10 0:28:47:624 - ----------------------------------------------------------------------- 
+2013-10-10 0:28:47:625 - Bematech_FI_FechaComprovanteNaoFiscalVinculado 
+2013-10-10 0:28:47:625 - Bematech_FI_FechaRelatorioGerencial 
+2013-10-10 0:28:48:732 - Retorno Bematech_FI_FechaRelatorioGerencial: 1
+2013-10-10 0:28:48:732 - Retorno Bematech_FI_FechaComprovanteNaoFiscalVinculado : 1
+2013-10-10 0:29:28:745 - ----------------------------------------------------------------------- 
+2013-10-10 0:29:28:745 - Bematech_FI_LeInformacoesConfiguracao 
+2013-10-10 0:29:28:745 - Versão BemaFI32.Dll: 6,1,2,0
+2013-10-10 0:29:28:746 - Versão BemaMFD.dll: 0
+2013-10-10 0:29:28:747 - Versão BemaMFD2.dll: 0
+2013-10-10 0:29:28:747 - path: C:\Projetos\TopCommerce\FrenteLoja\Debug\Win32
+2013-10-10 0:29:28:747 - Log: 1
+2013-10-10 0:29:28:748 - LogDiario: 1
+2013-10-10 0:29:28:749 - Status: 0
+2013-10-10 0:29:28:749 - Retorno: 0
+2013-10-10 0:29:28:749 - ControlePorta: 1
+2013-10-10 0:29:28:750 - StatusFuncao: 0
+2013-10-10 0:29:28:751 - ModeloImp: BEMATECH
+2013-10-10 0:29:28:751 - ModoGaveta: 0
+2013-10-10 0:29:28:751 - EmulMFD: 1
+2013-10-10 0:29:28:752 - StatusCheque: 0
+2013-10-10 0:29:28:752 - Porta: USB
+2013-10-10 0:29:28:752 - StatusErro: 1
+2013-10-10 0:29:28:753 - TimeOutZ: 99
+2013-10-10 0:29:28:753 - Impressora: 1
+2013-10-10 0:29:28:754 - TimeOutGerencial: 40
+2013-10-10 0:29:28:755 - CrLfVinculado: 0
+2013-10-10 0:29:28:755 - Gerencial: 0
+2013-10-10 0:29:28:756 - ForceWTSClient: 1
+2013-10-10 0:29:28:756 - RetriesWTSCmd: 3
+2013-10-10 0:29:28:757 - Software House - COO: 0
+2013-10-10 0:29:28:757 - Software House - NumeroAplicativo: 0
+2013-10-10 0:29:28:757 - Software House - CNPJ: 0
+2013-10-10 0:29:28:758 - Software House - IE: 0
+2013-10-10 0:29:28:758 - Software House - IM: 0
+2013-10-10 0:29:28:759 - Software House - RazaoSocial: 0
+2013-10-10 0:29:28:759 - Software House - NomeAplicativo: 0
+2013-10-10 0:29:28:760 - Software House - Versao: 0
+2013-10-10 0:29:28:760 - Software House - Linha1: 0
+2013-10-10 0:29:28:761 - Software House - Linha2: 0
+2013-10-10 0:29:28:761 - ECF - IM: 0
+2013-10-10 0:29:28:761 - ECF - UF: 0
+2013-10-10 0:29:28:762 - GerarRFD: 0
+2013-10-10 0:29:28:763 - CalculoIcmsCupom: 0
+2013-10-10 0:29:28:763 - HabilitaRFDImpMFD: 0
+2013-10-10 0:29:28:763 - Retorno Bematech_FI_LeInformacoesConfiguracao: OK
+2013-10-10 0:29:31:371 - ----------------------------------------------------------------------- 
+2013-10-10 0:29:31:372 - Bematech_FI_RelatorioGerencial 
+2013-10-10 0:29:31:372 - Parâmetro: D
+2013-10-10 0:29:32:709 - ----------------------------------------------------------------------- 
+2013-10-10 0:29:32:709 - Bematech_FI_NumeroSerie 
+2013-10-10 0:29:33:816 - Retorno impressora: EMULADOR       
+2013-10-10 0:29:33:816 - Retorno Bematech_FI_NumeroSerie: 1
+2013-10-10 0:29:33:817 - ----------------------------------------------------------------------- 
+2013-10-10 0:29:33:817 - Bematech_FI_DataHoraImpressora 
+2013-10-10 0:29:34:924 - Retorno impressora: 101013
+2013-10-10 0:29:34:924 - Retorno impressora: 002933
+2013-10-10 0:29:34:924 - Retorno Bematech_FI_DataHoraImpressora: 1
+2013-10-10 0:29:34:924 - Retorno Bematech_FI_RelatorioGerencial: 1
+2013-10-10 0:31:39:438 - ----------------------------------------------------------------------- 
+2013-10-10 0:31:39:438 - Bematech_FI_LeInformacoesConfiguracao 
+2013-10-10 0:31:39:440 - Versão BemaFI32.Dll: 6,1,2,0
+2013-10-10 0:31:39:440 - Versão BemaMFD.dll: 0
+2013-10-10 0:31:39:441 - Versão BemaMFD2.dll: 0
+2013-10-10 0:31:39:441 - path: C:\Projetos\TopCommerce\FrenteLoja\Debug\Win32
+2013-10-10 0:31:39:441 - Log: 1
+2013-10-10 0:31:39:442 - LogDiario: 1
+2013-10-10 0:31:39:442 - Status: 0
+2013-10-10 0:31:39:443 - Retorno: 0
+2013-10-10 0:31:39:443 - ControlePorta: 1
+2013-10-10 0:31:39:444 - StatusFuncao: 0
+2013-10-10 0:31:39:445 - ModeloImp: BEMATECH
+2013-10-10 0:31:39:445 - ModoGaveta: 0
+2013-10-10 0:31:39:445 - EmulMFD: 1
+2013-10-10 0:31:39:445 - StatusCheque: 0
+2013-10-10 0:31:39:446 - Porta: USB
+2013-10-10 0:31:39:447 - StatusErro: 1
+2013-10-10 0:31:39:447 - TimeOutZ: 99
+2013-10-10 0:31:39:448 - Impressora: 1
+2013-10-10 0:31:39:448 - TimeOutGerencial: 40
+2013-10-10 0:31:39:449 - CrLfVinculado: 0
+2013-10-10 0:31:39:449 - Gerencial: 0
+2013-10-10 0:31:39:449 - ForceWTSClient: 1
+2013-10-10 0:31:39:450 - RetriesWTSCmd: 3
+2013-10-10 0:31:39:450 - Software House - COO: 0
+2013-10-10 0:31:39:451 - Software House - NumeroAplicativo: 0
+2013-10-10 0:31:39:451 - Software House - CNPJ: 0
+2013-10-10 0:31:39:452 - Software House - IE: 0
+2013-10-10 0:31:39:453 - Software House - IM: 0
+2013-10-10 0:31:39:453 - Software House - RazaoSocial: 0
+2013-10-10 0:31:39:454 - Software House - NomeAplicativo: 0
+2013-10-10 0:31:39:454 - Software House - Versao: 0
+2013-10-10 0:31:39:455 - Software House - Linha1: 0
+2013-10-10 0:31:39:455 - Software House - Linha2: 0
+2013-10-10 0:31:39:456 - ECF - IM: 0
+2013-10-10 0:31:39:456 - ECF - UF: 0
+2013-10-10 0:31:39:456 - GerarRFD: 0
+2013-10-10 0:31:39:457 - CalculoIcmsCupom: 0
+2013-10-10 0:31:39:458 - HabilitaRFDImpMFD: 0
+2013-10-10 0:31:39:458 - Retorno Bematech_FI_LeInformacoesConfiguracao: OK
+2013-10-10 0:31:45:316 - ----------------------------------------------------------------------- 
+2013-10-10 0:31:45:316 - Bematech_FI_AbreComprovanteNaoFiscalVinculado 
+2013-10-10 0:31:45:316 - Parâmetros: C|
+2013-10-10 0:31:46:651 - Retorno Bematech_FI_AbreComprovanteNaoFiscalVinculado: 1
+2013-10-10 0:31:49:608 - ----------------------------------------------------------------------- 
+2013-10-10 0:31:49:608 - Bematech_FI_UsaComprovanteNaoFiscalVinculado 
+2013-10-10 0:31:49:608 - Parâmetro: D
+2013-10-10 0:31:50:722 - Retorno Bematech_FI_UsaComprovanteNaoFiscalVinculado: 1
+2013-10-10 0:31:52:644 - ----------------------------------------------------------------------- 
+2013-10-10 0:31:52:644 - Bematech_FI_FechaComprovanteNaoFiscalVinculado 
+2013-10-10 0:31:52:645 - Bematech_FI_FechaRelatorioGerencial 
+2013-10-10 0:31:53:749 - Retorno Bematech_FI_FechaRelatorioGerencial: 1
+2013-10-10 0:31:53:749 - Retorno Bematech_FI_FechaComprovanteNaoFiscalVinculado : 1
+2013-10-10 0:32:32:305 - ----------------------------------------------------------------------- 
+2013-10-10 0:32:32:305 - Bematech_FI_LeInformacoesConfiguracao 
+2013-10-10 0:32:32:306 - Versão BemaFI32.Dll: 6,1,2,0
+2013-10-10 0:32:32:306 - Versão BemaMFD.dll: 0
+2013-10-10 0:32:32:307 - Versão BemaMFD2.dll: 0
+2013-10-10 0:32:32:307 - path: C:\Projetos\TopCommerce\FrenteLoja\Debug\Win32
+2013-10-10 0:32:32:307 - Log: 1
+2013-10-10 0:32:32:308 - LogDiario: 1
+2013-10-10 0:32:32:308 - Status: 0
+2013-10-10 0:32:32:309 - Retorno: 0
+2013-10-10 0:32:32:309 - ControlePorta: 1
+2013-10-10 0:32:32:309 - StatusFuncao: 0
+2013-10-10 0:32:32:310 - ModeloImp: BEMATECH
+2013-10-10 0:32:32:310 - ModoGaveta: 0
+2013-10-10 0:32:32:311 - EmulMFD: 1
+2013-10-10 0:32:32:311 - StatusCheque: 0
+2013-10-10 0:32:32:312 - Porta: USB
+2013-10-10 0:32:32:312 - StatusErro: 1
+2013-10-10 0:32:32:313 - TimeOutZ: 99
+2013-10-10 0:32:32:313 - Impressora: 1
+2013-10-10 0:32:32:313 - TimeOutGerencial: 40
+2013-10-10 0:32:32:314 - CrLfVinculado: 0
+2013-10-10 0:32:32:315 - Gerencial: 0
+2013-10-10 0:32:32:315 - ForceWTSClient: 1
+2013-10-10 0:32:32:316 - RetriesWTSCmd: 3
+2013-10-10 0:32:32:317 - Software House - COO: 0
+2013-10-10 0:32:32:317 - Software House - NumeroAplicativo: 0
+2013-10-10 0:32:32:318 - Software House - CNPJ: 0
+2013-10-10 0:32:32:319 - Software House - IE: 0
+2013-10-10 0:32:32:319 - Software House - IM: 0
+2013-10-10 0:32:32:319 - Software House - RazaoSocial: 0
+2013-10-10 0:32:32:320 - Software House - NomeAplicativo: 0
+2013-10-10 0:32:32:320 - Software House - Versao: 0
+2013-10-10 0:32:32:321 - Software House - Linha1: 0
+2013-10-10 0:32:32:322 - Software House - Linha2: 0
+2013-10-10 0:32:32:322 - ECF - IM: 0
+2013-10-10 0:32:32:322 - ECF - UF: 0
+2013-10-10 0:32:32:322 - GerarRFD: 0
+2013-10-10 0:32:32:323 - CalculoIcmsCupom: 0
+2013-10-10 0:32:32:324 - HabilitaRFDImpMFD: 0
+2013-10-10 0:32:32:324 - Retorno Bematech_FI_LeInformacoesConfiguracao: OK
+2013-10-10 0:32:35:444 - ----------------------------------------------------------------------- 
+2013-10-10 0:32:35:444 - Bematech_FI_AbreComprovanteNaoFiscalVinculado 
+2013-10-10 0:32:35:444 - Parâmetros: C|
+2013-10-10 0:32:36:789 - Retorno Bematech_FI_AbreComprovanteNaoFiscalVinculado: 1
+2013-10-10 0:32:36:789 - ----------------------------------------------------------------------- 
+2013-10-10 0:32:36:789 - Bematech_FI_UsaComprovanteNaoFiscalVinculado 
+2013-10-10 0:32:36:790 - Parâmetro: a
+2013-10-10 0:32:37:897 - Retorno Bematech_FI_UsaComprovanteNaoFiscalVinculado: 1
+2013-10-10 0:32:37:898 - ----------------------------------------------------------------------- 
+2013-10-10 0:32:37:898 - Bematech_FI_FechaComprovanteNaoFiscalVinculado 
+2013-10-10 0:32:37:899 - Bematech_FI_FechaRelatorioGerencial 
+2013-10-10 0:32:39:  5 - Retorno Bematech_FI_FechaRelatorioGerencial: 1
+2013-10-10 0:32:39:  5 - Retorno Bematech_FI_FechaComprovanteNaoFiscalVinculado : 1
+2013-10-10 0:34:17:165 - Bematech_FI_AbreComprovanteNaoFiscalVinculado 
+2013-10-10 0:34:17:166 - Parâmetros: C|
+2013-10-10 0:34:18:268 - Retorno Bematech_FI_AbreComprovanteNaoFiscalVinculado: 1
+2013-10-10 0:34:29:957 - Bematech_FI_UsaComprovanteNaoFiscalVinculado 
+2013-10-10 0:34:29:957 - Parâmetro: a
+2013-10-10 0:34:31: 61 - Retorno Bematech_FI_UsaComprovanteNaoFiscalVinculado: 1
+2013-10-10 0:34:35:774 - Bematech_FI_FechaComprovanteNaoFiscalVinculado 
+2013-10-10 0:34:35:775 - Bematech_FI_FechaRelatorioGerencial 
+2013-10-10 0:34:36:879 - Retorno Bematech_FI_FechaRelatorioGerencial: 1
+2013-10-10 0:34:36:879 - Retorno Bematech_FI_FechaComprovanteNaoFiscalVinculado : 1
+2013-10-10 0:37:15:829 - ----------------------------------------------------------------------- 
+2013-10-10 0:37:15:830 - Bematech_FI_LeInformacoesConfiguracao 
+2013-10-10 0:37:15:831 - Versão BemaFI32.Dll: 6,1,2,0
+2013-10-10 0:37:15:832 - Versão BemaMFD.dll: 0
+2013-10-10 0:37:15:832 - Versão BemaMFD2.dll: 0
+2013-10-10 0:37:15:833 - path: C:\Projetos\TopCommerce\FrenteLoja\Debug\Win32
+2013-10-10 0:37:15:834 - Log: 1
+2013-10-10 0:37:15:835 - LogDiario: 1
+2013-10-10 0:37:15:835 - Status: 0
+2013-10-10 0:37:15:836 - Retorno: 0
+2013-10-10 0:37:15:837 - ControlePorta: 1
+2013-10-10 0:37:15:837 - StatusFuncao: 0
+2013-10-10 0:37:15:838 - ModeloImp: BEMATECH
+2013-10-10 0:37:15:839 - ModoGaveta: 0
+2013-10-10 0:37:15:839 - EmulMFD: 1
+2013-10-10 0:37:15:840 - StatusCheque: 0
+2013-10-10 0:37:15:840 - Porta: DEFAULT
+2013-10-10 0:37:15:841 - StatusErro: 1
+2013-10-10 0:37:15:841 - TimeOutZ: 99
+2013-10-10 0:37:15:842 - Impressora: 1
+2013-10-10 0:37:15:842 - TimeOutGerencial: 40
+2013-10-10 0:37:15:844 - CrLfVinculado: 0
+2013-10-10 0:37:15:844 - Gerencial: 0
+2013-10-10 0:37:15:845 - ForceWTSClient: 1
+2013-10-10 0:37:15:845 - RetriesWTSCmd: 3
+2013-10-10 0:37:15:846 - Software House - COO: 0
+2013-10-10 0:37:15:846 - Software House - NumeroAplicativo: 0
+2013-10-10 0:37:15:847 - Software House - CNPJ: 0
+2013-10-10 0:37:15:847 - Software House - IE: 0
+2013-10-10 0:37:15:848 - Software House - IM: 0
+2013-10-10 0:37:15:848 - Software House - RazaoSocial: 0
+2013-10-10 0:37:15:849 - Software House - NomeAplicativo: 0
+2013-10-10 0:37:15:849 - Software House - Versao: 0
+2013-10-10 0:37:15:850 - Software House - Linha1: 0
+2013-10-10 0:37:15:850 - Software House - Linha2: 0
+2013-10-10 0:37:15:851 - ECF - IM: 0
+2013-10-10 0:37:15:852 - ECF - UF: 0
+2013-10-10 0:37:15:852 - GerarRFD: 0
+2013-10-10 0:37:15:853 - CalculoIcmsCupom: 0
+2013-10-10 0:37:15:854 - HabilitaRFDImpMFD: 0
+2013-10-10 0:37:15:854 - Retorno Bematech_FI_LeInformacoesConfiguracao: OK
+2013-10-10 0:37:19:347 - ----------------------------------------------------------------------- 
+2013-10-10 0:37:19:348 - Bematech_FI_AbreComprovanteNaoFiscalVinculado 
+2013-10-10 0:37:19:348 - Parâmetros: C|
+2013-10-10 0:37:20:461 - Retorno Bematech_FI_AbreComprovanteNaoFiscalVinculado: 1
+2013-10-10 0:37:20:461 - ----------------------------------------------------------------------- 
+2013-10-10 0:37:20:462 - Bematech_FI_UsaComprovanteNaoFiscalVinculado 
+2013-10-10 0:37:20:462 - Parâmetro: a
+2013-10-10 0:37:21:569 - Retorno Bematech_FI_UsaComprovanteNaoFiscalVinculado: 1
+2013-10-10 0:37:21:569 - ----------------------------------------------------------------------- 
+2013-10-10 0:37:21:570 - Bematech_FI_FechaComprovanteNaoFiscalVinculado 
+2013-10-10 0:37:21:571 - Bematech_FI_FechaRelatorioGerencial 
+2013-10-10 0:37:22:677 - Retorno Bematech_FI_FechaRelatorioGerencial: 1
+2013-10-10 0:37:22:677 - Retorno Bematech_FI_FechaComprovanteNaoFiscalVinculado : 1
+2013-10-10 0:37:47:419 - ----------------------------------------------------------------------- 
+2013-10-10 0:37:47:420 - Bematech_FI_LeInformacoesConfiguracao 
+2013-10-10 0:37:47:421 - Versão BemaFI32.Dll: 6,1,2,0
+2013-10-10 0:37:47:421 - Versão BemaMFD.dll: 0
+2013-10-10 0:37:47:422 - Versão BemaMFD2.dll: 0
+2013-10-10 0:37:47:422 - path: C:\Projetos\TopCommerce\FrenteLoja\Debug\Win32
+2013-10-10 0:37:47:423 - Log: 1
+2013-10-10 0:37:47:423 - LogDiario: 1
+2013-10-10 0:37:47:423 - Status: 0
+2013-10-10 0:37:47:424 - Retorno: 0
+2013-10-10 0:37:47:424 - ControlePorta: 1
+2013-10-10 0:37:47:425 - StatusFuncao: 0
+2013-10-10 0:37:47:425 - ModeloImp: BEMATECH
+2013-10-10 0:37:47:425 - ModoGaveta: 0
+2013-10-10 0:37:47:426 - EmulMFD: 1
+2013-10-10 0:37:47:426 - StatusCheque: 0
+2013-10-10 0:37:47:427 - Porta: DEFAULT
+2013-10-10 0:37:47:428 - StatusErro: 1
+2013-10-10 0:37:47:428 - TimeOutZ: 99
+2013-10-10 0:37:47:429 - Impressora: 1
+2013-10-10 0:37:47:429 - TimeOutGerencial: 40
+2013-10-10 0:37:47:429 - CrLfVinculado: 0
+2013-10-10 0:37:47:430 - Gerencial: 0
+2013-10-10 0:37:47:431 - ForceWTSClient: 1
+2013-10-10 0:37:47:431 - RetriesWTSCmd: 3
+2013-10-10 0:37:47:432 - Software House - COO: 0
+2013-10-10 0:37:47:432 - Software House - NumeroAplicativo: 0
+2013-10-10 0:37:47:433 - Software House - CNPJ: 0
+2013-10-10 0:37:47:433 - Software House - IE: 0
+2013-10-10 0:37:47:434 - Software House - IM: 0
+2013-10-10 0:37:47:434 - Software House - RazaoSocial: 0
+2013-10-10 0:37:47:435 - Software House - NomeAplicativo: 0
+2013-10-10 0:37:47:435 - Software House - Versao: 0
+2013-10-10 0:37:47:436 - Software House - Linha1: 0
+2013-10-10 0:37:47:436 - Software House - Linha2: 0
+2013-10-10 0:37:47:437 - ECF - IM: 0
+2013-10-10 0:37:47:437 - ECF - UF: 0
+2013-10-10 0:37:47:438 - GerarRFD: 0
+2013-10-10 0:37:47:438 - CalculoIcmsCupom: 0
+2013-10-10 0:37:47:439 - HabilitaRFDImpMFD: 0
+2013-10-10 0:37:47:439 - Retorno Bematech_FI_LeInformacoesConfiguracao: OK
+2013-10-10 0:37:50:484 - ----------------------------------------------------------------------- 
+2013-10-10 0:37:50:484 - Bematech_FI_RelatorioGerencial 
+2013-10-10 0:37:50:485 - Parâmetro: D
+2013-10-10 0:37:51:599 - ----------------------------------------------------------------------- 
+2013-10-10 0:37:51:599 - Bematech_FI_NumeroSerie 
+2013-10-10 0:37:52:707 - Retorno impressora: EMULADOR       
+2013-10-10 0:37:52:708 - Retorno Bematech_FI_NumeroSerie: 1
+2013-10-10 0:37:52:709 - ----------------------------------------------------------------------- 
+2013-10-10 0:37:52:709 - Bematech_FI_DataHoraImpressora 
+2013-10-10 0:37:53:815 - Retorno impressora: 101013
+2013-10-10 0:37:53:815 - Retorno impressora: 003752
+2013-10-10 0:37:53:816 - Retorno Bematech_FI_DataHoraImpressora: 1
+2013-10-10 0:37:53:817 - Retorno Bematech_FI_RelatorioGerencial: 1
+2013-10-10 0:38:10:756 - ----------------------------------------------------------------------- 
+2013-10-10 0:38:10:756 - Bematech_FI_RelatorioGerencial 
+2013-10-10 0:38:10:756 - Parâmetro: D
+2013-10-10 0:38:11:864 - Retorno Bematech_FI_RelatorioGerencial: 1
+2013-10-10 0:39:10:319 - ----------------------------------------------------------------------- 
+2013-10-10 0:39:10:320 - Bematech_FI_LeInformacoesConfiguracao 
+2013-10-10 0:39:10:321 - Versão BemaFI32.Dll: 6,1,2,0
+2013-10-10 0:39:10:321 - Versão BemaMFD.dll: 0
+2013-10-10 0:39:10:322 - Versão BemaMFD2.dll: 0
+2013-10-10 0:39:10:323 - path: C:\Projetos\TopCommerce\FrenteLoja\Debug\Win32
+2013-10-10 0:39:10:323 - Log: 1
+2013-10-10 0:39:10:323 - LogDiario: 1
+2013-10-10 0:39:10:323 - Status: 0
+2013-10-10 0:39:10:324 - Retorno: 0
+2013-10-10 0:39:10:324 - ControlePorta: 1
+2013-10-10 0:39:10:325 - StatusFuncao: 0
+2013-10-10 0:39:10:325 - ModeloImp: BEMATECH
+2013-10-10 0:39:10:326 - ModoGaveta: 0
+2013-10-10 0:39:10:326 - EmulMFD: 1
+2013-10-10 0:39:10:327 - StatusCheque: 0
+2013-10-10 0:39:10:327 - Porta: DEFAULT
+2013-10-10 0:39:10:328 - StatusErro: 1
+2013-10-10 0:39:10:328 - TimeOutZ: 99
+2013-10-10 0:39:10:329 - Impressora: 1
+2013-10-10 0:39:10:329 - TimeOutGerencial: 40
+2013-10-10 0:39:10:330 - CrLfVinculado: 0
+2013-10-10 0:39:10:331 - Gerencial: 0
+2013-10-10 0:39:10:331 - ForceWTSClient: 1
+2013-10-10 0:39:10:332 - RetriesWTSCmd: 3
+2013-10-10 0:39:10:332 - Software House - COO: 0
+2013-10-10 0:39:10:332 - Software House - NumeroAplicativo: 0
+2013-10-10 0:39:10:333 - Software House - CNPJ: 0
+2013-10-10 0:39:10:334 - Software House - IE: 0
+2013-10-10 0:39:10:334 - Software House - IM: 0
+2013-10-10 0:39:10:335 - Software House - RazaoSocial: 0
+2013-10-10 0:39:10:335 - Software House - NomeAplicativo: 0
+2013-10-10 0:39:10:336 - Software House - Versao: 0
+2013-10-10 0:39:10:336 - Software House - Linha1: 0
+2013-10-10 0:39:10:336 - Software House - Linha2: 0
+2013-10-10 0:39:10:337 - ECF - IM: 0
+2013-10-10 0:39:10:338 - ECF - UF: 0
+2013-10-10 0:39:10:338 - GerarRFD: 0
+2013-10-10 0:39:10:339 - CalculoIcmsCupom: 0
+2013-10-10 0:39:10:339 - HabilitaRFDImpMFD: 0
+2013-10-10 0:39:10:340 - Retorno Bematech_FI_LeInformacoesConfiguracao: OK
+2013-10-10 0:39:13:460 - ----------------------------------------------------------------------- 
+2013-10-10 0:39:13:461 - Bematech_FI_FechaRelatorioGerencial 
+2013-10-10 0:39:14:561 - ----------------------------------------------------------------------- 
+2013-10-10 0:39:14:561 - Bematech_FI_NumeroSerie 
+2013-10-10 0:39:15:669 - Retorno impressora: EMULADOR       
+2013-10-10 0:39:15:669 - Retorno Bematech_FI_NumeroSerie: 1
+2013-10-10 0:39:15:670 - Retorno Bematech_FI_FechaRelatorioGerencial: 1
+2013-10-10 0:39:40:  1 - ----------------------------------------------------------------------- 
+2013-10-10 0:39:40:  2 - Bematech_FI_LeInformacoesConfiguracao 
+2013-10-10 0:39:40:  2 - Versão BemaFI32.Dll: 6,1,2,0
+2013-10-10 0:39:40:  2 - Versão BemaMFD.dll: 0
+2013-10-10 0:39:40:  3 - Versão BemaMFD2.dll: 0
+2013-10-10 0:39:40:  3 - path: C:\Projetos\TopCommerce\FrenteLoja\Debug\Win32
+2013-10-10 0:39:40:  3 - Log: 1
+2013-10-10 0:39:40:  4 - LogDiario: 1
+2013-10-10 0:39:40:  4 - Status: 0
+2013-10-10 0:39:40:  4 - Retorno: 0
+2013-10-10 0:39:40:  5 - ControlePorta: 1
+2013-10-10 0:39:40:  5 - StatusFuncao: 0
+2013-10-10 0:39:40:  5 - ModeloImp: BEMATECH
+2013-10-10 0:39:40:  5 - ModoGaveta: 0
+2013-10-10 0:39:40:  5 - EmulMFD: 1
+2013-10-10 0:39:40:  6 - StatusCheque: 0
+2013-10-10 0:39:40:  6 - Porta: DEFAULT
+2013-10-10 0:39:40:  6 - StatusErro: 1
+2013-10-10 0:39:40:  7 - TimeOutZ: 99
+2013-10-10 0:39:40:  7 - Impressora: 1
+2013-10-10 0:39:40:  7 - TimeOutGerencial: 40
+2013-10-10 0:39:40:  8 - CrLfVinculado: 0
+2013-10-10 0:39:40:  8 - Gerencial: 0
+2013-10-10 0:39:40:  8 - ForceWTSClient: 1
+2013-10-10 0:39:40:  9 - RetriesWTSCmd: 3
+2013-10-10 0:39:40:  9 - Software House - COO: 0
+2013-10-10 0:39:40:  9 - Software House - NumeroAplicativo: 0
+2013-10-10 0:39:40: 10 - Software House - CNPJ: 0
+2013-10-10 0:39:40: 10 - Software House - IE: 0
+2013-10-10 0:39:40: 11 - Software House - IM: 0
+2013-10-10 0:39:40: 12 - Software House - RazaoSocial: 0
+2013-10-10 0:39:40: 12 - Software House - NomeAplicativo: 0
+2013-10-10 0:39:40: 13 - Software House - Versao: 0
+2013-10-10 0:39:40: 13 - Software House - Linha1: 0
+2013-10-10 0:39:40: 14 - Software House - Linha2: 0
+2013-10-10 0:39:40: 14 - ECF - IM: 0
+2013-10-10 0:39:40: 15 - ECF - UF: 0
+2013-10-10 0:39:40: 15 - GerarRFD: 0
+2013-10-10 0:39:40: 15 - CalculoIcmsCupom: 0
+2013-10-10 0:39:40: 16 - HabilitaRFDImpMFD: 0
+2013-10-10 0:39:40: 16 - Retorno Bematech_FI_LeInformacoesConfiguracao: OK
+2013-10-10 0:39:43:988 - ----------------------------------------------------------------------- 
+2013-10-10 0:39:43:989 - Bematech_FI_RelatorioGerencial 
+2013-10-10 0:39:43:989 - Parâmetro: D
+2013-10-10 0:39:45: 91 - ----------------------------------------------------------------------- 
+2013-10-10 0:39:45: 91 - Bematech_FI_NumeroSerie 
+2013-10-10 0:39:46:198 - Retorno impressora: EMULADOR       
+2013-10-10 0:39:46:198 - Retorno Bematech_FI_NumeroSerie: 1
+2013-10-10 0:39:46:199 - ----------------------------------------------------------------------- 
+2013-10-10 0:39:46:199 - Bematech_FI_DataHoraImpressora 
+2013-10-10 0:39:47:309 - Retorno impressora: 101013
+2013-10-10 0:39:47:309 - Retorno impressora: 003946
+2013-10-10 0:39:47:310 - Retorno Bematech_FI_DataHoraImpressora: 1
+2013-10-10 0:39:47:311 - Retorno Bematech_FI_RelatorioGerencial: 1
+2013-10-10 0:39:47:312 - ----------------------------------------------------------------------- 
+2013-10-10 0:39:47:312 - Bematech_FI_FechaRelatorioGerencial 
+2013-10-10 0:39:48:430 - Retorno Bematech_FI_FechaRelatorioGerencial: 1
+2013-10-10 0:39:57:363 - ----------------------------------------------------------------------- 
+2013-10-10 0:39:57:363 - Bematech_FI_RelatorioGerencial 
+2013-10-10 0:39:57:364 - Parâmetro: D
+2013-10-10 0:39:58:475 - ----------------------------------------------------------------------- 
+2013-10-10 0:39:58:475 - Bematech_FI_DataHoraImpressora 
+2013-10-10 0:39:59:582 - Retorno impressora: 101013
+2013-10-10 0:39:59:582 - Retorno impressora: 003958
+2013-10-10 0:39:59:583 - Retorno Bematech_FI_DataHoraImpressora: 1
+2013-10-10 0:39:59:583 - Retorno Bematech_FI_RelatorioGerencial: 1
+2013-10-10 0:39:59:583 - ----------------------------------------------------------------------- 
+2013-10-10 0:39:59:584 - Bematech_FI_FechaRelatorioGerencial 
+2013-10-10 0:40:00:691 - Retorno Bematech_FI_FechaRelatorioGerencial: 1
+2013-10-10 0:40:25: 80 - ----------------------------------------------------------------------- 
+2013-10-10 0:40:25: 80 - Bematech_FI_LeInformacoesConfiguracao 
+2013-10-10 0:40:25: 81 - Versão BemaFI32.Dll: 6,1,2,0
+2013-10-10 0:40:25: 81 - Versão BemaMFD.dll: 0
+2013-10-10 0:40:25: 82 - Versão BemaMFD2.dll: 0
+2013-10-10 0:40:25: 82 - path: C:\Projetos\TopCommerce\FrenteLoja\Debug\Win32
+2013-10-10 0:40:25: 82 - Log: 1
+2013-10-10 0:40:25: 83 - LogDiario: 1
+2013-10-10 0:40:25: 83 - Status: 0
+2013-10-10 0:40:25: 83 - Retorno: 0
+2013-10-10 0:40:25: 84 - ControlePorta: 1
+2013-10-10 0:40:25: 84 - StatusFuncao: 0
+2013-10-10 0:40:25: 85 - ModeloImp: BEMATECH
+2013-10-10 0:40:25: 85 - ModoGaveta: 0
+2013-10-10 0:40:25: 86 - EmulMFD: 1
+2013-10-10 0:40:25: 86 - StatusCheque: 0
+2013-10-10 0:40:25: 86 - Porta: DEFAULT
+2013-10-10 0:40:25: 87 - StatusErro: 1
+2013-10-10 0:40:25: 87 - TimeOutZ: 99
+2013-10-10 0:40:25: 88 - Impressora: 1
+2013-10-10 0:40:25: 88 - TimeOutGerencial: 40
+2013-10-10 0:40:25: 89 - CrLfVinculado: 0
+2013-10-10 0:40:25: 90 - Gerencial: 0
+2013-10-10 0:40:25: 90 - ForceWTSClient: 1
+2013-10-10 0:40:25: 90 - RetriesWTSCmd: 3
+2013-10-10 0:40:25: 90 - Software House - COO: 0
+2013-10-10 0:40:25: 91 - Software House - NumeroAplicativo: 0
+2013-10-10 0:40:25: 91 - Software House - CNPJ: 0
+2013-10-10 0:40:25: 91 - Software House - IE: 0
+2013-10-10 0:40:25: 92 - Software House - IM: 0
+2013-10-10 0:40:25: 92 - Software House - RazaoSocial: 0
+2013-10-10 0:40:25: 92 - Software House - NomeAplicativo: 0
+2013-10-10 0:40:25: 93 - Software House - Versao: 0
+2013-10-10 0:40:25: 93 - Software House - Linha1: 0
+2013-10-10 0:40:25: 94 - Software House - Linha2: 0
+2013-10-10 0:40:25: 94 - ECF - IM: 0
+2013-10-10 0:40:25: 94 - ECF - UF: 0
+2013-10-10 0:40:25: 95 - GerarRFD: 0
+2013-10-10 0:40:25: 95 - CalculoIcmsCupom: 0
+2013-10-10 0:40:25: 95 - HabilitaRFDImpMFD: 0
+2013-10-10 0:40:25: 96 - Retorno Bematech_FI_LeInformacoesConfiguracao: OK
+2013-10-10 0:40:28: 29 - ----------------------------------------------------------------------- 
+2013-10-10 0:40:28: 29 - Bematech_FI_AbreComprovanteNaoFiscalVinculado 
+2013-10-10 0:40:28: 29 - Parâmetros: C|
+2013-10-10 0:40:29:145 - Abortando a leitura porque o dado lido é igual a NACK 
+2013-10-10 0:40:29:145 - Qtd bytes ler:   3
+2013-10-10 0:40:29:145 - Qtd bytes lidos: 1
+2013-10-10 0:40:29 - Bytes lidos: 15
+2013-10-10 0:40:29:146 - ----------------------------------------------------------------------- 
+2013-10-10 0:40:29:146 - Bematech_FI_NumeroSerie 
+2013-10-10 0:40:30:252 - Retorno impressora: EMULADOR       
+2013-10-10 0:40:30:252 - Retorno Bematech_FI_NumeroSerie: 1
+2013-10-10 0:40:30:253 - ----------------------------------------------------------------------- 
+2013-10-10 0:40:30:253 - Bematech_FI_DataHoraImpressora 
+2013-10-10 0:40:31:485 - Retorno impressora: 101013
+2013-10-10 0:40:31:485 - Retorno impressora: 004030
+2013-10-10 0:40:31:485 - Retorno Bematech_FI_DataHoraImpressora: 1
+2013-10-10 0:40:31:486 - Retorno Bematech_FI_AbreComprovanteNaoFiscalVinculado: 1
+2013-10-10 0:40:31:487 - ----------------------------------------------------------------------- 
+2013-10-10 0:40:31:487 - Bematech_FI_UsaComprovanteNaoFiscalVinculado 
+2013-10-10 0:40:31:487 - Parâmetro: a
+2013-10-10 0:40:32:592 - Retorno Bematech_FI_UsaComprovanteNaoFiscalVinculado: 1
+2013-10-10 0:40:32:593 - ----------------------------------------------------------------------- 
+2013-10-10 0:40:32:593 - Bematech_FI_FechaComprovanteNaoFiscalVinculado 
+2013-10-10 0:40:32:593 - Bematech_FI_FechaRelatorioGerencial 
+2013-10-10 0:40:33:700 - Retorno Bematech_FI_FechaRelatorioGerencial: 1
+2013-10-10 0:40:33:701 - Retorno Bematech_FI_FechaComprovanteNaoFiscalVinculado : 1
+2013-10-10 0:41:55:212 - Bematech_FI_AbreComprovanteNaoFiscalVinculado 
+2013-10-10 0:41:55:212 - Parâmetros: C|
+2013-10-10 0:42:07:495 - Timout finalizado e ACK não lido - Erro 003 
+2013-10-10 0:42:07:495 - Qtd bytes ler:   3
+2013-10-10 0:42:07:496 - Qtd bytes lidos: 1
+2013-10-10 0:42:07:497 - Retorno Bematech_FI_AbreComprovanteNaoFiscalVinculado: 0 - Erro de execucao 
+2013-10-10 0:42:07:497 - Bematech_FI_UsaComprovanteNaoFiscalVinculado 
+2013-10-10 0:42:07:498 - Parâmetro: a
+2013-10-10 0:42:19:787 - Timout finalizado e ACK não lido - Erro 003 
+2013-10-10 0:42:19:787 - Qtd bytes ler:   3
+2013-10-10 0:42:19:787 - Qtd bytes lidos: 0
+2013-10-10 0:42:19:788 - Retorno Bematech_FI_UsaComprovanteNaoFiscalVinculado: 0 - Erro de comunicacao 
+2013-10-10 0:42:19:788 - Bematech_FI_FechaComprovanteNaoFiscalVinculado 
+2013-10-10 0:42:19:789 - Bematech_FI_FechaRelatorioGerencial 
+2013-10-10 0:42:58:282 - ----------------------------------------------------------------------- 
+2013-10-10 0:42:58:283 - Bematech_FI_LeInformacoesConfiguracao 
+2013-10-10 0:42:58:283 - Versão BemaFI32.Dll: 6,1,2,0
+2013-10-10 0:42:58:284 - Versão BemaMFD.dll: 0
+2013-10-10 0:42:58:284 - Versão BemaMFD2.dll: 0
+2013-10-10 0:42:58:284 - path: C:\Projetos\TopCommerce\FrenteLoja\Debug\Win32
+2013-10-10 0:42:58:285 - Log: 1
+2013-10-10 0:42:58:285 - LogDiario: 1
+2013-10-10 0:42:58:285 - Status: 0
+2013-10-10 0:42:58:285 - Retorno: 0
+2013-10-10 0:42:58:286 - ControlePorta: 1
+2013-10-10 0:42:58:286 - StatusFuncao: 0
+2013-10-10 0:42:58:286 - ModeloImp: BEMATECH
+2013-10-10 0:42:58:286 - ModoGaveta: 0
+2013-10-10 0:42:58:287 - EmulMFD: 1
+2013-10-10 0:42:58:287 - StatusCheque: 0
+2013-10-10 0:42:58:287 - Porta: DEFAULT
+2013-10-10 0:42:58:288 - StatusErro: 1
+2013-10-10 0:42:58:288 - TimeOutZ: 99
+2013-10-10 0:42:58:288 - Impressora: 1
+2013-10-10 0:42:58:289 - TimeOutGerencial: 40
+2013-10-10 0:42:58:289 - CrLfVinculado: 0
+2013-10-10 0:42:58:290 - Gerencial: 0
+2013-10-10 0:42:58:291 - ForceWTSClient: 1
+2013-10-10 0:42:58:291 - RetriesWTSCmd: 3
+2013-10-10 0:42:58:291 - Software House - COO: 0
+2013-10-10 0:42:58:292 - Software House - NumeroAplicativo: 0
+2013-10-10 0:42:58:292 - Software House - CNPJ: 0
+2013-10-10 0:42:58:293 - Software House - IE: 0
+2013-10-10 0:42:58:293 - Software House - IM: 0
+2013-10-10 0:42:58:294 - Software House - RazaoSocial: 0
+2013-10-10 0:42:58:294 - Software House - NomeAplicativo: 0
+2013-10-10 0:42:58:295 - Software House - Versao: 0
+2013-10-10 0:42:58:295 - Software House - Linha1: 0
+2013-10-10 0:42:58:296 - Software House - Linha2: 0
+2013-10-10 0:42:58:296 - ECF - IM: 0
+2013-10-10 0:42:58:297 - ECF - UF: 0
+2013-10-10 0:42:58:297 - GerarRFD: 0
+2013-10-10 0:42:58:298 - CalculoIcmsCupom: 0
+2013-10-10 0:42:58:298 - HabilitaRFDImpMFD: 0
+2013-10-10 0:42:58:299 - Retorno Bematech_FI_LeInformacoesConfiguracao: OK
+2013-10-10 0:43:02:395 - ----------------------------------------------------------------------- 
+2013-10-10 0:43:02:396 - Bematech_FI_AbreComprovanteNaoFiscalVinculado 
+2013-10-10 0:43:02:396 - Parâmetros: C|
+2013-10-10 0:43:02:398 - Percorrido todo o buffer lido e ACK não encontrado 
+2013-10-10 0:43:02:398 - Qtd bytes ler:   3
+2013-10-10 0:43:02:399 - Qtd bytes lidos: 2
+2013-10-10 0:43:02:399 - Ajustando a quantidade de bytes lidos por ter recebido lixo nos dados 
+2013-10-10 0:43:02 - Bytes lidos: 0001
+2013-10-10 0:43:02 - Bytes validos: 
+2013-10-10 0:43:03:508 - Retorno Bematech_FI_AbreComprovanteNaoFiscalVinculado: 1
+2013-10-10 0:43:03:508 - ----------------------------------------------------------------------- 
+2013-10-10 0:43:03:509 - Bematech_FI_UsaComprovanteNaoFiscalVinculado 
+2013-10-10 0:43:03:509 - Parâmetro: a
+2013-10-10 0:43:04:616 - Retorno Bematech_FI_UsaComprovanteNaoFiscalVinculado: 1
+2013-10-10 0:43:04:616 - ----------------------------------------------------------------------- 
+2013-10-10 0:43:04:617 - Bematech_FI_FechaComprovanteNaoFiscalVinculado 
+2013-10-10 0:43:04:617 - Bematech_FI_FechaRelatorioGerencial 
+2013-10-10 0:43:05:723 - Retorno Bematech_FI_FechaRelatorioGerencial: 1
+2013-10-10 0:43:05:723 - Retorno Bematech_FI_FechaComprovanteNaoFiscalVinculado : 1
+2013-10-10 0:43:41:147 - Bematech_FI_AbreComprovanteNaoFiscalVinculado 
+2013-10-10 0:43:41:148 - Parâmetros: C|
+2013-10-10 0:43:42:258 - Retorno Bematech_FI_AbreComprovanteNaoFiscalVinculado: 1
+2013-10-10 0:43:42:258 - Bematech_FI_UsaComprovanteNaoFiscalVinculado 
+2013-10-10 0:43:42:258 - Parâmetro: a
+2013-10-10 0:43:43:366 - Retorno Bematech_FI_UsaComprovanteNaoFiscalVinculado: 1
+2013-10-10 0:43:43:367 - Bematech_FI_FechaComprovanteNaoFiscalVinculado 
+2013-10-10 0:43:43:367 - Bematech_FI_FechaRelatorioGerencial 
+2013-10-10 0:43:44:474 - Retorno Bematech_FI_FechaRelatorioGerencial: 1
+2013-10-10 0:43:44:474 - Retorno Bematech_FI_FechaComprovanteNaoFiscalVinculado : 1
+2013-10-10 0:46:09:935 - ----------------------------------------------------------------------- 
+2013-10-10 0:46:09:936 - Bematech_FI_LeInformacoesConfiguracao 
+2013-10-10 0:46:09:936 - Versão BemaFI32.Dll: 6,1,2,0
+2013-10-10 0:46:09:936 - Versão BemaMFD.dll: 0
+2013-10-10 0:46:09:937 - Versão BemaMFD2.dll: 0
+2013-10-10 0:46:09:938 - path: C:\Projetos\TopCommerce\FrenteLoja\Debug\Win32
+2013-10-10 0:46:09:938 - Log: 1
+2013-10-10 0:46:09:938 - LogDiario: 1
+2013-10-10 0:46:09:939 - Status: 0
+2013-10-10 0:46:09:939 - Retorno: 0
+2013-10-10 0:46:09:939 - ControlePorta: 1
+2013-10-10 0:46:09:940 - StatusFuncao: 0
+2013-10-10 0:46:09:940 - ModeloImp: BEMATECH
+2013-10-10 0:46:09:940 - ModoGaveta: 0
+2013-10-10 0:46:09:941 - EmulMFD: 1
+2013-10-10 0:46:09:941 - StatusCheque: 0
+2013-10-10 0:46:09:941 - Porta: DEFAULT
+2013-10-10 0:46:09:942 - StatusErro: 1
+2013-10-10 0:46:09:942 - TimeOutZ: 99
+2013-10-10 0:46:09:943 - Impressora: 1
+2013-10-10 0:46:09:943 - TimeOutGerencial: 40
+2013-10-10 0:46:09:943 - CrLfVinculado: 0
+2013-10-10 0:46:09:944 - Gerencial: 0
+2013-10-10 0:46:09:944 - ForceWTSClient: 1
+2013-10-10 0:46:09:944 - RetriesWTSCmd: 3
+2013-10-10 0:46:09:945 - Software House - COO: 0
+2013-10-10 0:46:09:945 - Software House - NumeroAplicativo: 0
+2013-10-10 0:46:09:945 - Software House - CNPJ: 0
+2013-10-10 0:46:09:946 - Software House - IE: 0
+2013-10-10 0:46:09:946 - Software House - IM: 0
+2013-10-10 0:46:09:946 - Software House - RazaoSocial: 0
+2013-10-10 0:46:09:946 - Software House - NomeAplicativo: 0
+2013-10-10 0:46:09:947 - Software House - Versao: 0
+2013-10-10 0:46:09:947 - Software House - Linha1: 0
+2013-10-10 0:46:09:947 - Software House - Linha2: 0
+2013-10-10 0:46:09:948 - ECF - IM: 0
+2013-10-10 0:46:09:948 - ECF - UF: 0
+2013-10-10 0:46:09:948 - GerarRFD: 0
+2013-10-10 0:46:09:949 - CalculoIcmsCupom: 0
+2013-10-10 0:46:09:949 - HabilitaRFDImpMFD: 0
+2013-10-10 0:46:09:950 - Retorno Bematech_FI_LeInformacoesConfiguracao: OK
+2013-10-10 0:46:13:747 - ----------------------------------------------------------------------- 
+2013-10-10 0:46:13:747 - Bematech_FI_AbreComprovanteNaoFiscalVinculado 
+2013-10-10 0:46:13:748 - Parâmetros: C|
+2013-10-10 0:46:14:859 - Retorno Bematech_FI_AbreComprovanteNaoFiscalVinculado: 1
+2013-10-10 0:46:14:859 - ----------------------------------------------------------------------- 
+2013-10-10 0:46:14:860 - Bematech_FI_UsaComprovanteNaoFiscalVinculado 
+2013-10-10 0:46:14:860 - Parâmetro: a
+2013-10-10 0:46:15:966 - Retorno Bematech_FI_UsaComprovanteNaoFiscalVinculado: 1
+2013-10-10 0:46:15:966 - ----------------------------------------------------------------------- 
+2013-10-10 0:46:15:967 - Bematech_FI_FechaComprovanteNaoFiscalVinculado 
+2013-10-10 0:46:15:968 - Bematech_FI_FechaRelatorioGerencial 
+2013-10-10 0:46:17: 74 - Retorno Bematech_FI_FechaRelatorioGerencial: 1
+2013-10-10 0:46:17: 74 - Retorno Bematech_FI_FechaComprovanteNaoFiscalVinculado : 1
+2013-10-10 0:48:33:966 - ----------------------------------------------------------------------- 
+2013-10-10 0:48:33:966 - Bematech_FI_LeInformacoesConfiguracao 
+2013-10-10 0:48:33:967 - Versão BemaFI32.Dll: 6,1,2,0
+2013-10-10 0:48:33:967 - Versão BemaMFD.dll: 0
+2013-10-10 0:48:33:968 - Versão BemaMFD2.dll: 0
+2013-10-10 0:48:33:968 - path: C:\Projetos\TopCommerce\FrenteLoja\Debug\Win32
+2013-10-10 0:48:33:969 - Log: 1
+2013-10-10 0:48:33:969 - LogDiario: 1
+2013-10-10 0:48:33:970 - Status: 0
+2013-10-10 0:48:33:970 - Retorno: 0
+2013-10-10 0:48:33:971 - ControlePorta: 1
+2013-10-10 0:48:33:971 - StatusFuncao: 0
+2013-10-10 0:48:33:972 - ModeloImp: BEMATECH
+2013-10-10 0:48:33:972 - ModoGaveta: 0
+2013-10-10 0:48:33:972 - EmulMFD: 1
+2013-10-10 0:48:33:973 - StatusCheque: 0
+2013-10-10 0:48:33:973 - Porta: DEFAULT
+2013-10-10 0:48:33:974 - StatusErro: 1
+2013-10-10 0:48:33:974 - TimeOutZ: 99
+2013-10-10 0:48:33:975 - Impressora: 1
+2013-10-10 0:48:33:975 - TimeOutGerencial: 40
+2013-10-10 0:48:33:976 - CrLfVinculado: 0
+2013-10-10 0:48:33:976 - Gerencial: 0
+2013-10-10 0:48:33:977 - ForceWTSClient: 1
+2013-10-10 0:48:33:977 - RetriesWTSCmd: 3
+2013-10-10 0:48:33:977 - Software House - COO: 0
+2013-10-10 0:48:33:978 - Software House - NumeroAplicativo: 0
+2013-10-10 0:48:33:978 - Software House - CNPJ: 0
+2013-10-10 0:48:33:979 - Software House - IE: 0
+2013-10-10 0:48:33:979 - Software House - IM: 0
+2013-10-10 0:48:33:980 - Software House - RazaoSocial: 0
+2013-10-10 0:48:33:980 - Software House - NomeAplicativo: 0
+2013-10-10 0:48:33:981 - Software House - Versao: 0
+2013-10-10 0:48:33:981 - Software House - Linha1: 0
+2013-10-10 0:48:33:981 - Software House - Linha2: 0
+2013-10-10 0:48:33:982 - ECF - IM: 0
+2013-10-10 0:48:33:982 - ECF - UF: 0
+2013-10-10 0:48:33:983 - GerarRFD: 0
+2013-10-10 0:48:33:983 - CalculoIcmsCupom: 0
+2013-10-10 0:48:33:984 - HabilitaRFDImpMFD: 0
+2013-10-10 0:48:33:984 - Retorno Bematech_FI_LeInformacoesConfiguracao: OK
+2013-10-10 0:48:41:843 - ----------------------------------------------------------------------- 
+2013-10-10 0:48:41:844 - Bematech_FI_AbreComprovanteNaoFiscalVinculado 
+2013-10-10 0:48:41:845 - Parâmetros: V|1|1
+2013-10-10 0:48:42:950 - Retorno Bematech_FI_AbreComprovanteNaoFiscalVinculado: 1
+2013-10-10 0:48:42:951 - ----------------------------------------------------------------------- 
+2013-10-10 0:48:42:951 - Bematech_FI_UsaComprovanteNaoFiscalVinculado 
+2013-10-10 0:48:42:951 - Parâmetro: a
+2013-10-10 0:48:44: 58 - Retorno Bematech_FI_UsaComprovanteNaoFiscalVinculado: 1
+2013-10-10 0:48:44: 58 - ----------------------------------------------------------------------- 
+2013-10-10 0:48:44: 58 - Bematech_FI_FechaComprovanteNaoFiscalVinculado 
+2013-10-10 0:48:44: 59 - Bematech_FI_FechaRelatorioGerencial 
+2013-10-10 0:48:45:166 - Retorno Bematech_FI_FechaRelatorioGerencial: 1
+2013-10-10 0:48:45:166 - Retorno Bematech_FI_FechaComprovanteNaoFiscalVinculado : 1
+2013-10-10 0:49:41:866 - ----------------------------------------------------------------------- 
+2013-10-10 0:49:41:866 - Bematech_FI_LeInformacoesConfiguracao 
+2013-10-10 0:49:41:866 - Versão BemaFI32.Dll: 6,1,2,0
+2013-10-10 0:49:41:866 - Versão BemaMFD.dll: 0
+2013-10-10 0:49:41:867 - Versão BemaMFD2.dll: 0
+2013-10-10 0:49:41:868 - path: C:\Projetos\TopCommerce\FrenteLoja\Debug\Win32
+2013-10-10 0:49:41:868 - Log: 1
+2013-10-10 0:49:41:868 - LogDiario: 1
+2013-10-10 0:49:41:868 - Status: 0
+2013-10-10 0:49:41:869 - Retorno: 0
+2013-10-10 0:49:41:869 - ControlePorta: 1
+2013-10-10 0:49:41:870 - StatusFuncao: 0
+2013-10-10 0:49:41:870 - ModeloImp: BEMATECH
+2013-10-10 0:49:41:870 - ModoGaveta: 0
+2013-10-10 0:49:41:870 - EmulMFD: 1
+2013-10-10 0:49:41:871 - StatusCheque: 0
+2013-10-10 0:49:41:871 - Porta: DEFAULT
+2013-10-10 0:49:41:871 - StatusErro: 1
+2013-10-10 0:49:41:871 - TimeOutZ: 99
+2013-10-10 0:49:41:872 - Impressora: 1
+2013-10-10 0:49:41:872 - TimeOutGerencial: 40
+2013-10-10 0:49:41:873 - CrLfVinculado: 0
+2013-10-10 0:49:41:873 - Gerencial: 0
+2013-10-10 0:49:41:873 - ForceWTSClient: 1
+2013-10-10 0:49:41:874 - RetriesWTSCmd: 3
+2013-10-10 0:49:41:874 - Software House - COO: 0
+2013-10-10 0:49:41:875 - Software House - NumeroAplicativo: 0
+2013-10-10 0:49:41:875 - Software House - CNPJ: 0
+2013-10-10 0:49:41:876 - Software House - IE: 0
+2013-10-10 0:49:41:878 - Software House - IM: 0
+2013-10-10 0:49:41:878 - Software House - RazaoSocial: 0
+2013-10-10 0:49:41:879 - Software House - NomeAplicativo: 0
+2013-10-10 0:49:41:880 - Software House - Versao: 0
+2013-10-10 0:49:41:880 - Software House - Linha1: 0
+2013-10-10 0:49:41:881 - Software House - Linha2: 0
+2013-10-10 0:49:41:881 - ECF - IM: 0
+2013-10-10 0:49:41:882 - ECF - UF: 0
+2013-10-10 0:49:41:882 - GerarRFD: 0
+2013-10-10 0:49:41:883 - CalculoIcmsCupom: 0
+2013-10-10 0:49:41:883 - HabilitaRFDImpMFD: 0
+2013-10-10 0:49:41:884 - Retorno Bematech_FI_LeInformacoesConfiguracao: OK
+2013-10-10 0:49:45:884 - ----------------------------------------------------------------------- 
+2013-10-10 0:49:45:885 - Bematech_FI_AbreComprovanteNaoFiscalVinculado 
+2013-10-10 0:49:45:885 - Parâmetros: V|1|1
+2013-10-10 0:49:46:989 - Retorno Bematech_FI_AbreComprovanteNaoFiscalVinculado: 1
+2013-10-10 0:49:46:989 - ----------------------------------------------------------------------- 
+2013-10-10 0:49:46:990 - Bematech_FI_UsaComprovanteNaoFiscalVinculado 
+2013-10-10 0:49:46:990 - Parâmetro: a
+2013-10-10 0:49:48: 96 - Retorno Bematech_FI_UsaComprovanteNaoFiscalVinculado: 1
+2013-10-10 0:49:48: 96 - ----------------------------------------------------------------------- 
+2013-10-10 0:49:48: 96 - Bematech_FI_FechaComprovanteNaoFiscalVinculado 
+2013-10-10 0:49:48: 97 - Bematech_FI_FechaRelatorioGerencial 
+2013-10-10 0:49:49:204 - Retorno Bematech_FI_FechaRelatorioGerencial: 1
+2013-10-10 0:49:49:204 - Retorno Bematech_FI_FechaComprovanteNaoFiscalVinculado : 1
+2013-10-10 0:50:46:327 - ----------------------------------------------------------------------- 
+2013-10-10 0:50:46:327 - Bematech_FI_LeInformacoesConfiguracao 
+2013-10-10 0:50:46:328 - Versão BemaFI32.Dll: 6,1,2,0
+2013-10-10 0:50:46:329 - Versão BemaMFD.dll: 0
+2013-10-10 0:50:46:329 - Versão BemaMFD2.dll: 0
+2013-10-10 0:50:46:330 - path: C:\Projetos\TopCommerce\FrenteLoja\Debug\Win32
+2013-10-10 0:50:46:330 - Log: 1
+2013-10-10 0:50:46:330 - LogDiario: 1
+2013-10-10 0:50:46:331 - Status: 0
+2013-10-10 0:50:46:332 - Retorno: 0
+2013-10-10 0:50:46:332 - ControlePorta: 1
+2013-10-10 0:50:46:333 - StatusFuncao: 0
+2013-10-10 0:50:46:333 - ModeloImp: BEMATECH
+2013-10-10 0:50:46:334 - ModoGaveta: 0
+2013-10-10 0:50:46:334 - EmulMFD: 1
+2013-10-10 0:50:46:339 - StatusCheque: 0
+2013-10-10 0:50:46:343 - Porta: DEFAULT
+2013-10-10 0:50:46:344 - StatusErro: 1
+2013-10-10 0:50:46:344 - TimeOutZ: 99
+2013-10-10 0:50:46:345 - Impressora: 1
+2013-10-10 0:50:46:346 - TimeOutGerencial: 40
+2013-10-10 0:50:46:347 - CrLfVinculado: 0
+2013-10-10 0:50:46:350 - Gerencial: 0
+2013-10-10 0:50:46:351 - ForceWTSClient: 1
+2013-10-10 0:50:46:351 - RetriesWTSCmd: 3
+2013-10-10 0:50:46:352 - Software House - COO: 0
+2013-10-10 0:50:46:353 - Software House - NumeroAplicativo: 0
+2013-10-10 0:50:46:353 - Software House - CNPJ: 0
+2013-10-10 0:50:46:354 - Software House - IE: 0
+2013-10-10 0:50:46:354 - Software House - IM: 0
+2013-10-10 0:50:46:355 - Software House - RazaoSocial: 0
+2013-10-10 0:50:46:355 - Software House - NomeAplicativo: 0
+2013-10-10 0:50:46:358 - Software House - Versao: 0
+2013-10-10 0:50:46:358 - Software House - Linha1: 0
+2013-10-10 0:50:46:359 - Software House - Linha2: 0
+2013-10-10 0:50:46:360 - ECF - IM: 0
+2013-10-10 0:50:46:360 - ECF - UF: 0
+2013-10-10 0:50:46:361 - GerarRFD: 0
+2013-10-10 0:50:46:362 - CalculoIcmsCupom: 0
+2013-10-10 0:50:46:362 - HabilitaRFDImpMFD: 0
+2013-10-10 0:50:46:363 - Retorno Bematech_FI_LeInformacoesConfiguracao: OK
+2013-10-10 0:50:50:489 - ----------------------------------------------------------------------- 
+2013-10-10 0:50:50:490 - Bematech_FI_AbreComprovanteNaoFiscalVinculado 
+2013-10-10 0:50:50:490 - Parâmetros: V|1|1
+2013-10-10 0:50:51:605 - Retorno Bematech_FI_AbreComprovanteNaoFiscalVinculado: 1
+2013-10-10 0:50:51:605 - ----------------------------------------------------------------------- 
+2013-10-10 0:50:51:606 - Bematech_FI_UsaComprovanteNaoFiscalVinculado 
+2013-10-10 0:50:51:606 - Parâmetro: a
+2013-10-10 0:50:52:712 - Retorno Bematech_FI_UsaComprovanteNaoFiscalVinculado: 1
+2013-10-10 0:50:52:713 - ----------------------------------------------------------------------- 
+2013-10-10 0:50:52:713 - Bematech_FI_FechaComprovanteNaoFiscalVinculado 
+2013-10-10 0:50:52:713 - Bematech_FI_FechaRelatorioGerencial 
+2013-10-10 0:50:53:820 - Retorno Bematech_FI_FechaRelatorioGerencial: 1
+2013-10-10 0:50:53:820 - Retorno Bematech_FI_FechaComprovanteNaoFiscalVinculado : 1
+2013-10-10 0:54:54:816 - ----------------------------------------------------------------------- 
+2013-10-10 0:54:54:816 - Bematech_FI_LeInformacoesConfiguracao 
+2013-10-10 0:54:54:820 - Versão BemaFI32.Dll: 6,1,2,0
+2013-10-10 0:54:54:821 - Versão BemaMFD.dll: 0
+2013-10-10 0:54:54:822 - Versão BemaMFD2.dll: 0
+2013-10-10 0:54:54:822 - path: C:\Projetos\TopCommerce\FrenteLoja\Debug\Win32
+2013-10-10 0:54:54:823 - Log: 1
+2013-10-10 0:54:54:823 - LogDiario: 1
+2013-10-10 0:54:54:824 - Status: 0
+2013-10-10 0:54:54:824 - Retorno: 0
+2013-10-10 0:54:54:825 - ControlePorta: 1
+2013-10-10 0:54:54:825 - StatusFuncao: 0
+2013-10-10 0:54:54:826 - ModeloImp: BEMATECH
+2013-10-10 0:54:54:827 - ModoGaveta: 0
+2013-10-10 0:54:54:827 - EmulMFD: 1
+2013-10-10 0:54:54:828 - StatusCheque: 0
+2013-10-10 0:54:54:828 - Porta: DEFAULT
+2013-10-10 0:54:54:829 - StatusErro: 1
+2013-10-10 0:54:54:829 - TimeOutZ: 99
+2013-10-10 0:54:54:830 - Impressora: 1
+2013-10-10 0:54:54:830 - TimeOutGerencial: 40
+2013-10-10 0:54:54:830 - CrLfVinculado: 0
+2013-10-10 0:54:54:831 - Gerencial: 0
+2013-10-10 0:54:54:832 - ForceWTSClient: 1
+2013-10-10 0:54:54:832 - RetriesWTSCmd: 3
+2013-10-10 0:54:54:832 - Software House - COO: 0
+2013-10-10 0:54:54:834 - Software House - NumeroAplicativo: 0
+2013-10-10 0:54:54:834 - Software House - CNPJ: 0
+2013-10-10 0:54:54:834 - Software House - IE: 0
+2013-10-10 0:54:54:836 - Software House - IM: 0
+2013-10-10 0:54:54:836 - Software House - RazaoSocial: 0
+2013-10-10 0:54:54:836 - Software House - NomeAplicativo: 0
+2013-10-10 0:54:54:837 - Software House - Versao: 0
+2013-10-10 0:54:54:838 - Software House - Linha1: 0
+2013-10-10 0:54:54:838 - Software House - Linha2: 0
+2013-10-10 0:54:54:838 - ECF - IM: 0
+2013-10-10 0:54:54:839 - ECF - UF: 0
+2013-10-10 0:54:54:839 - GerarRFD: 0
+2013-10-10 0:54:54:840 - CalculoIcmsCupom: 0
+2013-10-10 0:54:54:841 - HabilitaRFDImpMFD: 0
+2013-10-10 0:54:54:841 - Retorno Bematech_FI_LeInformacoesConfiguracao: OK
+2013-10-10 0:55:18:926 - ----------------------------------------------------------------------- 
+2013-10-10 0:55:18:926 - Bematech_FI_LeInformacoesConfiguracao 
+2013-10-10 0:55:18:927 - Versão BemaFI32.Dll: 6,1,2,0
+2013-10-10 0:55:18:927 - Versão BemaMFD.dll: 0
+2013-10-10 0:55:18:928 - Versão BemaMFD2.dll: 0
+2013-10-10 0:55:18:929 - path: C:\Projetos\TopCommerce\FrenteLoja\Debug\Win32
+2013-10-10 0:55:18:929 - Log: 1
+2013-10-10 0:55:18:929 - LogDiario: 1
+2013-10-10 0:55:18:930 - Status: 0
+2013-10-10 0:55:18:930 - Retorno: 0
+2013-10-10 0:55:18:931 - ControlePorta: 1
+2013-10-10 0:55:18:931 - StatusFuncao: 0
+2013-10-10 0:55:18:932 - ModeloImp: BEMATECH
+2013-10-10 0:55:18:932 - ModoGaveta: 0
+2013-10-10 0:55:18:933 - EmulMFD: 1
+2013-10-10 0:55:18:933 - StatusCheque: 0
+2013-10-10 0:55:18:934 - Porta: DEFAULT
+2013-10-10 0:55:18:934 - StatusErro: 1
+2013-10-10 0:55:18:935 - TimeOutZ: 99
+2013-10-10 0:55:18:935 - Impressora: 1
+2013-10-10 0:55:18:936 - TimeOutGerencial: 40
+2013-10-10 0:55:18:937 - CrLfVinculado: 0
+2013-10-10 0:55:18:937 - Gerencial: 0
+2013-10-10 0:55:18:938 - ForceWTSClient: 1
+2013-10-10 0:55:18:938 - RetriesWTSCmd: 3
+2013-10-10 0:55:18:939 - Software House - COO: 0
+2013-10-10 0:55:18:939 - Software House - NumeroAplicativo: 0
+2013-10-10 0:55:18:940 - Software House - CNPJ: 0
+2013-10-10 0:55:18:940 - Software House - IE: 0
+2013-10-10 0:55:18:941 - Software House - IM: 0
+2013-10-10 0:55:18:941 - Software House - RazaoSocial: 0
+2013-10-10 0:55:18:942 - Software House - NomeAplicativo: 0
+2013-10-10 0:55:18:942 - Software House - Versao: 0
+2013-10-10 0:55:18:943 - Software House - Linha1: 0
+2013-10-10 0:55:18:943 - Software House - Linha2: 0
+2013-10-10 0:55:18:944 - ECF - IM: 0
+2013-10-10 0:55:18:944 - ECF - UF: 0
+2013-10-10 0:55:18:945 - GerarRFD: 0
+2013-10-10 0:55:18:945 - CalculoIcmsCupom: 0
+2013-10-10 0:55:18:946 - HabilitaRFDImpMFD: 0
+2013-10-10 0:55:18:946 - Retorno Bematech_FI_LeInformacoesConfiguracao: OK
+2013-10-10 0:55:24:960 - ----------------------------------------------------------------------- 
+2013-10-10 0:55:24:960 - Bematech_FI_Sangria 
+2013-10-10 0:59:15:952 - ----------------------------------------------------------------------- 
+2013-10-10 0:59:15:952 - Bematech_FI_LeInformacoesConfiguracao 
+2013-10-10 0:59:15:953 - Versão BemaFI32.Dll: 6,1,2,0
+2013-10-10 0:59:15:954 - Versão BemaMFD.dll: 0
+2013-10-10 0:59:15:954 - Versão BemaMFD2.dll: 0
+2013-10-10 0:59:15:954 - path: C:\Projetos\TopCommerce\FrenteLoja\Debug\Win32
+2013-10-10 0:59:15:955 - Log: 1
+2013-10-10 0:59:15:955 - LogDiario: 1
+2013-10-10 0:59:15:955 - Status: 0
+2013-10-10 0:59:15:955 - Retorno: 0
+2013-10-10 0:59:15:956 - ControlePorta: 1
+2013-10-10 0:59:15:956 - StatusFuncao: 0
+2013-10-10 0:59:15:956 - ModeloImp: BEMATECH
+2013-10-10 0:59:15:956 - ModoGaveta: 0
+2013-10-10 0:59:15:957 - EmulMFD: 1
+2013-10-10 0:59:15:957 - StatusCheque: 0
+2013-10-10 0:59:15:957 - Porta: DEFAULT
+2013-10-10 0:59:15:957 - StatusErro: 1
+2013-10-10 0:59:15:957 - TimeOutZ: 99
+2013-10-10 0:59:15:958 - Impressora: 1
+2013-10-10 0:59:15:959 - TimeOutGerencial: 40
+2013-10-10 0:59:15:959 - CrLfVinculado: 0
+2013-10-10 0:59:15:960 - Gerencial: 0
+2013-10-10 0:59:15:960 - ForceWTSClient: 1
+2013-10-10 0:59:15:960 - RetriesWTSCmd: 3
+2013-10-10 0:59:15:961 - Software House - COO: 0
+2013-10-10 0:59:15:961 - Software House - NumeroAplicativo: 0
+2013-10-10 0:59:15:961 - Software House - CNPJ: 0
+2013-10-10 0:59:15:962 - Software House - IE: 0
+2013-10-10 0:59:15:962 - Software House - IM: 0
+2013-10-10 0:59:15:962 - Software House - RazaoSocial: 0
+2013-10-10 0:59:15:963 - Software House - NomeAplicativo: 0
+2013-10-10 0:59:15:963 - Software House - Versao: 0
+2013-10-10 0:59:15:963 - Software House - Linha1: 0
+2013-10-10 0:59:15:964 - Software House - Linha2: 0
+2013-10-10 0:59:15:964 - ECF - IM: 0
+2013-10-10 0:59:15:964 - ECF - UF: 0
+2013-10-10 0:59:15:965 - GerarRFD: 0
+2013-10-10 0:59:15:965 - CalculoIcmsCupom: 0
+2013-10-10 0:59:15:966 - HabilitaRFDImpMFD: 0
+2013-10-10 0:59:15:966 - Retorno Bematech_FI_LeInformacoesConfiguracao: OK
+2013-10-10 1:00:07:319 - ----------------------------------------------------------------------- 
+2013-10-10 1:00:07:319 - Bematech_FI_LeInformacoesConfiguracao 
+2013-10-10 1:00:07:320 - Versão BemaFI32.Dll: 6,1,2,0
+2013-10-10 1:00:07:320 - Versão BemaMFD.dll: 0
+2013-10-10 1:00:07:321 - Versão BemaMFD2.dll: 0
+2013-10-10 1:00:07:321 - path: C:\Projetos\TopCommerce\FrenteLoja\Debug\Win32
+2013-10-10 1:00:07:321 - Log: 1
+2013-10-10 1:00:07:322 - LogDiario: 1
+2013-10-10 1:00:07:322 - Status: 0
+2013-10-10 1:00:07:322 - Retorno: 0
+2013-10-10 1:00:07:323 - ControlePorta: 1
+2013-10-10 1:00:07:324 - StatusFuncao: 0
+2013-10-10 1:00:07:324 - ModeloImp: BEMATECH
+2013-10-10 1:00:07:325 - ModoGaveta: 0
+2013-10-10 1:00:07:325 - EmulMFD: 1
+2013-10-10 1:00:07:326 - StatusCheque: 0
+2013-10-10 1:00:07:326 - Porta: DEFAULT
+2013-10-10 1:00:07:327 - StatusErro: 1
+2013-10-10 1:00:07:327 - TimeOutZ: 99
+2013-10-10 1:00:07:327 - Impressora: 1
+2013-10-10 1:00:07:327 - TimeOutGerencial: 40
+2013-10-10 1:00:07:329 - CrLfVinculado: 0
+2013-10-10 1:00:07:329 - Gerencial: 0
+2013-10-10 1:00:07:329 - ForceWTSClient: 1
+2013-10-10 1:00:07:329 - RetriesWTSCmd: 3
+2013-10-10 1:00:07:330 - Software House - COO: 0
+2013-10-10 1:00:07:331 - Software House - NumeroAplicativo: 0
+2013-10-10 1:00:07:331 - Software House - CNPJ: 0
+2013-10-10 1:00:07:331 - Software House - IE: 0
+2013-10-10 1:00:07:332 - Software House - IM: 0
+2013-10-10 1:00:07:332 - Software House - RazaoSocial: 0
+2013-10-10 1:00:07:333 - Software House - NomeAplicativo: 0
+2013-10-10 1:00:07:334 - Software House - Versao: 0
+2013-10-10 1:00:07:334 - Software House - Linha1: 0
+2013-10-10 1:00:07:334 - Software House - Linha2: 0
+2013-10-10 1:00:07:335 - ECF - IM: 0
+2013-10-10 1:00:07:335 - ECF - UF: 0
+2013-10-10 1:00:07:336 - GerarRFD: 0
+2013-10-10 1:00:07:337 - CalculoIcmsCupom: 0
+2013-10-10 1:00:07:337 - HabilitaRFDImpMFD: 0
+2013-10-10 1:00:07:337 - Retorno Bematech_FI_LeInformacoesConfiguracao: OK
+2013-10-10 1:00:11:505 - ----------------------------------------------------------------------- 
+2013-10-10 1:00:11:506 - Bematech_FI_LeituraX 
+2013-10-10 1:00:12:616 - ----------------------------------------------------------------------- 
+2013-10-10 1:00:12:616 - Bematech_FI_NumeroSerie 
+2013-10-10 1:00:13:723 - Retorno impressora: EMULADOR       
+2013-10-10 1:00:13:723 - Retorno Bematech_FI_NumeroSerie: 1
+2013-10-10 1:00:13:724 - Bematech_FI_VerificaEstadoImpressora 
+2013-10-10 1:00:14:831 - Retorno impressora: 6,0,0
+2013-10-10 1:00:14:831 - Retorno Bematech_FI_VerificaEstadoImpresora: 1
+2013-10-10 1:00:14:831 - Retorno Bematech_FI_LeituraX: 1
+2013-10-10 1:00:40:535 - ----------------------------------------------------------------------- 
+2013-10-10 1:00:40:536 - Bematech_FI_LeInformacoesConfiguracao 
+2013-10-10 1:00:40:536 - Versão BemaFI32.Dll: 6,1,2,0
+2013-10-10 1:00:40:540 - Versão BemaMFD.dll: 0
+2013-10-10 1:00:40:540 - Versão BemaMFD2.dll: 0
+2013-10-10 1:00:40:541 - path: C:\Projetos\TopCommerce\FrenteLoja\Debug\Win32
+2013-10-10 1:00:40:543 - Log: 1
+2013-10-10 1:00:40:544 - LogDiario: 1
+2013-10-10 1:00:40:544 - Status: 0
+2013-10-10 1:00:40:545 - Retorno: 0
+2013-10-10 1:00:40:545 - ControlePorta: 1
+2013-10-10 1:00:40:546 - StatusFuncao: 0
+2013-10-10 1:00:40:546 - ModeloImp: BEMATECH
+2013-10-10 1:00:40:547 - ModoGaveta: 0
+2013-10-10 1:00:40:547 - EmulMFD: 1
+2013-10-10 1:00:40:548 - StatusCheque: 0
+2013-10-10 1:00:40:549 - Porta: DEFAULT
+2013-10-10 1:00:40:549 - StatusErro: 1
+2013-10-10 1:00:40:549 - TimeOutZ: 99
+2013-10-10 1:00:40:550 - Impressora: 1
+2013-10-10 1:00:40:550 - TimeOutGerencial: 40
+2013-10-10 1:00:40:551 - CrLfVinculado: 0
+2013-10-10 1:00:40:551 - Gerencial: 0
+2013-10-10 1:00:40:551 - ForceWTSClient: 1
+2013-10-10 1:00:40:553 - RetriesWTSCmd: 3
+2013-10-10 1:00:40:554 - Software House - COO: 0
+2013-10-10 1:00:40:554 - Software House - NumeroAplicativo: 0
+2013-10-10 1:00:40:555 - Software House - CNPJ: 0
+2013-10-10 1:00:40:555 - Software House - IE: 0
+2013-10-10 1:00:40:556 - Software House - IM: 0
+2013-10-10 1:00:40:556 - Software House - RazaoSocial: 0
+2013-10-10 1:00:40:557 - Software House - NomeAplicativo: 0
+2013-10-10 1:00:40:557 - Software House - Versao: 0
+2013-10-10 1:00:40:558 - Software House - Linha1: 0
+2013-10-10 1:00:40:558 - Software House - Linha2: 0
+2013-10-10 1:00:40:558 - ECF - IM: 0
+2013-10-10 1:00:40:559 - ECF - UF: 0
+2013-10-10 1:00:40:560 - GerarRFD: 0
+2013-10-10 1:00:40:560 - CalculoIcmsCupom: 0
+2013-10-10 1:00:40:561 - HabilitaRFDImpMFD: 0
+2013-10-10 1:00:40:561 - Retorno Bematech_FI_LeInformacoesConfiguracao: OK
+2013-10-10 1:00:45: 41 - ----------------------------------------------------------------------- 
+2013-10-10 1:00:45: 41 - Bematech_FI_AbreComprovanteNaoFiscalVinculado 
+2013-10-10 1:00:45: 42 - Parâmetros: V|1|1
+2013-10-10 1:00:46:156 - Retorno Bematech_FI_AbreComprovanteNaoFiscalVinculado: 1
+2013-10-10 1:00:46:157 - ----------------------------------------------------------------------- 
+2013-10-10 1:00:46:157 - Bematech_FI_UsaComprovanteNaoFiscalVinculado 
+2013-10-10 1:00:46:158 - Parâmetro: a
+2013-10-10 1:00:47:263 - Retorno Bematech_FI_UsaComprovanteNaoFiscalVinculado: 1
+2013-10-10 1:00:47:263 - ----------------------------------------------------------------------- 
+2013-10-10 1:00:47:263 - Bematech_FI_FechaComprovanteNaoFiscalVinculado 
+2013-10-10 1:00:47:264 - Bematech_FI_FechaRelatorioGerencial 
+2013-10-10 1:00:48:371 - Retorno Bematech_FI_FechaRelatorioGerencial: 1
+2013-10-10 1:00:48:371 - Retorno Bematech_FI_FechaComprovanteNaoFiscalVinculado : 1

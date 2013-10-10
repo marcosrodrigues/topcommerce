@@ -49,17 +49,24 @@ type
     cedDescontoMaximoValor: TCurrencyEdit;
     Label10: TLabel;
     cedDescontoMaximoPercentual: TCurrencyEdit;
+    Label11: TLabel;
+    Label12: TLabel;
     procedure sbtNovoClick(Sender: TObject);
     procedure sbtEditarClick(Sender: TObject);
     procedure sbtExcluirClick(Sender: TObject);
     procedure bbtGerarCodigoBarrasClick(Sender: TObject);
     procedure edtCodigoBarrasExit(Sender: TObject);
+    procedure cedMargemLucroExit(Sender: TObject);
+    procedure cdsFornecedoresAfterPost(DataSet: TDataSet);
   private
     { Private declarations }
     DAOClient: TProdutoDAOClient;
     DAOClientEstoque: TEstoqueDAOClient;
 
     QuantidadeAnterior: Integer;
+
+    function MaiorPrecoCompra: Currency;
+    procedure CalculaPrecoVendaComMargemLucro;
   protected
     procedure OnCreate; override;
     procedure OnDestroy; override;
@@ -88,6 +95,30 @@ begin
   edtCodigoBarras.Text := DAOClient.NextCodigoBarras;
 end;
 
+procedure TFrmDadosProduto.CalculaPrecoVendaComMargemLucro;
+var
+  precoCompra: Currency;
+begin
+  if (cedMargemLucro.Value > 0) and (cedPrecoVenda.Value = 0) and not(cdsFornecedores.IsEmpty) then
+  begin
+    precoCompra := MaiorPrecoCompra;
+
+    cedPrecoVenda.Value := precoCompra + (precoCompra * (cedMargemLucro.Value / 100));
+  end;
+end;
+
+procedure TFrmDadosProduto.cdsFornecedoresAfterPost(DataSet: TDataSet);
+begin
+  inherited;
+  CalculaPrecoVendaComMargemLucro;
+end;
+
+procedure TFrmDadosProduto.cedMargemLucroExit(Sender: TObject);
+begin
+  inherited;
+  CalculaPrecoVendaComMargemLucro;
+end;
+
 procedure TFrmDadosProduto.edtCodigoBarrasExit(Sender: TObject);
 begin
   inherited;
@@ -96,6 +127,19 @@ begin
     Atencao('Já existe um produto cadastrado com este código de barras.');
     edtCodigoBarras.SetFocus;
   end;
+end;
+
+function TFrmDadosProduto.MaiorPrecoCompra: Currency;
+begin
+  cdsFornecedores.DisableControls;
+
+  cdsFornecedores.IndexFieldNames := 'PRECO_COMPRA';
+
+  Result := cdsFornecedoresPRECO_COMPRA.AsCurrency;
+
+  cdsFornecedores.IndexFieldNames := 'CODIGO_FORNECEDOR';
+
+  cdsFornecedores.EnableControls;
 end;
 
 procedure TFrmDadosProduto.OnCreate;
@@ -174,10 +218,20 @@ begin
     cds.FieldByName('CODIGO_TIPO_PRODUTO').AsString    := FramePesquisaTipoProduto.edtCodigoTipoProduto.Text;
     cds.FieldByName('DESCRICAO_TIPO_PRODUTO').AsString := FramePesquisaTipoProduto.edtDescricaoTipoProduto.Text;
     cds.FieldByName('CODIGO_BARRAS').AsString          := edtCodigoBarras.Text;
-    cds.FieldByName('PRECO_VENDA').AsFloat             := cedPrecoVenda.Value;
+    cds.FieldByName('MARGEM_LUCRO').AsCurrency         := cedMargemLucro.Value;
+    cds.FieldByName('PRECO_VENDA').AsCurrency          := cedPrecoVenda.Value;
+    cds.FieldByName('DESCONTO_MAXIMO_VALOR').AsCurrency := cedDescontoMaximoValor.Value;
+    cds.FieldByName('DESCONTO_MAXIMO_PERCENTUAL').AsCurrency := cedDescontoMaximoPercentual.Value;
+    cds.FieldByName('QUANTIDADE').AsInteger            := sedQuantidadeEstoque.Value;
     cds.FieldByName('ESTOQUE_MINIMO').AsInteger        := sedEstoqueMinimo.Value;
     cds.FieldByName('ENDERECO').AsString               := edtEndereco.Text;
     cds.Post;
+
+    if chbContinuarIncluindo.Checked then
+    begin
+      cdsFornecedores.EmptyDataSet;
+      cdsValidades.EmptyDataSet;
+    end;
   end
   else
   begin
@@ -195,7 +249,11 @@ begin
     cds.FieldByName('CODIGO_TIPO_PRODUTO').AsString    := FramePesquisaTipoProduto.edtCodigoTipoProduto.Text;
     cds.FieldByName('DESCRICAO_TIPO_PRODUTO').AsString := FramePesquisaTipoProduto.edtDescricaoTipoProduto.Text;
     cds.FieldByName('CODIGO_BARRAS').AsString          := edtCodigoBarras.Text;
-    cds.FieldByName('PRECO_VENDA').AsFloat             := cedPrecoVenda.Value;
+    cds.FieldByName('MARGEM_LUCRO').AsCurrency         := cedMargemLucro.Value;
+    cds.FieldByName('PRECO_VENDA').AsCurrency          := cedPrecoVenda.Value;
+    cds.FieldByName('DESCONTO_MAXIMO_VALOR').AsCurrency := cedDescontoMaximoValor.Value;
+    cds.FieldByName('DESCONTO_MAXIMO_PERCENTUAL').AsCurrency := cedDescontoMaximoPercentual.Value;
+    cds.FieldByName('QUANTIDADE').AsInteger            := sedQuantidadeEstoque.Value;
     cds.FieldByName('ESTOQUE_MINIMO').AsInteger        := sedEstoqueMinimo.Value;
     cds.FieldByName('ENDERECO').AsString               := edtEndereco.Text;
     cds.Post;
@@ -218,10 +276,13 @@ begin
       FramePesquisaTipoProduto.edtCodigoTipoProduto.Text    := Produto.TipoProduto.Codigo;
       FramePesquisaTipoProduto.edtDescricaoTipoProduto.Text := Produto.TipoProduto.Descricao;
       edtCodigoBarras.Text         := Produto.CodigoBarras;
+      cedMargemLucro.Value         := Produto.MargemLucro;
       cedPrecoVenda.Value          := Produto.PrecoVenda;
+      edtEndereco.Text             := Produto.Endereco;
+      cedDescontoMaximoValor.Value := Produto.DescontoMaximoValor;
+      cedDescontoMaximoPercentual.Value := Produto.DescontoMaximoPercentual;
       sedEstoqueMinimo.Value       := Produto.EstoqueMinimo;
       sedQuantidadeEstoque.Value   := Produto.QuantidadeEstoque;
-      edtEndereco.Text             := Produto.Endereco;
 
       QuantidadeAnterior           := Produto.QuantidadeEstoque;
 
