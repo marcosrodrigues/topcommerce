@@ -3,7 +3,7 @@ unit MensagensUtils;
 interface
 
 uses
-  Dialogs, Forms, Graphics, StdCtrls, Windows, SysUtils, Controls;
+  Dialogs, Forms, Graphics, StdCtrls, Windows, SysUtils, Controls, uFrmConfirm;
 
 function Confirma(mensagem: string): Boolean;
 procedure Informacao(mensagem: string);
@@ -15,29 +15,47 @@ procedure ModifyDialog(var frm: TForm; ToCaptions : array of string; customFont 
 
 implementation
 
+uses uFrmInformation, uFrmError, uFrmWarning;
+
 function Confirma(mensagem: string): Boolean;
+var
+  f: TFrmConfirm;
 begin
-  //Result := MessageDlg(mensagem, mtConfirmation, mbYesNo, 1) = 6;
   Result := False;
-  case MessageDlgCustom(mensagem, mtConfirmation, [mbYes, mbNo], ['&Sim', '&Não'], nil) of
+
+  f := TFrmConfirm.Create(nil);
+  f.Mensagem := mensagem;
+  case f.ShowModal of
     mrYes: Result := True;
     mrNo: Result := False;
   end;
 end;
 
 procedure Informacao(mensagem: string);
+var
+  f: TFrmInformation;
 begin
-  MessageDlg(mensagem, mtInformation, [mbOK], 1);
+  f := TFrmInformation.Create(nil);
+  f.Mensagem := mensagem;
+  f.ShowModal;
 end;
 
 procedure Erro(mensagem: string);
+var
+  f: TFrmError;
 begin
-  MessageDlg(mensagem, mtError, [mbOK], 1);
+  f := TFrmError.Create(nil);
+  f.Mensagem := mensagem;
+  f.ShowModal;
 end;
 
 procedure Atencao(mensagem: string);
+var
+  f: TFrmWarning;
 begin
-  MessageDlg(mensagem, mtWarning, [mbOK], 1);
+  f := TFrmWarning.Create(nil);
+  f.Mensagem := mensagem;
+  f.ShowModal;
 end;
 
 function GetTextWidth(s: string; fnt: TFont; HWND: THandle): integer;

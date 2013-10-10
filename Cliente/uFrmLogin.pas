@@ -19,6 +19,7 @@ type
     btnSair: TDXPButton;
     Panel1: TPanel;
     Image19: TImage;
+    Shape1: TShape;
     procedure btnSairClick(Sender: TObject);
     procedure btnOkClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -26,6 +27,8 @@ type
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure Image19Click(Sender: TObject);
+    procedure Panel1MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
   private
     { Private declarations }
     DAOClient: TUsuarioDAOClient;
@@ -167,6 +170,13 @@ end;
 procedure TFrmLogin.Image19Click(Sender: TObject);
 begin
   Self.Close;
+end;
+
+procedure TFrmLogin.Panel1MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  ReleaseCapture;
+  SendMessage(Self.Handle, WM_SYSCOMMAND, 61458, 0);
 end;
 
 end.

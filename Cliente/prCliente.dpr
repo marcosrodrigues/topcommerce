@@ -77,7 +77,11 @@ uses
   uFrmDadosContaPagar in 'uFrmDadosContaPagar.pas' {FrmDadosContaPagar},
   uFrmDadosContaReceber in 'uFrmDadosContaReceber.pas' {FrmDadosContaReceber},
   uFramePesquisaCliente in 'uFramePesquisaCliente.pas' {FramePesquisaCliente: TFrame},
-  uFrmConsultaCliente in 'uFrmConsultaCliente.pas' {FrmConsultaCliente};
+  uFrmConsultaCliente in 'uFrmConsultaCliente.pas' {FrmConsultaCliente},
+  uFrmConfirm in '..\Utils\uFrmConfirm.pas' {FrmConfirm},
+  uFrmInformation in '..\Utils\uFrmInformation.pas' {FrmInformation},
+  uFrmWarning in '..\Utils\uFrmWarning.pas' {FrmWarning},
+  uFrmError in '..\Utils\uFrmError.pas' {FrmError};
 
 {$R *.res}
 
@@ -105,6 +109,10 @@ begin
     if fLogin.FLoginSucess then
     begin
       Application.CreateForm(TFrmPrincipal, FrmPrincipal);
+  Application.CreateForm(TFrmConfirm, FrmConfirm);
+  Application.CreateForm(TFrmInformation, FrmInformation);
+  Application.CreateForm(TFrmWarning, FrmWarning);
+  Application.CreateForm(TFrmError, FrmError);
   if fLogin.Usuario <> nil then
         FrmPrincipal.lblLogin.Caption := 'Usuário: ' + fLogin.Usuario.Login
       else

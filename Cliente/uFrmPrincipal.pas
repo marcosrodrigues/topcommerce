@@ -7,7 +7,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Menus, ExtCtrls, Buttons, DBXDataSnap, DBXCommon, DB, SqlExpr, ExtDlgs,
   IniFiles, StdCtrls, Grids, DBGrids, DBClient, DXPControl, DXPButtons, RLConsts,
-  ComCtrls;
+  ComCtrls, pngimage;
 
 type
   TFrmPrincipal = class(TForm)
@@ -66,6 +66,7 @@ type
     ContasaPagar2: TMenuItem;
     N3: TMenuItem;
     ContasaReceber2: TMenuItem;
+    Image1: TImage;
     procedure N11TiposdeProdutos1Click(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure N12Produtos1Click(Sender: TObject);

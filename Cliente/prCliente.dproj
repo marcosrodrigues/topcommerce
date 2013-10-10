@@ -222,6 +222,18 @@
 			<DCCReference Include="uFrmConsultaCliente.pas">
 				<Form>FrmConsultaCliente</Form>
 			</DCCReference>
+			<DCCReference Include="..\Utils\uFrmConfirm.pas">
+				<Form>FrmConfirm</Form>
+			</DCCReference>
+			<DCCReference Include="..\Utils\uFrmInformation.pas">
+				<Form>FrmInformation</Form>
+			</DCCReference>
+			<DCCReference Include="..\Utils\uFrmWarning.pas">
+				<Form>FrmWarning</Form>
+			</DCCReference>
+			<DCCReference Include="..\Utils\uFrmError.pas">
+				<Form>FrmError</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Release">
 				<Key>Cfg_2</Key>
 				<CfgParent>Base</CfgParent>

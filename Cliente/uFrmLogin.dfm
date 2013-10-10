@@ -614,6 +614,18 @@ object FrmLogin: TFrmLogin
     Font.Style = []
     ParentFont = False
   end
+  object Shape1: TShape
+    Left = 0
+    Top = 41
+    Width = 397
+    Height = 149
+    Align = alClient
+    Brush.Style = bsClear
+    ExplicitLeft = 168
+    ExplicitTop = 64
+    ExplicitWidth = 65
+    ExplicitHeight = 65
+  end
   object edtUsuario: TEdit
     Left = 212
     Top = 58
@@ -808,6 +820,7 @@ object FrmLogin: TFrmLogin
     ParentBackground = False
     ParentFont = False
     TabOrder = 4
+    OnMouseDown = Panel1MouseDown
     DesignSize = (
       397
       41)
