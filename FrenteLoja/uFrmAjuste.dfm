@@ -5,7 +5,7 @@ object FrmAjuste: TFrmAjuste
   BorderStyle = bsNone
   Caption = 'Item do Pedido'
   ClientHeight = 310
-  ClientWidth = 500
+  ClientWidth = 607
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -57,16 +57,17 @@ object FrmAjuste: TFrmAjuste
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 500
+    Width = 607
     Height = 41
     Align = alTop
     Color = 3682350
     ParentBackground = False
     TabOrder = 5
+    ExplicitWidth = 500
     object lblDescricaoProduto: TLabel
       Left = 1
       Top = 1
-      Width = 498
+      Width = 605
       Height = 39
       Align = alClient
       Alignment = taCenter
@@ -82,58 +83,51 @@ object FrmAjuste: TFrmAjuste
       ExplicitHeight = 32
     end
   end
-  object edtQuantidade: TEdit
-    Left = 10
-    Top = 140
-    Width = 167
-    Height = 33
-    Alignment = taRightJustify
-    NumbersOnly = True
-    TabOrder = 1
-    Text = '1'
-    OnChange = edtQuantidadeChange
-  end
-  object cedPrecoUnitario: TDXPCurrencyEdit
+  object cedPrecoUnitario: TCurrencyEdit
     Left = 10
     Top = 77
-    Width = 166
-    Height = 32
-    Alignment = taRightJustify
+    Width = 167
+    Height = 33
+    Margins.Top = 1
     Enabled = False
-    Options = []
     TabOrder = 0
-    Text = '0,00'
   end
-  object cedDescValor: TDXPCurrencyEdit
+  object cedDescValor: TCurrencyEdit
     Left = 10
     Top = 204
-    Width = 166
-    Height = 32
-    Alignment = taRightJustify
-    Options = []
+    Width = 167
+    Height = 33
+    Margins.Top = 1
     TabOrder = 2
-    Text = '0,00'
     OnExit = cedDescValorExit
   end
-  object cedDescPercentual: TDXPCurrencyEdit
+  object cedDescPercentual: TCurrencyEdit
     Left = 194
     Top = 204
-    Width = 166
-    Height = 32
-    Alignment = taRightJustify
-    Options = []
+    Width = 167
+    Height = 33
+    Margins.Top = 1
+    DisplayFormat = '% ,0.00;-% ,0.00'
     TabOrder = 3
-    Text = '0,00'
     OnExit = cedDescPercentualExit
   end
-  object cedPrecoTotal: TDXPCurrencyEdit
+  object cedPrecoTotal: TCurrencyEdit
     Left = 10
-    Top = 267
-    Width = 166
-    Height = 32
-    Alignment = taRightJustify
-    Options = []
+    Top = 269
+    Width = 167
+    Height = 33
+    Margins.Top = 1
     TabOrder = 4
-    Text = '0,00'
+  end
+  object sedQuantidade: TSpinEdit
+    Left = 10
+    Top = 141
+    Width = 167
+    Height = 35
+    MaxValue = 10000
+    MinValue = 1
+    TabOrder = 1
+    Value = 0
+    OnChange = sedQuantidadeChange
   end
 end

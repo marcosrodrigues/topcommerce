@@ -593,14 +593,14 @@ begin
 end;
 
 procedure TFrmPrincipal.Button1Click(Sender: TObject);
-var
+{var
   iRetorno: integer;
-  cTexto: string;
+  cTexto: string;}
 begin
-  iRetorno := Bematech_FI_AbreComprovanteNaoFiscalVinculado( 'VISA', '10,50', '1' );
+  {iRetorno := Bematech_FI_AbreComprovanteNaoFiscalVinculado( 'VISA', '10,50', '1' );
   cTexto := 'ahshahaghagsahsagbshahsagsbahsg';
   iRetorno := Bematech_FI_UsaComprovanteNaoFiscalVinculado( cTexto );
-  iRetorno := Bematech_FI_FechaComprovanteNaoFiscalVinculado();
+  iRetorno := Bematech_FI_FechaComprovanteNaoFiscalVinculado();}
 
   {cTexto := 'Digite o texto a ser impresso aqui !!!';
   iRetorno := Bematech_FI_RelatorioGerencial( pchar( cTexto ) );
@@ -608,7 +608,7 @@ begin
 
   //iRetorno := Bematech_FI_LeituraX;
 
-  Informacao('ok');
+  //Informacao('ok');
 end;
 
 procedure TFrmPrincipal.CancelarVenda;
@@ -688,7 +688,7 @@ begin
       try
         fAjuste.lblDescricaoProduto.Caption := fConsultaProdutos.Produto.Descricao;
         fAjuste.cedPrecoUnitario.Value      := fConsultaProdutos.Produto.PrecoVenda;
-        fAjuste.edtQuantidade.Text          := '1';
+        fAjuste.sedQuantidade.Value         := 1;
         fAjuste.cedPrecoTotal.Value         := fConsultaProdutos.Produto.PrecoVenda;
         fAjuste.DescontoMaximoValor         := fConsultaProdutos.Produto.DescontoMaximoValor;
         fAjuste.DescontoMaximoPercentual    := fConsultaProdutos.Produto.DescontoMaximoPercentual;
@@ -700,7 +700,7 @@ begin
           cdsProdutos.Edit;
           if (Confirma('Este produto já se encontra no pedido. Deseja adicionar a quantidade?')) then
           begin
-            cdsProdutosQUANTIDADE.AsInteger   := cdsProdutosQUANTIDADE.AsInteger + StrToInt(fAjuste.edtQuantidade.Text);
+            cdsProdutosQUANTIDADE.AsInteger   := cdsProdutosQUANTIDADE.AsInteger + fAjuste.sedQuantidade.Value;
             cdsProdutosPRECO_TOTAL.AsCurrency := cdsProdutosPRECO_TOTAL.AsCurrency + fAjuste.cedPrecoTotal.Value;
 
             lblSubtotal.Caption := FormatCurr(',0.00', StrToCurrDef(AnsiReplaceStr(lblSubtotal.Caption,'.',''), 0) + fAjuste.cedPrecoTotal.Value);
@@ -724,7 +724,7 @@ begin
           cdsProdutosCODIGO.AsString           := fConsultaProdutos.Produto.Codigo;
           cdsProdutosDESCRICAO.AsString        := fConsultaProdutos.Produto.Descricao;
           cdsProdutosPRECO_UNITARIO.AsCurrency := fConsultaProdutos.Produto.PrecoVenda;
-          cdsProdutosQUANTIDADE.AsInteger      := StrToInt(fAjuste.edtQuantidade.Text);
+          cdsProdutosQUANTIDADE.AsInteger      := fAjuste.sedQuantidade.Value;
           cdsProdutosDESCONTO_VALOR.AsCurrency := fAjuste.cedDescValor.Value;
           cdsProdutosDESCONTO_PERCENTUAL.AsCurrency := fAjuste.cedDescPercentual.Value;
           cdsProdutosPRECO_TOTAL.AsCurrency    := fAjuste.cedPrecoTotal.Value;

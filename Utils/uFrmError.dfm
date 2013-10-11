@@ -3,7 +3,7 @@ object FrmError: TFrmError
   Top = 0
   BorderStyle = bsNone
   Caption = 'FrmError'
-  ClientHeight = 140
+  ClientHeight = 150
   ClientWidth = 410
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -20,11 +20,12 @@ object FrmError: TFrmError
     Left = 0
     Top = 0
     Width = 410
-    Height = 140
+    Height = 150
     Align = alClient
     Brush.Style = bsClear
     ExplicitLeft = 1
     ExplicitWidth = 439
+    ExplicitHeight = 140
   end
   object Image1: TImage
     Left = 16
@@ -191,7 +192,7 @@ object FrmError: TFrmError
   end
   object btnOk: TBitBtn
     Left = 308
-    Top = 104
+    Top = 116
     Width = 89
     Height = 30
     Caption = '&Ok'
@@ -269,7 +270,7 @@ object FrmError: TFrmError
     Left = 96
     Top = 19
     Width = 299
-    Height = 65
+    Height = 90
     BorderStyle = bsNone
     Color = clBtnFace
     Enabled = False

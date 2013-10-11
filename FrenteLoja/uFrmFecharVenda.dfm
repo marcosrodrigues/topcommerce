@@ -4,8 +4,8 @@ object FrmFecharVenda: TFrmFecharVenda
   BorderIcons = []
   BorderStyle = bsNone
   Caption = 'Fechar Venda'
-  ClientHeight = 386
-  ClientWidth = 645
+  ClientHeight = 396
+  ClientWidth = 575
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -27,7 +27,7 @@ object FrmFecharVenda: TFrmFecharVenda
     Caption = 'Desconto Valor'
   end
   object Label4: TLabel
-    Left = 408
+    Left = 392
     Top = 50
     Width = 39
     Height = 25
@@ -64,7 +64,7 @@ object FrmFecharVenda: TFrmFecharVenda
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 645
+    Width = 575
     Height = 41
     Align = alTop
     Caption = 'Fechar Venda'
@@ -77,11 +77,12 @@ object FrmFecharVenda: TFrmFecharVenda
     ParentBackground = False
     ParentFont = False
     TabOrder = 7
+    ExplicitWidth = 645
     DesignSize = (
-      645
+      575
       41)
     object Image19: TImage
-      Left = 616
+      Left = 546
       Top = 3
       Width = 24
       Height = 24
@@ -221,11 +222,12 @@ object FrmFecharVenda: TFrmFecharVenda
         FA9A8A936452B13296028000F88AF68DBAC26352FFB8A256F190AFA9E9897F00
         4478C4DFA95E948D0000000049454E44AE426082}
       OnClick = Image19Click
+      ExplicitLeft = 616
     end
   end
   object btnFechar: TDXPButton
     Left = 8
-    Top = 350
+    Top = 355
     Width = 112
     Height = 32
     Font.Charset = DEFAULT_CHARSET
@@ -236,7 +238,6 @@ object FrmFecharVenda: TFrmFecharVenda
     ParentFont = False
     OnClick = btnFecharClick
     Caption = '      Fechar'
-    Flat = True
     GlyphPng.Data = {
       89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
       F40000001974455874536F6674776172650041646F626520496D616765526561
@@ -288,61 +289,6 @@ object FrmFecharVenda: TFrmFecharVenda
       01FE00D98632FD4771EBFA0000000049454E44AE426082}
     TabOrder = 6
   end
-  object cedDescontoValor: TDXPCurrencyEdit
-    Left = 8
-    Top = 76
-    Width = 168
-    Height = 32
-    Alignment = taRightJustify
-    Options = []
-    TabOrder = 0
-    Text = '0,00'
-    OnExit = cedDescontoValorExit
-  end
-  object cedDescontoPercentual: TDXPCurrencyEdit
-    Left = 200
-    Top = 76
-    Width = 168
-    Height = 32
-    Alignment = taRightJustify
-    Options = []
-    TabOrder = 1
-    Text = '0,00'
-    OnExit = cedDescontoPercentualExit
-  end
-  object cedTotal: TDXPCurrencyEdit
-    Left = 408
-    Top = 76
-    Width = 168
-    Height = 32
-    Alignment = taRightJustify
-    Options = []
-    TabOrder = 2
-    Text = '0,00'
-  end
-  object cedValorRecebido: TDXPCurrencyEdit
-    Left = 8
-    Top = 140
-    Width = 168
-    Height = 32
-    Alignment = taRightJustify
-    Options = []
-    TabOrder = 3
-    Text = '0,00'
-    OnExit = cedValorRecebidoExit
-  end
-  object cedTroco: TDXPCurrencyEdit
-    Left = 200
-    Top = 140
-    Width = 168
-    Height = 32
-    Alignment = taRightJustify
-    Enabled = False
-    Options = []
-    TabOrder = 4
-    Text = '0,00'
-    OnExit = cedDescontoValorExit
-  end
   object lbFormaPagamento: TListBox
     Left = 8
     Top = 216
@@ -357,5 +303,50 @@ object FrmFecharVenda: TFrmFecharVenda
       'Cheque')
     TabOrder = 5
     OnEnter = lbFormaPagamentoEnter
+  end
+  object cedDescontoValor: TCurrencyEdit
+    Left = 8
+    Top = 76
+    Width = 168
+    Height = 33
+    Margins.Top = 1
+    TabOrder = 0
+    OnExit = cedDescontoValorExit
+  end
+  object cedDescontoPercentual: TCurrencyEdit
+    Left = 200
+    Top = 76
+    Width = 168
+    Height = 33
+    Margins.Top = 1
+    DisplayFormat = ',0.00 %;-,0.00 %'
+    TabOrder = 1
+    OnExit = cedDescontoPercentualExit
+  end
+  object cedTotal: TCurrencyEdit
+    Left = 392
+    Top = 76
+    Width = 168
+    Height = 33
+    Margins.Top = 1
+    TabOrder = 2
+  end
+  object cedValorRecebido: TCurrencyEdit
+    Left = 8
+    Top = 140
+    Width = 168
+    Height = 33
+    Margins.Top = 1
+    TabOrder = 3
+    OnExit = cedValorRecebidoExit
+  end
+  object cedTroco: TCurrencyEdit
+    Left = 200
+    Top = 140
+    Width = 168
+    Height = 33
+    Margins.Top = 1
+    Enabled = False
+    TabOrder = 4
   end
 end

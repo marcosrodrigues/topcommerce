@@ -15,12 +15,14 @@ type
     btnPesquisarCliente: TDXPButton;
     btnLimpar: TDXPButton;
     btnFechar: TDXPButton;
+    Label1: TLabel;
     procedure btnPesquisarClienteClick(Sender: TObject);
     procedure btnLimparClick(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
     procedure Image19Click(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
   private
     { Private declarations }
   public
@@ -89,6 +91,13 @@ begin
     edCliente.SetFocus;
     CanClose := False;
   end;
+end;
+
+procedure TFrmInformarCliente.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if Key = VK_F6 then
+    btnPesquisarCliente.Click;
 end;
 
 procedure TFrmInformarCliente.FormKeyPress(Sender: TObject; var Key: Char);

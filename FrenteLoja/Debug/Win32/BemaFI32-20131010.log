@@ -1618,3 +1618,44 @@ GetLastError ( ) = 20
 2013-10-10 1:00:47:264 - Bematech_FI_FechaRelatorioGerencial 
 2013-10-10 1:00:48:371 - Retorno Bematech_FI_FechaRelatorioGerencial: 1
 2013-10-10 1:00:48:371 - Retorno Bematech_FI_FechaComprovanteNaoFiscalVinculado : 1
+2013-10-10 23:14:14:365 - ----------------------------------------------------------------------- 
+2013-10-10 23:14:14:381 - Bematech_FI_LeInformacoesConfiguracao 
+2013-10-10 23:14:14:404 - Versão BemaFI32.Dll: 6,1,2,0
+2013-10-10 23:14:14:405 - Versão BemaMFD.dll: 0
+2013-10-10 23:14:14:405 - Versão BemaMFD2.dll: 0
+2013-10-10 23:14:14:406 - path: C:\Projetos\TopCommerce\FrenteLoja\Debug\Win32
+2013-10-10 23:14:14:406 - Log: 1
+2013-10-10 23:14:14:406 - LogDiario: 1
+2013-10-10 23:14:14:407 - Status: 0
+2013-10-10 23:14:14:407 - Retorno: 0
+2013-10-10 23:14:14:407 - ControlePorta: 1
+2013-10-10 23:14:14:408 - StatusFuncao: 0
+2013-10-10 23:14:14:409 - ModeloImp: BEMATECH
+2013-10-10 23:14:14:409 - ModoGaveta: 0
+2013-10-10 23:14:14:409 - EmulMFD: 1
+2013-10-10 23:14:14:410 - StatusCheque: 0
+2013-10-10 23:14:14:410 - Porta: DEFAULT
+2013-10-10 23:14:14:411 - StatusErro: 1
+2013-10-10 23:14:14:411 - TimeOutZ: 99
+2013-10-10 23:14:14:411 - Impressora: 1
+2013-10-10 23:14:14:412 - TimeOutGerencial: 40
+2013-10-10 23:14:14:412 - CrLfVinculado: 0
+2013-10-10 23:14:14:413 - Gerencial: 0
+2013-10-10 23:14:14:413 - ForceWTSClient: 1
+2013-10-10 23:14:14:414 - RetriesWTSCmd: 3
+2013-10-10 23:14:14:414 - Software House - COO: 0
+2013-10-10 23:14:14:414 - Software House - NumeroAplicativo: 0
+2013-10-10 23:14:14:415 - Software House - CNPJ: 0
+2013-10-10 23:14:14:415 - Software House - IE: 0
+2013-10-10 23:14:14:416 - Software House - IM: 0
+2013-10-10 23:14:14:416 - Software House - RazaoSocial: 0
+2013-10-10 23:14:14:416 - Software House - NomeAplicativo: 0
+2013-10-10 23:14:14:417 - Software House - Versao: 0
+2013-10-10 23:14:14:417 - Software House - Linha1: 0
+2013-10-10 23:14:14:418 - Software House - Linha2: 0
+2013-10-10 23:14:14:418 - ECF - IM: 0
+2013-10-10 23:14:14:419 - ECF - UF: 0
+2013-10-10 23:14:14:419 - GerarRFD: 0
+2013-10-10 23:14:14:420 - CalculoIcmsCupom: 0
+2013-10-10 23:14:14:420 - HabilitaRFDImpMFD: 0
+2013-10-10 23:14:14:421 - Retorno Bematech_FI_LeInformacoesConfiguracao: OK

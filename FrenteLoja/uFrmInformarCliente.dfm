@@ -3,7 +3,7 @@ object FrmInformarCliente: TFrmInformarCliente
   Top = 0
   BorderStyle = bsNone
   Caption = 'FrmInformarCliente'
-  ClientHeight = 166
+  ClientHeight = 177
   ClientWidth = 635
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -15,6 +15,7 @@ object FrmInformarCliente: TFrmInformarCliente
   OldCreateOrder = False
   Position = poMainFormCenter
   OnCloseQuery = FormCloseQuery
+  OnKeyDown = FormKeyDown
   OnKeyPress = FormKeyPress
   PixelsPerInch = 96
   TextHeight = 25
@@ -27,6 +28,19 @@ object FrmInformarCliente: TFrmInformarCliente
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -27
+    Font.Name = 'Ubuntu Condensed'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label1: TLabel
+    Left = 8
+    Top = 116
+    Width = 130
+    Height = 19
+    Caption = 'Consultar Cliente (F6)'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clNavy
+    Font.Height = -16
     Font.Name = 'Ubuntu Condensed'
     Font.Style = []
     ParentFont = False
@@ -306,7 +320,7 @@ object FrmInformarCliente: TFrmInformarCliente
   end
   object btnFechar: TDXPButton
     Left = 8
-    Top = 122
+    Top = 140
     Width = 112
     Height = 32
     Font.Charset = DEFAULT_CHARSET

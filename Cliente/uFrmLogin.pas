@@ -152,7 +152,11 @@ var
 begin
   if Ord( Key ) = 13 then
   begin
-    l := TList.Create;
+    if (Self.ActiveControl = edtUsuario) then
+      edtSenha.SetFocus
+    else if (Self.ActiveControl = edtSenha) then
+      btnOk.Click;
+    {l := TList.Create;
     try
       GetTabOrderList( l );
       for I := 0 to l.Count - 1 do
@@ -163,7 +167,7 @@ begin
         end;
     finally
       l.Free;
-    end;
+    end;}
   end;
 end;
 

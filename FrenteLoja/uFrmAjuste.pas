@@ -4,7 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls, Mask, DXPCurrencyEdit;
+  Dialogs, StdCtrls, ExtCtrls, Mask, DXPCurrencyEdit, RxToolEdit, RxCurrEdit,
+  Spin;
 
 type
   TFrmAjuste = class(TForm)
@@ -12,19 +13,19 @@ type
     lblDescricaoProduto: TLabel;
     Label1: TLabel;
     Label2: TLabel;
-    edtQuantidade: TEdit;
     Label4: TLabel;
-    cedPrecoUnitario: TDXPCurrencyEdit;
     Label3: TLabel;
-    cedDescValor: TDXPCurrencyEdit;
     Label5: TLabel;
-    cedDescPercentual: TDXPCurrencyEdit;
-    cedPrecoTotal: TDXPCurrencyEdit;
+    cedPrecoUnitario: TCurrencyEdit;
+    cedDescValor: TCurrencyEdit;
+    cedDescPercentual: TCurrencyEdit;
+    cedPrecoTotal: TCurrencyEdit;
+    sedQuantidade: TSpinEdit;
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
-    procedure edtQuantidadeChange(Sender: TObject);
     procedure cedDescValorExit(Sender: TObject);
     procedure cedDescPercentualExit(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure sedQuantidadeChange(Sender: TObject);
   private
     { Private declarations }
     procedure CalcularValor;
@@ -46,7 +47,7 @@ procedure TFrmAjuste.CalcularValor;
 
   function Total: Currency;
   begin
-    Result := cedPrecoUnitario.Value * StrToInt(edtQuantidade.Text);
+    Result := cedPrecoUnitario.Value * sedQuantidade.Value;
   end;
 
 begin
@@ -72,19 +73,13 @@ end;
 
 procedure TFrmAjuste.cedDescValorExit(Sender: TObject);
 begin
-  if cedDescValor.Value > DescontoMaximoValor * StrToIntDef(edtQuantidade.Text, 1) then
+  if cedDescValor.Value > DescontoMaximoValor * sedQuantidade.Value then
   begin
-    Atencao('Desconto máximo permitido: '+FormatCurr(',0.00', DescontoMaximoValor * StrToIntDef(edtQuantidade.Text, 1)));
+    Atencao('Desconto máximo permitido: '+FormatCurr(',0.00', DescontoMaximoValor * sedQuantidade.Value));
     cedDescValor.Value := DescontoMaximoValor;
   end;
 
   CalcularValor;
-end;
-
-procedure TFrmAjuste.edtQuantidadeChange(Sender: TObject);
-begin
-  if (edtQuantidade.Text <> '') then
-    cedPrecoTotal.Value := StrToInt(edtQuantidade.Text) * cedPrecoUnitario.Value;
 end;
 
 procedure TFrmAjuste.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
@@ -98,7 +93,7 @@ procedure TFrmAjuste.FormKeyPress(Sender: TObject; var Key: Char);
 begin
   if (Ord(Key) = 13) then
   begin
-    if (Self.ActiveControl = edtQuantidade) then
+    if (Self.ActiveControl = sedQuantidade) then
       cedDescValor.SetFocus
     else if (Self.ActiveControl = cedDescValor) then
       cedDescPercentual.SetFocus
@@ -107,6 +102,11 @@ begin
     else if (Self.ActiveControl = cedPrecoTotal) then
       Self.Close;
   end;
+end;
+
+procedure TFrmAjuste.sedQuantidadeChange(Sender: TObject);
+begin
+  cedPrecoTotal.Value := sedQuantidade.Value * cedPrecoUnitario.Value;
 end;
 
 end.

@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ExtCtrls, Mask, DXPControl,
-  DXPButtons, Cliente, DXPCurrencyEdit, pngimage;
+  DXPButtons, Cliente, DXPCurrencyEdit, pngimage, RxToolEdit, RxCurrEdit;
 
 type
   TFrmFecharVenda = class(TForm)
@@ -14,16 +14,16 @@ type
     Label4: TLabel;
     Label3: TLabel;
     btnFechar: TDXPButton;
-    cedDescontoValor: TDXPCurrencyEdit;
     Label6: TLabel;
-    cedDescontoPercentual: TDXPCurrencyEdit;
-    cedTotal: TDXPCurrencyEdit;
     Label7: TLabel;
-    cedValorRecebido: TDXPCurrencyEdit;
     Label8: TLabel;
-    cedTroco: TDXPCurrencyEdit;
     Image19: TImage;
     lbFormaPagamento: TListBox;
+    cedDescontoValor: TCurrencyEdit;
+    cedDescontoPercentual: TCurrencyEdit;
+    cedTotal: TCurrencyEdit;
+    cedValorRecebido: TCurrencyEdit;
+    cedTroco: TCurrencyEdit;
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure cedDescontoValorExit(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
