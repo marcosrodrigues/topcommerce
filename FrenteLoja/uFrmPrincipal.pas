@@ -119,7 +119,6 @@ type
     Image37: TImage;
     Label14: TLabel;
     Image38: TImage;
-    Button1: TButton;
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -144,7 +143,6 @@ type
     procedure Label10Click(Sender: TObject);
     procedure Label14Click(Sender: TObject);
     procedure Image38Click(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
     DAOPedidoVenda: TPedidoVendaDAOClient;
@@ -590,25 +588,6 @@ begin
   finally
     dao.Free;
   end;
-end;
-
-procedure TFrmPrincipal.Button1Click(Sender: TObject);
-{var
-  iRetorno: integer;
-  cTexto: string;}
-begin
-  {iRetorno := Bematech_FI_AbreComprovanteNaoFiscalVinculado( 'VISA', '10,50', '1' );
-  cTexto := 'ahshahaghagsahsagbshahsagsbahsg';
-  iRetorno := Bematech_FI_UsaComprovanteNaoFiscalVinculado( cTexto );
-  iRetorno := Bematech_FI_FechaComprovanteNaoFiscalVinculado();}
-
-  {cTexto := 'Digite o texto a ser impresso aqui !!!';
-  iRetorno := Bematech_FI_RelatorioGerencial( pchar( cTexto ) );
-  Bematech_FI_FechaRelatorioGerencial;}
-
-  //iRetorno := Bematech_FI_LeituraX;
-
-  //Informacao('ok');
 end;
 
 procedure TFrmPrincipal.CancelarVenda;

@@ -29546,16 +29546,6 @@ object FrmPrincipal: TFrmPrincipal
         ParentFont = False
       end
     end
-    object Button1: TButton
-      Left = 40
-      Top = 296
-      Width = 75
-      Height = 25
-      Caption = 'Button1'
-      TabOrder = 8
-      Visible = False
-      OnClick = Button1Click
-    end
   end
   object Panel6: TPanel
     Left = 0
