@@ -14,15 +14,20 @@ inherited FrmRelEstoque: TFrmRelEstoque
     end
     object RLBand2: TRLBand
       Left = 38
-      Top = 128
+      Top = 144
       Width = 718
       Height = 20
       BandType = btColumnHeader
+      Borders.Sides = sdCustom
+      Borders.DrawLeft = False
+      Borders.DrawTop = False
+      Borders.DrawRight = False
+      Borders.DrawBottom = True
       object RLLabel3: TRLLabel
         Left = 0
         Top = 0
         Width = 49
-        Height = 20
+        Height = 19
         Align = faLeft
         Caption = 'C'#243'digo'
         Font.Charset = DEFAULT_CHARSET
@@ -36,7 +41,7 @@ inherited FrmRelEstoque: TFrmRelEstoque
         Left = 49
         Top = 0
         Width = 370
-        Height = 20
+        Height = 19
         Align = faClient
         Caption = 'Produto'
         Font.Charset = DEFAULT_CHARSET
@@ -50,7 +55,7 @@ inherited FrmRelEstoque: TFrmRelEstoque
         Left = 603
         Top = 0
         Width = 115
-        Height = 20
+        Height = 19
         Align = faRight
         Caption = 'Pre'#231'o de Compra'
         Font.Charset = DEFAULT_CHARSET
@@ -64,7 +69,7 @@ inherited FrmRelEstoque: TFrmRelEstoque
         Left = 525
         Top = 0
         Width = 78
-        Height = 20
+        Height = 19
         Align = faRight
         Alignment = taCenter
         Caption = 'Quantidade'
@@ -79,7 +84,7 @@ inherited FrmRelEstoque: TFrmRelEstoque
         Left = 419
         Top = 0
         Width = 106
-        Height = 20
+        Height = 19
         Align = faRight
         Alignment = taCenter
         Caption = 'Estoque Minimo'
@@ -93,7 +98,7 @@ inherited FrmRelEstoque: TFrmRelEstoque
     end
     object RLBand3: TRLBand
       Left = 38
-      Top = 148
+      Top = 164
       Width = 718
       Height = 20
       object RLDBText1: TRLDBText

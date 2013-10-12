@@ -11,6 +11,7 @@ type
     FFecharCommand: TDBXCommand;
     FCaixaAbertoCommand: TDBXCommand;
     FRelatorioCommand: TDBXCommand;
+    FListCommand: TDBXCommand;
   public
     constructor Create(ADBXConnection: TDBXConnection); overload;
     constructor Create(ADBXConnection: TDBXConnection; AInstanceOwner: Boolean); overload;
@@ -19,6 +20,7 @@ type
     function Fechar: Boolean;
     function CaixaAberto: TCaixa;
     function Relatorio(DataInicial, DataFinal: TDateTime): TDBXReader;
+    function List: TDBXReader;
   end;
 
 implementation
@@ -90,6 +92,7 @@ begin
   FreeAndNil(FFecharCommand);
   FreeAndNil(FCaixaAbertoCommand);
   FreeAndNil(FRelatorioCommand);
+  FreeAndNil(FListCommand);
   inherited;
 end;
 
@@ -104,6 +107,19 @@ begin
   end;
   FFecharCommand.ExecuteUpdate;
   Result := FFecharCommand.Parameters[0].Value.GetBoolean;
+end;
+
+function TCaixaDAOClient.List: TDBXReader;
+begin
+  if FListCommand = nil then
+  begin
+    FListCommand := FDBXConnection.CreateCommand;
+    FListCommand.CommandType := TDBXCommandTypes.DSServerMethod;
+    FListCommand.Text := 'TCaixaDAO.List';
+    FListCommand.Prepare;
+  end;
+  FListCommand.ExecuteUpdate;
+  Result := FListCommand.Parameters[0].Value.GetDBXReader(FInstanceOwner);
 end;
 
 function TCaixaDAOClient.Relatorio(DataInicial, DataFinal: TDateTime): TDBXReader;

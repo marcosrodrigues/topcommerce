@@ -1582,6 +1582,10 @@ object FrmPrincipal: TFrmPrincipal
       end
       item
         Text = '01/01/2013 08:00:00'
+        Width = 120
+      end
+      item
+        Text = 'Contato: (85) 9939-6967'
         Width = 50
       end>
   end
@@ -1619,6 +1623,10 @@ object FrmPrincipal: TFrmPrincipal
       object N21MovimentarEstoque1: TMenuItem
         Caption = 'Movimentar Estoque'
         OnClick = N21MovimentarEstoque1Click
+      end
+      object MovimentodeCaixa1: TMenuItem
+        Caption = 'Movimento de Caixa'
+        OnClick = MovimentodeCaixa1Click
       end
     end
     object Financeiro1: TMenuItem

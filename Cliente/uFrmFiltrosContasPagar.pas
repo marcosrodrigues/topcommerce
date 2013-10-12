@@ -27,7 +27,7 @@ var
 
 implementation
 
-uses uFrmRelContasPagar;
+uses uFrmRelContasPagar, MensagensUtils;
 
 {$R *.dfm}
 
@@ -44,6 +44,20 @@ var
   r: TFrmRelContasPagar;
 begin
   inherited;
+  if ( FramePeriodo.deDataInicial.Date = 0 ) then
+  begin
+    Atencao( 'Informe a data inicial do periodo.' );
+    FramePeriodo.deDataInicial.SetFocus;
+    Exit;
+  end;
+
+  if ( FramePeriodo.deDataFinal.Date = 0 ) then
+  begin
+    Atencao( 'Informe a data final do periodo.' );
+    FramePeriodo.deDataFinal.SetFocus;
+    Exit;
+  end;
+
   r := TFrmRelContasPagar.Create(Self);
   try
     r.DataInicial := FramePeriodo.deDataInicial.Date;

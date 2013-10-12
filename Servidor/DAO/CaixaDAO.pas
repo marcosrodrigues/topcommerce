@@ -20,6 +20,7 @@ type
     function RegistrarMovimentacao(Origem: integer; Valor: Currency; Operacao: Integer): Boolean;
     function Fechar: Boolean;
     function Relatorio(DataInicial, DataFinal: TDateTime): TDBXReader;
+    function List: TDBXReader;
   end;
 
 
@@ -104,6 +105,16 @@ begin
   finally
     query.Free;
   end;
+end;
+
+function TCaixaDAO.List: TDBXReader;
+begin
+  PrepareCommand;
+  FComm.Text := 'SELECT C.ID, C.DATA, C.FECHADO, C.VALOR_ABERTURA, M.ORIGEM, M.VALOR, M.OPERACAO '+
+                'FROM CAIXAS C '+
+                'LEFT JOIN MOVIMENTACOES_CAIXA M ON M.CAIXA_ID = C.ID '+
+                'ORDER BY C.ID DESC, C.DATA DESC';
+  Result := FComm.ExecuteQuery;
 end;
 
 function TCaixaDAO.RegistrarMovimentacao(Origem: integer; Valor: Currency; Operacao: Integer): Boolean;

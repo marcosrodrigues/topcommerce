@@ -86,7 +86,8 @@ uses
   uFramePeriodo in 'uFramePeriodo.pas' {FramePeriodo: TFrame},
   uFrmContasReceber in 'uFrmContasReceber.pas' {FrmFiltrosContasReceber},
   uFrmRelContasPagar in 'uFrmRelContasPagar.pas' {FrmRelContasPagar},
-  uFrmRelContasReceber in 'uFrmRelContasReceber.pas' {FrmRelContasReceber};
+  uFrmRelContasReceber in 'uFrmRelContasReceber.pas' {FrmRelContasReceber},
+  uFrmMovimentoCaixa in 'uFrmMovimentoCaixa.pas' {FrmMovimentoCaixa};
 
 {$R *.res}
 
@@ -114,14 +115,6 @@ begin
     if fLogin.FLoginSucess then
     begin
       Application.CreateForm(TFrmPrincipal, FrmPrincipal);
-  Application.CreateForm(TFrmConfirm, FrmConfirm);
-  Application.CreateForm(TFrmInformation, FrmInformation);
-  Application.CreateForm(TFrmWarning, FrmWarning);
-  Application.CreateForm(TFrmError, FrmError);
-  Application.CreateForm(TFrmFiltrosContasPagar, FrmFiltrosContasPagar);
-  Application.CreateForm(TFrmFiltrosContasReceber, FrmFiltrosContasReceber);
-  Application.CreateForm(TFrmRelContasPagar, FrmRelContasPagar);
-  Application.CreateForm(TFrmRelContasReceber, FrmRelContasReceber);
   if fLogin.Usuario <> nil then
         FrmPrincipal.lblLogin.Caption := 'Usuário: ' + fLogin.Usuario.Login
       else

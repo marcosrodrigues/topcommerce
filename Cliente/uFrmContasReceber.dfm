@@ -8,13 +8,17 @@ inherited FrmFiltrosContasReceber: TFrmFiltrosContasReceber
   TextHeight = 14
   inherited pnlBotoes: TPanel
     Width = 566
+    ExplicitWidth = 566
     inherited sbtFechar: TSpeedButton
       Left = 484
+      ExplicitLeft = 484
     end
   end
   inherited pnlFiltros: TPanel
     Width = 566
     Height = 108
+    ExplicitWidth = 566
+    ExplicitHeight = 108
     object Label1: TLabel
       Left = 7
       Top = 79

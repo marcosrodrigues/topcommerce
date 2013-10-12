@@ -67,6 +67,7 @@ type
     N3: TMenuItem;
     ContasaReceber2: TMenuItem;
     Image1: TImage;
+    MovimentodeCaixa1: TMenuItem;
     procedure N11TiposdeProdutos1Click(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure N12Produtos1Click(Sender: TObject);
@@ -88,6 +89,7 @@ type
     procedure tmDataHoraTimer(Sender: TObject);
     procedure ContasaPagar2Click(Sender: TObject);
     procedure ContasaReceber2Click(Sender: TObject);
+    procedure MovimentodeCaixa1Click(Sender: TObject);
   private
     { Private declarations }
     procedure CarregaProdutosVencer;
@@ -105,7 +107,7 @@ uses uFrmTipoProduto, MensagensUtils, uFrmProduto, uFrmFornecedor, uFrmEstoque,
   uFrmFiltrosFornecedor, uFrmFiltrosProduto, uFrmFiltrosPedidoVenda, uFrmFiltrosEstoque,
   uProdutoDAOClient, DataUtils, uFrmUsuario, uFrmCliente, uFrmConexaoServidor,
   uFrmFiltrosCaixas, uFrmContaPagar, uFrmContaReceber, uFrmFiltrosContasPagar,
-  uFrmContasReceber;
+  uFrmContasReceber, uFrmMovimentoCaixa;
 
 {$R *.dfm}
 
@@ -244,6 +246,22 @@ begin
   ConnServidor.Open;
 
   CarregaProdutosVencer;
+end;
+
+procedure TFrmPrincipal.MovimentodeCaixa1Click(Sender: TObject);
+var
+  f: TFrmMovimentoCaixa;
+  i: integer;
+begin
+  for i := 0 to MDIChildCount do
+    if MDIChildren[i] is TFrmMovimentoCaixa then
+    begin
+      MDIChildren[i].Show;
+      Exit;
+    end;
+
+  f := TFrmMovimentoCaixa.Create(Self);
+  f.Show;
 end;
 
 procedure TFrmPrincipal.N11TiposdeProdutos1Click(Sender: TObject);
