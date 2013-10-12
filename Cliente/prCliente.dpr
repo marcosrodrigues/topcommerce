@@ -81,7 +81,12 @@ uses
   uFrmConfirm in '..\Utils\uFrmConfirm.pas' {FrmConfirm},
   uFrmInformation in '..\Utils\uFrmInformation.pas' {FrmInformation},
   uFrmWarning in '..\Utils\uFrmWarning.pas' {FrmWarning},
-  uFrmError in '..\Utils\uFrmError.pas' {FrmError};
+  uFrmError in '..\Utils\uFrmError.pas' {FrmError},
+  uFrmFiltrosContasPagar in 'uFrmFiltrosContasPagar.pas' {FrmFiltrosContasPagar},
+  uFramePeriodo in 'uFramePeriodo.pas' {FramePeriodo: TFrame},
+  uFrmContasReceber in 'uFrmContasReceber.pas' {FrmFiltrosContasReceber},
+  uFrmRelContasPagar in 'uFrmRelContasPagar.pas' {FrmRelContasPagar},
+  uFrmRelContasReceber in 'uFrmRelContasReceber.pas' {FrmRelContasReceber};
 
 {$R *.res}
 
@@ -113,6 +118,10 @@ begin
   Application.CreateForm(TFrmInformation, FrmInformation);
   Application.CreateForm(TFrmWarning, FrmWarning);
   Application.CreateForm(TFrmError, FrmError);
+  Application.CreateForm(TFrmFiltrosContasPagar, FrmFiltrosContasPagar);
+  Application.CreateForm(TFrmFiltrosContasReceber, FrmFiltrosContasReceber);
+  Application.CreateForm(TFrmRelContasPagar, FrmRelContasPagar);
+  Application.CreateForm(TFrmRelContasReceber, FrmRelContasReceber);
   if fLogin.Usuario <> nil then
         FrmPrincipal.lblLogin.Caption := 'Usuário: ' + fLogin.Usuario.Login
       else

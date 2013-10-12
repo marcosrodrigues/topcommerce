@@ -3,7 +3,7 @@ unit ContaReceberDAO;
 interface
 
 uses
-  DBXCommon, SqlExpr, BaseDAO, ContaReceber;
+  DBXCommon, SqlExpr, BaseDAO, ContaReceber, SysUtils;
 
 type
   TContaReceberDAO = class(TBaseDAO)
@@ -13,6 +13,7 @@ type
     function Update(ContaReceber: TContaReceber): Boolean;
     function Delete(ContaReceber: TContaReceber): Boolean;
     function BaixarConta(ContaReceber: TContaReceber): Boolean;
+    function Relatorio(DataInicial, DataFinal: TDateTime; ClienteCodigo: string; Situacao: Integer): TDBXReader;
   end;
 
 
@@ -29,7 +30,35 @@ begin
                 'FROM CONTAS_RECEBER C '+
                 'LEFT JOIN CLIENTES L ON L.CODIGO = C.CLIENTE_CODIGO '+
                 'WHERE C.BAIXADA = 0 '+
-                'ORDER BY C.VENCIMENTO';
+                'ORDER BY C.CLIENTE_CODIGO, C.VENCIMENTO';
+  Result := FComm.ExecuteQuery;
+end;
+
+function TContaReceberDAO.Relatorio(DataInicial, DataFinal: TDateTime; ClienteCodigo: string; Situacao: Integer): TDBXReader;
+begin
+  PrepareCommand;
+  FComm.Text := 'SELECT C.ID, C.CLIENTE_CODIGO, L.NOME, C.NOME_CLIENTE_AVULSO, C.VENCIMENTO, C.VALOR, C.OBSERVACOES, C.BAIXADA '+
+                'FROM CONTAS_RECEBER C '+
+                'LEFT JOIN CLIENTES L ON L.CODIGO = C.CLIENTE_CODIGO '+
+                'WHERE C.ID <> 0 ';
+
+  if DataInicial <> 0 then
+    FComm.Text := FComm.Text + 'AND CONVERT(CHAR(8), C.VENCIMENTO, 112) >= '+FormatDateTime('yyyymmdd', DataInicial)+' ';
+
+  if DataFinal <> 0 then
+    FComm.Text := FComm.Text + 'AND CONVERT(CHAR(8), C.VENCIMENTO, 112) <= '+FormatDateTime('yyyymmdd', DataFinal)+' ';
+
+  if ClienteCodigo <> '' then
+    FComm.Text := FComm.Text + 'AND C.CLIENTE_CODIGO = '''+ClienteCodigo+''' ';
+
+  if Situacao = 1 then
+    FComm.Text := FComm.Text + 'AND C.BAIXADA = 0 ';
+
+  if Situacao = 2 then
+    FComm.Text := FComm.Text + 'AND C.BAIXADA = 1 ';
+
+  FComm.Text := FComm.Text + 'ORDER BY C.CLIENTE_CODIGO, C.VENCIMENTO';
+
   Result := FComm.ExecuteQuery;
 end;
 

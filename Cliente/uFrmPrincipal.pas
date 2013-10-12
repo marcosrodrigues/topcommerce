@@ -86,6 +86,8 @@ type
     procedure ContasaPagar1Click(Sender: TObject);
     procedure ContasaReceber1Click(Sender: TObject);
     procedure tmDataHoraTimer(Sender: TObject);
+    procedure ContasaPagar2Click(Sender: TObject);
+    procedure ContasaReceber2Click(Sender: TObject);
   private
     { Private declarations }
     procedure CarregaProdutosVencer;
@@ -102,7 +104,8 @@ implementation
 uses uFrmTipoProduto, MensagensUtils, uFrmProduto, uFrmFornecedor, uFrmEstoque,
   uFrmFiltrosFornecedor, uFrmFiltrosProduto, uFrmFiltrosPedidoVenda, uFrmFiltrosEstoque,
   uProdutoDAOClient, DataUtils, uFrmUsuario, uFrmCliente, uFrmConexaoServidor,
-  uFrmFiltrosCaixas, uFrmContaPagar, uFrmContaReceber;
+  uFrmFiltrosCaixas, uFrmContaPagar, uFrmContaReceber, uFrmFiltrosContasPagar,
+  uFrmContasReceber;
 
 {$R *.dfm}
 
@@ -150,6 +153,16 @@ begin
   f.Show;
 end;
 
+procedure TFrmPrincipal.ContasaPagar2Click(Sender: TObject);
+var
+  f: TFrmFiltrosContasPagar;
+begin
+  f := nil;
+  if (f = nil) then
+    f := TFrmFiltrosContasPagar.Create(Self);
+  f.ShowModal;
+end;
+
 procedure TFrmPrincipal.ContasaReceber1Click(Sender: TObject);
 var
   f: TFrmContaReceber;
@@ -164,6 +177,16 @@ begin
 
   f := TFrmContaReceber.Create(Self);
   f.Show;
+end;
+
+procedure TFrmPrincipal.ContasaReceber2Click(Sender: TObject);
+var
+  f: TFrmFiltrosContasReceber;
+begin
+  f := nil;
+  if (f = nil) then
+    f := TFrmFiltrosContasReceber.Create(Self);
+  f.ShowModal;
 end;
 
 procedure TFrmPrincipal.btnSairClick(Sender: TObject);

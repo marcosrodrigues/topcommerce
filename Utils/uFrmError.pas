@@ -14,6 +14,8 @@ type
     mmMensagem: TMemo;
     procedure btnOkClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure Shape1MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
   private
     { Private declarations }
   public
@@ -36,6 +38,13 @@ end;
 procedure TFrmError.FormShow(Sender: TObject);
 begin
   mmMensagem.Text := Mensagem;
+end;
+
+procedure TFrmError.Shape1MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  ReleaseCapture;
+  SendMessage(Self.Handle, WM_SYSCOMMAND, 61458, 0);
 end;
 
 end.

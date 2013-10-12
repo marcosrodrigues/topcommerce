@@ -3,8 +3,8 @@ object FrmError: TFrmError
   Top = 0
   BorderStyle = bsNone
   Caption = 'FrmError'
-  ClientHeight = 150
-  ClientWidth = 410
+  ClientHeight = 200
+  ClientWidth = 450
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,15 +14,19 @@ object FrmError: TFrmError
   OldCreateOrder = False
   Position = poMainFormCenter
   OnShow = FormShow
+  DesignSize = (
+    450
+    200)
   PixelsPerInch = 96
   TextHeight = 13
   object Shape1: TShape
     Left = 0
     Top = 0
-    Width = 410
-    Height = 150
+    Width = 450
+    Height = 200
     Align = alClient
     Brush.Style = bsClear
+    OnMouseDown = Shape1MouseDown
     ExplicitLeft = 1
     ExplicitWidth = 439
     ExplicitHeight = 140
@@ -191,10 +195,11 @@ object FrmError: TFrmError
       207D3F445B90191A0000000049454E44AE426082}
   end
   object btnOk: TBitBtn
-    Left = 308
-    Top = 116
+    Left = 348
+    Top = 166
     Width = 89
     Height = 30
+    Anchors = [akRight, akBottom]
     Caption = '&Ok'
     Default = True
     DoubleBuffered = True
@@ -265,12 +270,14 @@ object FrmError: TFrmError
     ParentFont = False
     TabOrder = 0
     OnClick = btnOkClick
+    ExplicitLeft = 308
+    ExplicitTop = 116
   end
   object mmMensagem: TMemo
     Left = 96
     Top = 19
-    Width = 299
-    Height = 90
+    Width = 341
+    Height = 140
     BorderStyle = bsNone
     Color = clBtnFace
     Enabled = False

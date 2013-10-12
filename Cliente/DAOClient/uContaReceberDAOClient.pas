@@ -12,6 +12,7 @@ type
     FUpdateCommand: TDBXCommand;
     FDeleteCommand: TDBXCommand;
     FBaixarContaCommand: TDBXCommand;
+    FRelatorioCommand: TDBXCommand;
   public
     constructor Create(ADBXConnection: TDBXConnection); overload;
     constructor Create(ADBXConnection: TDBXConnection; AInstanceOwner: Boolean); overload;
@@ -21,6 +22,7 @@ type
     function Update(ContaReceber: TContaReceber): Boolean;
     function Delete(ContaReceber: TContaReceber): Boolean;
     function BaixarConta(ContaReceber: TContaReceber): Boolean;
+    function Relatorio(DataInicial, DataFinal: TDateTime; ClienteCodigo: string; Situacao: Integer): TDBXReader;
   end;
 
 implementation
@@ -36,6 +38,23 @@ begin
   end;
   FListCommand.ExecuteUpdate;
   Result := FListCommand.Parameters[0].Value.GetDBXReader(FInstanceOwner);
+end;
+
+function TContaReceberDAOClient.Relatorio(DataInicial, DataFinal: TDateTime; ClienteCodigo: string; Situacao: Integer): TDBXReader;
+begin
+  if FRelatorioCommand = nil then
+  begin
+    FRelatorioCommand := FDBXConnection.CreateCommand;
+    FRelatorioCommand.CommandType := TDBXCommandTypes.DSServerMethod;
+    FRelatorioCommand.Text := 'TContaReceberDAO.Relatorio';
+    FRelatorioCommand.Prepare;
+  end;
+  FRelatorioCommand.Parameters[0].Value.AsDateTime := DataInicial;
+  FRelatorioCommand.Parameters[1].Value.AsDateTime := DataFinal;
+  FRelatorioCommand.Parameters[2].Value.AsString   := ClienteCodigo;
+  FRelatorioCommand.Parameters[3].Value.AsInt32    := Situacao;
+  FRelatorioCommand.ExecuteUpdate;
+  Result := FRelatorioCommand.Parameters[4].Value.GetDBXReader(FInstanceOwner);
 end;
 
 function TContaReceberDAOClient.Insert(ContaReceber: TContaReceber): Boolean;
@@ -159,6 +178,7 @@ begin
   FreeAndNil(FUpdateCommand);
   FreeAndNil(FDeleteCommand);
   FreeAndNil(FBaixarContaCommand);
+  FreeAndNil(FRelatorioCommand);
   inherited;
 end;
 

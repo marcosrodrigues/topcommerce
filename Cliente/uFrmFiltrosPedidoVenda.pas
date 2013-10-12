@@ -5,17 +5,18 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, uFrmFiltrosBase, Buttons, ExtCtrls, StdCtrls, Mask, ComCtrls, DateUtils,
-  uFramePesquisaCliente;
+  uFramePesquisaCliente, RxToolEdit;
 
 type
   TFrmFiltrosPedidoVenda = class(TFrmFiltrosBase)
     Label1: TLabel;
     Label2: TLabel;
-    deDataInicial: TDateTimePicker;
-    deDataFinal: TDateTimePicker;
     Label3: TLabel;
     cbTipoPagamento: TComboBox;
     FramePesquisaCliente: TFramePesquisaCliente;
+    deDataInicial: TDateEdit;
+    deDataFinal: TDateEdit;
+    Label4: TLabel;
     procedure FormShow(Sender: TObject);
   private
     { Private declarations }

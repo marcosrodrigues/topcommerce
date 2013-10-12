@@ -593,7 +593,6 @@ object FrmPrincipal: TFrmPrincipal
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitWidth = 739
     DesignSize = (
       755
       45)
@@ -1303,7 +1302,6 @@ object FrmPrincipal: TFrmPrincipal
         B37569D37F6E0BA3E250DBD28168CF126BBF59E1C1F617D64527C2FC2F4CD000
         00000049454E44AE426082}
       TabOrder = 7
-      ExplicitLeft = 683
     end
     object btnContasPagar: TDXPButton
       Left = 347
@@ -1488,8 +1486,6 @@ object FrmPrincipal: TFrmPrincipal
     Align = alRight
     TabOrder = 1
     Visible = False
-    ExplicitLeft = 458
-    ExplicitHeight = 302
     object dgrProdutosVencer: TDBGrid
       Left = 1
       Top = 30
@@ -1519,7 +1515,6 @@ object FrmPrincipal: TFrmPrincipal
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 1
-      ExplicitWidth = 495
       object Label1: TLabel
         Left = 4
         Top = 3
@@ -1589,8 +1584,6 @@ object FrmPrincipal: TFrmPrincipal
         Text = '01/01/2013 08:00:00'
         Width = 50
       end>
-    ExplicitTop = 347
-    ExplicitWidth = 739
   end
   object mmPrincipal: TMainMenu
     Left = 24
@@ -1672,9 +1665,11 @@ object FrmPrincipal: TFrmPrincipal
       end
       object ContasaPagar2: TMenuItem
         Caption = 'Contas a Pagar'
+        OnClick = ContasaPagar2Click
       end
       object ContasaReceber2: TMenuItem
         Caption = 'Contas a Receber'
+        OnClick = ContasaReceber2Click
       end
     end
     object Utilitrios1: TMenuItem

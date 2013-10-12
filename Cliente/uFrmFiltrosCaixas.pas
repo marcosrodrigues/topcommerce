@@ -4,13 +4,17 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, uFrmFiltrosBase, ComCtrls, StdCtrls, Buttons, ExtCtrls, DateUtils;
+  Dialogs, uFrmFiltrosBase, ComCtrls, StdCtrls, Buttons, ExtCtrls, DateUtils,
+  Mask, RxToolEdit;
 
 type
   TFrmFiltrosCaixas = class(TFrmFiltrosBase)
     Label1: TLabel;
-    deDataInicial: TDateTimePicker;
-    deDataFinal: TDateTimePicker;
+    deDataInicial: TDateEdit;
+    deDataFinal: TDateEdit;
+    Label2: TLabel;
+    cbSituacao: TComboBox;
+    Label3: TLabel;
     procedure FormShow(Sender: TObject);
   private
     { Private declarations }

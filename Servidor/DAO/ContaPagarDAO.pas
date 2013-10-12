@@ -3,7 +3,7 @@ unit ContaPagarDAO;
 interface
 
 uses
-  DBXCommon, SqlExpr, BaseDAO, ContaPagar;
+  DBXCommon, SqlExpr, BaseDAO, ContaPagar, SysUtils;
 
 type
   TContaPagarDAO = class(TBaseDAO)
@@ -13,6 +13,7 @@ type
     function Update(ContaPagar: TContaPagar): Boolean;
     function Delete(ContaPagar: TContaPagar): Boolean;
     function BaixarConta(ContaPagar: TContaPagar): Boolean;
+    function Relatorio(DataInicial, DataFinal: TDateTime; FornecedorCodigo: string; Situacao: Integer): TDBXReader;
   end;
 
 
@@ -29,7 +30,35 @@ begin
                 'FROM CONTAS_PAGAR C '+
                 'INNER JOIN FORNECEDORES F ON F.CODIGO = C.FORNECEDOR_CODIGO '+
                 'WHERE C.BAIXADA = 0 '+
-                'ORDER BY C.VENCIMENTO';
+                'ORDER BY C.FORNECEDOR_CODIGO, C.VENCIMENTO';
+  Result := FComm.ExecuteQuery;
+end;
+
+function TContaPagarDAO.Relatorio(DataInicial, DataFinal: TDateTime; FornecedorCodigo: string; Situacao: Integer): TDBXReader;
+begin
+  PrepareCommand;
+  FComm.Text := 'SELECT C.ID, C.FORNECEDOR_CODIGO, F.NOME, C.VENCIMENTO, C.VALOR, C.OBSERVACOES, C.BAIXADA '+
+                'FROM CONTAS_PAGAR C '+
+                'INNER JOIN FORNECEDORES F ON F.CODIGO = C.FORNECEDOR_CODIGO '+
+                'WHERE C.ID <> 0 ';
+
+  if DataInicial <> 0 then
+    FComm.Text := FComm.Text + 'AND CONVERT(CHAR(8), C.VENCIMENTO, 112) >= '+FormatDateTime('yyyymmdd', DataInicial)+' ';
+
+  if DataFinal <> 0 then
+    FComm.Text := FComm.Text + 'AND CONVERT(CHAR(8), C.VENCIMENTO, 112) <= '+FormatDateTime('yyyymmdd', DataFinal)+' ';
+
+  if FornecedorCodigo <> '' then
+    FComm.Text := FComm.Text + 'AND C.FORNECEDOR_CODIGO = '''+FornecedorCodigo+''' ';
+
+  if Situacao = 1 then
+    FComm.Text := FComm.Text + 'AND C.BAIXADA = 0 ';
+
+  if Situacao = 2 then
+    FComm.Text := FComm.Text + 'AND C.BAIXADA = 1 ';
+
+  FComm.Text := FComm.Text + 'ORDER BY C.FORNECEDOR_CODIGO, C.VENCIMENTO';
+
   Result := FComm.ExecuteQuery;
 end;
 

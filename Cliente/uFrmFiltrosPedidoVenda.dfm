@@ -1,22 +1,22 @@
 inherited FrmFiltrosPedidoVenda: TFrmFiltrosPedidoVenda
   Caption = 'Relat'#243'rio de Pedidos de Venda'
   ClientHeight = 136
-  ClientWidth = 541
+  ClientWidth = 621
   OnShow = FormShow
-  ExplicitWidth = 547
+  ExplicitWidth = 627
   ExplicitHeight = 164
   PixelsPerInch = 96
   TextHeight = 14
   inherited pnlBotoes: TPanel
-    Width = 541
+    Width = 621
     ExplicitWidth = 541
     inherited sbtFechar: TSpeedButton
-      Left = 459
+      Left = 539
       ExplicitLeft = 439
     end
   end
   inherited pnlFiltros: TPanel
-    Width = 541
+    Width = 621
     Height = 108
     ExplicitWidth = 541
     ExplicitHeight = 108
@@ -41,30 +41,19 @@ inherited FrmFiltrosPedidoVenda: TFrmFiltrosPedidoVenda
       Height = 14
       Caption = 'Tipo de Pagamento'
     end
-    object deDataInicial: TDateTimePicker
-      Left = 127
-      Top = 8
-      Width = 103
-      Height = 22
-      Date = 41503.566427175920000000
-      Time = 41503.566427175920000000
-      TabOrder = 0
-    end
-    object deDataFinal: TDateTimePicker
-      Left = 250
-      Top = 8
-      Width = 103
-      Height = 22
-      Date = 41503.566427175920000000
-      Time = 41503.566427175920000000
-      TabOrder = 1
+    object Label4: TLabel
+      Left = 256
+      Top = 11
+      Width = 6
+      Height = 14
+      Caption = 'a'
     end
     object cbTipoPagamento: TComboBox
       Left = 127
       Top = 40
       Width = 145
       Height = 22
-      TabOrder = 2
+      TabOrder = 0
       Text = 'Todos'
       Items.Strings = (
         'Todos'
@@ -77,12 +66,13 @@ inherited FrmFiltrosPedidoVenda: TFrmFiltrosPedidoVenda
     inline FramePesquisaCliente: TFramePesquisaCliente
       Left = 8
       Top = 71
-      Width = 526
+      Width = 604
       Height = 25
       AutoSize = True
-      TabOrder = 3
+      TabOrder = 1
       ExplicitLeft = 8
       ExplicitTop = 71
+      ExplicitWidth = 604
       inherited Label3: TLabel
         Width = 37
         Height = 14
@@ -90,13 +80,37 @@ inherited FrmFiltrosPedidoVenda: TFrmFiltrosPedidoVenda
         ExplicitHeight = 14
       end
       inherited edtCodigoCliente: TEdit
+        Left = 119
         Height = 22
+        ExplicitLeft = 119
         ExplicitHeight = 22
+      end
+      inherited bbtConsultarCliente: TBitBtn
+        Left = 174
+        ExplicitLeft = 174
       end
       inherited edtNomeCliente: TEdit
+        Left = 204
         Height = 22
+        ExplicitLeft = 204
         ExplicitHeight = 22
       end
+    end
+    object deDataInicial: TDateEdit
+      Left = 127
+      Top = 8
+      Width = 121
+      Height = 22
+      NumGlyphs = 2
+      TabOrder = 2
+    end
+    object deDataFinal: TDateEdit
+      Left = 272
+      Top = 8
+      Width = 121
+      Height = 22
+      NumGlyphs = 2
+      TabOrder = 3
     end
   end
 end
