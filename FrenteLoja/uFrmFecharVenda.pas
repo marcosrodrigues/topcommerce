@@ -24,6 +24,15 @@ type
     cedTotal: TCurrencyEdit;
     cedValorRecebido: TCurrencyEdit;
     cedTroco: TCurrencyEdit;
+    Shape1: TShape;
+    lbParcelamento: TListBox;
+    lblParcelamento: TLabel;
+    lblRestante: TLabel;
+    cedRestante: TCurrencyEdit;
+    lblValorParcela: TLabel;
+    cedValorParcela: TCurrencyEdit;
+    lblPrimeiroVencimento: TLabel;
+    dePrimeiroVencimento: TDateEdit;
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure cedDescontoValorExit(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
@@ -32,6 +41,8 @@ type
     procedure cedValorRecebidoExit(Sender: TObject);
     procedure Image19Click(Sender: TObject);
     procedure lbFormaPagamentoEnter(Sender: TObject);
+    procedure lbFormaPagamentoClick(Sender: TObject);
+    procedure lbParcelamentoClick(Sender: TObject);
   private
     { Private declarations }
     procedure CalcularTotal;
@@ -79,7 +90,7 @@ end;
 
 procedure TFrmFecharVenda.cedValorRecebidoExit(Sender: TObject);
 begin
-  if cedValorRecebido.Value = 0 then
+{  if cedValorRecebido.Value = 0 then
   begin
     Atencao('Informe o valor recebido.');
     cedValorRecebido.SetFocus;
@@ -90,8 +101,11 @@ begin
     Atencao('Valor recebido deve ser maior ou igual ao total da venda.');
     cedValorRecebido.SetFocus;
     Exit;
-  end;
-  cedTroco.Value := cedValorRecebido.Value - cedTotal.Value;
+  end;}
+  if cedValorRecebido.Value > cedTotal.Value then
+    cedTroco.Value := cedValorRecebido.Value - cedTotal.Value
+  else
+    cedRestante.Value := cedTotal.Value - cedValorRecebido.Value;
 end;
 
 procedure TFrmFecharVenda.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
@@ -123,9 +137,56 @@ begin
   Self.Close;
 end;
 
+procedure TFrmFecharVenda.lbFormaPagamentoClick(Sender: TObject);
+begin
+  if lbFormaPagamento.ItemIndex = 1 then
+  begin
+    lblParcelamento.Show;
+    lbParcelamento.Show;
+    lblRestante.Show;
+    cedRestante.Show;
+    lblValorParcela.Show;
+    cedValorParcela.Show;
+    lblPrimeiroVencimento.Show;
+    dePrimeiroVencimento.Show;
+
+    cedRestante.Value := cedTotal.Value - cedValorRecebido.Value;
+    dePrimeiroVencimento.Date := IncMonth(Now);
+  end
+  else if lbFormaPagamento.ItemIndex = 2 then
+  begin
+    lblParcelamento.Show;
+    lbParcelamento.Show;
+    lblRestante.Show;
+    cedRestante.Show;
+    lblValorParcela.Show;
+    cedValorParcela.Show;
+    lblPrimeiroVencimento.Hide;
+    dePrimeiroVencimento.Hide;
+
+    cedRestante.Value := cedTotal.Value - cedValorRecebido.Value;
+  end
+  else
+  begin
+    lblParcelamento.Hide;
+    lbParcelamento.Hide;
+    lblRestante.Hide;
+    cedRestante.Hide;
+    lblValorParcela.Hide;
+    cedValorParcela.Hide;
+    lblPrimeiroVencimento.Hide;
+    dePrimeiroVencimento.Hide;
+  end
+end;
+
 procedure TFrmFecharVenda.lbFormaPagamentoEnter(Sender: TObject);
 begin
   lbFormaPagamento.Selected[0] := True;
+end;
+
+procedure TFrmFecharVenda.lbParcelamentoClick(Sender: TObject);
+begin
+  cedValorParcela.Value := cedRestante.Value / (lbParcelamento.ItemIndex + 1);
 end;
 
 end.

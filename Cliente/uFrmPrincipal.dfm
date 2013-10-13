@@ -1598,24 +1598,33 @@ object FrmPrincipal: TFrmPrincipal
         Caption = 'Usu'#225'rios'
         OnClick = N11Usurios1Click
       end
+      object Cargos1: TMenuItem
+        Caption = 'Cargos'
+      end
+      object Funcionrios1: TMenuItem
+        Caption = 'Funcion'#225'rios'
+      end
       object N2: TMenuItem
+        Caption = '-'
+      end
+      object N11TiposdeProdutos1: TMenuItem
+        Caption = 'Tipos de Produto'
+        OnClick = N11TiposdeProdutos1Click
+      end
+      object N12Produtos1: TMenuItem
+        Caption = 'Produtos'
+        OnClick = N12Produtos1Click
+      end
+      object N4: TMenuItem
         Caption = '-'
       end
       object N12Clientes1: TMenuItem
         Caption = 'Clientes'
         OnClick = N12Clientes1Click
       end
-      object N11TiposdeProdutos1: TMenuItem
-        Caption = 'Tipos de Produtos'
-        OnClick = N11TiposdeProdutos1Click
-      end
       object N12Fornecedores1: TMenuItem
         Caption = 'Fornecedores'
         OnClick = N12Fornecedores1Click
-      end
-      object N12Produtos1: TMenuItem
-        Caption = 'Produtos'
-        OnClick = N12Produtos1Click
       end
     end
     object N21: TMenuItem

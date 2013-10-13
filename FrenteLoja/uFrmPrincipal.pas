@@ -895,9 +895,16 @@ begin
 
     if (f.Fechar) then
     begin
-      GravarVenda(f.cedDescontoValor.Value, f.cedDescontoPercentual.Value, f.cedValorRecebido.Value, f.cedTroco.Value, f.cedTotal.Value, f.lbFormaPagamento.ItemIndex);
+      if f.cedValorRecebido.Value = 0 then
+      begin
 
-      ImprimirReciboBematechMatricial; //ImprimirReciboLaser;
+      end
+      else
+      begin
+        GravarVenda(f.cedDescontoValor.Value, f.cedDescontoPercentual.Value, f.cedValorRecebido.Value, f.cedTroco.Value, f.cedTotal.Value, f.lbFormaPagamento.ItemIndex);
+
+        ImprimirReciboBematechMatricial; //ImprimirReciboLaser;
+      end;
     end;
   finally
     if f.Fechar then

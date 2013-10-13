@@ -68,6 +68,9 @@ type
     ContasaReceber2: TMenuItem;
     Image1: TImage;
     MovimentodeCaixa1: TMenuItem;
+    Cargos1: TMenuItem;
+    Funcionrios1: TMenuItem;
+    N4: TMenuItem;
     procedure N11TiposdeProdutos1Click(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure N12Produtos1Click(Sender: TObject);

@@ -4,8 +4,8 @@ object FrmFecharVenda: TFrmFecharVenda
   BorderIcons = []
   BorderStyle = bsNone
   Caption = 'Fechar Venda'
-  ClientHeight = 396
-  ClientWidth = 575
+  ClientHeight = 398
+  ClientWidth = 706
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,6 +19,18 @@ object FrmFecharVenda: TFrmFecharVenda
   OnKeyPress = FormKeyPress
   PixelsPerInch = 96
   TextHeight = 25
+  object Shape1: TShape
+    Left = 0
+    Top = 41
+    Width = 706
+    Height = 357
+    Align = alClient
+    Brush.Style = bsClear
+    ExplicitLeft = 256
+    ExplicitTop = 168
+    ExplicitWidth = 65
+    ExplicitHeight = 65
+  end
   object Label2: TLabel
     Left = 8
     Top = 50
@@ -61,10 +73,42 @@ object FrmFecharVenda: TFrmFecharVenda
     Height = 25
     Caption = 'Troco'
   end
+  object lblParcelamento: TLabel
+    Left = 200
+    Top = 189
+    Width = 107
+    Height = 25
+    Caption = 'Parcelamento'
+    Visible = False
+  end
+  object lblRestante: TLabel
+    Left = 336
+    Top = 189
+    Width = 69
+    Height = 25
+    Caption = 'Restante'
+    Visible = False
+  end
+  object lblValorParcela: TLabel
+    Left = 336
+    Top = 254
+    Width = 123
+    Height = 25
+    Caption = 'Valor da Parcela'
+    Visible = False
+  end
+  object lblPrimeiroVencimento: TLabel
+    Left = 528
+    Top = 189
+    Width = 164
+    Height = 25
+    Caption = 'Primeiro Vencimento'
+    Visible = False
+  end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 575
+    Width = 706
     Height = 41
     Align = alTop
     Caption = 'Fechar Venda'
@@ -76,13 +120,13 @@ object FrmFecharVenda: TFrmFecharVenda
     Font.Style = []
     ParentBackground = False
     ParentFont = False
-    TabOrder = 7
-    ExplicitWidth = 645
+    TabOrder = 11
+    ExplicitWidth = 575
     DesignSize = (
-      575
+      706
       41)
     object Image19: TImage
-      Left = 546
+      Left = 677
       Top = 3
       Width = 24
       Height = 24
@@ -287,12 +331,12 @@ object FrmFecharVenda: TFrmFecharVenda
       F28CBBAD24690583EC6F31EADA40BB3810F689A0ED70D82FEA12EBAD577CB302
       B8C7CFBCA72151345506A84C52478F6B692E900E56DEE0B899011E557B0CF0C8
       01FE00D98632FD4771EBFA0000000049454E44AE426082}
-    TabOrder = 6
+    TabOrder = 10
   end
   object lbFormaPagamento: TListBox
     Left = 8
     Top = 216
-    Width = 202
+    Width = 166
     Height = 132
     ItemHeight = 25
     Items.Strings = (
@@ -302,6 +346,7 @@ object FrmFecharVenda: TFrmFecharVenda
       'Cart'#227'o de D'#233'bito'
       'Cheque')
     TabOrder = 5
+    OnClick = lbFormaPagamentoClick
     OnEnter = lbFormaPagamentoEnter
   end
   object cedDescontoValor: TCurrencyEdit
@@ -348,5 +393,50 @@ object FrmFecharVenda: TFrmFecharVenda
     Margins.Top = 1
     Enabled = False
     TabOrder = 4
+  end
+  object lbParcelamento: TListBox
+    Left = 200
+    Top = 216
+    Width = 107
+    Height = 132
+    ItemHeight = 25
+    Items.Strings = (
+      '1x'
+      '2x'
+      '3x'
+      '4x'
+      '5x')
+    TabOrder = 6
+    Visible = False
+    OnClick = lbParcelamentoClick
+  end
+  object cedRestante: TCurrencyEdit
+    Left = 336
+    Top = 216
+    Width = 168
+    Height = 33
+    Margins.Top = 1
+    TabOrder = 7
+    Visible = False
+    OnExit = cedValorRecebidoExit
+  end
+  object cedValorParcela: TCurrencyEdit
+    Left = 336
+    Top = 281
+    Width = 168
+    Height = 33
+    Margins.Top = 1
+    TabOrder = 8
+    Visible = False
+    OnExit = cedValorRecebidoExit
+  end
+  object dePrimeiroVencimento: TDateEdit
+    Left = 528
+    Top = 216
+    Width = 121
+    Height = 33
+    NumGlyphs = 2
+    TabOrder = 9
+    Visible = False
   end
 end
