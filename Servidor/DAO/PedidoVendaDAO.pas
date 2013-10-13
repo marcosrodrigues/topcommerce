@@ -149,6 +149,8 @@ begin
     pedido.NomeClienteAvulso := query.FieldByName('NOME_CLIENTE_AVULSO').AsString;
     pedido.Fechada := query.FieldByName('FECHADA').AsBoolean;
     pedido.Total := query.FieldByName('TOTAL').AsCurrency;
+    pedido.Recebido := query.FieldByName('RECEBIDO').AsCurrency;
+    pedido.Troco := query.FieldByName('TROCO').AsCurrency;
     pedido.Cancelada := query.FieldByName('CANCELADA').AsBoolean;
 
     query.Close;

@@ -119,7 +119,6 @@ type
     Image37: TImage;
     Label14: TLabel;
     Image38: TImage;
-    Button1: TButton;
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -144,7 +143,6 @@ type
     procedure Label10Click(Sender: TObject);
     procedure Label14Click(Sender: TObject);
     procedure Image38Click(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
     DAOPedidoVenda: TPedidoVendaDAOClient;
@@ -163,7 +161,8 @@ type
     procedure IniciaControles;
     procedure VendasFechadas;
     procedure VendasAbertas;
-    procedure ImprimirRecibo;
+    procedure ImprimirReciboLaser;
+    procedure ImprimirReciboBematechMatricial;
     procedure AbrirCaixa;
     procedure FecharCaixa;
     procedure AtualizaCaixa;
@@ -251,7 +250,7 @@ begin
     VK_F3: FecharVenda;
     VK_F5: ExcluirItem;
     VK_F6: ConsultarProduto;
-    VK_F7: ImprimirRecibo;
+    VK_F7: ImprimirReciboBematechMatricial; //ImprimirReciboLaser;
     VK_F8: VendasAbertas;
     VK_F9: VendasFechadas;
     VK_F10: AbrirCaixa;
@@ -592,60 +591,6 @@ begin
   end;
 end;
 
-procedure TFrmPrincipal.Button1Click(Sender: TObject);
-var
-  i_modelo, i_retorno: Integer;
-  s_porta: AnsiString;
-begin
-  //COMANDO EXECUTADO INTERNAMENTE PELA DLL PARA
-  //CONFIGURAÇÃO DO MODELO DA IMPRESSORA QUE SERÁ CONECTADA
-  i_modelo  := 1;
-  i_retorno := ConfiguraModeloImpressora(i_modelo);
-
-  Informacao(IntToStr(i_retorno));
-
-  s_porta := 'LPT1';
-  //COMANDO DE ABERTURA DA PORTA DE COMUNICAÇÃO
-  i_retorno:= IniciaPorta(s_porta);
-
-  //VALIDAÇÃO DE EXECUÇÃO DO COMANDO
-  if i_retorno = 1 then
-    Informacao('Impressora conectada')
-  else
-    Erro('Erro de conexão '+IntToStr(i_retorno));
-
-  i_retorno:=BematechTX('Comprovante de Teste abcdefghij'+#10);
-  i_retorno:=BematechTX('Comprovante de Teste abcdefghij'+#10);
-  i_retorno:=BematechTX('Comprovante de Teste abcdefghij'+#10);
-  i_retorno:=BematechTX('Comprovante de Teste abcdefghij'+#10);
-  i_retorno:=BematechTX('Comprovante de Teste abcdefghij'+#10);
-  i_retorno:=BematechTX('Comprovante de Teste abcdefghij'+#10);
-  i_retorno:=BematechTX('Comprovante de Teste abcdefghij'+#10);
-  i_retorno:=BematechTX('Comprovante de Teste abcdefghij'+#10);
-  i_retorno:=BematechTX('Comprovante de Teste abcdefghij'+#10);
-  i_retorno:=ComandoTX(#13#10,length(#13#10));
-  i_retorno:=ComandoTX(#13#10,length(#13#10));
-  i_retorno:=ComandoTX(#13#10,length(#13#10));
-  i_retorno:=ComandoTX(#13#10,length(#13#10));
-  i_retorno:=ComandoTX(#13#10,length(#13#10));
-  i_retorno:=ComandoTX(#13#10,length(#13#10));
-  i_retorno:=ComandoTX(#13#10,length(#13#10));
-  i_retorno:=ComandoTX(#13#10,length(#13#10));
-  i_retorno:=ComandoTX(#13#10,length(#13#10));
-  i_retorno:=ComandoTX(#13#10,length(#13#10));
-  i_retorno:=ComandoTX(#13#10,length(#13#10));
-  i_retorno:=ComandoTX(#13#10,length(#13#10));
-  i_retorno:=ComandoTX(#13#10,length(#13#10));
-  i_retorno:=ComandoTX(#13#10,length(#13#10));
-  i_retorno:=ComandoTX(#13#10,length(#13#10));
-  i_retorno:=ComandoTX(#13#10,length(#13#10));
-  i_retorno:=ComandoTX(#13#10,length(#13#10));
-  i_retorno:=ComandoTX(#13#10,length(#13#10));
-
-  if i_retorno <> 1 then
-    Erro('Erro de comunicação');
-end;
-
 procedure TFrmPrincipal.CancelarVenda;
 begin
   if VendaCancelada then
@@ -952,7 +897,7 @@ begin
     begin
       GravarVenda(f.cedDescontoValor.Value, f.cedDescontoPercentual.Value, f.cedValorRecebido.Value, f.cedTroco.Value, f.cedTotal.Value, f.lbFormaPagamento.ItemIndex);
 
-      ImprimirRecibo;
+      ImprimirReciboBematechMatricial; //ImprimirReciboLaser;
     end;
   finally
     if f.Fechar then
@@ -987,7 +932,66 @@ begin
   end;
 end;
 
-procedure TFrmPrincipal.ImprimirRecibo;
+procedure TFrmPrincipal.ImprimirReciboBematechMatricial;
+var
+  retorno, i: Integer;
+  s_porta: AnsiString;
+
+  pedido: TPedidoVenda;
+begin
+  if CodigoPedidoVendaAtual = '' then
+  begin
+    Atencao('Nenhuma venda ativa');
+    Exit;
+  end;
+
+  pedido := DAOPedidoVenda.FindByCodigo(CodigoPedidoVendaAtual);
+
+  // COMANDO EXECUTADO INTERNAMENTE PELA DLL PARA CONFIGURAÇÃO DO MODELO DA IMPRESSORA QUE SERÁ CONECTADA
+  ConfiguraModeloImpressora(1);
+
+  // COMANDO DE ABERTURA DA PORTA DE COMUNICAÇÃO
+  retorno := IniciaPorta('LPT1');
+
+  // VALIDAÇÃO DE EXECUÇÃO DO COMANDO
+  if retorno <> 1 then
+    Erro('Erro de conexão com a impressora');
+
+  BematechTX('LOJA: 1 - RAYANNE KIDS'+#10);
+  BematechTX('ENDERECO: AV PREFEITO VITORIANO ANTUNES, 2274'+#10);
+  BematechTX('          CENTRO - CASCAVEL - CE'+#10);
+  BematechTX('FONE: (85) 3334 - 1126'+#10);
+  BematechTX('---------------------------------------------'+#10);
+  BematechTX('VENDA: '+pedido.Codigo+' DATA: '+FormatDateTime('dd/mm/yyyy hh:mm', pedido.Data)+#10);
+  BematechTX('CLIENTE: '+pedido.Cliente.Codigo+' - '+pedido.Cliente.Nome+#10);
+  BematechTX('-- PRODUTOS ---------------------------------'+#10);
+
+  for i := 0 to pedido.Itens.Count - 1 do
+    BematechTX(pedido.Itens[i].Produto.Codigo+' - '+pedido.Itens[i].Produto.Descricao+' '+IntToStr(pedido.Itens[i].Quantidade)+'x '+FormatCurr(',0.00', pedido.Itens[i].Valor)+#10);
+
+  BematechTX('---------------------------------------------'+#10);
+  BematechTX('TOTAL: '+FormatCurr(',0.00', pedido.Total)+#10);
+  BematechTX('RECEBIDO: '+FormatCurr(',0.00', pedido.Recebido)+#10);
+  BematechTX('TROCO: '+FormatCurr(',0.00', pedido.Troco)+#10);
+
+  BematechTX('---------------------------------------------'+#10);
+  BematechTX('            NAO TEM VALOR FISCAL             '+#10);
+  BematechTX('---------------------------------------------'+#10);
+
+  ComandoTX(#13#10,length(#13#10));
+  ComandoTX(#13#10,length(#13#10));
+  ComandoTX(#13#10,length(#13#10));
+  ComandoTX(#13#10,length(#13#10));
+  ComandoTX(#13#10,length(#13#10));
+  ComandoTX(#13#10,length(#13#10));
+  ComandoTX(#13#10,length(#13#10));
+  ComandoTX(#13#10,length(#13#10));
+  ComandoTX(#13#10,length(#13#10));
+  ComandoTX(#13#10,length(#13#10));
+  ComandoTX(#13#10,length(#13#10));
+end;
+
+procedure TFrmPrincipal.ImprimirReciboLaser;
 var
   recibo: TFrmRelReciboVenda;
 begin
@@ -1049,7 +1053,7 @@ end;
 
 procedure TFrmPrincipal.Label18Click(Sender: TObject);
 begin
-  ImprimirRecibo;
+  ImprimirReciboBematechMatricial; //ImprimirReciboLaser;
 end;
 
 procedure TFrmPrincipal.Label19Click(Sender: TObject);
