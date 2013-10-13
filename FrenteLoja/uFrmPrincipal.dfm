@@ -5832,7 +5832,7 @@ object FrmPrincipal: TFrmPrincipal
       object imgSubtotal: TImage
         Left = 0
         Top = 0
-        Width = 410
+        Width = 401
         Height = 90
         Align = alClient
         AutoSize = True
@@ -7498,7 +7498,6 @@ object FrmPrincipal: TFrmPrincipal
           CE3C5F0B485B378CC89BF2E2852C07337B86D54B996A0C3EEEFDA900BC27568A
           EF6B5168B7341E65EE659EBDF2F8F06A409A7F003C8D4548037FE3DE00000000
           49454E44AE426082}
-        ExplicitWidth = 401
       end
       object Label1: TLabel
         Left = 8
@@ -29545,6 +29544,15 @@ object FrmPrincipal: TFrmPrincipal
         ParentColor = False
         ParentFont = False
       end
+    end
+    object Button1: TButton
+      Left = 16
+      Top = 296
+      Width = 137
+      Height = 25
+      Caption = 'Impressao Teste'
+      TabOrder = 8
+      OnClick = Button1Click
     end
   end
   object Panel6: TPanel

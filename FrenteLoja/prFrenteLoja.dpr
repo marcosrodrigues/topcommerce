@@ -40,7 +40,8 @@ uses
   uFrmConfirm in '..\Utils\uFrmConfirm.pas' {FrmConfirm},
   uFrmError in '..\Utils\uFrmError.pas' {FrmError},
   uFrmInformation in '..\Utils\uFrmInformation.pas' {FrmInformation},
-  uFrmWarning in '..\Utils\uFrmWarning.pas' {FrmWarning};
+  uFrmWarning in '..\Utils\uFrmWarning.pas' {FrmWarning},
+  FuncoesBematechMatricial in '..\Utils\FuncoesBematechMatricial.pas';
 
 {$R *.res}
 

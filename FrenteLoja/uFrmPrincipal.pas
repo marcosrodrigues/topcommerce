@@ -119,6 +119,7 @@ type
     Image37: TImage;
     Label14: TLabel;
     Image38: TImage;
+    Button1: TButton;
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -143,6 +144,7 @@ type
     procedure Label10Click(Sender: TObject);
     procedure Label14Click(Sender: TObject);
     procedure Image38Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
     DAOPedidoVenda: TPedidoVendaDAOClient;
@@ -191,7 +193,7 @@ implementation
 uses uFrmConsultaProdutos, uFrmAjuste, uFrmFecharVenda, uFrmExcluirItem, MensagensUtils,
   uFrmVendasFechadas, uFrmVendasAbertas, uFrmRelReciboVenda,
   uFrmConectandoServidor, uFrmInformarCliente, uFrmAbrirCaixa, uCaixaDAOClient,
-  uFrmLogin, FuncoesBematech;
+  uFrmLogin, FuncoesBematech, FuncoesBematechMatricial;
 
 {$R *.dfm}
 
@@ -588,6 +590,60 @@ begin
   finally
     dao.Free;
   end;
+end;
+
+procedure TFrmPrincipal.Button1Click(Sender: TObject);
+var
+  i_modelo, i_retorno: Integer;
+  s_porta: AnsiString;
+begin
+  //COMANDO EXECUTADO INTERNAMENTE PELA DLL PARA
+  //CONFIGURAÇÃO DO MODELO DA IMPRESSORA QUE SERÁ CONECTADA
+  i_modelo  := 1;
+  i_retorno := ConfiguraModeloImpressora(i_modelo);
+
+  Informacao(IntToStr(i_retorno));
+
+  s_porta := 'LPT1';
+  //COMANDO DE ABERTURA DA PORTA DE COMUNICAÇÃO
+  i_retorno:= IniciaPorta(s_porta);
+
+  //VALIDAÇÃO DE EXECUÇÃO DO COMANDO
+  if i_retorno = 1 then
+    Informacao('Impressora conectada')
+  else
+    Erro('Erro de conexão '+IntToStr(i_retorno));
+
+  i_retorno:=BematechTX('Comprovante de Teste abcdefghij'+#10);
+  i_retorno:=BematechTX('Comprovante de Teste abcdefghij'+#10);
+  i_retorno:=BematechTX('Comprovante de Teste abcdefghij'+#10);
+  i_retorno:=BematechTX('Comprovante de Teste abcdefghij'+#10);
+  i_retorno:=BematechTX('Comprovante de Teste abcdefghij'+#10);
+  i_retorno:=BematechTX('Comprovante de Teste abcdefghij'+#10);
+  i_retorno:=BematechTX('Comprovante de Teste abcdefghij'+#10);
+  i_retorno:=BematechTX('Comprovante de Teste abcdefghij'+#10);
+  i_retorno:=BematechTX('Comprovante de Teste abcdefghij'+#10);
+  i_retorno:=ComandoTX(#13#10,length(#13#10));
+  i_retorno:=ComandoTX(#13#10,length(#13#10));
+  i_retorno:=ComandoTX(#13#10,length(#13#10));
+  i_retorno:=ComandoTX(#13#10,length(#13#10));
+  i_retorno:=ComandoTX(#13#10,length(#13#10));
+  i_retorno:=ComandoTX(#13#10,length(#13#10));
+  i_retorno:=ComandoTX(#13#10,length(#13#10));
+  i_retorno:=ComandoTX(#13#10,length(#13#10));
+  i_retorno:=ComandoTX(#13#10,length(#13#10));
+  i_retorno:=ComandoTX(#13#10,length(#13#10));
+  i_retorno:=ComandoTX(#13#10,length(#13#10));
+  i_retorno:=ComandoTX(#13#10,length(#13#10));
+  i_retorno:=ComandoTX(#13#10,length(#13#10));
+  i_retorno:=ComandoTX(#13#10,length(#13#10));
+  i_retorno:=ComandoTX(#13#10,length(#13#10));
+  i_retorno:=ComandoTX(#13#10,length(#13#10));
+  i_retorno:=ComandoTX(#13#10,length(#13#10));
+  i_retorno:=ComandoTX(#13#10,length(#13#10));
+
+  if i_retorno <> 1 then
+    Erro('Erro de comunicação');
 end;
 
 procedure TFrmPrincipal.CancelarVenda;
