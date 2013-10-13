@@ -58,6 +58,7 @@ type
     procedure edtCodigoBarrasExit(Sender: TObject);
     procedure cedMargemLucroExit(Sender: TObject);
     procedure cdsFornecedoresAfterPost(DataSet: TDataSet);
+    procedure cedPrecoVendaExit(Sender: TObject);
   private
     { Private declarations }
     DAOClient: TProdutoDAOClient;
@@ -67,6 +68,7 @@ type
 
     function MaiorPrecoCompra: Currency;
     procedure CalculaPrecoVendaComMargemLucro;
+    procedure CalculaMargemLucro;
   protected
     procedure OnCreate; override;
     procedure OnDestroy; override;
@@ -95,11 +97,23 @@ begin
   edtCodigoBarras.Text := DAOClient.NextCodigoBarras;
 end;
 
+procedure TFrmDadosProduto.CalculaMargemLucro;
+var
+  precoCompra: Currency;
+begin
+  if cedPrecoVenda.Value > 0 then
+  begin
+    precoCompra := MaiorPrecoCompra;
+
+    cedMargemLucro.Value := (100 * (cedPrecoVenda.Value - precoCompra)) / precoCompra;
+  end;
+end;
+
 procedure TFrmDadosProduto.CalculaPrecoVendaComMargemLucro;
 var
   precoCompra: Currency;
 begin
-  if (cedMargemLucro.Value > 0) and (cedPrecoVenda.Value = 0) and not(cdsFornecedores.IsEmpty) then
+  if (cedMargemLucro.Value > 0) and (cedPrecoVenda.Value = 0)  and not(cdsFornecedores.IsEmpty) then
   begin
     precoCompra := MaiorPrecoCompra;
 
@@ -119,6 +133,12 @@ begin
   CalculaPrecoVendaComMargemLucro;
 end;
 
+procedure TFrmDadosProduto.cedPrecoVendaExit(Sender: TObject);
+begin
+  inherited;
+  CalculaMargemLucro;
+end;
+
 procedure TFrmDadosProduto.edtCodigoBarrasExit(Sender: TObject);
 begin
   inherited;
@@ -134,6 +154,7 @@ begin
   cdsFornecedores.DisableControls;
 
   cdsFornecedores.IndexFieldNames := 'PRECO_COMPRA';
+  cdsFornecedores.Last;
 
   Result := cdsFornecedoresPRECO_COMPRA.AsCurrency;
 

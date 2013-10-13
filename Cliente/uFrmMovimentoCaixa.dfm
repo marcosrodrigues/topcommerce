@@ -8,6 +8,7 @@ inherited FrmMovimentoCaixa: TFrmMovimentoCaixa
   TextHeight = 14
   inherited pnlBotoes: TPanel
     Width = 812
+    ExplicitWidth = 812
     inherited sbtNovo: TSpeedButton
       Enabled = False
     end
@@ -19,6 +20,7 @@ inherited FrmMovimentoCaixa: TFrmMovimentoCaixa
     end
     inherited sbtFechar: TSpeedButton
       Left = 730
+      ExplicitLeft = 730
     end
   end
   inherited grdCrud: TDBGrid
@@ -28,8 +30,11 @@ inherited FrmMovimentoCaixa: TFrmMovimentoCaixa
   inherited pnlPesquisar: TPanel
     Top = 401
     Width = 812
+    ExplicitTop = 401
+    ExplicitWidth = 812
     inherited edtPesquisar: TEdit
       Width = 810
+      ExplicitWidth = 810
     end
   end
   inherited cdsCrud: TClientDataSet
@@ -44,6 +49,7 @@ inherited FrmMovimentoCaixa: TFrmMovimentoCaixa
     object cdsRelatorioFECHADO: TBooleanField
       DisplayLabel = 'Fechado'
       FieldName = 'FECHADO'
+      OnGetText = cdsRelatorioFECHADOGetText
     end
     object cdsRelatorioVALOR_ABERTURA: TCurrencyField
       DisplayLabel = 'Valor de Abertura'

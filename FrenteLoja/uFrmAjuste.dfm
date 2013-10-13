@@ -63,7 +63,6 @@ object FrmAjuste: TFrmAjuste
     Color = 3682350
     ParentBackground = False
     TabOrder = 5
-    ExplicitWidth = 500
     object lblDescricaoProduto: TLabel
       Left = 1
       Top = 1
@@ -127,7 +126,7 @@ object FrmAjuste: TFrmAjuste
     MaxValue = 10000
     MinValue = 1
     TabOrder = 1
-    Value = 0
+    Value = 1
     OnChange = sedQuantidadeChange
   end
 end

@@ -20,6 +20,8 @@ type
       DisplayText: Boolean);
     procedure cdsCrudOPERACAOGetText(Sender: TField; var Text: string;
       DisplayText: Boolean);
+    procedure cdsRelatorioFECHADOGetText(Sender: TField; var Text: string;
+      DisplayText: Boolean);
   private
     { Private declarations }
     DAOClient: TCaixaDAOClient;
@@ -59,6 +61,16 @@ begin
   case Sender.AsInteger of
     1: Text := 'Caixa';
   end;
+end;
+
+procedure TFrmMovimentoCaixa.cdsRelatorioFECHADOGetText(Sender: TField;
+  var Text: string; DisplayText: Boolean);
+begin
+  inherited;
+  if Sender.AsBoolean then
+    Text := 'Sim'
+  else
+    Text := 'Não';
 end;
 
 procedure TFrmMovimentoCaixa.CreateDAOClient;

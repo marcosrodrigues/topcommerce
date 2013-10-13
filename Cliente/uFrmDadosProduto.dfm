@@ -18,8 +18,6 @@ inherited FrmDadosProduto: TFrmDadosProduto
     Height = 252
     Align = alClient
     TabOrder = 4
-    ExplicitTop = 264
-    ExplicitHeight = 263
   end
   inherited pnlBotoes: TPanel
     Width = 741
@@ -266,6 +264,7 @@ inherited FrmDadosProduto: TFrmDadosProduto
       Margins.Left = 4
       Margins.Top = 1
       TabOrder = 6
+      OnExit = cedPrecoVendaExit
     end
     object cedMargemLucro: TCurrencyEdit
       Left = 110
@@ -324,18 +323,17 @@ inherited FrmDadosProduto: TFrmDadosProduto
     Top = 275
     Width = 741
     Height = 252
-    ExplicitTop = 264
+    ExplicitTop = 275
     ExplicitWidth = 741
-    ExplicitHeight = 263
+    ExplicitHeight = 252
     inherited pgcDetail: TPageControl
       Width = 739
       Height = 250
       ActivePage = tbsFornecedores
       ExplicitWidth = 739
-      ExplicitHeight = 261
+      ExplicitHeight = 250
       object tbsFornecedores: TTabSheet
         Caption = '&Fornecedores'
-        ExplicitHeight = 232
         object grdFornecedores: TDBGrid
           Left = 0
           Top = 0
@@ -355,7 +353,6 @@ inherited FrmDadosProduto: TFrmDadosProduto
       object tbsValidades: TTabSheet
         Caption = '&Validades'
         ImageIndex = 1
-        ExplicitHeight = 232
         object grdValidades: TDBGrid
           Left = 0
           Top = 0
@@ -377,7 +374,7 @@ inherited FrmDadosProduto: TFrmDadosProduto
   inherited pnlBotoesDetails: TPanel
     Top = 247
     Width = 741
-    ExplicitTop = 236
+    ExplicitTop = 247
     ExplicitWidth = 741
     inherited sbtNovo: TSpeedButton
       OnClick = sbtNovoClick

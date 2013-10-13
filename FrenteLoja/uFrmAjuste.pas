@@ -62,7 +62,7 @@ end;
 
 procedure TFrmAjuste.cedDescPercentualExit(Sender: TObject);
 begin
-  if cedDescPercentual.Value > DescontoMaximoPercentual then
+  if (DescontoMaximoPercentual > 0) and (cedDescPercentual.Value > DescontoMaximoPercentual) then
   begin
     Atencao('Desconto máximo permitido: '+FormatCurr(',0.00', DescontoMaximoPercentual));
     cedDescPercentual.Value := DescontoMaximoPercentual;
@@ -73,7 +73,7 @@ end;
 
 procedure TFrmAjuste.cedDescValorExit(Sender: TObject);
 begin
-  if cedDescValor.Value > DescontoMaximoValor * sedQuantidade.Value then
+  if (DescontoMaximoValor * sedQuantidade.Value > 0) and (cedDescValor.Value > DescontoMaximoValor * sedQuantidade.Value) then
   begin
     Atencao('Desconto máximo permitido: '+FormatCurr(',0.00', DescontoMaximoValor * sedQuantidade.Value));
     cedDescValor.Value := DescontoMaximoValor;

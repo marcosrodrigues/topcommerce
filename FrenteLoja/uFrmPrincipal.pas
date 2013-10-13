@@ -997,12 +997,15 @@ begin
     Exit;
   end;
 
-  recibo := TFrmRelReciboVenda.Create(Self);
-  try
-    recibo.CodigoVenda := CodigoPedidoVendaAtual;
-    recibo.RLReport.Print;
-  finally
-    recibo.Free;
+  if Confirma('Deseja imprimir o recibo?') then
+  begin
+    recibo := TFrmRelReciboVenda.Create(Self);
+    try
+      recibo.CodigoVenda := CodigoPedidoVendaAtual;
+      recibo.RLReport.Print;
+    finally
+      recibo.Free;
+    end;
   end;
 end;
 
