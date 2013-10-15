@@ -43,9 +43,12 @@ type
     procedure lbFormaPagamentoEnter(Sender: TObject);
     procedure lbFormaPagamentoClick(Sender: TObject);
     procedure lbParcelamentoClick(Sender: TObject);
+    procedure lbFormaPagamentoExit(Sender: TObject);
   private
     { Private declarations }
     procedure CalcularTotal;
+    procedure CalculaValorRestante;
+    procedure CalculaValorParcela;
   public
     { Public declarations }
     Total: Currency;
@@ -63,6 +66,13 @@ uses uFrmConsultaClientes, MensagensUtils;
 
 procedure TFrmFecharVenda.btnFecharClick(Sender: TObject);
 begin
+  if (lbFormaPagamento.ItemIndex in [0,3,4]) and (cedValorRecebido.Value = 0) then
+  begin
+    Atencao('Informe o valor recebido.');
+    cedValorRecebido.SetFocus;
+    Exit;
+  end;
+
   Fechar := True;
   Close;
 end;
@@ -78,6 +88,20 @@ begin
     cedTotal.Value := cedTotal.Value - (cedTotal.Value * (cedDescontoPercentual.Value / 100));
 end;
 
+procedure TFrmFecharVenda.CalculaValorParcela;
+begin
+  if lbParcelamento.ItemIndex > -1 then
+    cedValorParcela.Value := cedRestante.Value / (lbParcelamento.ItemIndex + 1);
+end;
+
+procedure TFrmFecharVenda.CalculaValorRestante;
+begin
+  if cedValorRecebido.Value < cedTotal.Value then
+    cedRestante.Value := cedTotal.Value - cedValorRecebido.Value
+  else
+    cedRestante.Value := 0;
+end;
+
 procedure TFrmFecharVenda.cedDescontoPercentualExit(Sender: TObject);
 begin
   CalcularTotal;
@@ -90,22 +114,16 @@ end;
 
 procedure TFrmFecharVenda.cedValorRecebidoExit(Sender: TObject);
 begin
-{  if cedValorRecebido.Value = 0 then
-  begin
-    Atencao('Informe o valor recebido.');
-    cedValorRecebido.SetFocus;
-    Exit;
-  end;
-  if cedValorRecebido.Value < cedTotal.Value then
-  begin
-    Atencao('Valor recebido deve ser maior ou igual ao total da venda.');
-    cedValorRecebido.SetFocus;
-    Exit;
-  end;}
   if cedValorRecebido.Value > cedTotal.Value then
-    cedTroco.Value := cedValorRecebido.Value - cedTotal.Value
-  else
+  begin
+    cedTroco.Value := cedValorRecebido.Value - cedTotal.Value;
+    cedRestante.Value := 0;
+  end
+  else if cedValorRecebido.Value < cedTotal.Value then
+  begin
     cedRestante.Value := cedTotal.Value - cedValorRecebido.Value;
+    CalculaValorParcela;
+  end;
 end;
 
 procedure TFrmFecharVenda.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
@@ -127,6 +145,14 @@ begin
       cedValorRecebido.SetFocus
     else if (Self.ActiveControl = cedValorRecebido) then
       lbFormaPagamento.SetFocus
+    else if (Self.ActiveControl = lbFormaPagamento) and (lbFormaPagamento.ItemIndex in [1, 2]) then
+      lbParcelamento.SetFocus
+    else if (Self.ActiveControl = lbParcelamento) and (lbFormaPagamento.ItemIndex = 1) then
+      dePrimeiroVencimento.SetFocus
+    else if (Self.ActiveControl = lbParcelamento) then
+      btnFechar.SetFocus
+    else if (Self.ActiveControl = dePrimeiroVencimento) then
+      btnFechar.SetFocus
     else if (Self.ActiveControl = lbFormaPagamento) then
       btnFechar.SetFocus;
   end;
@@ -150,7 +176,11 @@ begin
     lblPrimeiroVencimento.Show;
     dePrimeiroVencimento.Show;
 
-    cedRestante.Value := cedTotal.Value - cedValorRecebido.Value;
+    if lbParcelamento.ItemIndex = -1 then
+      lbParcelamento.Selected[0] := True;
+
+    CalculaValorRestante;
+    CalculaValorParcela;
     dePrimeiroVencimento.Date := IncMonth(Now);
   end
   else if lbFormaPagamento.ItemIndex = 2 then
@@ -164,7 +194,11 @@ begin
     lblPrimeiroVencimento.Hide;
     dePrimeiroVencimento.Hide;
 
-    cedRestante.Value := cedTotal.Value - cedValorRecebido.Value;
+    if lbParcelamento.ItemIndex = -1 then
+      lbParcelamento.Selected[0] := True;
+
+    CalculaValorRestante;
+    CalculaValorParcela;
   end
   else
   begin
@@ -181,12 +215,19 @@ end;
 
 procedure TFrmFecharVenda.lbFormaPagamentoEnter(Sender: TObject);
 begin
-  lbFormaPagamento.Selected[0] := True;
+  if (Sender as TListBox).ItemIndex = -1  then
+    (Sender as TListBox).Selected[0] := True;
+  (Sender as TListBox).Color := clMoneyGreen;
+end;
+
+procedure TFrmFecharVenda.lbFormaPagamentoExit(Sender: TObject);
+begin
+  (Sender as TListBox).Color := clWindow;
 end;
 
 procedure TFrmFecharVenda.lbParcelamentoClick(Sender: TObject);
 begin
-  cedValorParcela.Value := cedRestante.Value / (lbParcelamento.ItemIndex + 1);
+  CalculaValorParcela;
 end;
 
 end.

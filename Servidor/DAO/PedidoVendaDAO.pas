@@ -4,7 +4,7 @@ interface
 
 uses
   Classes, DBXCommon, PedidoVenda, ItemPedidoVenda, SqlExpr, SysUtils,
-  EstoqueDAO, ClienteDAO, ProdutoDAO, Generics.Collections;
+  EstoqueDAO, ClienteDAO, ProdutoDAO, Generics.Collections, ContaReceberDAO, ContaReceber;
 
 type
   {$MethodInfo ON}
@@ -233,6 +233,10 @@ function TPedidoVendaDAO.Update(PedidoVenda: TPedidoVenda): Boolean;
 var
   query: TSQLQuery;
   CaixaDao: TCaixaDAO;
+  ContaReceber: TContaReceber;
+  ContaReceberDao: TContaReceberDAO;
+  i: Integer;
+  Vencimento: TDateTime;
 begin
   query := TSQLQuery.Create(nil);
   try
@@ -259,6 +263,30 @@ begin
           CaixaDao.RegistrarMovimentacao(1, PedidoVenda.Total, 1);
         finally
           CaixaDao.Free;
+        end;
+
+        // Gerar contas a receber quando crediario
+        if PedidoVenda.TipoPagamento = 1 then
+        begin
+          ContaReceberDao := TContaReceberDAO.Create;
+          try
+            Vencimento := PedidoVenda.PrimeiroVencimento;
+            for i := 1 to PedidoVenda.Parcelamento+1 do
+            begin
+              ContaReceber := TContaReceber.Create;
+              ContaReceber.Cliente := PedidoVenda.Cliente;
+              ContaReceber.NomeClienteAvulso := PedidoVenda.NomeClienteAvulso;
+              ContaReceber.Vencimento := Vencimento;
+              ContaReceber.Valor := PedidoVenda.ValorParcela;
+              ContaReceber.Observacoes := 'PARCELA '+IntToStr(i)+' DO PEDIDO DE VENDA'+PedidoVenda.Codigo;
+
+              ContaReceberDao.Insert(ContaReceber);
+
+              Vencimento := IncMonth(Vencimento);
+            end;
+          finally
+            ContaReceberDao.Free;
+          end;
         end;
       end;
 

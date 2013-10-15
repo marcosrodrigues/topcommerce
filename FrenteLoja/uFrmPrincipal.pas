@@ -149,6 +149,8 @@ type
     CodigoPedidoVendaAtual: string;
     DataPedidoVendaAtual: TDateTime;
     VendaFechada, VendaCancelada: Boolean;
+    Cliente: TCliente;
+    NomeClienteAvulso: string;
     MyBitmap: TBitmap;
     CaixaAbertoAtual: TCaixa;
     ImagemAtual: Integer;
@@ -156,7 +158,8 @@ type
     procedure NovaVenda;
     procedure FecharVenda;
     procedure ConsultarProduto;
-    procedure GravarVenda(Desconto, DescontoPercentual, Recebido, Troco, Total: Currency; TipoPagamento: Integer);
+    procedure GravarVenda(Desconto, DescontoPercentual, Recebido, Troco, Total: Currency; TipoPagamento, Parcelamento: Integer;
+      Restante, ValorParcela: Currency; PrimeiroVencimento: TDateTime);
     procedure ExcluirItem;
     procedure IniciaControles;
     procedure VendasFechadas;
@@ -250,7 +253,7 @@ begin
     VK_F3: FecharVenda;
     VK_F5: ExcluirItem;
     VK_F6: ConsultarProduto;
-    VK_F7: ImprimirReciboBematechMatricial; //ImprimirReciboLaser;
+    VK_F7: Informacao('Falta a configuracao');//ImprimirReciboBematechMatricial; //ImprimirReciboLaser;
     VK_F8: VendasAbertas;
     VK_F9: VendasFechadas;
     VK_F10: AbrirCaixa;
@@ -290,20 +293,27 @@ begin
   AtualizaCaixa;
 end;
 
-procedure TFrmPrincipal.GravarVenda(Desconto, DescontoPercentual, Recebido, Troco, Total: Currency; TipoPagamento: Integer);
+procedure TFrmPrincipal.GravarVenda(Desconto, DescontoPercentual, Recebido, Troco, Total: Currency; TipoPagamento, Parcelamento: Integer;
+  Restante, ValorParcela: Currency; PrimeiroVencimento: TDateTime);
 var
   Pedido: TPedidoVenda;
 begin
-  Pedido               := TPedidoVenda.Create;
-  Pedido.Codigo        := CodigoPedidoVendaAtual;
-  Pedido.Data          := DataPedidoVendaAtual;
-  Pedido.Desconto      := Desconto;
-  Pedido.TipoPagamento := TipoPagamento;
-  Pedido.Fechada       := True;
+  Pedido                    := TPedidoVenda.Create;
+  Pedido.Codigo             := CodigoPedidoVendaAtual;
+  Pedido.Data               := DataPedidoVendaAtual;
+  Pedido.Desconto           := Desconto;
+  Pedido.TipoPagamento      := TipoPagamento;
+  Pedido.Fechada            := True;
   Pedido.DescontoPercentual := DescontoPercentual;
-  Pedido.Recebido := Recebido;
-  Pedido.Troco := Troco;
-  Pedido.Total := Total;
+  Pedido.Recebido           := Recebido;
+  Pedido.Troco              := Troco;
+  Pedido.Total              := Total;
+  Pedido.Parcelamento       := Parcelamento;
+  Pedido.Restante           := Restante;
+  Pedido.ValorParcela       := ValorParcela;
+  Pedido.PrimeiroVencimento := PrimeiroVencimento;
+  Pedido.Cliente            := Cliente;
+  Pedido.NomeClienteAvulso  := NomeClienteAvulso;
 
   DAOPedidoVenda.Update(Pedido);
 end;
@@ -436,9 +446,15 @@ begin
       VendaCancelada := False;
 
       if pedido.Cliente <> nil then
-        lblCliente.Caption := pedido.Cliente.Nome
+      begin
+        lblCliente.Caption := pedido.Cliente.Nome;
+        Cliente := pedido.Cliente;
+      end
       else
+      begin
         lblCliente.Caption := pedido.NomeClienteAvulso;
+        NomeClienteAvulso := pedido.NomeClienteAvulso;
+      end;
 
       lblSubtotal.Caption := FormatCurr(',0.00', pedido.Total);
 
@@ -494,9 +510,15 @@ begin
       SetStatusVendaFechada;
 
       if pedido.Cliente <> nil then
-        lblCliente.Caption := pedido.Cliente.Nome
+      begin
+        lblCliente.Caption := pedido.Cliente.Nome;
+        Cliente := pedido.Cliente;
+      end
       else
+      begin
         lblCliente.Caption := pedido.NomeClienteAvulso;
+        NomeClienteAvulso := pedido.NomeClienteAvulso;
+      end;
 
       lblSubtotal.Caption := FormatCurr(',0.00', pedido.Total);
 
@@ -736,11 +758,13 @@ begin
                 begin
                   Pedido.Cliente := fInformarCliente.Cliente;
                   lblCliente.Caption := Pedido.Cliente.Nome;
+                  Cliente := Pedido.Cliente;
                 end
                 else
                 begin
                   Pedido.NomeClienteAvulso := fInformarCliente.NomeCliente;
                   lblCliente.Caption := Pedido.NomeClienteAvulso;
+                  NomeClienteAvulso := Pedido.NomeClienteAvulso;
                 end;
               end;
             finally
@@ -895,16 +919,9 @@ begin
 
     if (f.Fechar) then
     begin
-      if f.cedValorRecebido.Value = 0 then
-      begin
+      GravarVenda(f.cedDescontoValor.Value, f.cedDescontoPercentual.Value, f.cedValorRecebido.Value, f.cedTroco.Value, f.cedTotal.Value, f.lbFormaPagamento.ItemIndex, f.lbParcelamento.ItemIndex, f.cedRestante.Value, f.cedValorParcela.Value, f.dePrimeiroVencimento.Date);
 
-      end
-      else
-      begin
-        GravarVenda(f.cedDescontoValor.Value, f.cedDescontoPercentual.Value, f.cedValorRecebido.Value, f.cedTroco.Value, f.cedTotal.Value, f.lbFormaPagamento.ItemIndex);
-
-        ImprimirReciboBematechMatricial; //ImprimirReciboLaser;
-      end;
+      //ImprimirReciboBematechMatricial; //ImprimirReciboLaser;
     end;
   finally
     if f.Fechar then
@@ -1025,6 +1042,9 @@ begin
   lblCliente.Caption  := '';
   lblSubtotal.Caption := '';
 
+  Cliente := nil;
+  NomeClienteAvulso := '';
+
   SetStatusVenda;
 
   lblDataHora.Caption := FormatDateTime('dd/mm/yyyy hh:mm:ss', Now);
@@ -1060,7 +1080,7 @@ end;
 
 procedure TFrmPrincipal.Label18Click(Sender: TObject);
 begin
-  ImprimirReciboBematechMatricial; //ImprimirReciboLaser;
+  //ImprimirReciboBematechMatricial; //ImprimirReciboLaser;
 end;
 
 procedure TFrmPrincipal.Label19Click(Sender: TObject);

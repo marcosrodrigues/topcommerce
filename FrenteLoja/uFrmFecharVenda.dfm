@@ -121,7 +121,6 @@ object FrmFecharVenda: TFrmFecharVenda
     ParentBackground = False
     ParentFont = False
     TabOrder = 11
-    ExplicitWidth = 575
     DesignSize = (
       706
       41)
@@ -348,6 +347,7 @@ object FrmFecharVenda: TFrmFecharVenda
     TabOrder = 5
     OnClick = lbFormaPagamentoClick
     OnEnter = lbFormaPagamentoEnter
+    OnExit = lbFormaPagamentoExit
   end
   object cedDescontoValor: TCurrencyEdit
     Left = 8
@@ -399,16 +399,25 @@ object FrmFecharVenda: TFrmFecharVenda
     Top = 216
     Width = 107
     Height = 132
-    ItemHeight = 25
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -17
+    Font.Name = 'Ubuntu Condensed'
+    Font.Style = []
+    ItemHeight = 20
     Items.Strings = (
       '1x'
       '2x'
       '3x'
       '4x'
-      '5x')
+      '5x'
+      '6x')
+    ParentFont = False
     TabOrder = 6
     Visible = False
     OnClick = lbParcelamentoClick
+    OnEnter = lbFormaPagamentoEnter
+    OnExit = lbFormaPagamentoExit
   end
   object cedRestante: TCurrencyEdit
     Left = 336
@@ -416,6 +425,7 @@ object FrmFecharVenda: TFrmFecharVenda
     Width = 168
     Height = 33
     Margins.Top = 1
+    Enabled = False
     TabOrder = 7
     Visible = False
     OnExit = cedValorRecebidoExit
@@ -426,6 +436,7 @@ object FrmFecharVenda: TFrmFecharVenda
     Width = 168
     Height = 33
     Margins.Top = 1
+    Enabled = False
     TabOrder = 8
     Visible = False
     OnExit = cedValorRecebidoExit

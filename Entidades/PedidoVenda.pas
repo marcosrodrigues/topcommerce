@@ -34,6 +34,13 @@ type
     [JSONReflect(ctString, rtString, TDoubleInterceptor, nil, true)]
     FTroco: Currency;
     FLoginUsuario: string;
+    FParcelamento: Integer;
+    [JSONReflect(ctString, rtString, TDoubleInterceptor, nil, true)]
+    FRestante: Currency;
+    [JSONReflect(ctString, rtString, TDoubleInterceptor, nil, true)]
+    FValorParcela: Currency;
+    [JSONReflect(ctString, rtString, TDoubleInterceptor, nil, true)]
+    FPrimeiroVencimento: TDateTime;
   public
     property Codigo: string read FCodigo write FCodigo;
     property Data: TDateTime read FData write FData;
@@ -49,6 +56,10 @@ type
     property Recebido: Currency read FRecebido write FRecebido;
     property Troco: Currency read FTroco write FTroco;
     property LoginUsuario: string read FLoginUsuario write FLoginUsuario;
+    property Parcelamento: Integer read FParcelamento write FParcelamento;
+    property Restante: Currency read FRestante write FRestante;
+    property ValorParcela: Currency read FValorParcela write FValorParcela;
+    property PrimeiroVencimento: TDateTime read FPrimeiroVencimento write FPrimeiroVencimento;
   end;
 
 implementation
