@@ -24,10 +24,14 @@ begin
   Result := False;
 
   f := TFrmConfirm.Create(nil);
-  f.Mensagem := mensagem;
-  case f.ShowModal of
-    mrYes: Result := True;
-    mrNo: Result := False;
+  try
+    f.Mensagem := mensagem;
+    case f.ShowModal of
+      mrYes: Result := True;
+      mrNo: Result := False;
+    end;
+  finally
+    f.Free;
   end;
 end;
 
@@ -36,8 +40,12 @@ var
   f: TFrmInformation;
 begin
   f := TFrmInformation.Create(nil);
-  f.Mensagem := mensagem;
-  f.ShowModal;
+  try
+    f.Mensagem := mensagem;
+    f.ShowModal;
+  finally
+    f.Free;
+  end;
 end;
 
 procedure Erro(mensagem: string);
@@ -45,8 +53,12 @@ var
   f: TFrmError;
 begin
   f := TFrmError.Create(nil);
-  f.Mensagem := mensagem;
-  f.ShowModal;
+  try
+    f.Mensagem := mensagem;
+    f.ShowModal;
+  finally
+    f.Free;
+  end;
 end;
 
 procedure Atencao(mensagem: string);
@@ -54,8 +66,12 @@ var
   f: TFrmWarning;
 begin
   f := TFrmWarning.Create(nil);
-  f.Mensagem := mensagem;
-  f.ShowModal;
+  try
+    f.Mensagem := mensagem;
+    f.ShowModal;
+  finally
+    f.Free;
+  end;
 end;
 
 function GetTextWidth(s: string; fnt: TFont; HWND: THandle): integer;
