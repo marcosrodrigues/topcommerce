@@ -96,7 +96,6 @@
 			<DCCReference Include="uFrmDadosFornecedor.pas">
 				<Form>FrmDadosFornecedor</Form>
 			</DCCReference>
-			<DCCReference Include="..\Entidades\Fornecedor.pas"/>
 			<DCCReference Include="DAOClient\uFornecedorDAOClient.pas"/>
 			<DCCReference Include="uFrmEstoque.pas">
 				<Form>FrmEstoque</Form>
@@ -252,6 +251,30 @@
 			</DCCReference>
 			<DCCReference Include="uFrmMovimentoCaixa.pas">
 				<Form>FrmMovimentoCaixa</Form>
+			</DCCReference>
+			<DCCReference Include="DAOClient\uCargoDAOClient.pas"/>
+			<DCCReference Include="..\Entidades\Cargo.pas"/>
+			<DCCReference Include="DAOClient\uFuncionarioDAOClient.pas"/>
+			<DCCReference Include="..\Entidades\Fornecedor.pas"/>
+			<DCCReference Include="..\Entidades\Funcionario.pas"/>
+			<DCCReference Include="uFrmCargo.pas">
+				<Form>FrmCargo</Form>
+			</DCCReference>
+			<DCCReference Include="uFrmDadosCargo.pas">
+				<Form>FrmDadosCargo</Form>
+			</DCCReference>
+			<DCCReference Include="uFramePesquisaCargo.pas">
+				<Form>FramePesquisaCargo</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="uFrmConsultaCargo.pas">
+				<Form>FrmConsultaCargo</Form>
+			</DCCReference>
+			<DCCReference Include="uFrmFuncionario.pas">
+				<Form>FrmFuncionario</Form>
+			</DCCReference>
+			<DCCReference Include="uFrmDadosFuncionario.pas">
+				<Form>FrmDadosFuncionario</Form>
 			</DCCReference>
 			<BuildConfiguration Include="Release">
 				<Key>Cfg_2</Key>

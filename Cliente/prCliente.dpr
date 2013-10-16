@@ -24,7 +24,6 @@ uses
   StringUtils in '..\Utils\StringUtils.pas',
   uFrmFornecedor in 'uFrmFornecedor.pas' {FrmFornecedor},
   uFrmDadosFornecedor in 'uFrmDadosFornecedor.pas' {FrmDadosFornecedor},
-  Fornecedor in '..\Entidades\Fornecedor.pas',
   uFornecedorDAOClient in 'DAOClient\uFornecedorDAOClient.pas',
   uFrmEstoque in 'uFrmEstoque.pas' {FrmEstoque},
   uFrmDadosEstoque in 'uFrmDadosEstoque.pas' {FrmDadosEstoque},
@@ -87,7 +86,18 @@ uses
   uFrmContasReceber in 'uFrmContasReceber.pas' {FrmFiltrosContasReceber},
   uFrmRelContasPagar in 'uFrmRelContasPagar.pas' {FrmRelContasPagar},
   uFrmRelContasReceber in 'uFrmRelContasReceber.pas' {FrmRelContasReceber},
-  uFrmMovimentoCaixa in 'uFrmMovimentoCaixa.pas' {FrmMovimentoCaixa};
+  uFrmMovimentoCaixa in 'uFrmMovimentoCaixa.pas' {FrmMovimentoCaixa},
+  uCargoDAOClient in 'DAOClient\uCargoDAOClient.pas',
+  Cargo in '..\Entidades\Cargo.pas',
+  uFuncionarioDAOClient in 'DAOClient\uFuncionarioDAOClient.pas',
+  Fornecedor in '..\Entidades\Fornecedor.pas',
+  Funcionario in '..\Entidades\Funcionario.pas',
+  uFrmCargo in 'uFrmCargo.pas' {FrmCargo},
+  uFrmDadosCargo in 'uFrmDadosCargo.pas' {FrmDadosCargo},
+  uFramePesquisaCargo in 'uFramePesquisaCargo.pas' {FramePesquisaCargo: TFrame},
+  uFrmConsultaCargo in 'uFrmConsultaCargo.pas' {FrmConsultaCargo},
+  uFrmFuncionario in 'uFrmFuncionario.pas' {FrmFuncionario},
+  uFrmDadosFuncionario in 'uFrmDadosFuncionario.pas' {FrmDadosFuncionario};
 
 {$R *.res}
 

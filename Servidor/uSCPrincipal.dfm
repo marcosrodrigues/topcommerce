@@ -124,4 +124,18 @@ object SCPrincipal: TSCPrincipal
     Left = 385
     Top = 65
   end
+  object Cargo: TDSServerClass
+    OnGetClass = CargoGetClass
+    Server = DSServer
+    LifeCycle = 'Session'
+    Left = 385
+    Top = 117
+  end
+  object Funcionario: TDSServerClass
+    OnGetClass = FuncionarioGetClass
+    Server = DSServer
+    LifeCycle = 'Session'
+    Left = 385
+    Top = 170
+  end
 end

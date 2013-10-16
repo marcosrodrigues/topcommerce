@@ -41,7 +41,12 @@ uses
   uFrmError in '..\Utils\uFrmError.pas' {FrmError},
   uFrmInformation in '..\Utils\uFrmInformation.pas' {FrmInformation},
   uFrmWarning in '..\Utils\uFrmWarning.pas' {FrmWarning},
-  FuncoesBematechMatricial in '..\Utils\FuncoesBematechMatricial.pas';
+  FuncoesBematechMatricial in '..\Utils\FuncoesBematechMatricial.pas',
+  uFrmInformarFuncionario in 'uFrmInformarFuncionario.pas' {FrmInformarFuncionario},
+  Funcionario in '..\Entidades\Funcionario.pas',
+  uFrmConsultaFuncionarios in 'uFrmConsultaFuncionarios.pas' {FrmConsultaFuncionarios},
+  uFuncionarioDAOClient in '..\Cliente\DAOClient\uFuncionarioDAOClient.pas',
+  Cargo in '..\Entidades\Cargo.pas';
 
 {$R *.res}
 

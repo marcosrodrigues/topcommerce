@@ -30,7 +30,7 @@ begin
                 'FROM CONTAS_RECEBER C '+
                 'LEFT JOIN CLIENTES L ON L.CODIGO = C.CLIENTE_CODIGO '+
                 'WHERE C.BAIXADA = 0 '+
-                'ORDER BY C.CLIENTE_CODIGO, C.VENCIMENTO';
+                'ORDER BY C.VENCIMENTO, C.CLIENTE_CODIGO';
   Result := FComm.ExecuteQuery;
 end;
 
@@ -57,7 +57,7 @@ begin
   if Situacao = 2 then
     FComm.Text := FComm.Text + 'AND C.BAIXADA = 1 ';
 
-  FComm.Text := FComm.Text + 'ORDER BY C.CLIENTE_CODIGO, C.VENCIMENTO';
+  FComm.Text := FComm.Text + 'ORDER BY C.VENCIMENTO, C.CLIENTE_CODIGO';
 
   Result := FComm.ExecuteQuery;
 end;

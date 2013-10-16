@@ -93,6 +93,8 @@ type
     procedure ContasaPagar2Click(Sender: TObject);
     procedure ContasaReceber2Click(Sender: TObject);
     procedure MovimentodeCaixa1Click(Sender: TObject);
+    procedure Cargos1Click(Sender: TObject);
+    procedure Funcionrios1Click(Sender: TObject);
   private
     { Private declarations }
     procedure CarregaProdutosVencer;
@@ -110,7 +112,7 @@ uses uFrmTipoProduto, MensagensUtils, uFrmProduto, uFrmFornecedor, uFrmEstoque,
   uFrmFiltrosFornecedor, uFrmFiltrosProduto, uFrmFiltrosPedidoVenda, uFrmFiltrosEstoque,
   uProdutoDAOClient, DataUtils, uFrmUsuario, uFrmCliente, uFrmConexaoServidor,
   uFrmFiltrosCaixas, uFrmContaPagar, uFrmContaReceber, uFrmFiltrosContasPagar,
-  uFrmContasReceber, uFrmMovimentoCaixa;
+  uFrmContasReceber, uFrmMovimentoCaixa, uFrmCargo, uFrmFuncionario;
 
 {$R *.dfm}
 
@@ -128,6 +130,22 @@ begin
   if (f = nil) then
     f := TFrmFiltrosCaixas.Create(Self);
   f.ShowModal;
+end;
+
+procedure TFrmPrincipal.Cargos1Click(Sender: TObject);
+var
+  f: TFrmCargo;
+  i: integer;
+begin
+  for i := 0 to MDIChildCount do
+    if MDIChildren[i] is TFrmCargo then
+    begin
+      MDIChildren[i].Show;
+      Exit;
+    end;
+
+  f := TFrmCargo.Create(Self);
+  f.Show;
 end;
 
 procedure TFrmPrincipal.CarregaProdutosVencer;
@@ -249,6 +267,22 @@ begin
   ConnServidor.Open;
 
   CarregaProdutosVencer;
+end;
+
+procedure TFrmPrincipal.Funcionrios1Click(Sender: TObject);
+var
+  f: TFrmFuncionario;
+  i: integer;
+begin
+  for i := 0 to MDIChildCount do
+    if MDIChildren[i] is TFrmFuncionario then
+    begin
+      MDIChildren[i].Show;
+      Exit;
+    end;
+
+  f := TFrmFuncionario.Create(Self);
+  f.Show;
 end;
 
 procedure TFrmPrincipal.MovimentodeCaixa1Click(Sender: TObject);

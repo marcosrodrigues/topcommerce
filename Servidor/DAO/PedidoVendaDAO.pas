@@ -4,7 +4,7 @@ interface
 
 uses
   Classes, DBXCommon, PedidoVenda, ItemPedidoVenda, SqlExpr, SysUtils,
-  EstoqueDAO, ClienteDAO, ProdutoDAO, Generics.Collections, ContaReceberDAO, ContaReceber;
+  EstoqueDAO, ClienteDAO, ProdutoDAO, FuncionarioDAO, Generics.Collections, ContaReceberDAO, ContaReceber;
 
 type
   {$MethodInfo ON}
@@ -14,6 +14,7 @@ type
     EstoqueDAO: TEstoqueDAO;
     ClienteDAO: TClienteDAO;
     ProdutoDAO: TProdutoDAO;
+    FuncionarioDAO: TFuncionarioDAO;
 
     procedure PrepareCommand;
   public
@@ -110,9 +111,10 @@ end;
 
 constructor TPedidoVendaDAO.Create;
 begin
-  EstoqueDAO := TEstoqueDAO.Create;
-  ClienteDAO := TClienteDAO.Create;
-  ProdutoDAO := TProdutoDAO.Create;
+  EstoqueDAO     := TEstoqueDAO.Create;
+  ClienteDAO     := TClienteDAO.Create;
+  ProdutoDAO     := TProdutoDAO.Create;
+  FuncionarioDAO := TFuncionarioDAO.Create;
 end;
 
 destructor TPedidoVendaDAO.Destroy;
@@ -120,6 +122,7 @@ begin
   ProdutoDAO.Free;
   ClienteDAO.Free;
   EstoqueDAO.Free;
+  FuncionarioDAO.Free;
   inherited;
 end;
 
@@ -145,6 +148,9 @@ begin
 
     if not query.FieldByName('CODIGO_CLIENTE').IsNull then
       pedido.Cliente := ClienteDAO.FindByCodigo(query.FieldByName('CODIGO_CLIENTE').AsString);
+
+    if not query.FieldByName('FUNCIONARIO_CODIGO').IsNull then
+      pedido.Funcionario := FuncionarioDAO.FindByCodigo(query.FieldByName('FUNCIONARIO_CODIGO').AsString);
 
     pedido.NomeClienteAvulso := query.FieldByName('NOME_CLIENTE_AVULSO').AsString;
     pedido.Fechada := query.FieldByName('FECHADA').AsBoolean;
@@ -348,12 +354,12 @@ begin
   try
     query.SQLConnection := SCPrincipal.ConnTopCommerce;
     try
-      query.SQL.Text := 'INSERT INTO PEDIDOS_VENDA (CODIGO, DATA, DESCONTO, TIPO_PAGAMENTO, FECHADA, DESCONTO_PERCENTUAL, TOTAL, CANCELADA, LOGIN_USUARIO';
+      query.SQL.Text := 'INSERT INTO PEDIDOS_VENDA (CODIGO, DATA, DESCONTO, TIPO_PAGAMENTO, FECHADA, DESCONTO_PERCENTUAL, TOTAL, CANCELADA, LOGIN_USUARIO, FUNCIONARIO_CODIGO';
 
       if PedidoVenda.Cliente <> nil then
-        query.SQL.Text := query.SQL.Text + ', CODIGO_CLIENTE, NOME_CLIENTE_AVULSO) VALUES (:CODIGO, :DATA, :DESCONTO, :TIPO_PAGAMENTO, :FECHADA, :DESCONTO_PERCENTUAL, :TOTAL, :CANCELADA, :LOGIN_USUARIO, :CODIGO_CLIENTE, :NOME_CLIENTE_AVULSO)'
+        query.SQL.Text := query.SQL.Text + ', CODIGO_CLIENTE, NOME_CLIENTE_AVULSO) VALUES (:CODIGO, :DATA, :DESCONTO, :TIPO_PAGAMENTO, :FECHADA, :DESCONTO_PERCENTUAL, :TOTAL, :CANCELADA, :LOGIN_USUARIO, :FUNCIONARIO_CODIGO, :CODIGO_CLIENTE, :NOME_CLIENTE_AVULSO)'
       else
-        query.SQL.Text := query.SQL.Text + ', NOME_CLIENTE_AVULSO) VALUES (:CODIGO, :DATA, :DESCONTO, :TIPO_PAGAMENTO, :FECHADA, :DESCONTO_PERCENTUAL, :TOTAL, :CANCELADA, :LOGIN_USUARIO, :NOME_CLIENTE_AVULSO)';
+        query.SQL.Text := query.SQL.Text + ', NOME_CLIENTE_AVULSO) VALUES (:CODIGO, :DATA, :DESCONTO, :TIPO_PAGAMENTO, :FECHADA, :DESCONTO_PERCENTUAL, :TOTAL, :CANCELADA, :LOGIN_USUARIO, :FUNCIONARIO_CODIGO, :NOME_CLIENTE_AVULSO)';
 
       query.ParamByName('CODIGO').AsString          := PedidoVenda.Codigo;
       query.ParamByName('DATA').AsDateTime          := PedidoVenda.Data;
@@ -364,6 +370,7 @@ begin
       query.ParamByName('TOTAL').AsCurrency := PedidoVenda.Total;
       query.ParamByName('CANCELADA').AsBoolean := PedidoVenda.Cancelada;
       query.ParamByName('LOGIN_USUARIO').AsString := PedidoVenda.LoginUsuario;
+      query.ParamByName('FUNCIONARIO_CODIGO').AsString := PedidoVenda.Funcionario.Codigo;
 
       if PedidoVenda.Cliente <> nil then
         query.ParamByName('CODIGO_CLIENTE').AsString := PedidoVenda.Cliente.Codigo;

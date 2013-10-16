@@ -46,6 +46,7 @@ end;
 
 procedure TFrmConfirm.FormShow(Sender: TObject);
 begin
+  btnSim.SetFocus;
   mmMensagem.Text := Mensagem;
 end;
 

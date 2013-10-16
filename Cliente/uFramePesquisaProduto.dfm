@@ -24,6 +24,7 @@ object FramePesquisaProduto: TFramePesquisaProduto
     Width = 53
     Height = 22
     MaxLength = 6
+    NumbersOnly = True
     TabOrder = 0
     OnExit = edtCodigoProdutoExit
     OnKeyDown = edtCodigoProdutoKeyDown

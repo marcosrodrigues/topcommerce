@@ -126,6 +126,15 @@
 				<Form>FrmWarning</Form>
 			</DCCReference>
 			<DCCReference Include="..\Utils\FuncoesBematechMatricial.pas"/>
+			<DCCReference Include="uFrmInformarFuncionario.pas">
+				<Form>FrmInformarFuncionario</Form>
+			</DCCReference>
+			<DCCReference Include="..\Entidades\Funcionario.pas"/>
+			<DCCReference Include="uFrmConsultaFuncionarios.pas">
+				<Form>FrmConsultaFuncionarios</Form>
+			</DCCReference>
+			<DCCReference Include="..\Cliente\DAOClient\uFuncionarioDAOClient.pas"/>
+			<DCCReference Include="..\Entidades\Cargo.pas"/>
 			<BuildConfiguration Include="Release">
 				<Key>Cfg_2</Key>
 				<CfgParent>Base</CfgParent>

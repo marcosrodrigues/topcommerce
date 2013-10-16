@@ -1,32 +1,29 @@
-object FramePesquisaCliente: TFramePesquisaCliente
+object FramePesquisaCargo: TFramePesquisaCargo
   Left = 0
   Top = 0
-  Width = 526
+  Width = 510
   Height = 25
   AutoSize = True
   TabOrder = 0
   object Label3: TLabel
     Left = 0
     Top = 4
-    Width = 33
+    Width = 29
     Height = 13
-    Caption = 'Cliente'
+    Caption = 'Cargo'
   end
-  object edtCodigoCliente: TEdit
+  object edtIdCargo: TEdit
     Left = 41
     Top = 1
-    Width = 55
+    Width = 39
     Height = 21
-    BiDiMode = bdLeftToRight
-    MaxLength = 3
     NumbersOnly = True
-    ParentBiDiMode = False
     TabOrder = 0
-    OnExit = edtCodigoClienteExit
-    OnKeyDown = edtCodigoClienteKeyDown
+    OnExit = edtIdCargoExit
+    OnKeyDown = edtIdCargoKeyDown
   end
-  object bbtConsultarCliente: TBitBtn
-    Left = 96
+  object bbtConsultarCargo: TBitBtn
+    Left = 80
     Top = 0
     Width = 30
     Height = 25
@@ -61,10 +58,10 @@ object FramePesquisaCliente: TFramePesquisaCliente
     ParentDoubleBuffered = False
     TabOrder = 1
     TabStop = False
-    OnClick = bbtConsultarClienteClick
+    OnClick = bbtConsultarCargoClick
   end
-  object edtNomeCliente: TEdit
-    Left = 126
+  object edtDescricaoCargo: TEdit
+    Left = 110
     Top = 1
     Width = 400
     Height = 21

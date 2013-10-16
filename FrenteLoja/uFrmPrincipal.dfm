@@ -34667,6 +34667,38 @@ object FrmPrincipal: TFrmPrincipal
       ShowHint = True
       OnClick = Image38Click
     end
+    object Label17: TLabel
+      Left = 465
+      Top = 35
+      Width = 97
+      Height = 25
+      Caption = 'Funcion'#225'rio:'
+      Color = 3682350
+      Font.Charset = ANSI_CHARSET
+      Font.Color = 8816262
+      Font.Height = -21
+      Font.Name = 'Ubuntu Condensed'
+      Font.Style = []
+      ParentColor = False
+      ParentFont = False
+      Transparent = True
+    end
+    object lblFuncionario: TLabel
+      Left = 567
+      Top = 35
+      Width = 112
+      Height = 25
+      Caption = 'lblFuncionario'
+      Color = 3682350
+      Font.Charset = ANSI_CHARSET
+      Font.Color = 8816262
+      Font.Height = -21
+      Font.Name = 'Ubuntu Condensed'
+      Font.Style = []
+      ParentColor = False
+      ParentFont = False
+      Transparent = True
+    end
   end
   object ConnServidor: TSQLConnection
     DriverName = 'Datasnap'

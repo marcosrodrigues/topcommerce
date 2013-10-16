@@ -33,7 +33,11 @@ uses
   uFrmConfirm in '..\Utils\uFrmConfirm.pas' {FrmConfirm},
   uFrmError in '..\Utils\uFrmError.pas' {FrmError},
   uFrmInformation in '..\Utils\uFrmInformation.pas' {FrmInformation},
-  uFrmWarning in '..\Utils\uFrmWarning.pas' {FrmWarning};
+  uFrmWarning in '..\Utils\uFrmWarning.pas' {FrmWarning},
+  CargoDAO in 'DAO\CargoDAO.pas',
+  Cargo in '..\Entidades\Cargo.pas',
+  FuncionarioDAO in 'DAO\FuncionarioDAO.pas',
+  Funcionario in '..\Entidades\Funcionario.pas';
 
 {$R *.res}
 

@@ -229,8 +229,6 @@ object FrmConfirm: TFrmConfirm
     ParentFont = False
     TabOrder = 0
     OnClick = btnSimClick
-    ExplicitLeft = 212
-    ExplicitTop = 116
   end
   object btnNao: TBitBtn
     Left = 348
@@ -308,8 +306,6 @@ object FrmConfirm: TFrmConfirm
     ParentFont = False
     TabOrder = 1
     OnClick = btnNaoClick
-    ExplicitLeft = 308
-    ExplicitTop = 116
   end
   object mmMensagem: TMemo
     Left = 96

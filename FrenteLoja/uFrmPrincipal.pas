@@ -8,7 +8,7 @@ uses
   Dialogs, ExtCtrls, StdCtrls, Grids, DBGrids, jpeg, DB, DBClient, SqlExpr, DBXDataSnap,
   DBXCommon, DBXDBReaders, uPedidoVendaDAOClient, PedidoVenda, ItemPedidoVenda, Produto,
   Generics.Collections, Cliente, pngimage, RLConsts, DXPCurrencyEdit,
-  DBCtrls, Caixa, ImgList, StrUtils;
+  DBCtrls, Caixa, ImgList, StrUtils, Funcionario;
 
 type
   TFrmPrincipal = class(TForm)
@@ -119,6 +119,8 @@ type
     Image37: TImage;
     Label14: TLabel;
     Image38: TImage;
+    Label17: TLabel;
+    lblFuncionario: TLabel;
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -150,6 +152,7 @@ type
     DataPedidoVendaAtual: TDateTime;
     VendaFechada, VendaCancelada: Boolean;
     Cliente: TCliente;
+    Funcionario: TFuncionario;
     NomeClienteAvulso: string;
     MyBitmap: TBitmap;
     CaixaAbertoAtual: TCaixa;
@@ -195,7 +198,7 @@ implementation
 uses uFrmConsultaProdutos, uFrmAjuste, uFrmFecharVenda, uFrmExcluirItem, MensagensUtils,
   uFrmVendasFechadas, uFrmVendasAbertas, uFrmRelReciboVenda,
   uFrmConectandoServidor, uFrmInformarCliente, uFrmAbrirCaixa, uCaixaDAOClient,
-  uFrmLogin, FuncoesBematech, FuncoesBematechMatricial;
+  uFrmLogin, FuncoesBematech, FuncoesBematechMatricial, uFrmInformarFuncionario;
 
 {$R *.dfm}
 
@@ -456,6 +459,9 @@ begin
         NomeClienteAvulso := pedido.NomeClienteAvulso;
       end;
 
+      lblFuncionario.Caption := pedido.Funcionario.Nome;
+      Funcionario := pedido.Funcionario;
+
       lblSubtotal.Caption := FormatCurr(',0.00', pedido.Total);
 
       cdsProdutos.Close;
@@ -519,6 +525,9 @@ begin
         lblCliente.Caption := pedido.NomeClienteAvulso;
         NomeClienteAvulso := pedido.NomeClienteAvulso;
       end;
+
+      lblFuncionario.Caption := pedido.Funcionario.Nome;
+      Funcionario := pedido.Funcionario;
 
       lblSubtotal.Caption := FormatCurr(',0.00', pedido.Total);
 
@@ -660,6 +669,7 @@ var
   Item: TItemPedidoVenda;
   Pedido: TPedidoVenda;
   fInformarCliente: TFrmInformarCliente;
+  fInformarFuncionario: TFrmInformarFuncionario;
 begin
   if VendaFechada then
   begin
@@ -765,6 +775,20 @@ begin
                   Pedido.NomeClienteAvulso := fInformarCliente.NomeCliente;
                   lblCliente.Caption := Pedido.NomeClienteAvulso;
                   NomeClienteAvulso := Pedido.NomeClienteAvulso;
+                end;
+
+                fInformarFuncionario := TFrmInformarFuncionario.Create(Self);
+                try
+                  fInformarFuncionario.ShowModal;
+
+                  if (fInformarFuncionario.Salvar) then
+                  begin
+                    Pedido.Funcionario := fInformarFuncionario.Funcionario;
+                    lblFuncionario.Caption := Pedido.Funcionario.Nome;
+                    Funcionario := Pedido.Funcionario;
+                  end;
+                finally
+                  fInformarFuncionario.Free;
                 end;
               end;
             finally
@@ -1039,8 +1063,9 @@ end;
 
 procedure TFrmPrincipal.IniciaControles;
 begin
-  lblCliente.Caption  := '';
-  lblSubtotal.Caption := '';
+  lblCliente.Caption     := '';
+  lblFuncionario.Caption := '';
+  lblSubtotal.Caption    := '';
 
   Cliente := nil;
   NomeClienteAvulso := '';

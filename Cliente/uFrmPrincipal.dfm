@@ -1600,9 +1600,11 @@ object FrmPrincipal: TFrmPrincipal
       end
       object Cargos1: TMenuItem
         Caption = 'Cargos'
+        OnClick = Cargos1Click
       end
       object Funcionrios1: TMenuItem
         Caption = 'Funcion'#225'rios'
+        OnClick = Funcionrios1Click
       end
       object N2: TMenuItem
         Caption = '-'

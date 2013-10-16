@@ -3,7 +3,7 @@ unit PedidoVenda;
 interface
 
 uses
-  DBXJSONReflect, RTTI, DBXPlatform, Generics.Collections, ItemPedidoVenda, Cliente;
+  DBXJSONReflect, RTTI, DBXPlatform, Generics.Collections, ItemPedidoVenda, Cliente, Funcionario;
 
 type
   TDoubleInterceptor = class(TJSONInterceptor)
@@ -41,6 +41,7 @@ type
     FValorParcela: Currency;
     [JSONReflect(ctString, rtString, TDoubleInterceptor, nil, true)]
     FPrimeiroVencimento: TDateTime;
+    FFuncionario: TFuncionario;
   public
     property Codigo: string read FCodigo write FCodigo;
     property Data: TDateTime read FData write FData;
@@ -60,6 +61,7 @@ type
     property Restante: Currency read FRestante write FRestante;
     property ValorParcela: Currency read FValorParcela write FValorParcela;
     property PrimeiroVencimento: TDateTime read FPrimeiroVencimento write FPrimeiroVencimento;
+    property Funcionario: TFuncionario read FFuncionario write FFuncionario;
   end;
 
 implementation

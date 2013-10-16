@@ -18,6 +18,7 @@ object FramePesquisaFornecedor: TFramePesquisaFornecedor
     Width = 35
     Height = 21
     MaxLength = 3
+    NumbersOnly = True
     TabOrder = 0
     OnExit = edtCodigoFornecedorExit
     OnKeyDown = edtCodigoFornecedorKeyDown
