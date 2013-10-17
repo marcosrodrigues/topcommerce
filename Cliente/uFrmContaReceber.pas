@@ -40,7 +40,8 @@ var
 
 implementation
 
-uses DataUtils, MensagensUtils, uFrmDadosContaReceber, TypesUtils;
+uses DataUtils, MensagensUtils, uFrmDadosContaReceber, TypesUtils,
+  uFrmBaixarContaReceber;
 
 {$R *.dfm}
 
@@ -117,11 +118,38 @@ begin
 end;
 
 procedure TFrmContaReceber.sbtBaixarContaClick(Sender: TObject);
+var
+  f: TFrmBaixarContaReceber;
 begin
-  inherited;
-  if Confirma('Baixar a conta selecionada?') then
-    if DAOClient.BaixarConta(TContaReceber.Create(cdsCrudID.AsInteger)) then
-      cdsCrud.Delete;
+  if cdsCrud.IsEmpty then
+  begin
+    Atencao('Nenhum conta a receber selecionado.');
+    Exit;
+  end;
+
+  f := TFrmBaixarContaReceber.Create(Self);
+  try
+    f.ContaReceberId := cdsCrudID.AsInteger;
+    f.ValorRestante  := cdsCrudRESTANTE.AsCurrency;
+    f.ValorTotal     := cdsCrudVALOR.AsCurrency;
+    f.deData.Date    := Now;
+    f.cedValor.Value := cdsCrudRESTANTE.AsCurrency;
+    f.ShowModal;
+
+    if f.Baixou then
+    begin
+      if f.BaixaTotal then
+        cdsCrud.Delete
+      else
+      begin
+        cdsCrud.Edit;
+        cdsCrudRESTANTE.AsCurrency := cdsCrudRESTANTE.AsCurrency - f.cedValor.Value;
+        cdsCrud.Post;
+      end;
+    end;
+  finally
+    f.Free;
+  end;
 end;
 
 end.

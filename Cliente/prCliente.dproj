@@ -276,6 +276,9 @@
 			<DCCReference Include="uFrmDadosFuncionario.pas">
 				<Form>FrmDadosFuncionario</Form>
 			</DCCReference>
+			<DCCReference Include="uFrmBaixarContaReceber.pas">
+				<Form>FrmBaixarContaReceber</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Release">
 				<Key>Cfg_2</Key>
 				<CfgParent>Base</CfgParent>

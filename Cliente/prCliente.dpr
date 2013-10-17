@@ -97,7 +97,8 @@ uses
   uFramePesquisaCargo in 'uFramePesquisaCargo.pas' {FramePesquisaCargo: TFrame},
   uFrmConsultaCargo in 'uFrmConsultaCargo.pas' {FrmConsultaCargo},
   uFrmFuncionario in 'uFrmFuncionario.pas' {FrmFuncionario},
-  uFrmDadosFuncionario in 'uFrmDadosFuncionario.pas' {FrmDadosFuncionario};
+  uFrmDadosFuncionario in 'uFrmDadosFuncionario.pas' {FrmDadosFuncionario},
+  uFrmBaixarContaReceber in 'uFrmBaixarContaReceber.pas' {FrmBaixarContaReceber};
 
 {$R *.res}
 
