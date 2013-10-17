@@ -36,7 +36,6 @@ object FrmContasReceber: TFrmContasReceber
     ParentBackground = False
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 630
     DesignSize = (
       800
       41)
@@ -192,9 +191,8 @@ object FrmContasReceber: TFrmContasReceber
     Align = alTop
     AutoSize = True
     TabOrder = 1
-    ExplicitLeft = 24
-    ExplicitTop = 56
-    ExplicitWidth = 548
+    ExplicitTop = 41
+    ExplicitWidth = 800
     ExplicitHeight = 34
     inherited Label3: TLabel
       Left = 8
@@ -270,9 +268,6 @@ object FrmContasReceber: TFrmContasReceber
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 2
-    ExplicitLeft = 248
-    ExplicitTop = 192
-    ExplicitWidth = 185
     object btnPesquisar: TDXPButton
       Left = 8
       Top = 2

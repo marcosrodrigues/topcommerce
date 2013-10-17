@@ -22,7 +22,7 @@ type
   public
     { Public declarations }
     ContaReceberId: Integer;
-    ValorRestante: Currency;
+    ValorRestante, ValorTotal: Currency;
     Baixou, BaixaTotal: Boolean;
   end;
 
@@ -70,7 +70,7 @@ begin
     ContaReceberDAO := TContaReceberDAOClient.Create(FrmPrincipal.ConnServidor.DBXConnection);
     try
       ContaReceber := TContaReceber.Create(ContaReceberId);
-      ContaReceber.Valor := ValorRestante;
+      ContaReceber.Valor := ValorTotal;
 
       BaixaTotal := ContaReceberDAO.BaixarConta(ContaReceber, deData.Date, cedValor.Value, lbFormaPagamento.ItemIndex);
       Baixou := True;

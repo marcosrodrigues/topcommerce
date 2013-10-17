@@ -63,6 +63,7 @@ begin
   try
     f.ContaReceberId := cdsRelatorioID.AsInteger;
     f.ValorRestante  := cdsConsultaRESTANTE.AsCurrency;
+    f.ValorTotal     := cdsRelatorioVALOR.AsCurrency;
     f.deData.Date    := Now;
     f.cedValor.Value := cdsConsultaRESTANTE.AsCurrency;
     f.ShowModal;
