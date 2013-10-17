@@ -12,7 +12,7 @@ type
     function Insert(ContaReceber: TContaReceber): Boolean;
     function Update(ContaReceber: TContaReceber): Boolean;
     function Delete(ContaReceber: TContaReceber): Boolean;
-    function BaixarConta(ContaReceber: TContaReceber): Boolean;
+    function BaixarConta(ContaReceber: TContaReceber; Data: TDateTime; Valor: Currency; FormaPagamento: Integer): Boolean;
     function Relatorio(DataInicial, DataFinal: TDateTime; ClienteCodigo: string; Situacao: Integer): TDBXReader;
   end;
 
@@ -26,7 +26,7 @@ uses uSCPrincipal, StringUtils;
 function TContaReceberDAO.List: TDBXReader;
 begin
   PrepareCommand;
-  FComm.Text := 'SELECT C.ID, C.CLIENTE_CODIGO, L.NOME, C.NOME_CLIENTE_AVULSO, C.VENCIMENTO, C.VALOR, C.OBSERVACOES, C.BAIXADA '+
+  FComm.Text := 'SELECT C.ID, C.CLIENTE_CODIGO, L.NOME, C.NOME_CLIENTE_AVULSO, C.VENCIMENTO, C.VALOR, C.OBSERVACOES, C.BAIXADA, C.RESTANTE '+
                 'FROM CONTAS_RECEBER C '+
                 'LEFT JOIN CLIENTES L ON L.CODIGO = C.CLIENTE_CODIGO '+
                 'WHERE C.BAIXADA = 0 '+
@@ -37,7 +37,7 @@ end;
 function TContaReceberDAO.Relatorio(DataInicial, DataFinal: TDateTime; ClienteCodigo: string; Situacao: Integer): TDBXReader;
 begin
   PrepareCommand;
-  FComm.Text := 'SELECT C.ID, C.CLIENTE_CODIGO, L.NOME, C.NOME_CLIENTE_AVULSO, C.VENCIMENTO, C.VALOR, C.OBSERVACOES, C.BAIXADA '+
+  FComm.Text := 'SELECT C.ID, C.CLIENTE_CODIGO, L.NOME, C.NOME_CLIENTE_AVULSO, C.VENCIMENTO, C.VALOR, C.OBSERVACOES, C.BAIXADA, C.RESTANTE '+
                 'FROM CONTAS_RECEBER C '+
                 'LEFT JOIN CLIENTES L ON L.CODIGO = C.CLIENTE_CODIGO '+
                 'WHERE C.ID <> 0 ';
@@ -135,7 +135,7 @@ begin
   end;
 end;
 
-function TContaReceberDAO.BaixarConta(ContaReceber: TContaReceber): Boolean;
+function TContaReceberDAO.BaixarConta(ContaReceber: TContaReceber; Data: TDateTime; Valor: Currency; FormaPagamento: Integer): Boolean;
 var
   query: TSQLQuery;
 begin
@@ -143,15 +143,32 @@ begin
   try
     query.SQLConnection := SCPrincipal.ConnTopCommerce;
     //
-    query.SQL.Text := 'UPDATE CONTAS_RECEBER SET BAIXADA = 1 WHERE ID = :ID';
-    //
+    query.SQL.Text := 'INSERT INTO BAIXAS_CONTA_RECEBER (CONTA_RECEBER_ID, DATA, VALOR, FORMA_PAGAMENTO) VALUES (:CONTA_RECEBER_ID, :DATA, :VALOR, :FORMA_PAGAMENTO)';
+    query.ParamByName('CONTA_RECEBER_ID').AsInteger := ContaReceber.Id;
+    query.ParamByName('DATA').AsDateTime := Data;
+    query.ParamByName('VALOR').AsCurrency := Valor;
+    query.ParamByName('FORMA_PAGAMENTO').AsInteger := FormaPagamento;
+    query.ExecSQL;
+
+    query.SQL.Text := 'SELECT SUM(VALOR) AS TOTAL_PAGO FROM BAIXAS_CONTA_RECEBER WHERE CONTA_RECEBER_ID = :ID';
     query.ParamByName('ID').AsInteger := ContaReceber.Id;
-    //
-    try
+    query.Open;
+
+    Result := False;
+    if ContaReceber.Valor <= query.FieldByName('TOTAL_PAGO').AsCurrency then
+    begin
+      query.SQL.Text := 'UPDATE CONTAS_RECEBER SET BAIXADA = 1 WHERE ID = :ID';
+      query.ParamByName('ID').AsInteger := ContaReceber.Id;
       query.ExecSQL;
+
       Result := True;
-    except
-      Result := False;
+    end
+    else
+    begin
+      query.SQL.Text := 'UPDATE CONTAS_RECEBER SET RESTANTE = :VALOR WHERE ID = :ID';
+      query.ParamByName('VALOR').AsCurrency := ContaReceber.Valor - Valor;
+      query.ParamByName('ID').AsInteger     := ContaReceber.Id;
+      query.ExecSQL;
     end;
   finally
     query.Free;

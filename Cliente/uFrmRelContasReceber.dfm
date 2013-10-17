@@ -273,5 +273,8 @@ inherited FrmRelContasReceber: TFrmRelContasReceber
       Visible = False
       OnGetText = cdsRelatorioBAIXADAGetText
     end
+    object cdsRelatorioRESTANTE: TCurrencyField
+      FieldName = 'RESTANTE'
+    end
   end
 end

@@ -121,6 +121,7 @@ type
     Image38: TImage;
     Label17: TLabel;
     lblFuncionario: TLabel;
+    Image39: TImage;
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -145,6 +146,7 @@ type
     procedure Label10Click(Sender: TObject);
     procedure Label14Click(Sender: TObject);
     procedure Image38Click(Sender: TObject);
+    procedure Image39Click(Sender: TObject);
   private
     { Private declarations }
     DAOPedidoVenda: TPedidoVendaDAOClient;
@@ -198,7 +200,8 @@ implementation
 uses uFrmConsultaProdutos, uFrmAjuste, uFrmFecharVenda, uFrmExcluirItem, MensagensUtils,
   uFrmVendasFechadas, uFrmVendasAbertas, uFrmRelReciboVenda,
   uFrmConectandoServidor, uFrmInformarCliente, uFrmAbrirCaixa, uCaixaDAOClient,
-  uFrmLogin, FuncoesBematech, FuncoesBematechMatricial, uFrmInformarFuncionario;
+  uFrmLogin, FuncoesBematech, FuncoesBematechMatricial, uFrmInformarFuncionario,
+  uFrmContasReceber;
 
 {$R *.dfm}
 
@@ -459,8 +462,16 @@ begin
         NomeClienteAvulso := pedido.NomeClienteAvulso;
       end;
 
-      lblFuncionario.Caption := pedido.Funcionario.Nome;
-      Funcionario := pedido.Funcionario;
+      if pedido.Funcionario <> nil then
+      begin
+        lblFuncionario.Caption := pedido.Funcionario.Nome;
+        Funcionario := pedido.Funcionario;
+      end
+      else
+      begin
+        lblFuncionario.Caption := '';
+        Funcionario := nil;
+      end;
 
       lblSubtotal.Caption := FormatCurr(',0.00', pedido.Total);
 
@@ -526,8 +537,16 @@ begin
         NomeClienteAvulso := pedido.NomeClienteAvulso;
       end;
 
-      lblFuncionario.Caption := pedido.Funcionario.Nome;
-      Funcionario := pedido.Funcionario;
+      if pedido.Funcionario <> nil then
+      begin
+        lblFuncionario.Caption := pedido.Funcionario.Nome;
+        Funcionario := pedido.Funcionario;
+      end
+      else
+      begin
+        lblFuncionario.Caption := '';
+        Funcionario := nil;
+      end;
 
       lblSubtotal.Caption := FormatCurr(',0.00', pedido.Total);
 
@@ -977,6 +996,18 @@ begin
         FrmPrincipal.lblUsuario.Caption := 'TOP';
   finally
     fLogin.Free;
+  end;
+end;
+
+procedure TFrmPrincipal.Image39Click(Sender: TObject);
+var
+  f: TFrmContasReceber;
+begin
+  f := TFrmContasReceber.Create(Self);
+  try
+    f.ShowModal;
+  finally
+    f.Free;
   end;
 end;
 

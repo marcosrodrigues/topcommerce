@@ -21,7 +21,7 @@ type
     function Insert(ContaReceber: TContaReceber): Boolean;
     function Update(ContaReceber: TContaReceber): Boolean;
     function Delete(ContaReceber: TContaReceber): Boolean;
-    function BaixarConta(ContaReceber: TContaReceber): Boolean;
+    function BaixarConta(ContaReceber: TContaReceber; Data: TDateTime; Valor: Currency; FormaPagamento: Integer): Boolean;
     function Relatorio(DataInicial, DataFinal: TDateTime; ClienteCodigo: string; Situacao: Integer): TDBXReader;
   end;
 
@@ -140,7 +140,7 @@ begin
   inherited Create(ADBXConnection);
 end;
 
-function TContaReceberDAOClient.BaixarConta(ContaReceber: TContaReceber): Boolean;
+function TContaReceberDAOClient.BaixarConta(ContaReceber: TContaReceber; Data: TDateTime; Valor: Currency; FormaPagamento: Integer): Boolean;
 begin
   if FBaixarContaCommand = nil then
   begin
@@ -162,8 +162,12 @@ begin
       FreeAndNil(FMarshal)
     end
     end;
+
+  FBaixarContaCommand.Parameters[1].Value.AsDateTime := Data;
+  FBaixarContaCommand.Parameters[2].Value.AsCurrency := Valor;
+  FBaixarContaCommand.Parameters[3].Value.AsInt32    := FormaPagamento;
   FBaixarContaCommand.ExecuteUpdate;
-  Result := FBaixarContaCommand.Parameters[1].Value.GetBoolean;
+  Result := FBaixarContaCommand.Parameters[4].Value.GetBoolean;
 end;
 
 constructor TContaReceberDAOClient.Create(ADBXConnection: TDBXConnection; AInstanceOwner: Boolean);

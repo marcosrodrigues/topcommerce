@@ -135,6 +135,28 @@
 			</DCCReference>
 			<DCCReference Include="..\Cliente\DAOClient\uFuncionarioDAOClient.pas"/>
 			<DCCReference Include="..\Entidades\Cargo.pas"/>
+			<DCCReference Include="uFrmContasReceber.pas">
+				<Form>FrmContasReceber</Form>
+			</DCCReference>
+			<DCCReference Include="..\Cliente\uFramePesquisaCliente.pas">
+				<Form>FramePesquisaCliente</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="..\Utils\StringUtils.pas"/>
+			<DCCReference Include="..\Cliente\uFrmConsultaCliente.pas">
+				<Form>FrmConsultaCliente</Form>
+			</DCCReference>
+			<DCCReference Include="..\Cliente\uFrmConsultaBase.pas">
+				<Form>FrmConsultaBase</Form>
+			</DCCReference>
+			<DCCReference Include="..\Cliente\uFrmBase.pas">
+				<Form>FrmBase</Form>
+			</DCCReference>
+			<DCCReference Include="..\Cliente\DAOClient\uContaReceberDAOClient.pas"/>
+			<DCCReference Include="..\Entidades\ContaReceber.pas"/>
+			<DCCReference Include="..\Cliente\uFrmBaixarContaReceber.pas">
+				<Form>FrmBaixarContaReceber</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Release">
 				<Key>Cfg_2</Key>
 				<CfgParent>Base</CfgParent>

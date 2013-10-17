@@ -32,6 +32,7 @@ type
     RLDBResult1: TRLDBResult;
     RLDBResult2: TRLDBResult;
     RLLabel9: TRLLabel;
+    cdsRelatorioRESTANTE: TCurrencyField;
     procedure cdsRelatorioNOMEGetText(Sender: TField; var Text: string;
       DisplayText: Boolean);
     procedure cdsRelatorioBAIXADAGetText(Sender: TField; var Text: string;

@@ -46,7 +46,16 @@ uses
   Funcionario in '..\Entidades\Funcionario.pas',
   uFrmConsultaFuncionarios in 'uFrmConsultaFuncionarios.pas' {FrmConsultaFuncionarios},
   uFuncionarioDAOClient in '..\Cliente\DAOClient\uFuncionarioDAOClient.pas',
-  Cargo in '..\Entidades\Cargo.pas';
+  Cargo in '..\Entidades\Cargo.pas',
+  uFrmContasReceber in 'uFrmContasReceber.pas' {FrmContasReceber},
+  uFramePesquisaCliente in '..\Cliente\uFramePesquisaCliente.pas' {FramePesquisaCliente: TFrame},
+  StringUtils in '..\Utils\StringUtils.pas',
+  uFrmConsultaCliente in '..\Cliente\uFrmConsultaCliente.pas' {FrmConsultaCliente},
+  uFrmConsultaBase in '..\Cliente\uFrmConsultaBase.pas' {FrmConsultaBase},
+  uFrmBase in '..\Cliente\uFrmBase.pas' {FrmBase},
+  uContaReceberDAOClient in '..\Cliente\DAOClient\uContaReceberDAOClient.pas',
+  ContaReceber in '..\Entidades\ContaReceber.pas',
+  uFrmBaixarContaReceber in '..\Cliente\uFrmBaixarContaReceber.pas' {FrmBaixarContaReceber};
 
 {$R *.res}
 
@@ -74,13 +83,6 @@ begin
     if fLogin.FLoginSucess then
     begin
       Application.CreateForm(TFrmPrincipal, FrmPrincipal);
-  Application.CreateForm(TFrmConectandoServidor, FrmConectandoServidor);
-  Application.CreateForm(TFrmInformarCliente, FrmInformarCliente);
-  Application.CreateForm(TFrmAbrirCaixa, FrmAbrirCaixa);
-  Application.CreateForm(TFrmConfirm, FrmConfirm);
-  Application.CreateForm(TFrmError, FrmError);
-  Application.CreateForm(TFrmInformation, FrmInformation);
-  Application.CreateForm(TFrmWarning, FrmWarning);
   if fLogin.Usuario <> nil then
         FrmPrincipal.lblUsuario.Caption := fLogin.Usuario.Login
       else

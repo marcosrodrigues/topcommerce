@@ -52,7 +52,7 @@ uses DataUtils, uFrmPrincipal;
 procedure TFrmConsultaFuncionarios.edtConsultarChange(Sender: TObject);
 begin
   cdsConsulta.Filtered := False;
-  cdsConsulta.Filter   := 'UPPER(NOME) LIKE ' + QuotedStr('%'+UpperCase(edtConsultar.Text)+'%');
+  cdsConsulta.Filter   := 'UPPER(CODIGO) LIKE ' + QuotedStr('%'+UpperCase(edtConsultar.Text)+'%') + ' OR UPPER(NOME) LIKE ' + QuotedStr('%'+UpperCase(edtConsultar.Text)+'%');
   cdsConsulta.Filtered := True;
 end;
 

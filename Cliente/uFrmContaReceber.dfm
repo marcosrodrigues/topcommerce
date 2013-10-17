@@ -4,6 +4,7 @@ inherited FrmContaReceber: TFrmContaReceber
   ClientWidth = 824
   Constraints.MinHeight = 450
   Constraints.MinWidth = 840
+  ExplicitLeft = -46
   ExplicitWidth = 840
   ExplicitHeight = 450
   PixelsPerInch = 96
@@ -114,6 +115,10 @@ inherited FrmContaReceber: TFrmContaReceber
     object cdsCrudBAIXADA: TBooleanField
       FieldName = 'BAIXADA'
       Visible = False
+    end
+    object cdsCrudRESTANTE: TCurrencyField
+      DisplayLabel = 'Restante'
+      FieldName = 'RESTANTE'
     end
   end
 end

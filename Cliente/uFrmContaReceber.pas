@@ -18,6 +18,7 @@ type
     cdsCrudNOME: TStringField;
     cdsCrudNOME_CLIENTE_AVULSO: TStringField;
     sbtBaixarConta: TSpeedButton;
+    cdsCrudRESTANTE: TCurrencyField;
     procedure sbtBaixarContaClick(Sender: TObject);
   private
     { Private declarations }
