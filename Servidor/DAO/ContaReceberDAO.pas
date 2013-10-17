@@ -72,12 +72,12 @@ begin
     //
     if ContaReceber.Cliente <> nil then
     begin
-      query.SQL.Text := 'INSERT INTO CONTAS_RECEBER (CLIENTE_CODIGO, VENCIMENTO, VALOR, OBSERVACOES, BAIXADA) VALUES (:CLIENTE_CODIGO, :VENCIMENTO, :VALOR, :OBSERVACOES, :BAIXADA)';
+      query.SQL.Text := 'INSERT INTO CONTAS_RECEBER (CLIENTE_CODIGO, VENCIMENTO, VALOR, OBSERVACOES, BAIXADA, RESTANTE) VALUES (:CLIENTE_CODIGO, :VENCIMENTO, :VALOR, :OBSERVACOES, :BAIXADA, :RESTANTE)';
       query.ParamByName('CLIENTE_CODIGO').AsString := ContaReceber.Cliente.Codigo;
     end
     else
     begin
-      query.SQL.Text := 'INSERT INTO CONTAS_RECEBER (NOME_CLIENTE_AVULSO, VENCIMENTO, VALOR, OBSERVACOES, BAIXADA) VALUES (:NOME_CLIENTE_AVULSO, :VENCIMENTO, :VALOR, :OBSERVACOES, :BAIXADA)';
+      query.SQL.Text := 'INSERT INTO CONTAS_RECEBER (NOME_CLIENTE_AVULSO, VENCIMENTO, VALOR, OBSERVACOES, BAIXADA, RESTANTE) VALUES (:NOME_CLIENTE_AVULSO, :VENCIMENTO, :VALOR, :OBSERVACOES, :BAIXADA, :RESTANTE)';
       query.ParamByName('NOME_CLIENTE_AVULSO').AsString := ContaReceber.NomeClienteAvulso;
     end;
 
@@ -85,6 +85,7 @@ begin
     query.ParamByName('VALOR').AsCurrency      := ContaReceber.Valor;
     query.ParamByName('OBSERVACOES').AsString  := ContaReceber.Observacoes;
     query.ParamByName('BAIXADA').AsBoolean     := ContaReceber.Baixada;
+    query.ParamByName('RESTANTE').AsCurrency   := ContaReceber.Valor;
     //
     try
       query.ExecSQL;
