@@ -1,11 +1,11 @@
 inherited FrmEstoque: TFrmEstoque
   Caption = 'Movimenta'#231#227'o de Estoque'
-  ExplicitWidth = 320
-  ExplicitHeight = 240
   PixelsPerInch = 96
   TextHeight = 14
   inherited pnlBotoes: TPanel
-    ExplicitWidth = 599
+    inherited sbtExcluir: TSpeedButton
+      Visible = False
+    end
   end
   inherited cdsCrud: TClientDataSet
     IndexDefs = <

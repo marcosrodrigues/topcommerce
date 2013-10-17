@@ -2,7 +2,6 @@ inherited FrmConsultaProduto: TFrmConsultaProduto
   Caption = 'Consulta de Produtos'
   ClientWidth = 592
   ExplicitWidth = 608
-  ExplicitHeight = 240
   PixelsPerInch = 96
   TextHeight = 14
   inherited pnlParametros: TPanel
@@ -45,6 +44,10 @@ inherited FrmConsultaProduto: TFrmConsultaProduto
       DisplayWidth = 10
       FieldName = 'PRECO_VENDA'
     end
+    object cdsConsultaESTOQUE_MINIMO: TIntegerField
+      FieldName = 'ESTOQUE_MINIMO'
+      Visible = False
+    end
     object cdsConsultaCODIGO_BARRAS: TStringField
       DisplayLabel = 'C'#243'digo de Barras'
       DisplayWidth = 20
@@ -52,6 +55,23 @@ inherited FrmConsultaProduto: TFrmConsultaProduto
     end
     object cdsConsultaQUANTIDADE: TIntegerField
       FieldName = 'QUANTIDADE'
+      Visible = False
+    end
+    object cdsConsultaENDERECO: TStringField
+      DisplayLabel = 'Endere'#231'o'
+      FieldName = 'ENDERECO'
+      Size = 50
+    end
+    object cdsConsultaMARGEM_LUCRO: TCurrencyField
+      FieldName = 'MARGEM_LUCRO'
+      Visible = False
+    end
+    object cdsConsultaDESCONTO_MAXIMO_VALOR: TCurrencyField
+      FieldName = 'DESCONTO_MAXIMO_VALOR'
+      Visible = False
+    end
+    object cdsConsultaDESCONTO_MAXIMO_PERCENTUAL: TCurrencyField
+      FieldName = 'DESCONTO_MAXIMO_PERCENTUAL'
       Visible = False
     end
   end

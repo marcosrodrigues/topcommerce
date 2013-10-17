@@ -16,6 +16,11 @@ type
     cdsConsultaPRECO_VENDA: TCurrencyField;
     cdsConsultaCODIGO_BARRAS: TStringField;
     cdsConsultaQUANTIDADE: TIntegerField;
+    cdsConsultaENDERECO: TStringField;
+    cdsConsultaMARGEM_LUCRO: TCurrencyField;
+    cdsConsultaDESCONTO_MAXIMO_VALOR: TCurrencyField;
+    cdsConsultaDESCONTO_MAXIMO_PERCENTUAL: TCurrencyField;
+    cdsConsultaESTOQUE_MINIMO: TIntegerField;
   private
     { Private declarations }
     DAOClient: TProdutoDAOClient;
